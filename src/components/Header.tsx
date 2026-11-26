@@ -174,7 +174,7 @@ export default function Header() {
                 href="/"
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
                   pathname === '/'
-                    ? 'bg-[#071B70] text-white shadow-xs'
+                    ? 'bg-[#0F172A] text-[#FFC400] shadow-xs'
                     : 'text-slate-600 hover:text-[#071B70] hover:bg-slate-200/60'
                 }`}
               >
@@ -185,7 +185,7 @@ export default function Header() {
                 href="/about"
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
                   pathname.startsWith('/about')
-                    ? 'bg-[#071B70] text-white shadow-xs'
+                    ? 'bg-[#0F172A] text-[#FFC400] shadow-xs'
                     : 'text-slate-600 hover:text-[#071B70] hover:bg-slate-200/60'
                 }`}
               >
@@ -202,7 +202,7 @@ export default function Header() {
                   href="/services"
                   className={`px-4 py-2 rounded-full text-sm font-medium inline-flex items-center gap-1.5 transition-all duration-200 ${
                     pathname.startsWith('/services')
-                      ? 'bg-[#071B70] text-white shadow-xs'
+                      ? 'bg-[#0F172A] text-[#FFC400] shadow-xs'
                       : 'text-slate-600 hover:text-[#071B70] hover:bg-slate-200/60'
                   }`}
                 >
@@ -251,7 +251,7 @@ export default function Header() {
                                 href={service.href}
                                 className="group flex items-start gap-3 p-2.5 rounded-2xl hover:bg-slate-50 transition-all duration-200 border border-transparent hover:border-slate-200/80"
                               >
-                                <div className="w-9 h-9 rounded-xl bg-[#087CCB]/10 text-[#071B70] flex items-center justify-center shrink-0 group-hover:bg-[#071B70] group-hover:text-white transition-colors">
+                                <div className="w-9 h-9 rounded-xl bg-slate-100 text-[#071B70] flex items-center justify-center shrink-0 group-hover:bg-[#0F172A] group-hover:text-[#FFC400] transition-colors skeuo-well">
                                   <IconComp className="w-4 h-4" />
                                 </div>
                                 <div className="min-w-0">
@@ -270,7 +270,7 @@ export default function Header() {
                         </div>
 
                         {/* Right Spotlight Promo Card */}
-                        <div className="col-span-4 rounded-2xl bg-gradient-to-br from-[#071B70] to-[#040D36] text-white p-5 flex flex-col justify-between shadow-lg relative overflow-hidden">
+                        <div className="col-span-4 rounded-2xl card-skeuo-dark text-white p-5 flex flex-col justify-between shadow-lg relative overflow-hidden">
                           <div className="absolute top-0 right-0 w-32 h-32 bg-[#00BCEB]/20 rounded-full blur-2xl pointer-events-none" />
                           <div className="space-y-2 relative z-10">
                             <span className="inline-block px-2 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider bg-[#FFC400]/20 text-[#FFC400] border border-[#FFC400]/30">
@@ -285,7 +285,7 @@ export default function Header() {
                           </div>
                           <Link
                             href="/contact"
-                            className="mt-4 inline-flex items-center justify-center gap-1.5 w-full py-2 px-3 rounded-full text-xs font-bold bg-[#FFC400] text-[#071B70] hover:bg-[#FF7900] hover:text-white transition-colors relative z-10"
+                            className="mt-4 inline-flex items-center justify-center gap-1.5 w-full py-2 px-3 rounded-full text-xs font-bold btn-skeuo-gold relative z-10"
                           >
                             <span>Claim Your Audit</span>
                             <ArrowRight className="w-3.5 h-3.5" />
@@ -301,7 +301,7 @@ export default function Header() {
                 href="/case-studies"
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
                   pathname.startsWith('/case-studies')
-                    ? 'bg-[#071B70] text-white shadow-xs'
+                    ? 'bg-[#0F172A] text-[#FFC400] shadow-xs'
                     : 'text-slate-600 hover:text-[#071B70] hover:bg-slate-200/60'
                 }`}
               >
@@ -312,7 +312,7 @@ export default function Header() {
                 href="/contact"
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
                   pathname.startsWith('/contact')
-                    ? 'bg-[#071B70] text-white shadow-xs'
+                    ? 'bg-[#0F172A] text-[#FFC400] shadow-xs'
                     : 'text-slate-600 hover:text-[#071B70] hover:bg-slate-200/60'
                 }`}
               >

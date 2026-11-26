@@ -399,13 +399,13 @@ export default function AboutPage() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════
-          SECTION 5 — THE 5-YEAR EVOLUTION CHRONICLE (2021-2026)
+          SECTION 5 — THE 5-YEAR EVOLUTION CHRONICLE (SKEUOMORPHIC OBSIDIAN DECK)
          ═══════════════════════════════════════════════════════════ */}
-      <section className="py-24 bg-[#040D36] text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-grid-dark opacity-30 pointer-events-none" />
+      <section className="py-24 bg-gradient-to-b from-[#0F172A] via-[#0B0F19] to-[#040711] text-white relative overflow-hidden border-y border-white/10 shadow-2xl">
+        <div className="absolute inset-0 bg-grid-dark opacity-20 pointer-events-none" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center max-w-3xl mx-auto space-y-4 mb-20">
-            <div className="badge-tag-dark mx-auto">
+            <div className="badge-tag mx-auto bg-white/10 text-white border-white/20">
               <span>Chapter 04 // The Evolution Timeline</span>
             </div>
             <h2 className="font-display font-black text-3xl sm:text-5xl text-white tracking-tight">
@@ -420,12 +420,14 @@ export default function AboutPage() {
             {TIMELINE.map((step, idx) => (
               <div
                 key={step.year}
-                className="card-dark-glass p-8 sm:p-10 flex flex-col sm:flex-row items-start gap-6 group hover:border-[#00BCEB]/50 transition-all"
+                className="card-skeuo-dark p-8 sm:p-10 flex flex-col sm:flex-row items-start gap-6 group hover:border-[#00BCEB]/50 transition-all"
               >
                 <div className="shrink-0 flex flex-col items-center sm:items-start">
-                  <span className="font-display font-black text-4xl sm:text-5xl text-[#FFC400] tracking-tight">
-                    {step.year}
-                  </span>
+                  <div className="skeuo-well-dark px-4 py-2 mb-2 text-center">
+                    <span className="font-display font-black text-4xl sm:text-5xl text-[#FFC400] tracking-tight drop-shadow-md">
+                      {step.year}
+                    </span>
+                  </div>
                   <span className="text-[11px] font-mono-tag uppercase tracking-wider text-[#00BCEB] font-semibold mt-1">
                     {step.chapter}
                   </span>
@@ -550,11 +552,11 @@ export default function AboutPage() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════
-          SECTION 8 — FINAL NARRATIVE CTA
+          SECTION 8 — FINAL NARRATIVE CTA (TITANIUM SKEUOMORPHIC DECK)
          ═══════════════════════════════════════════════════════════ */}
-      <section className="py-24 bg-gradient-to-br from-[#071B70] via-[#087CCB] to-[#040D36] text-white text-center relative overflow-hidden">
+      <section className="py-24 bg-gradient-to-b from-[#0F172A] via-[#0B0F19] to-[#040711] text-white text-center relative overflow-hidden border-t border-white/10 shadow-2xl">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-6">
-          <div className="badge-tag-dark mx-auto">
+          <div className="badge-tag mx-auto bg-white/10 text-white border-white/20">
             <span>Epilogue // Your Growth Journey</span>
           </div>
           <h2 className="font-display font-black text-3xl sm:text-5xl text-white tracking-tight leading-tight">
@@ -567,14 +569,14 @@ export default function AboutPage() {
           <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="/contact"
-              className="btn-primary text-base px-8 py-4 shadow-xl hover:shadow-2xl w-full sm:w-auto"
+              className="btn-skeuo-gold text-base px-9 py-4 group w-full sm:w-auto"
             >
               <span>Work With Us</span>
-              <ArrowRight className="w-5 h-5 ml-1" />
+              <ArrowRight className="w-5 h-5 ml-1 transition-transform group-hover:translate-x-1" />
             </Link>
             <Link
               href="/case-studies"
-              className="btn-secondary text-base px-8 py-4 w-full sm:w-auto text-white border-white/20 hover:bg-white/10"
+              className="btn-secondary text-base px-8 py-4 w-full sm:w-auto text-[#071B70] hover:text-[#071B70]"
             >
               <span>Explore Verified Work</span>
             </Link>

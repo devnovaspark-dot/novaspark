@@ -4,7 +4,7 @@ import { ArrowRight, Mail, Phone, MapPin, ShieldCheck } from 'lucide-react';
 
 export default function Footer() {
   return (
-    <footer className="bg-[#040D36] text-white pt-20 pb-12 border-t border-blue-950 relative overflow-hidden">
+    <footer className="bg-gradient-to-b from-[#0F172A] via-[#0B0F19] to-[#030712] text-white pt-20 pb-12 border-t border-slate-800 relative overflow-hidden">
       {/* Subtle ambient lighting */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#087CCB]/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#00BCEB]/10 rounded-full blur-3xl pointer-events-none" />
@@ -49,7 +49,7 @@ export default function Footer() {
                 href="https://linkedin.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#087CCB] hover:text-white hover:border-[#00BCEB]/50 hover:scale-105 transition-all shadow-2xs"
+                className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#FFC400] hover:text-[#071B70] hover:border-[#FFC400] hover:scale-105 transition-all shadow-2xs"
                 aria-label="LinkedIn"
               >
                 <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
@@ -62,7 +62,7 @@ export default function Footer() {
                 href="https://twitter.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#087CCB] hover:text-white hover:border-[#00BCEB]/50 hover:scale-105 transition-all shadow-2xs"
+                className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#FFC400] hover:text-[#071B70] hover:border-[#FFC400] hover:scale-105 transition-all shadow-2xs"
                 aria-label="Twitter / X"
               >
                 <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
@@ -75,7 +75,7 @@ export default function Footer() {
                 href="https://instagram.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#087CCB] hover:text-white hover:border-[#00BCEB]/50 hover:scale-105 transition-all shadow-2xs"
+                className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#FFC400] hover:text-[#071B70] hover:border-[#FFC400] hover:scale-105 transition-all shadow-2xs"
                 aria-label="Instagram"
               >
                 <svg className="w-4 h-4 fill-none stroke-current stroke-2" viewBox="0 0 24 24">
@@ -90,7 +90,7 @@ export default function Footer() {
                 href="https://youtube.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#087CCB] hover:text-white hover:border-[#00BCEB]/50 hover:scale-105 transition-all shadow-2xs"
+                className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#FFC400] hover:text-[#071B70] hover:border-[#FFC400] hover:scale-105 transition-all shadow-2xs"
                 aria-label="YouTube"
               >
                 <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">

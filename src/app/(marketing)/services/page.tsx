@@ -125,7 +125,7 @@ export default function ServicesPage() {
                       }}
                       className={`text-xs font-semibold px-3.5 py-1.5 rounded-full transition-all duration-200 cursor-pointer ${
                         isCurrent
-                          ? 'bg-[#071B70] text-white shadow-xs'
+                          ? 'bg-[#0F172A] text-[#FFC400] shadow-xs border border-[#0F172A]'
                           : 'bg-slate-100 hover:bg-slate-200 text-slate-700'
                       }`}
                     >
@@ -171,7 +171,7 @@ export default function ServicesPage() {
                 className="w-full flex items-center justify-between p-4 sm:p-5 rounded-2xl bg-white border-2 border-[#087CCB] shadow-lg hover:border-[#071B70] transition-all duration-200 text-left focus:outline-none cursor-pointer group"
               >
                 <div className="flex items-center gap-3.5 min-w-0">
-                  <div className="w-11 h-11 rounded-xl bg-[#087CCB]/10 text-[#071B70] flex items-center justify-center shrink-0 group-hover:bg-[#071B70] group-hover:text-white transition-colors">
+                  <div className="w-11 h-11 rounded-xl bg-slate-100 text-[#071B70] flex items-center justify-center shrink-0 group-hover:bg-[#0F172A] group-hover:text-[#FFC400] transition-colors skeuo-well">
                     <ActiveIcon className="w-5 h-5" />
                   </div>
                   <div className="min-w-0">
@@ -188,7 +188,7 @@ export default function ServicesPage() {
                   <span className="hidden sm:inline-block px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
                     {activeService.metricsHighlight}
                   </span>
-                  <div className={`w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center transition-transform duration-300 ${isDropdownOpen ? 'rotate-180 bg-[#071B70] text-white' : 'text-slate-600'}`}>
+                  <div className={`w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center transition-transform duration-300 ${isDropdownOpen ? 'rotate-180 bg-[#0F172A] text-[#FFC400]' : 'text-slate-600'}`}>
                     <ChevronDown className="w-4 h-4" />
                   </div>
                 </div>
@@ -212,12 +212,12 @@ export default function ServicesPage() {
                         }}
                         className={`w-full flex items-center justify-between p-3 rounded-2xl transition-all duration-150 text-left cursor-pointer ${
                           isSelected
-                            ? 'bg-[#071B70] text-white'
+                            ? 'bg-[#0F172A] text-[#FFC400]'
                             : 'hover:bg-slate-50 text-slate-800'
                         }`}
                       >
                         <div className="flex items-center gap-3 min-w-0">
-                          <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 ${isSelected ? 'bg-white/20 text-white' : 'bg-[#087CCB]/10 text-[#071B70]'}`}>
+                          <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 ${isSelected ? 'bg-white/10 text-[#FFC400]' : 'bg-slate-100 text-[#071B70]'}`}>
                             <SIcon className="w-4 h-4" />
                           </div>
                           <div className="min-w-0">
@@ -382,18 +382,18 @@ export default function ServicesPage() {
           THE CONNECTED GROWTH ECOSYSTEM
           Explains how all capabilities feed one another
          ═══════════════════════════════════════════════════════════ */}
-      <section className="py-24 bg-[#071B70] text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-grid-dark opacity-30 pointer-events-none" />
+      <section className="py-24 bg-gradient-to-b from-slate-50 via-white to-slate-50 border-y border-slate-200/80 relative overflow-hidden">
+        <div className="absolute inset-0 bg-grid-subtle opacity-40 pointer-events-none" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center max-w-2xl mx-auto space-y-4 mb-16">
+          <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
             <ScrollReveal>
-              <div className="badge-tag-dark mx-auto">
+              <div className="badge-tag mx-auto">
                 <span>The Multiplier Effect</span>
               </div>
-              <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-white tracking-tight mt-3">
+              <h2 className="font-display font-black text-3xl sm:text-5xl text-[#071B70] tracking-tight mt-3">
                 How Our Services Work as One Connected Ecosystem.
               </h2>
-              <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
+              <p className="text-slate-600 text-base sm:text-lg leading-relaxed font-normal">
                 When channels communicate, customer acquisition cost drops and lifetime value multiplies.
               </p>
             </ScrollReveal>
@@ -401,45 +401,60 @@ export default function ServicesPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <ScrollReveal delay={100}>
-              <div className="card-dark-glass p-8 space-y-4 h-full relative overflow-hidden group hover:scale-[1.02]">
-                <div className="w-11 h-11 rounded-2xl bg-[#00BCEB]/20 text-[#00BCEB] flex items-center justify-center font-bold text-sm border border-[#00BCEB]/30 shadow-xs">
-                  01
+              <div className="card-skeuomorphic p-8 space-y-5 h-full relative overflow-hidden group">
+                <div className="flex items-center justify-between">
+                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-b from-[#087CCB] to-[#071B70] text-white flex items-center justify-center font-display font-black text-sm shadow-md border border-white/30">
+                    01
+                  </div>
+                  <span className="text-[10px] font-mono-tag font-bold uppercase tracking-wider text-[#087CCB] bg-blue-50 px-3 py-1 rounded-full border border-blue-200/60 shadow-2xs">
+                    Demand Capture
+                  </span>
                 </div>
-                <h3 className="font-display font-extrabold text-xl text-white">Attract &amp; Inbound Demand</h3>
-                <p className="text-sm text-slate-300 leading-relaxed">
+                <h3 className="font-display font-extrabold text-2xl text-[#071B70]">Attract &amp; Inbound Demand</h3>
+                <p className="text-sm text-slate-600 leading-relaxed font-normal">
                   SEO and Google Ads capture existing high-intent commercial buyers actively searching for your solution today.
                 </p>
-                <div className="text-xs text-[#00BCEB] font-semibold pt-2 font-mono-tag">
+                <div className="skeuo-well p-3.5 text-xs text-[#071B70] font-semibold font-mono-tag">
                   Channels: Search SEO • Google Ads • Local Map Pack
                 </div>
               </div>
             </ScrollReveal>
 
             <ScrollReveal delay={200}>
-              <div className="card-dark-glass p-8 space-y-4 h-full relative overflow-hidden group hover:scale-[1.02]">
-                <div className="w-11 h-11 rounded-2xl bg-[#FFC400]/20 text-[#FFC400] flex items-center justify-center font-bold text-sm border border-[#FFC400]/30 shadow-xs">
-                  02
+              <div className="card-skeuomorphic p-8 space-y-5 h-full relative overflow-hidden group">
+                <div className="flex items-center justify-between">
+                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-b from-[#FFC400] to-[#FF7900] text-[#071B70] flex items-center justify-center font-display font-black text-sm shadow-md border border-white/50">
+                    02
+                  </div>
+                  <span className="text-[10px] font-mono-tag font-bold uppercase tracking-wider text-amber-800 bg-amber-50 px-3 py-1 rounded-full border border-amber-200/60 shadow-2xs">
+                    Conversion Engine
+                  </span>
                 </div>
-                <h3 className="font-display font-extrabold text-xl text-white">Educate &amp; Convert</h3>
-                <p className="text-sm text-slate-300 leading-relaxed">
+                <h3 className="font-display font-extrabold text-2xl text-[#071B70]">Educate &amp; Convert</h3>
+                <p className="text-sm text-slate-600 leading-relaxed font-normal">
                   Bespoke Next.js web experiences, compelling brand design, and authoritative content eliminate friction and maximize conversions.
                 </p>
-                <div className="text-xs text-[#FFC400] font-semibold pt-2 font-mono-tag">
+                <div className="skeuo-well p-3.5 text-xs text-[#071B70] font-semibold font-mono-tag">
                   Channels: Modern Next.js UI • Brand Identity • Content
                 </div>
               </div>
             </ScrollReveal>
 
             <ScrollReveal delay={300}>
-              <div className="card-dark-glass p-8 space-y-4 h-full relative overflow-hidden group hover:scale-[1.02]">
-                <div className="w-11 h-11 rounded-2xl bg-[#087CCB]/20 text-[#087CCB] flex items-center justify-center font-bold text-sm border border-[#087CCB]/30 shadow-xs">
-                  03
+              <div className="card-skeuomorphic p-8 space-y-5 h-full relative overflow-hidden group">
+                <div className="flex items-center justify-between">
+                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-b from-[#00BCEB] to-[#087CCB] text-white flex items-center justify-center font-display font-black text-sm shadow-md border border-white/40">
+                    03
+                  </div>
+                  <span className="text-[10px] font-mono-tag font-bold uppercase tracking-wider text-cyan-800 bg-cyan-50 px-3 py-1 rounded-full border border-cyan-200/60 shadow-2xs">
+                    Retention Loops
+                  </span>
                 </div>
-                <h3 className="font-display font-extrabold text-xl text-white">Amplify &amp; Retain</h3>
-                <p className="text-sm text-slate-300 leading-relaxed">
+                <h3 className="font-display font-extrabold text-2xl text-[#071B70]">Amplify &amp; Retain</h3>
+                <p className="text-sm text-slate-600 leading-relaxed font-normal">
                   Meta paid social, retargeting funnels, and organic community nurture re-engage buyers, accelerating repeat orders and referral loops.
                 </p>
-                <div className="text-xs text-[#00BCEB] font-semibold pt-2 font-mono-tag">
+                <div className="skeuo-well p-3.5 text-xs text-[#071B70] font-semibold font-mono-tag">
                   Channels: Meta Retargeting • Social Community • CRM Loops
                 </div>
               </div>
@@ -709,11 +724,11 @@ export default function ServicesPage() {
             </p>
           </div>
 
-          <div className="card-luxury overflow-hidden">
+          <div className="card-skeuomorphic overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full text-left text-xs sm:text-sm">
                 <thead>
-                  <tr className="bg-[#071B70] text-white border-b border-white/10">
+                  <tr className="bg-[#0F172A] text-white border-b border-white/10">
                     <th className="p-4 sm:p-5 font-bold uppercase tracking-wider text-xs">Standard / Feature</th>
                     <th className="p-4 sm:p-5 font-bold uppercase tracking-wider text-xs text-[#FFC400]">NovaSpark Growth</th>
                     <th className="p-4 sm:p-5 font-bold uppercase tracking-wider text-xs text-slate-300">Legacy Agency</th>
@@ -749,16 +764,17 @@ export default function ServicesPage() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════
-          FINAL CONSULTATION CTA
+          FINAL CONSULTATION CTA (SKEUOMORPHIC TITANIUM DECK)
          ═══════════════════════════════════════════════════════════ */}
-      <section className="py-24 bg-[#071B70] text-white relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#087CCB]/20 rounded-full blur-3xl pointer-events-none" />
+      <section className="py-24 bg-gradient-to-b from-[#0F172A] via-[#0B0F19] to-[#040711] text-white relative overflow-hidden border-t border-white/10 shadow-2xl">
+        <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-[#00BCEB]/10 rounded-full blur-3xl pointer-events-none" />
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 space-y-8">
           <ScrollReveal>
-            <div className="badge-tag-dark mx-auto">
+            <div className="badge-tag mx-auto bg-white/10 text-white border-white/20">
+              <span className="w-2 h-2 rounded-full bg-[#00BCEB] animate-ping" />
               <span>Ready for Measurable Growth?</span>
             </div>
-            <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-white tracking-tight mt-4">
+            <h2 className="font-display font-black text-3xl sm:text-5xl text-white tracking-tight mt-4 leading-tight">
               Let&apos;s Build Your Marketing Engine.
             </h2>
             <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed font-normal mt-4">
@@ -768,15 +784,15 @@ export default function ServicesPage() {
 
           <ScrollReveal delay={150}>
             <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
-              <Link href="/contact" className="btn-primary text-base px-8 py-4">
+              <Link href="/contact" className="btn-skeuo-gold text-base px-8 py-4 group">
                 <span>Request Growth Consultation</span>
-                <ArrowRight className="w-5 h-5" />
+                <ArrowRight className="w-5 h-5 ml-1 transition-transform group-hover:translate-x-1" />
               </Link>
               <a
                 href="https://wa.me/918280788689"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-secondary bg-transparent text-white border-white/30 hover:bg-white/10 hover:border-white px-8 py-4"
+                className="btn-secondary text-base px-8 py-4 text-[#071B70] hover:text-[#071B70]"
               >
                 <span>Direct WhatsApp Chat</span>
               </a>

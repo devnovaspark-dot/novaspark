@@ -86,7 +86,7 @@ export default async function CaseStudyDetailPage({ params }: CaseStudyProps) {
           </div>
 
           {/* Metrics Scoreboard Banner */}
-          <div className="mt-8 card-dark-glass p-8 sm:p-10 grid grid-cols-1 sm:grid-cols-3 gap-8 shadow-2xl relative overflow-hidden">
+          <div className="mt-8 card-skeuo-dark p-8 sm:p-10 grid grid-cols-1 sm:grid-cols-3 gap-8 shadow-2xl relative overflow-hidden">
             <div className="absolute top-0 right-0 w-80 h-80 bg-[#00BCEB]/10 rounded-full blur-3xl pointer-events-none" />
             {project.metrics.map((metric) => (
               <div key={metric.label} className="border-b sm:border-b-0 sm:border-r border-white/10 pb-6 sm:pb-0 last:border-0 last:pb-0 relative z-10">
@@ -118,13 +118,13 @@ export default async function CaseStudyDetailPage({ params }: CaseStudyProps) {
           </div>
 
           {/* The Challenge */}
-          <div className="card-luxury p-8 sm:p-10 border-l-4 border-l-[#FF7900] bg-gradient-to-br from-amber-50/40 via-white to-white space-y-3">
+          <div className="card-skeuomorphic p-8 sm:p-10 border-l-4 border-l-[#FF7900] bg-gradient-to-br from-amber-50/40 via-white to-white space-y-3">
             <div className="text-xs font-mono-tag font-bold uppercase tracking-wider text-[#FF7900]">The Core Challenge</div>
             <p className="text-base sm:text-lg text-slate-800 leading-relaxed font-normal">{project.challenge}</p>
           </div>
 
           {/* The Strategy */}
-          <div className="card-luxury p-8 sm:p-10 border-l-4 border-l-[#087CCB] bg-gradient-to-br from-blue-50/40 via-white to-white space-y-3">
+          <div className="card-skeuomorphic p-8 sm:p-10 border-l-4 border-l-[#087CCB] bg-gradient-to-br from-blue-50/40 via-white to-white space-y-3">
             <div className="text-xs font-mono-tag font-bold uppercase tracking-wider text-[#087CCB]">Our Growth Strategy</div>
             <p className="text-base sm:text-lg text-slate-800 leading-relaxed font-normal">{project.strategy}</p>
           </div>
@@ -140,7 +140,7 @@ export default async function CaseStudyDetailPage({ params }: CaseStudyProps) {
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {project.execution.map((step, i) => (
-                <div key={i} className="card-luxury p-6 flex items-start gap-4 group hover:border-[#087CCB]/40 transition-colors">
+                <div key={i} className="card-skeuomorphic p-6 flex items-start gap-4 group hover:border-[#087CCB]/40 transition-colors">
                   <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#071B70] to-[#087CCB] text-white flex items-center justify-center shrink-0 shadow-sm group-hover:scale-105 transition-transform">
                     <CheckCircle2 className="w-5 h-5 text-white" />
                   </div>
@@ -171,7 +171,7 @@ export default async function CaseStudyDetailPage({ params }: CaseStudyProps) {
               <h3 className="font-display font-bold text-xl text-[#071B70]">Project Gallery</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 {project.gallery.map((img, i) => (
-                  <div key={i} className="card-luxury relative h-72 rounded-3xl overflow-hidden border border-slate-200 bg-slate-100">
+                  <div key={i} className="card-skeuomorphic relative h-72 rounded-3xl overflow-hidden border border-slate-200 bg-slate-100">
                     <Image
                       src={img}
                       alt={`${project.title} visual ${i + 1}`}
@@ -204,14 +204,14 @@ export default async function CaseStudyDetailPage({ params }: CaseStudyProps) {
           <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href={`/contact?service=${encodeURIComponent(project.category)}&notes=${encodeURIComponent(`Inspired by ${project.client} case study`)}`}
-              className="btn-primary text-base px-8 py-4 shadow-lg hover:shadow-xl w-full sm:w-auto text-center"
+              className="btn-skeuo-gold text-base px-8 py-4 shadow-lg hover:shadow-xl w-full sm:w-auto text-center"
             >
               <span>Schedule Strategy Call</span>
               <ArrowRight className="w-5 h-5 ml-1" />
             </Link>
             <Link
               href="/case-studies"
-              className="btn-secondary text-base px-8 py-4 w-full sm:w-auto text-center"
+              className="btn-skeuo-pearl text-base px-8 py-4 w-full sm:w-auto text-center"
             >
               <span>Explore All Case Studies</span>
             </Link>

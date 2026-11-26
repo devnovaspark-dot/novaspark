@@ -253,13 +253,13 @@ export default function ContactPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Consultation Mode Switcher */}
           <div className="max-w-2xl mx-auto mb-12">
-            <div className="p-1.5 rounded-2xl bg-slate-100/90 border border-slate-200/80 flex items-center justify-between gap-1 shadow-inner">
+            <div className="p-1.5 rounded-2xl skeuo-well border border-slate-200/90 flex items-center justify-between gap-1 shadow-inner">
               <button
                 type="button"
                 onClick={() => setActiveTab('proposal')}
                 className={`flex-1 py-3 px-3 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-2 cursor-pointer ${
                   activeTab === 'proposal'
-                    ? 'bg-[#071B70] text-white shadow-md scale-[1.01]'
+                    ? 'bg-[#0F172A] text-[#FFC400] shadow-md border border-[#0F172A] scale-[1.01]'
                     : 'text-slate-600 hover:text-slate-900 hover:bg-white/60'
                 }`}
               >
@@ -272,7 +272,7 @@ export default function ContactPage() {
                 onClick={() => setActiveTab('audit')}
                 className={`flex-1 py-3 px-3 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-2 cursor-pointer ${
                   activeTab === 'audit'
-                    ? 'bg-[#071B70] text-white shadow-md scale-[1.01]'
+                    ? 'bg-[#0F172A] text-[#FFC400] shadow-md border border-[#0F172A] scale-[1.01]'
                     : 'text-slate-600 hover:text-slate-900 hover:bg-white/60'
                 }`}
               >
@@ -285,7 +285,7 @@ export default function ContactPage() {
                 onClick={() => setActiveTab('fastcall')}
                 className={`flex-1 py-3 px-3 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-2 cursor-pointer ${
                   activeTab === 'fastcall'
-                    ? 'bg-[#071B70] text-white shadow-md scale-[1.01]'
+                    ? 'bg-[#0F172A] text-[#FFC400] shadow-md border border-[#0F172A] scale-[1.01]'
                     : 'text-slate-600 hover:text-slate-900 hover:bg-white/60'
                 }`}
               >
@@ -613,7 +613,7 @@ export default function ContactPage() {
                           onClick={() => setFormData({ ...formData, service: opt })}
                           className={`px-3.5 py-2 rounded-xl text-xs font-medium border transition-all cursor-pointer ${
                             formData.service === opt
-                              ? 'bg-[#071B70] text-white border-[#071B70] shadow-md font-semibold scale-[1.02]'
+                              ? 'bg-[#0F172A] text-[#FFC400] border-[#0F172A] shadow-md font-semibold scale-[1.02]'
                               : 'bg-white text-slate-700 border-slate-200/90 hover:border-slate-300 hover:bg-slate-50'
                           }`}
                         >
@@ -662,7 +662,7 @@ export default function ContactPage() {
                           onClick={() => setFormData({ ...formData, timeline: tl })}
                           className={`p-2 rounded-xl text-xs font-medium border transition-all text-center cursor-pointer ${
                             formData.timeline === tl
-                              ? 'bg-[#087CCB] text-white border-[#087CCB] font-bold shadow-sm'
+                              ? 'bg-[#0F172A] text-[#00BCEB] border-[#0F172A] font-bold shadow-inner'
                               : 'bg-white text-slate-700 border-slate-200/90 hover:border-slate-300'
                           }`}
                         >
@@ -702,7 +702,7 @@ export default function ContactPage() {
                     <button
                       type="submit"
                       disabled={loading}
-                      className="btn-primary w-full py-4 text-base font-bold rounded-2xl cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl"
+                      className="btn-skeuo-gold w-full py-4 text-base font-bold rounded-2xl cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl"
                     >
                       {loading ? (
                         <span>Processing Strategic Intake...</span>
@@ -729,15 +729,15 @@ export default function ContactPage() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════
-          STORYTELLING SECTION: THE 48-HOUR NARRATIVE JOURNEY
+          STORYTELLING SECTION: THE 48-HOUR NARRATIVE JOURNEY (SKEUOMORPHIC OBSIDIAN DECK)
          ═══════════════════════════════════════════════════════════ */}
-      <section className="py-20 lg:py-28 bg-[#040D36] text-white relative overflow-hidden">
+      <section className="py-20 lg:py-28 bg-gradient-to-b from-[#0F172A] via-[#0B0F19] to-[#040711] text-white relative overflow-hidden border-y border-white/10 shadow-2xl">
         <div className="absolute inset-0 bg-grid-dark opacity-20 pointer-events-none" />
         <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#087CCB]/15 rounded-full blur-3xl pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-            <div className="badge-tag-dark mx-auto">
+            <div className="badge-tag mx-auto bg-white/10 text-white border-white/20">
               <Clock className="w-3.5 h-3.5 text-[#00BCEB]" />
               <span>Radical Agency Transparency</span>
             </div>
@@ -777,7 +777,7 @@ export default function ContactPage() {
                 badge: 'Zero Obligation',
               },
             ].map((step, idx) => (
-              <div key={step.time} className="card-dark-glass p-7 space-y-4 relative group hover:border-[#00BCEB]/50 transition-colors">
+              <div key={step.time} className="card-skeuo-dark p-7 space-y-4 relative group hover:border-[#00BCEB]/50 transition-colors">
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-mono-tag font-bold text-[#FFC400] tracking-wider uppercase">
                     {step.time}
@@ -848,8 +848,8 @@ export default function ContactPage() {
             ].map((charter) => {
               const Icon = charter.icon;
               return (
-                <div key={charter.title} className="card-luxury p-7 space-y-4 bg-white">
-                  <div className="w-12 h-12 rounded-2xl bg-[#071B70]/10 text-[#071B70] flex items-center justify-center shadow-xs">
+                <div key={charter.title} className="card-skeuomorphic p-7 space-y-4">
+                  <div className="w-12 h-12 rounded-2xl skeuo-well text-[#071B70] flex items-center justify-center shadow-xs">
                     <Icon className="w-6 h-6" />
                   </div>
                   <h3 className="font-display font-bold text-lg text-[#071B70]">{charter.title}</h3>
@@ -885,7 +885,7 @@ export default function ContactPage() {
               return (
                 <div
                   key={item.question}
-                  className="card-luxury rounded-2xl border border-slate-200/90 overflow-hidden transition-all"
+                  className="card-skeuomorphic rounded-2xl border border-slate-200/90 overflow-hidden transition-all"
                 >
                   <button
                     type="button"
@@ -897,7 +897,7 @@ export default function ContactPage() {
                     </span>
                     <div
                       className={`w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center shrink-0 transition-transform duration-300 ${
-                        isOpen ? 'rotate-180 bg-[#071B70] text-white' : 'text-slate-500'
+                        isOpen ? 'rotate-180 bg-[#0F172A] text-[#FFC400]' : 'text-slate-500'
                       }`}
                     >
                       <ChevronDown className="w-4 h-4" />
@@ -917,9 +917,10 @@ export default function ContactPage() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════
-          FINAL ENGAGEMENT BANNER
+          FINAL ENGAGEMENT BANNER (OBSIDIAN TITANIUM / SKEUOMORPHIC)
          ═══════════════════════════════════════════════════════════ */}
-      <section className="py-20 bg-gradient-to-br from-[#071B70] via-[#087CCB] to-[#040D36] text-white text-center relative overflow-hidden">
+      <section className="py-20 bg-gradient-to-b from-[#0F172A] via-[#0B0F19] to-[#05070B] border-t border-slate-800 text-white text-center relative overflow-hidden">
+        <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#00BCEB]/10 rounded-full blur-3xl pointer-events-none" />
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-6">
           <div className="badge-tag-dark mx-auto">
             <span>Direct Access • Zero Middlemen</span>
@@ -927,14 +928,14 @@ export default function ContactPage() {
           <h2 className="font-display font-black text-3xl sm:text-5xl text-white tracking-tight">
             Stop Guessing Your Growth Numbers.
           </h2>
-          <p className="text-base sm:text-lg text-slate-200 max-w-xl mx-auto font-normal leading-relaxed">
+          <p className="text-base sm:text-lg text-slate-300 max-w-xl mx-auto font-normal leading-relaxed">
             Let&apos;s build an audited marketing system that transforms digital attention into compounding monthly revenue.
           </p>
           <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
               href="#top"
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              className="btn-primary text-base px-8 py-4 shadow-xl hover:shadow-2xl w-full sm:w-auto"
+              className="btn-skeuo-gold text-base px-8 py-4 shadow-xl hover:shadow-2xl w-full sm:w-auto"
             >
               <span>Start Your Strategy Review</span>
               <ArrowRight className="w-5 h-5 ml-1" />
@@ -943,7 +944,7 @@ export default function ContactPage() {
               href={`https://wa.me/918280788689?text=${whatsappMessage}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-secondary text-base px-8 py-4 w-full sm:w-auto text-white border-white/20 hover:bg-white/10"
+              className="btn-skeuo-pearl text-base px-8 py-4 w-full sm:w-auto"
             >
               <span>Instant WhatsApp Chat</span>
             </a>

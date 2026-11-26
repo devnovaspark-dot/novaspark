@@ -109,19 +109,19 @@ export default function CaseStudiesPage() {
             {/* Audited Scoreboard Ribbon */}
             <ScrollReveal delay={300}>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto pt-4 text-center">
-                <div className="card-luxury p-5 text-center group hover:scale-105">
+                <div className="card-skeuomorphic p-5 text-center group hover:scale-105">
                   <div className="font-display font-black text-2xl sm:text-3xl text-[#071B70]">+240%</div>
                   <div className="text-xs text-slate-500 font-bold mt-1">Average Revenue Lift</div>
                 </div>
-                <div className="card-luxury p-5 text-center group hover:scale-105">
+                <div className="card-skeuomorphic p-5 text-center group hover:scale-105">
                   <div className="font-display font-black text-2xl sm:text-3xl text-[#087CCB]">3.8X</div>
                   <div className="text-xs text-slate-500 font-bold mt-1">Average Client ROAS</div>
                 </div>
-                <div className="card-luxury p-5 text-center group hover:scale-105">
+                <div className="card-skeuomorphic p-5 text-center group hover:scale-105">
                   <div className="font-display font-black text-2xl sm:text-3xl text-[#071B70]">180+</div>
                   <div className="text-xs text-slate-500 font-bold mt-1">#1 Google Rankings</div>
                 </div>
-                <div className="card-luxury p-5 text-center group hover:scale-105">
+                <div className="card-skeuomorphic p-5 text-center group hover:scale-105">
                   <div className="font-display font-black text-2xl sm:text-3xl text-emerald-600 font-mono-tag">100%</div>
                   <div className="text-xs text-slate-500 font-bold mt-1">Verified Real Data</div>
                 </div>
@@ -143,12 +143,12 @@ export default function CaseStudiesPage() {
                       onClick={() => setActiveCategory(cat)}
                       className={`px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer flex items-center gap-1.5 ${
                         isActive
-                          ? 'bg-[#071B70] text-white shadow-md'
+                          ? 'bg-[#0F172A] text-[#FFC400] shadow-md border border-[#0F172A]'
                           : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
                       }`}
                     >
                       <span>{cat}</span>
-                      <span className={`text-[10px] px-1.5 py-0.2 rounded-full font-bold ${isActive ? 'bg-white/20 text-white' : 'bg-slate-200 text-slate-600'}`}>
+                      <span className={`text-[10px] px-1.5 py-0.2 rounded-full font-bold ${isActive ? 'bg-white/10 text-[#FFC400]' : 'bg-slate-200 text-slate-600'}`}>
                         {count}
                       </span>
                     </button>
@@ -177,14 +177,14 @@ export default function CaseStudiesPage() {
             </div>
 
             {/* Switcher Buttons */}
-            <div className="flex items-center gap-2 bg-white p-1 rounded-2xl border border-slate-200 shadow-xs">
+            <div className="flex items-center gap-2 skeuo-well p-1 border border-slate-200 shadow-inner">
               {SPOTLIGHT_STORIES.map((s, idx) => (
                 <button
                   key={s.client}
                   onClick={() => setActiveSpotlightIdx(idx)}
                   className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
                     activeSpotlightIdx === idx
-                      ? 'bg-[#071B70] text-white shadow-xs'
+                      ? 'bg-[#0F172A] text-[#FFC400] shadow-xs'
                       : 'text-slate-600 hover:text-[#071B70]'
                   }`}
                 >
@@ -195,7 +195,7 @@ export default function CaseStudiesPage() {
           </div>
 
           {/* Interactive Card */}
-          <div className="card-luxury p-6 sm:p-10">
+          <div className="card-skeuomorphic p-6 sm:p-10">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
               {/* Left Column: Side-by-side Before & After */}
               <div className="lg:col-span-7 space-y-6">
@@ -233,7 +233,7 @@ export default function CaseStudiesPage() {
                 </div>
 
                 {/* Quote */}
-                <div className="p-4 rounded-xl bg-slate-50 border border-slate-200/80 flex items-start gap-3">
+                <div className="p-4 rounded-xl skeuo-well border border-slate-200/80 flex items-start gap-3">
                   <Quote className="w-6 h-6 text-[#087CCB] shrink-0 mt-0.5" />
                   <div>
                     <p className="text-xs sm:text-sm text-slate-700 italic">
@@ -248,7 +248,7 @@ export default function CaseStudiesPage() {
                 <div className="pt-2">
                   <Link
                     href={`/case-studies/${currentSpotlight.slug}`}
-                    className="btn-primary"
+                    className="btn-skeuo-gold"
                   >
                     <span>Read Complete Strategy Deep-Dive</span>
                     <ArrowRight className="w-4 h-4" />
@@ -303,7 +303,7 @@ export default function CaseStudiesPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredProjects.map((project, idx) => (
               <ScrollReveal key={project.slug} delay={idx * 80}>
-                <div className="card-luxury overflow-hidden flex flex-col justify-between h-full group">
+                <div className="card-skeuomorphic overflow-hidden flex flex-col justify-between h-full group">
                   <div>
                     {/* Thumbnail */}
                     <div className="relative h-64 w-full overflow-hidden bg-slate-200">
@@ -317,7 +317,7 @@ export default function CaseStudiesPage() {
                       <div className="absolute top-3 left-3 bg-white/95 backdrop-blur-md px-3 py-1 rounded-full text-[11px] font-bold text-[#071B70] shadow-xs">
                         {project.industry}
                       </div>
-                      <div className="absolute top-3 right-3 bg-[#071B70] text-[#00BCEB] px-3 py-1 rounded-full text-[11px] font-bold shadow-xs">
+                      <div className="absolute top-3 right-3 bg-[#0F172A] text-[#FFC400] px-3 py-1 rounded-full text-[11px] font-bold shadow-xs border border-white/10">
                         {project.category}
                       </div>
                     </div>
@@ -348,7 +348,7 @@ export default function CaseStudiesPage() {
                       {/* Performance metrics row */}
                       <div className="grid grid-cols-3 gap-2 pt-4 border-t border-slate-200/80">
                         {project.metrics.map((m) => (
-                          <div key={m.label} className="p-2 rounded-xl bg-white border border-slate-200/70 text-center">
+                          <div key={m.label} className="p-2 rounded-xl skeuo-well text-center">
                             <div className="font-display font-extrabold text-sm sm:text-base text-[#071B70]">{m.value}</div>
                             <div className="text-[9px] text-slate-500 font-medium truncate mt-0.5">{m.label}</div>
                           </div>
@@ -360,7 +360,7 @@ export default function CaseStudiesPage() {
                   <div className="p-6 pt-0">
                     <Link
                       href={`/case-studies/${project.slug}`}
-                      className="inline-flex items-center justify-between w-full p-3 rounded-2xl bg-white hover:bg-[#071B70] text-[#071B70] hover:text-white border border-slate-200 text-xs font-bold transition-all duration-200"
+                      className="inline-flex items-center justify-between w-full p-3 rounded-2xl btn-skeuo-pearl text-xs font-bold transition-all duration-200"
                     >
                       <span>Read Complete Case Study</span>
                       <ArrowRight className="w-4 h-4" />
@@ -380,9 +380,9 @@ export default function CaseStudiesPage() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════
-          BOTTOM CTA
+          BOTTOM CTA (OBSIDIAN TITANIUM / SKEUOMORPHIC)
          ═══════════════════════════════════════════════════════════ */}
-      <section className="py-24 bg-[#071B70] text-white relative overflow-hidden">
+      <section className="py-24 bg-gradient-to-b from-[#0F172A] via-[#0B0F19] to-[#05070B] border-t border-slate-800 text-white relative overflow-hidden">
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#087CCB]/20 rounded-full blur-3xl pointer-events-none" />
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6 relative z-10">
           <ScrollReveal>
@@ -399,7 +399,7 @@ export default function CaseStudiesPage() {
 
           <ScrollReveal delay={150}>
             <div className="pt-2 flex flex-wrap items-center justify-center gap-4">
-              <Link href="/contact" className="btn-primary text-base px-8 py-4">
+              <Link href="/contact" className="btn-skeuo-gold text-base px-8 py-4">
                 <span>Start a Conversation</span>
                 <ArrowRight className="w-5 h-5" />
               </Link>
@@ -407,7 +407,7 @@ export default function CaseStudiesPage() {
                 href="https://wa.me/918280788689"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-secondary bg-transparent text-white border-white/30 hover:bg-white/10 hover:border-white px-8 py-4"
+                className="btn-skeuo-pearl text-base px-8 py-4"
               >
                 <span>Direct WhatsApp Chat</span>
               </a>
