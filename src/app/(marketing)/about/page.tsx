@@ -62,9 +62,9 @@ const TIMELINE = [
   {
     year: '2026',
     chapter: 'The New Standard',
-    title: '100+ Brands Scaled & First-Party Attribution',
-    desc: 'Leading the post-cookie revolution with proprietary server-side Meta CAPI setups and Google Enhanced Conversions, delivering audited compounding growth for over 100 enterprise partners.',
-    stat: '100+ Brands Scaled',
+    title: 'Enterprise Growth & First-Party Attribution',
+    desc: 'Leading the post-cookie revolution with proprietary server-side Meta CAPI setups and Google Enhanced Conversions, delivering audited compounding growth for market leaders.',
+    stat: 'Audited Real Growth',
     takeaway: 'Principle 05: Complete client ownership of all data, pixels, and accounts.',
   },
 ];

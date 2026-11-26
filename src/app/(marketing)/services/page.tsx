@@ -369,7 +369,7 @@ export default function ServicesPage() {
 
                   <div className="flex items-center justify-between text-xs text-slate-300 pt-1">
                     <span>98.4% Client Retention</span>
-                    <span className="font-bold text-[#FFC400]">100+ Brands Scaled</span>
+                    <span className="font-bold text-[#FFC400]">100% Attributed ROI</span>
                   </div>
                 </div>
               </div>

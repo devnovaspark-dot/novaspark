@@ -179,6 +179,134 @@ const ARTICLES = [
   },
 ];
 
+const SERVICE_REPRESENTATIONS: Record<string, {
+  icon: any;
+  accent: string;
+  badge: string;
+  metricLabel: string;
+  metricValue: string;
+  metricSub: string;
+  highlights: string[];
+}> = {
+  seo: {
+    icon: Search,
+    accent: '#059669',
+    badge: 'Organic Search Engine',
+    metricLabel: 'Compounding Inbound Traffic',
+    metricValue: '+180% Organic Lift',
+    metricSub: '180+ Commercial #1 Positions',
+    highlights: ['Core Web Vitals & Technical Speed Architecture', 'Semantic Topic Clusters & Keyword Gap Mapping', 'Authority Backlink Equity & Natural Press']
+  },
+  'google-ads': {
+    icon: Zap,
+    accent: '#D97706',
+    badge: 'High-Intent Search Ads',
+    metricLabel: 'Commercial Intent Conversion',
+    metricValue: '3.8X – 4.8X Target ROAS',
+    metricSub: 'PMax & Negative Keyword Sculpting',
+    highlights: ['Algorithmic Bid Strategy & Smart Bidding', 'First-Party Server-Side Conversion API', 'Multi-Angle Ad Copy & Landing Page Split Testing']
+  },
+  'meta-ads': {
+    icon: Layers,
+    accent: '#6366F1',
+    badge: 'Paid Social Performance',
+    metricLabel: 'Full-Funnel Demand Generation',
+    metricValue: '+380% Lead Volume',
+    metricSub: '99.8% CAPI Match Rate',
+    highlights: ['High-Velocity Creative Concepting & Iteration', 'Deep Funnel Retargeting & Dynamic Catalog Ads', 'Audience Lookalike & Custom Persona Modeling']
+  },
+  'social-media': {
+    icon: Share2,
+    accent: '#EC4899',
+    badge: 'Organic & Social Engine',
+    metricLabel: 'Community Reach & Trust',
+    metricValue: '+410% Engagement',
+    metricSub: 'Omnichannel Video & Reel Strategy',
+    highlights: ['High-Production Short-Form Video & Reels', 'Brand Voice Guidelines & Aesthetic Cohesion', 'Community Nurture & Active Buyer Conversations']
+  },
+  'web-development': {
+    icon: Globe,
+    accent: '#00BCEB',
+    badge: 'Next.js 16 Digital Experience',
+    metricLabel: 'Conversion Rate Architecture',
+    metricValue: '99+ Core Web Vitals',
+    metricSub: '< 0.8s Global Load Time',
+    highlights: ['Custom High-Speed Headless Next.js 16', 'Frictionless Mobile-First Checkout & Form UX', 'Integrated Analytics, GTM & CRM Webhooks']
+  },
+  'content-marketing': {
+    icon: FileText,
+    accent: '#E11D48',
+    badge: 'Authority & Inbound Content',
+    metricLabel: 'Educational ICP Acquisition',
+    metricValue: '3.2X Pipeline Value',
+    metricSub: 'High-Intent Commercial Topics',
+    highlights: ['Thought Leadership & Bottom-of-Funnel Whitepapers', 'Technical Product Walkthroughs & Comparison Guides', 'SEO-Optimized Editorial Production Schedule']
+  },
+  branding: {
+    icon: Sparkles,
+    accent: '#FF7900',
+    badge: 'Creative & Visual Identity',
+    metricLabel: 'Premium Market Perception',
+    metricValue: '100% Brand Equity',
+    metricSub: 'Complete Design System (CIP)',
+    highlights: ['Corporate Identity Programs & Vector Guidelines', 'Design Token Architecture & Editorial Typography', 'Consistent Omnichannel Visual Brand Systems']
+  },
+  'local-seo': {
+    icon: MapPin,
+    accent: '#0284C7',
+    badge: 'Local Map Pack Dominance',
+    metricLabel: 'Local Intent Footfall & Calls',
+    metricValue: 'Top 3 Map Pack',
+    metricSub: 'Google Business Profile Engine',
+    highlights: ['Google Business Profile Optimization & Audit', 'Local Citation Alignment & NAP Consistency', 'Automated Customer Review Generation Velocity']
+  }
+};
+
+const DIFFERENTIATORS = [
+  {
+    step: '01',
+    icon: Compass,
+    title: 'Strategy Before Execution',
+    desc: 'We never spend a single rupee on ads or publish content without first validating customer intent, unit economics, and competitive whitespace.',
+    tag: 'Pre-Flight Validation',
+  },
+  {
+    step: '02',
+    icon: Sparkles,
+    title: 'Creativity With Purpose',
+    desc: 'Visual design should never be decorative indulgence. Every visual asset is engineered to communicate value, build authority, and convert buyers.',
+    tag: 'High-Converting Assets',
+  },
+  {
+    step: '03',
+    icon: BarChart3,
+    title: 'Data-Driven Decisions',
+    desc: 'We replace subjective opinions with verified statistical significance. A/B testing, cohort tracking, and algorithmic optimization guide every sprint.',
+    tag: 'Statistical Rigor',
+  },
+  {
+    step: '04',
+    icon: Shield,
+    title: 'Transparent Performance',
+    desc: 'Direct Looker Studio dashboard access, zero hidden media markups, and unvarnished reporting. You always know exactly what was invested and returned.',
+    tag: 'Live Attributed Data',
+  },
+  {
+    step: '05',
+    icon: RefreshCw,
+    title: 'Continuous Optimization',
+    desc: 'Campaigns are never "set and forgotten." We iterate creative angles, landing page copy, and negative match keywords every single week.',
+    tag: 'Weekly Growth Sprints',
+  },
+  {
+    step: '06',
+    icon: Award,
+    title: 'Senior Operator Led',
+    desc: 'Your growth strategy is directed by seasoned practitioners with 10+ years of hands-on experience, never delegated to junior coordinators.',
+    tag: 'Practice Directors Only',
+  },
+];
+
 export default function HomePage() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const featuredProjects = AGENCY_CASE_STUDIES.filter((p) => p.featured).slice(0, 4);
@@ -238,8 +366,8 @@ export default function HomePage() {
               <ScrollReveal delay={450}>
                 <div className="pt-6 border-t border-slate-200/80 grid grid-cols-3 gap-6 max-w-xl">
                   <div>
-                    <div className="font-display font-extrabold text-2xl lg:text-3xl text-[#071B70]">100+</div>
-                    <div className="text-xs text-[#64748B] font-medium mt-0.5">Brands Scaled Across India</div>
+                    <div className="font-display font-extrabold text-2xl lg:text-3xl text-[#071B70]">100%</div>
+                    <div className="text-xs text-[#64748B] font-medium mt-0.5">Audited Real Data</div>
                   </div>
                   <div>
                     <div className="font-display font-extrabold text-2xl lg:text-3xl text-[#087CCB]">3.8X</div>
@@ -272,21 +400,17 @@ export default function HomePage() {
                       </span>
                     </div>
 
-                    {/* Integrated 3D Growth Graphic inside debossed well */}
-                    <div className="skeuo-well p-2 mb-4">
-                      <div className="relative h-44 w-full rounded-xl overflow-hidden border border-slate-200/60">
+                    {/* Clean 3D Growth Graphic inside debossed well — completely unobstructed, zero text overlay */}
+                    <div className="skeuo-well p-3 mb-5">
+                      <div className="relative h-56 sm:h-64 w-full rounded-xl overflow-hidden border border-slate-200/80 shadow-inner bg-slate-950">
                         <Image
                           src="/images/homepage_3d.webp"
                           alt="NovaSpark Digital Growth Engine"
                           fill
                           priority
-                          className="object-cover"
-                          sizes="(max-width: 768px) 100vw, 400px"
+                          className="object-cover object-center"
+                          sizes="(max-width: 768px) 100vw, 500px"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent" />
-                        <div className="absolute bottom-3 left-3 text-white text-xs font-bold drop-shadow-md">
-                          Your Business, Our Strategy
-                        </div>
                       </div>
                     </div>
 
@@ -314,12 +438,6 @@ export default function HomePage() {
                       <div className="text-[10px] font-mono-tag font-bold text-slate-400 uppercase tracking-wider">Creative Velocity</div>
                       <div className="font-display font-extrabold text-sm text-[#071B70]">Top 1% Ad Engagement</div>
                     </div>
-                  </div>
-
-                  {/* Micro Badge 2 (Titanium Pill) */}
-                  <div className="absolute -top-6 -right-4 card-skeuo-dark p-3.5 flex items-center gap-2.5">
-                    <span className="w-2.5 h-2.5 rounded-full bg-[#00BCEB] animate-ping" />
-                    <span className="text-xs font-mono-tag font-bold text-white tracking-wide">100+ Brands Scaled</span>
                   </div>
                 </div>
               </ScrollReveal>
@@ -421,18 +539,18 @@ export default function HomePage() {
 
               <ScrollReveal delay={350}>
                 <div className="pt-2 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="card-luxury p-5 flex items-start gap-3.5">
-                    <div className="w-10 h-10 rounded-xl bg-[#087CCB]/10 flex items-center justify-center text-[#087CCB] shrink-0">
-                      <CheckCircle2 className="w-5 h-5" />
+                  <div className="card-skeuomorphic p-5 flex items-start gap-3.5">
+                    <div className="w-10 h-10 rounded-xl skeuo-well flex items-center justify-center text-[#087CCB] shrink-0 shadow-xs">
+                      <CheckCircle2 className="w-5 h-5 text-[#087CCB]" />
                     </div>
                     <div>
                       <h4 className="font-display font-extrabold text-sm text-[#071B70]">Full-Funnel Ownership</h4>
                       <p className="text-xs text-slate-500 mt-1 leading-relaxed">From initial impression to checkout, we optimize the complete customer journey.</p>
                     </div>
                   </div>
-                  <div className="card-luxury p-5 flex items-start gap-3.5">
-                    <div className="w-10 h-10 rounded-xl bg-[#FF7900]/10 flex items-center justify-center text-[#FF7900] shrink-0">
-                      <CheckCircle2 className="w-5 h-5" />
+                  <div className="card-skeuomorphic p-5 flex items-start gap-3.5">
+                    <div className="w-10 h-10 rounded-xl skeuo-well flex items-center justify-center text-[#FF7900] shrink-0 shadow-xs">
+                      <CheckCircle2 className="w-5 h-5 text-[#FF7900]" />
                     </div>
                     <div>
                       <h4 className="font-display font-extrabold text-sm text-[#071B70]">Audited Performance</h4>
@@ -550,44 +668,90 @@ export default function HomePage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {AGENCY_SERVICES.map((s, idx) => (
-              <ScrollReveal key={s.id} delay={idx * 60}>
-                <div className="card-luxury p-7 flex flex-col justify-between h-full group">
-                  <div className="space-y-4">
-                    <div className="relative h-44 w-full rounded-2xl overflow-hidden bg-slate-200">
-                      <Image
-                        src={s.image}
-                        alt={s.title}
-                        fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-105"
-                        sizes="(max-width: 768px) 100vw, 33vw"
-                      />
-                      <div className="absolute top-3 left-3 bg-white/95 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-bold text-[#071B70] shadow-xs">
-                        {s.category}
+            {AGENCY_SERVICES.map((s, idx) => {
+              const rep = SERVICE_REPRESENTATIONS[s.id] || {
+                icon: Sparkles,
+                accent: '#087CCB',
+                badge: s.category,
+                metricLabel: 'Audited Impact',
+                metricValue: s.metricsHighlight,
+                metricSub: 'Full-Funnel Alignment',
+                highlights: s.deliverables.slice(0, 3),
+              };
+              const IconComp = rep.icon;
+
+              return (
+                <ScrollReveal key={s.id} delay={idx * 60}>
+                  <div className="card-skeuomorphic p-7 flex flex-col justify-between h-full group hover:-translate-y-2 transition-all duration-300">
+                    <div className="space-y-5">
+                      {/* Top Meta Bar */}
+                      <div className="flex items-center justify-between">
+                        <div className="w-12 h-12 rounded-2xl skeuo-well flex items-center justify-center text-[#071B70] shadow-xs group-hover:scale-105 transition-transform">
+                          <IconComp className="w-6 h-6" style={{ color: rep.accent }} />
+                        </div>
+                        <span className="text-[10px] font-mono-tag font-bold uppercase tracking-wider text-slate-500 bg-slate-100 px-3 py-1 rounded-full border border-slate-200/80 shadow-2xs">
+                          Pillar 0{idx + 1}
+                        </span>
+                      </div>
+
+                      {/* Title & Tagline */}
+                      <div>
+                        <div className="text-[11px] font-bold uppercase tracking-wider text-[#087CCB]">
+                          {rep.badge}
+                        </div>
+                        <h3 className="font-display font-extrabold text-xl text-[#071B70] group-hover:text-[#087CCB] transition-colors leading-snug mt-1">
+                          {s.title}
+                        </h3>
+                        <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mt-2 line-clamp-2 font-normal">
+                          {s.tagline}
+                        </p>
+                      </div>
+
+                      {/* Visual Representation Telemetry Well */}
+                      <div className="skeuo-well p-4 space-y-1.5 border border-slate-200/90">
+                        <div className="flex items-center justify-between text-[10px] font-mono-tag font-bold uppercase tracking-wider text-slate-500">
+                          <span>{rep.metricLabel}</span>
+                          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                        </div>
+                        <div className="font-display font-black text-lg sm:text-xl text-[#071B70]">
+                          {rep.metricValue}
+                        </div>
+                        <div className="text-[11px] font-medium text-slate-500 truncate">
+                          {rep.metricSub}
+                        </div>
+                      </div>
+
+                      {/* Concrete Deliverables Checklist */}
+                      <div className="space-y-2 pt-1">
+                        <div className="text-[10px] font-mono-tag font-bold uppercase tracking-wider text-slate-400">
+                          Core Deliverables:
+                        </div>
+                        <ul className="space-y-1.5">
+                          {rep.highlights.map((h, i) => (
+                            <li key={i} className="text-xs text-slate-600 flex items-start gap-2">
+                              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
+                              <span className="line-clamp-1">{h}</span>
+                            </li>
+                          ))}
+                        </ul>
                       </div>
                     </div>
 
-                    <h3 className="font-display font-extrabold text-xl text-[#071B70] group-hover:text-[#087CCB] transition-colors leading-snug">
-                      {s.title}
-                    </h3>
-                    <p className="text-xs sm:text-sm text-slate-600 line-clamp-3 leading-relaxed">
-                      {s.tagline}
-                    </p>
+                    {/* Bottom Action Pill */}
+                    <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
+                      <span className="text-[11px] font-bold text-emerald-600 font-mono-tag">{s.metricsHighlight}</span>
+                      <Link
+                        href={`/services#${s.id}`}
+                        className="inline-flex items-center gap-1.5 text-xs font-bold text-[#071B70] group-hover:text-[#FF7900] transition-colors"
+                      >
+                        <span>Explore Discipline</span>
+                        <ArrowRight className="w-3.5 h-3.5" />
+                      </Link>
+                    </div>
                   </div>
-
-                  <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
-                    <span className="text-[11px] font-bold text-emerald-600 font-mono-tag">{s.metricsHighlight}</span>
-                    <Link
-                      href={`/services#${s.id}`}
-                      className="inline-flex items-center gap-1.5 text-xs font-bold text-[#071B70] group-hover:text-[#FF7900] transition-colors"
-                    >
-                      <span>Explore</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </Link>
-                  </div>
-                </div>
-              </ScrollReveal>
-            ))}
+                </ScrollReveal>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -613,48 +777,27 @@ export default function HomePage() {
             </div>
 
             <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {[
-                {
-                  icon: Compass,
-                  title: 'Strategy Before Execution',
-                  desc: 'We never spend a single dollar on ads or publish a piece of content without first validating customer intent, unit economics, and competitive gaps.',
-                },
-                {
-                  icon: Sparkles,
-                  title: 'Creativity With Purpose',
-                  desc: 'Visual design should never be decorative indulgence. Every design element is crafted to communicate value, build trust, and drive action.',
-                },
-                {
-                  icon: BarChart3,
-                  title: 'Data-Driven Decisions',
-                  desc: 'We replace gut feelings with verified statistical significance. A/B testing, cohort tracking, and algorithmic optimization guide every pivot.',
-                },
-                {
-                  icon: Shield,
-                  title: 'Transparent Performance',
-                  desc: 'Direct dashboard access, zero hidden markups, and unvarnished reporting. You always know exactly what was invested and what was returned.',
-                },
-                {
-                  icon: RefreshCw,
-                  title: 'Continuous Optimization',
-                  desc: 'Campaigns are never "set and forgotten." We iterate creative angles, landing page copy, and negative match keywords every single week.',
-                },
-                {
-                  icon: Award,
-                  title: 'Senior Operator Led',
-                  desc: 'Your account is directed by seasoned growth practitioners with over a decade of hands-on experience, not delegated to interns.',
-                },
-              ].map((item, index) => {
+              {DIFFERENTIATORS.map((item, index) => {
                 const IconComponent = item.icon;
                 return (
                   <ScrollReveal key={item.title} delay={index * 80}>
-                    <div className="card-luxury p-7 flex flex-col justify-between h-full group">
-                      <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#087CCB]/10 to-[#00BCEB]/10 border border-[#087CCB]/20 flex items-center justify-center text-[#071B70] mb-4 group-hover:scale-110 transition-transform">
-                        <IconComponent className="w-6 h-6" />
-                      </div>
+                    <div className="card-skeuomorphic p-7 flex flex-col justify-between h-full group hover:-translate-y-1.5 transition-all">
                       <div>
+                        <div className="flex items-center justify-between mb-4">
+                          <div className="w-12 h-12 rounded-2xl skeuo-well flex items-center justify-center text-[#071B70] group-hover:scale-105 transition-transform shadow-xs">
+                            <IconComponent className="w-6 h-6 text-[#087CCB]" />
+                          </div>
+                          <span className="text-[10px] font-mono-tag font-bold uppercase tracking-wider text-slate-400 bg-slate-100 px-2.5 py-1 rounded-full border border-slate-200 shadow-2xs">
+                            Principle {item.step}
+                          </span>
+                        </div>
                         <h4 className="font-display font-extrabold text-lg text-[#071B70] mb-2">{item.title}</h4>
-                        <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">{item.desc}</p>
+                        <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">{item.desc}</p>
+                      </div>
+
+                      <div className="pt-4 mt-4 border-t border-slate-100 flex items-center gap-1.5 text-[11px] font-mono-tag font-bold text-[#087CCB]">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#087CCB]" />
+                        <span>{item.tag}</span>
                       </div>
                     </div>
                   </ScrollReveal>
@@ -689,20 +832,26 @@ export default function HomePage() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-6 relative z-10">
               {[
-                { step: '01', name: 'Discover', desc: 'Audit unit economics, audience intent & competitive whitespace.' },
-                { step: '02', name: 'Strategize', desc: 'Define core messaging angles, media mix, and growth KPIs.' },
-                { step: '03', name: 'Create', desc: 'Produce high-converting creative assets, ad copy & landing UX.' },
-                { step: '04', name: 'Execute', desc: 'Deploy multi-channel campaigns with first-party tracking.' },
-                { step: '05', name: 'Optimize', desc: 'Cut underperforming assets, scale winners & lower CPA.' },
-                { step: '06', name: 'Grow', desc: 'Expand into new markets, channels & compounding pipeline.' },
+                { step: '01', name: 'Discover', desc: 'Audit unit economics, audience intent & competitive whitespace.', output: 'Forensic Audit' },
+                { step: '02', name: 'Strategize', desc: 'Define core messaging angles, media mix, and growth KPIs.', output: '90-Day Blueprint' },
+                { step: '03', name: 'Create', desc: 'Produce high-converting creative assets, ad copy & landing UX.', output: 'Creative Batch' },
+                { step: '04', name: 'Execute', desc: 'Deploy multi-channel campaigns with first-party tracking.', output: 'Live CAPI Launch' },
+                { step: '05', name: 'Optimize', desc: 'Cut underperforming assets, scale winners & lower CPA.', output: 'CAC Compression' },
+                { step: '06', name: 'Grow', desc: 'Expand into new markets, channels & compounding pipeline.', output: 'Scaled Pipeline' },
               ].map((phase, idx) => (
                 <ScrollReveal key={phase.step} delay={idx * 100}>
-                  <div className="card-luxury p-6 flex flex-col text-center items-center h-full group hover:scale-[1.03]">
-                    <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#071B70] to-[#040D36] text-[#FFC400] font-display font-black text-sm flex items-center justify-center mb-4 border border-white/20 shadow-md group-hover:scale-110 transition-transform">
-                      {phase.step}
+                  <div className="card-skeuomorphic p-6 flex flex-col justify-between text-center items-center h-full group hover:-translate-y-2 transition-all">
+                    <div>
+                      <div className="w-12 h-12 rounded-2xl skeuo-well text-[#071B70] font-display font-black text-sm flex items-center justify-center mb-4 shadow-xs group-hover:scale-110 transition-transform">
+                        <span className="bg-gradient-to-r from-[#071B70] to-[#087CCB] bg-clip-text text-transparent font-black">{phase.step}</span>
+                      </div>
+                      <h3 className="font-display font-extrabold text-base text-[#071B70] mb-2">{phase.name}</h3>
+                      <p className="text-xs text-slate-500 leading-relaxed font-normal">{phase.desc}</p>
                     </div>
-                    <h3 className="font-display font-extrabold text-base text-[#071B70] mb-2">{phase.name}</h3>
-                    <p className="text-xs text-slate-500 leading-relaxed font-normal">{phase.desc}</p>
+
+                    <div className="mt-4 pt-3 border-t border-slate-100 w-full text-[10px] font-mono-tag font-bold text-[#087CCB] truncate">
+                      {phase.output}
+                    </div>
                   </div>
                 </ScrollReveal>
               ))}
@@ -740,7 +889,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {featuredProjects.map((project, idx) => (
               <ScrollReveal key={project.slug} delay={idx * 100}>
-                <div className="card-luxury overflow-hidden flex flex-col h-full group">
+                <div className="card-skeuomorphic overflow-hidden flex flex-col h-full group hover:-translate-y-2 transition-all">
                   <div className="relative h-64 sm:h-72 w-full overflow-hidden bg-slate-100">
                     <Image
                       src={project.image}
@@ -749,7 +898,7 @@ export default function HomePage() {
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                       sizes="(max-width: 768px) 100vw, 50vw"
                     />
-                    <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-[#071B70] shadow-sm">
+                    <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-[#071B70] shadow-sm">
                       {project.industry}
                     </div>
                     <div className="absolute top-4 right-4 bg-[#0F172A] text-[#FFC400] border border-white/10 px-3 py-1 rounded-full text-xs font-bold shadow-sm">
@@ -765,16 +914,16 @@ export default function HomePage() {
                       <h3 className="font-display font-bold text-xl sm:text-2xl text-[#071B70] group-hover:text-[#087CCB] transition-colors leading-snug">
                         {project.title}
                       </h3>
-                      <p className="text-sm text-slate-600 line-clamp-2 leading-relaxed">
+                      <p className="text-sm text-slate-600 line-clamp-2 leading-relaxed font-normal">
                         {project.summary}
                       </p>
                     </div>
 
-                    <div className="grid grid-cols-3 gap-3 pt-4 border-t border-slate-100">
+                    <div className="skeuo-well p-4 grid grid-cols-3 gap-2 text-center border border-slate-200/90">
                       {project.metrics.map((m) => (
                         <div key={m.label}>
-                          <div className="font-display font-black text-lg text-[#071B70]">{m.value}</div>
-                          <div className="text-[11px] text-slate-500 font-medium truncate">{m.label}</div>
+                          <div className="font-display font-black text-base sm:text-lg text-[#071B70]">{m.value}</div>
+                          <div className="text-[10px] text-slate-500 font-medium truncate mt-0.5">{m.label}</div>
                         </div>
                       ))}
                     </div>
@@ -782,7 +931,7 @@ export default function HomePage() {
                     <div className="pt-2">
                       <Link
                         href={`/case-studies/${project.slug}`}
-                        className="inline-flex items-center gap-2 text-sm font-bold text-[#071B70] group-hover:text-[#FF7900] transition-colors"
+                        className="inline-flex items-center justify-between w-full p-3 rounded-2xl btn-skeuo-pearl text-xs font-bold transition-all duration-200"
                       >
                         <span>View Detailed Case Study</span>
                         <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -820,7 +969,7 @@ export default function HomePage() {
               const IconComp = ind.icon;
               return (
                 <ScrollReveal key={ind.title} delay={i * 80}>
-                  <div className="card-luxury overflow-hidden flex flex-col justify-between h-full group">
+                  <div className="card-skeuomorphic overflow-hidden flex flex-col justify-between h-full group hover:-translate-y-1.5 transition-all">
                     <div className="relative h-48 w-full overflow-hidden bg-slate-200">
                       <Image
                         src={ind.image}
@@ -830,28 +979,28 @@ export default function HomePage() {
                         sizes="(max-width: 768px) 100vw, 33vw"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
-                      <div className="absolute top-4 left-4 w-9 h-9 rounded-xl bg-white/90 backdrop-blur-sm flex items-center justify-center text-[#071B70] shadow-sm">
-                        <IconComp className="w-5 h-5" />
+                      <div className="absolute top-4 left-4 w-9 h-9 rounded-xl skeuo-well flex items-center justify-center text-[#071B70] shadow-sm">
+                        <IconComp className="w-5 h-5 text-[#071B70]" />
                       </div>
-                      <div className="absolute bottom-3 right-4 bg-[#FFC400] text-[#071B70] text-xs font-bold px-3 py-1 rounded-full shadow-sm">
+                      <div className="absolute bottom-3 right-4 bg-gradient-to-r from-[#FFC400] to-[#FF7900] text-[#071B70] text-xs font-bold px-3 py-1 rounded-full shadow-sm">
                         {ind.metric}
                       </div>
                     </div>
 
-                    <div className="p-6 flex flex-col justify-between flex-1 space-y-3">
+                    <div className="p-6 flex flex-col justify-between flex-1 space-y-4">
                       <div>
                         <h4 className="font-display font-bold text-lg text-[#071B70] group-hover:text-[#087CCB] transition-colors">
                           {ind.title}
                         </h4>
-                        <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mt-2">
+                        <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mt-2 font-normal">
                           {ind.desc}
                         </p>
                       </div>
 
-                      <div className="pt-4 border-t border-slate-200">
+                      <div className="pt-4 border-t border-slate-100">
                         <Link
                           href={`/contact?service=${encodeURIComponent(ind.title)}`}
-                          className="inline-flex items-center gap-1.5 text-xs font-bold text-[#071B70] group-hover:text-[#FF7900] transition-colors"
+                          className="inline-flex items-center justify-between w-full p-2.5 rounded-xl btn-skeuo-pearl text-xs font-bold transition-all duration-200"
                         >
                           <span>Request {ind.title.split(' ')[0]} Audit</span>
                           <ArrowRight className="w-3.5 h-3.5" />
@@ -888,7 +1037,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {AGENCY_TEAM.map((member, idx) => (
               <ScrollReveal key={member.name} delay={idx * 100}>
-                <div className="card-luxury overflow-hidden flex flex-col h-full group">
+                <div className="card-skeuomorphic overflow-hidden flex flex-col h-full group hover:-translate-y-1.5 transition-all">
                   <div className="relative h-72 w-full bg-slate-200 overflow-hidden">
                     <Image
                       src={member.image}
@@ -924,10 +1073,10 @@ export default function HomePage() {
                   <div className="p-6 flex flex-col justify-between flex-1 space-y-4">
                     <div>
                       <div className="text-xs font-bold text-[#071B70] mb-2">{member.role}</div>
-                      <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">{member.bio}</p>
+                      <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">{member.bio}</p>
                     </div>
 
-                    <div className="p-3 rounded-xl bg-slate-50 border border-slate-200/60 text-[11px] text-slate-500 italic">
+                    <div className="p-3.5 rounded-xl skeuo-well text-[11px] text-slate-600 italic">
                       &ldquo;{member.quote}&rdquo;
                     </div>
                   </div>
@@ -949,7 +1098,7 @@ export default function HomePage() {
                 <span>Chapter 09 // Verified Client Proof</span>
               </div>
               <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-[#071B70] tracking-tight mt-3">
-                Trusted by 100+ Ambitious Founders.
+                Direct Feedback From Ambitious Founders.
               </h2>
               <p className="text-slate-600 text-base sm:text-lg">
                 Hear directly from business leaders who partnered with NovaSpark to scale their revenue.
@@ -960,7 +1109,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {TESTIMONIALS.map((t, idx) => (
               <ScrollReveal key={t.author} delay={idx * 80}>
-                <div className="card-luxury p-8 flex flex-col justify-between h-full space-y-6 group">
+                <div className="card-skeuomorphic p-8 flex flex-col justify-between h-full space-y-6 group hover:-translate-y-1.5 transition-all">
                   <div className="space-y-4">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-1 text-[#FFC400]">
@@ -968,17 +1117,17 @@ export default function HomePage() {
                           <Star key={i} className="w-4 h-4 fill-current" />
                         ))}
                       </div>
-                      <span className="text-xs font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200">
+                      <span className="text-xs font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200 font-mono-tag">
                         {t.metric}
                       </span>
                     </div>
 
-                    <p className="text-slate-700 text-sm sm:text-base leading-relaxed italic">
+                    <p className="text-slate-700 text-sm sm:text-base leading-relaxed italic font-normal">
                       &ldquo;{t.quote}&rdquo;
                     </p>
                   </div>
 
-                  <div className="pt-4 border-t border-slate-200 flex items-center justify-between">
+                  <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
                     <div>
                       <h4 className="font-display font-bold text-sm text-[#071B70]">{t.author}</h4>
                       <p className="text-xs text-slate-500 mt-0.5">{t.role}, <span className="font-semibold text-slate-700">{t.company}</span></p>
@@ -1021,7 +1170,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {ARTICLES.map((art, idx) => (
               <ScrollReveal key={art.title} delay={idx * 100}>
-                <div className="card-luxury overflow-hidden flex flex-col justify-between h-full group">
+                <div className="card-skeuomorphic overflow-hidden flex flex-col justify-between h-full group hover:-translate-y-1.5 transition-all">
                   <div>
                     <div className="relative h-48 w-full overflow-hidden bg-slate-200">
                       <Image
@@ -1031,13 +1180,13 @@ export default function HomePage() {
                         className="object-cover transition-transform duration-500 group-hover:scale-105"
                         sizes="(max-width: 768px) 100vw, 33vw"
                       />
-                      <div className="absolute top-3 left-3 bg-white/95 backdrop-blur-sm px-2.5 py-0.5 rounded-full text-[10px] font-bold text-[#071B70]">
+                      <div className="absolute top-3 left-3 bg-white/95 backdrop-blur-md px-2.5 py-0.5 rounded-full text-[10px] font-bold text-[#071B70] shadow-xs">
                         {art.category}
                       </div>
                     </div>
 
                     <div className="p-6 space-y-3">
-                      <div className="flex items-center gap-3 text-xs text-slate-400">
+                      <div className="flex items-center gap-3 text-xs text-slate-400 font-mono-tag">
                         <span>{art.date}</span>
                         <span>•</span>
                         <span>{art.readTime}</span>
@@ -1045,7 +1194,7 @@ export default function HomePage() {
                       <h3 className="font-display font-bold text-lg text-[#071B70] group-hover:text-[#087CCB] transition-colors leading-snug">
                         {art.title}
                       </h3>
-                      <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                      <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
                         {art.desc}
                       </p>
                     </div>
@@ -1054,9 +1203,9 @@ export default function HomePage() {
                   <div className="p-6 pt-0">
                     <Link
                       href="/contact"
-                      className="inline-flex items-center gap-1.5 text-xs font-bold text-[#071B70] group-hover:text-[#FF7900] transition-colors"
+                      className="inline-flex items-center justify-between w-full p-2.5 rounded-xl btn-skeuo-pearl text-xs font-bold transition-all duration-200"
                     >
-                      <span>Read Playbook</span>
+                      <span>Read Full Playbook</span>
                       <ArrowRight className="w-3.5 h-3.5" />
                     </Link>
                   </div>
@@ -1091,7 +1240,7 @@ export default function HomePage() {
               const isOpen = openFaq === i;
               return (
                 <ScrollReveal key={i} delay={i * 50}>
-                  <div className="card-luxury overflow-hidden transition-all duration-200 bg-white">
+                  <div className="card-skeuomorphic overflow-hidden transition-all duration-200">
                     <button
                       onClick={() => setOpenFaq(isOpen ? null : i)}
                       className="w-full p-6 text-left flex items-center justify-between gap-4 focus:outline-none cursor-pointer"
@@ -1099,14 +1248,16 @@ export default function HomePage() {
                       <span className="font-display font-bold text-base sm:text-lg text-[#071B70]">
                         {faq.q}
                       </span>
-                      <ChevronDown
-                        className={`w-5 h-5 text-[#087CCB] shrink-0 transition-transform duration-200 ${
-                          isOpen ? 'rotate-180' : ''
+                      <div
+                        className={`w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center shrink-0 transition-transform duration-300 ${
+                          isOpen ? 'rotate-180 bg-[#0F172A] text-[#FFC400]' : 'text-slate-500'
                         }`}
-                      />
+                      >
+                        <ChevronDown className="w-4 h-4" />
+                      </div>
                     </button>
                     {isOpen && (
-                      <div className="px-6 pb-6 pt-0 text-slate-600 text-sm leading-relaxed border-t border-slate-200/50 mt-1">
+                      <div className="px-6 pb-6 pt-1 text-slate-600 text-sm leading-relaxed border-t border-slate-100 animate-in fade-in duration-200">
                         {faq.a}
                       </div>
                     )}
@@ -1119,43 +1270,64 @@ export default function HomePage() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════
-          SECTION 15 — PRE-FOOTER CTA (OBSIDIAN TITANIUM DECK)
+          SECTION 15 — PRE-FOOTER CTA (FLOATING SKEUOMORPHIC CARD)
           "Ready to grow your business online?"
          ═══════════════════════════════════════════════════════════ */}
-      <section className="py-24 bg-gradient-to-b from-[#0F172A] via-[#0B0F19] to-[#040711] text-white relative overflow-hidden border-t border-white/10 shadow-2xl">
-        <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-[#00BCEB]/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 left-1/4 w-[400px] h-[400px] bg-[#FFC400]/10 rounded-full blur-3xl pointer-events-none" />
+      <section className="py-20 lg:py-28 bg-[#F7F9FC] relative overflow-hidden border-t border-slate-200/80">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="card-skeuo-dark p-8 sm:p-14 lg:p-20 relative overflow-hidden rounded-[2.5rem] shadow-2xl text-center border border-white/15">
+            {/* Ambient specular mesh inside the floating card */}
+            <div className="absolute top-0 right-1/4 w-[450px] h-[450px] bg-[#00BCEB]/12 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute bottom-0 left-1/4 w-[400px] h-[400px] bg-[#FFC400]/12 rounded-full blur-3xl pointer-events-none" />
 
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 space-y-8">
-          <ScrollReveal>
-            <div className="badge-tag mx-auto bg-white/10 text-white border-white/20">
-              <span className="w-2 h-2 rounded-full bg-[#00BCEB] animate-ping" />
-              <span>Your Business, Our Strategy</span>
-            </div>
-            <h2 className="font-display font-black text-3xl sm:text-6xl text-white tracking-tight mt-4 leading-tight">
-              Ready to grow your business online?
-            </h2>
-            <p className="text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed font-normal mt-4">
-              Let&apos;s build a marketing strategy that moves your business forward. Request a confidential growth audit with our senior leadership team.
-            </p>
-          </ScrollReveal>
+            <div className="relative z-10 max-w-4xl mx-auto space-y-8">
+              <ScrollReveal>
+                <div className="badge-tag-dark mx-auto">
+                  <span className="w-2 h-2 rounded-full bg-[#00BCEB] animate-ping" />
+                  <span>Your Business, Our Strategy</span>
+                </div>
+                <h2 className="font-display font-black text-3xl sm:text-5xl lg:text-6xl text-white tracking-tight mt-4 leading-tight">
+                  Ready to grow your business online?
+                </h2>
+                <p className="text-base sm:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed font-normal mt-4">
+                  Let&apos;s build a marketing strategy that moves your business forward. Request a confidential growth audit with our senior leadership team.
+                </p>
+              </ScrollReveal>
 
-          <ScrollReveal delay={150}>
-            <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
-              <Link href="/contact" className="btn-skeuo-gold text-base px-9 py-4 group">
-                <span>Get a Free Audit</span>
-                <ArrowRight className="w-5 h-5 ml-1 transition-transform group-hover:translate-x-1" />
-              </Link>
-              <a
-                href="https://wa.me/918280788689"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-secondary text-base px-8 py-4 text-[#071B70] hover:text-[#071B70]"
-              >
-                <span>Direct WhatsApp Chat</span>
-              </a>
+              <ScrollReveal delay={150}>
+                <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
+                  <Link href="/contact" className="btn-skeuo-gold text-base px-9 py-4 group">
+                    <span>Get a Free Audit</span>
+                    <ArrowRight className="w-5 h-5 ml-1 transition-transform group-hover:translate-x-1" />
+                  </Link>
+                  <a
+                    href="https://wa.me/918280788689"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-skeuo-pearl text-base px-8 py-4"
+                  >
+                    <span>Direct WhatsApp Chat</span>
+                  </a>
+                </div>
+              </ScrollReveal>
+
+              {/* Recessed Trust Guarantee Ribbon */}
+              <div className="pt-8 border-t border-white/10 flex flex-wrap items-center justify-center gap-6 sm:gap-10 text-xs text-slate-300 font-mono-tag">
+                <span className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                  Senior Director Response &lt; 2 hrs
+                </span>
+                <span className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-[#FFC400]" />
+                  100% Asset &amp; Ad Account Ownership
+                </span>
+                <span className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-[#00BCEB]" />
+                  Category Exclusivity Protected
+                </span>
+              </div>
             </div>
-          </ScrollReveal>
+          </div>
         </div>
       </section>
     </div>
