@@ -1,0 +1,23 @@
+# Next.js & Node
+node_modules
+.next
+out
+build
+dist
+
+# Environment
+.env*.local
+
+# Database
+data/*.db
+data/*.db-journal
+data/*.db-wal
+data/*.db-shm
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
