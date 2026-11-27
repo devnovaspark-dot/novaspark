@@ -5,83 +5,207 @@ import Link from 'next/link';
 import Image from 'next/image';
 import {
   ArrowRight,
+  ArrowUpRight,
   CheckCircle2,
-  TrendingUp,
+  Compass,
   Sparkles,
-  Search,
-  Layers,
-  Zap,
   BarChart3,
   Shield,
-  Award,
-  Compass,
   RefreshCw,
-  Star,
+  Award,
   Quote,
   ChevronDown,
-  ShoppingBag,
-  Building2,
-  Utensils,
-  Plane,
-  HeartPulse,
-  Globe,
-  Clock,
-  BookOpen,
-  MessageSquare,
-  Share2,
-  FileText,
-  MapPin,
+  ChevronLeft,
+  ChevronRight,
 } from 'lucide-react';
 import ScrollReveal from '@/components/ScrollReveal';
+import GrowthJourney from '@/components/GrowthJourney';
 import {
   AGENCY_CASE_STUDIES,
   AGENCY_CLIENT_LOGOS,
   AGENCY_METRICS_HIGHLIGHTS,
-  AGENCY_SERVICES,
   AGENCY_TEAM,
 } from '@/lib/agency-data';
+
+const CORE_SERVICES_ECOSYSTEM = [
+  {
+    num: '01',
+    id: 'performance-marketing',
+    title: 'Performance Marketing',
+    subtitle: 'Google Ads • Meta Ads • LinkedIn Ads',
+    description:
+      'Algorithmic multi-channel acquisition engineered with first-party CAPI attribution to lower CPA and scale profitable revenue.',
+    metric: '3.8X – 4.8X ROAS',
+    image: '/images/reference/Google-Ads-Services-1024x576.webp',
+    highlights: [
+      'High-Intent Search & Performance Max',
+      'Meta Conversions API & Creative Testing',
+      'B2B LinkedIn Account-Based Targeting',
+    ],
+    href: '/services/performance-marketing',
+  },
+  {
+    num: '02',
+    id: 'seo-aeo-geo',
+    title: 'SEO, AEO & GEO',
+    subtitle: 'Search Engine Optimization • Answer Engine • Generative Engine',
+    description:
+      'Capture compounding organic demand across Google Search, AI Overviews, ChatGPT, and Perplexity with technical authority.',
+    metric: '+180% Organic Lift',
+    image: '/images/reference/SEO-Services-1024x576.webp',
+    highlights: [
+      'Search Engine Optimization & Technical Audits',
+      'Answer Engine Optimization for Featured Snippets',
+      'Generative Engine Optimization for AI Citations',
+    ],
+    href: '/services/seo-aeo-geo',
+  },
+  {
+    num: '03',
+    id: 'social-media-marketing',
+    title: 'Social Media Marketing',
+    subtitle: 'Short-Form Video • Community • Creator UGC',
+    description:
+      'Build cultural relevance and active buyer communities through high-tempo Reels, editorial grids, and direct DM conversion funnels.',
+    metric: '+410% Organic Reach',
+    image: '/images/reference/Social-Media-Marketing-Services-1024x576.webp',
+    highlights: [
+      'Short-Form Vertical Video & Reels Production',
+      'Brand Voice & Editorial Content Calendars',
+      'Creator Partnerships & Community Nurture',
+    ],
+    href: '/services/social-media-marketing',
+  },
+  {
+    num: '04',
+    id: 'content-marketing',
+    title: 'Content Marketing',
+    subtitle: 'Thought Leadership • Buyer Enablement • BOFU Assets',
+    description:
+      'Shorten enterprise and D2C sales cycles with authoritative bottom-of-funnel playbooks, comparison guides, and semantic whitepapers.',
+    metric: '3.2X Pipeline Velocity',
+    image: '/images/reference/Meta-Ads-Services-1024x576.webp',
+    highlights: [
+      'Bottom-of-Funnel Commercial Comparison Guides',
+      'Executive Thought Leadership & Ghostwriting',
+      'Semantic Whitepapers & Case Study Storytelling',
+    ],
+    href: '/services/content-marketing',
+  },
+  {
+    num: '05',
+    id: 'web-design-development',
+    title: 'Web Design & Development',
+    subtitle: 'Next.js Architecture • UI/UX Systems • CRO',
+    description:
+      'Sub-800ms custom Next.js websites, bespoke Figma design systems, and conversion-engineered landing pages built to close deals.',
+    metric: '99+ Core Web Vitals',
+    image: '/images/reference/Website-Development-Services-1024x576.webp',
+    highlights: [
+      'Bespoke UI/UX & Brand Design Systems',
+      'Custom Next.js & Headless CMS Engineering',
+      'High-Converting Campaign Landing Pages',
+    ],
+    href: '/services/web-design-development',
+  },
+  {
+    num: '06',
+    id: 'amazon-marketing-ppc',
+    title: 'Amazon Marketing & PPC',
+    subtitle: 'Sponsored Ads • Amazon DSP • Buy Box Defense',
+    description:
+      'Dominate marketplace categories with algorithmic bid harvesting, programmatic DSP retargeting, and A+ Brand Storefront CRO.',
+    metric: '-32% ACoS Reduction',
+    image: '/images/work_ecommerce.jpg',
+    highlights: [
+      'Sponsored Products, Brands & Video Management',
+      'Amazon DSP Off-Site Shopper Retargeting',
+      'A+ Premium Storefront & Buy Box Defense',
+    ],
+    href: '/services/amazon-marketing-ppc',
+  },
+];
+
+const DIFFERENTIATORS = [
+  {
+    step: '01',
+    icon: Compass,
+    title: 'Strategy Before Execution',
+    desc: 'We never spend a rupee on media or publish content without first validating customer intent, unit economics, and competitive whitespace.',
+  },
+  {
+    step: '02',
+    icon: Sparkles,
+    title: 'Creativity With Purpose',
+    desc: 'Design is never decorative indulgence. Every visual asset is engineered to communicate authority, build trust, and convert buyers.',
+  },
+  {
+    step: '03',
+    icon: BarChart3,
+    title: 'Data-Driven Decisions',
+    desc: 'We replace subjective opinions with statistical rigor—structured experimentation, cohort tracking, and revenue attribution.',
+  },
+  {
+    step: '04',
+    icon: Shield,
+    title: 'Transparent Performance',
+    desc: 'Direct dashboard access, zero hidden media markups, and unvarnished reporting on exactly what was invested and returned.',
+  },
+  {
+    step: '05',
+    icon: RefreshCw,
+    title: 'Continuous Optimization',
+    desc: 'Campaigns are never set and forgotten. We iterate creative hooks, landing UX, and bidding models every single week.',
+  },
+  {
+    step: '06',
+    icon: Award,
+    title: 'Senior Operator Led',
+    desc: 'Your growth strategy is directed by seasoned practitioners with over a decade of hands-on experience, never junior coordinators.',
+  },
+];
 
 const INDUSTRIES = [
   {
     title: 'E-Commerce & D2C Brands',
-    desc: 'Scale customer acquisition cost-effectively with high-converting catalog funnels, Google Performance Max, Meta CAPI, and automated cart abandonment recovery.',
+    challenge: 'Rising CAC & cart abandonment',
+    desc: 'High-converting catalog funnels, Performance Max, Meta CAPI, and retention loops built for profitable scale.',
     metric: '4.8X Avg ROAS',
-    icon: ShoppingBag,
     image: '/images/work_ecommerce.jpg',
   },
   {
     title: 'Luxury Home & Lifestyle',
-    desc: 'Position artisanal, high-ticket decor for national dominance with search-intent capture, editorial creative assets, and affluent buyer retargeting.',
+    challenge: 'Positioning high-ticket craft nationally',
+    desc: 'Search-intent capture, editorial creative direction, and affluent buyer retargeting for artisanal brands.',
     metric: '+240% Revenue',
-    icon: Building2,
     image: '/images/Medallion house.jpg',
   },
   {
     title: 'Real Estate & Infrastructure',
-    desc: 'Generate qualified commercial and residential buyer inquiries with geo-targeted search campaigns, luxury landing experiences, and CRM lead routing.',
+    challenge: 'Unqualified lead volume',
+    desc: 'Geo-targeted commercial search campaigns, luxury landing experiences, and instant CRM lead routing.',
     metric: '480+ Leads/mo',
-    icon: Compass,
     image: '/images/work_realestate.jpg',
   },
   {
-    title: 'Farm-to-Table & Retail Stores',
-    desc: 'Capture nearby consumers at the moment of intent through hyper-local Google 3-Pack domination, review generation funnels, and local inventory ads.',
+    title: 'Retail & Farm-to-Table',
+    challenge: 'Driving consistent store footfall',
+    desc: 'Hyper-local Google 3-Pack domination, review velocity systems, and nearby intent capture.',
     metric: '+74% Footfall',
-    icon: HeartPulse,
     image: '/images/Sri Pandurangan Divine Fresh.png',
   },
   {
     title: 'Fine Dining & Hospitality',
-    desc: 'Drive consistent table reservations and weekday banquet bookings with cinematic culinary reels, influencer tasting events, and reservation countdowns.',
-    metric: '96% Table Occupancy',
-    icon: Utensils,
+    challenge: 'Weekday occupancy & banquet bookings',
+    desc: 'Cinematic culinary reels, creator tasting campaigns, and direct reservation funnels.',
+    metric: '96% Occupancy',
     image: '/images/work_restaurant.jpg',
   },
   {
-    title: 'Experiential Tourism & Travel',
-    desc: 'Turn high-season wanderlust into instant confirmed bookings using short-form vertical UGC videos and automated direct WhatsApp booking funnels.',
+    title: 'Experiential Travel & Tourism',
+    challenge: 'High-season booking acquisition cost',
+    desc: 'Short-form UGC video funnels paired with instant WhatsApp inquiry automation.',
     metric: '3,200+ Bookings',
-    icon: Plane,
     image: '/images/Weekend Bhraman Tour Planner.jpg',
   },
 ];
@@ -94,7 +218,6 @@ const TESTIMONIALS = [
     role: 'Co-Founder & CEO',
     company: 'Medallion House',
     metric: '+240% Revenue Growth',
-    rating: 5,
   },
   {
     quote:
@@ -103,7 +226,6 @@ const TESTIMONIALS = [
     role: 'Founder',
     company: 'Ekatraa Organics',
     metric: '180+ #1 Rankings',
-    rating: 5,
   },
   {
     quote:
@@ -112,7 +234,6 @@ const TESTIMONIALS = [
     role: 'Managing Director',
     company: 'Sri Pandurangan Divine Fresh',
     metric: '+310% Local Impressions',
-    rating: 5,
   },
   {
     quote:
@@ -121,34 +242,6 @@ const TESTIMONIALS = [
     role: 'Growth Director',
     company: 'Weekend Bhraman',
     metric: '-48% Cost Per Booking',
-    rating: 5,
-  },
-];
-
-const FAQS = [
-  {
-    q: 'What makes NovaSpark different from other digital marketing agencies?',
-    a: 'Most agencies operate in silos where designers don’t know CAC and media buyers don’t understand brand equity. At NovaSpark, "Your Business, Our Strategy" means we take full-funnel ownership. We connect strategy, creative production, Next.js engineering, and first-party attribution to optimize for net revenue rather than vanity impressions.',
-  },
-  {
-    q: 'What is your typical engagement model and monthly budget?',
-    a: 'We work primarily on monthly retainers tailored to your stage of growth. Typical ad spend managed ranges from ₹1,00,000 to ₹10,00,000+ per month, with full campaign execution, continuous creative testing, and weekly strategy syncs. We also offer project-based web platform engineering and technical SEO audits.',
-  },
-  {
-    q: 'How quickly can we expect to see measurable results from our campaigns?',
-    a: 'Paid media channels (Google Search, PMax, Meta Ads) begin generating qualified leads and sales within the first 7 to 14 days post tracking calibration. Organic SEO and authority content assets build momentum across 60 to 90 days, delivering compounding, zero-marginal-cost customer acquisition for years.',
-  },
-  {
-    q: 'How do you handle attribution post-iOS tracking changes and cookie deprecation?',
-    a: 'We implement server-side tracking via Meta Conversions API (CAPI), Google Enhanced Conversions, and first-party server analytics. This ensures 100% data fidelity without relying on fragile third-party browser cookies, feeding accurate revenue data back into bidding algorithms.',
-  },
-  {
-    q: 'Do you require long-term lock-in contracts?',
-    a: 'No. While marketing systems compound over 3 to 6 months, we believe client retention should be earned every 30 days through audited performance. Our 98% long-term client retention rate reflects the measurable commercial value we consistently produce.',
-  },
-  {
-    q: 'Who will actually manage my marketing campaigns day-to-day?',
-    a: 'Your account is directed by senior growth operators with over a decade of hands-on experience, supported by specialized technical SEO architects, UI/UX engineers, and conversion copywriters. We do not pass off client accounts to inexperienced interns.',
   },
 ];
 
@@ -163,7 +256,7 @@ const ARTICLES = [
   },
   {
     title: 'Next.js vs WordPress: How Sub-Second Load Speeds Multiply E-Commerce Conversion Rates',
-    category: 'Digital Engineering',
+    category: 'Web Engineering',
     readTime: '6 min read',
     date: 'June 2026',
     desc: 'A technical analysis of why modern headless Next.js architectures achieve 99+ Lighthouse scores and lower Google Ads cost-per-click.',
@@ -179,191 +272,84 @@ const ARTICLES = [
   },
 ];
 
-const SERVICE_REPRESENTATIONS: Record<string, {
-  icon: any;
-  accent: string;
-  badge: string;
-  metricLabel: string;
-  metricValue: string;
-  metricSub: string;
-  highlights: string[];
-}> = {
-  seo: {
-    icon: Search,
-    accent: '#059669',
-    badge: 'Organic Search Engine',
-    metricLabel: 'Compounding Inbound Traffic',
-    metricValue: '+180% Organic Lift',
-    metricSub: '180+ Commercial #1 Positions',
-    highlights: ['Core Web Vitals & Technical Speed Architecture', 'Semantic Topic Clusters & Keyword Gap Mapping', 'Authority Backlink Equity & Natural Press']
-  },
-  'google-ads': {
-    icon: Zap,
-    accent: '#D97706',
-    badge: 'High-Intent Search Ads',
-    metricLabel: 'Commercial Intent Conversion',
-    metricValue: '3.8X – 4.8X Target ROAS',
-    metricSub: 'PMax & Negative Keyword Sculpting',
-    highlights: ['Algorithmic Bid Strategy & Smart Bidding', 'First-Party Server-Side Conversion API', 'Multi-Angle Ad Copy & Landing Page Split Testing']
-  },
-  'meta-ads': {
-    icon: Layers,
-    accent: '#6366F1',
-    badge: 'Paid Social Performance',
-    metricLabel: 'Full-Funnel Demand Generation',
-    metricValue: '+380% Lead Volume',
-    metricSub: '99.8% CAPI Match Rate',
-    highlights: ['High-Velocity Creative Concepting & Iteration', 'Deep Funnel Retargeting & Dynamic Catalog Ads', 'Audience Lookalike & Custom Persona Modeling']
-  },
-  'social-media': {
-    icon: Share2,
-    accent: '#EC4899',
-    badge: 'Organic & Social Engine',
-    metricLabel: 'Community Reach & Trust',
-    metricValue: '+410% Engagement',
-    metricSub: 'Omnichannel Video & Reel Strategy',
-    highlights: ['High-Production Short-Form Video & Reels', 'Brand Voice Guidelines & Aesthetic Cohesion', 'Community Nurture & Active Buyer Conversations']
-  },
-  'web-development': {
-    icon: Globe,
-    accent: '#00BCEB',
-    badge: 'Next.js 16 Digital Experience',
-    metricLabel: 'Conversion Rate Architecture',
-    metricValue: '99+ Core Web Vitals',
-    metricSub: '< 0.8s Global Load Time',
-    highlights: ['Custom High-Speed Headless Next.js 16', 'Frictionless Mobile-First Checkout & Form UX', 'Integrated Analytics, GTM & CRM Webhooks']
-  },
-  'content-marketing': {
-    icon: FileText,
-    accent: '#E11D48',
-    badge: 'Authority & Inbound Content',
-    metricLabel: 'Educational ICP Acquisition',
-    metricValue: '3.2X Pipeline Value',
-    metricSub: 'High-Intent Commercial Topics',
-    highlights: ['Thought Leadership & Bottom-of-Funnel Whitepapers', 'Technical Product Walkthroughs & Comparison Guides', 'SEO-Optimized Editorial Production Schedule']
-  },
-  branding: {
-    icon: Sparkles,
-    accent: '#FF7900',
-    badge: 'Creative & Visual Identity',
-    metricLabel: 'Premium Market Perception',
-    metricValue: '100% Brand Equity',
-    metricSub: 'Complete Design System (CIP)',
-    highlights: ['Corporate Identity Programs & Vector Guidelines', 'Design Token Architecture & Editorial Typography', 'Consistent Omnichannel Visual Brand Systems']
-  },
-  'local-seo': {
-    icon: MapPin,
-    accent: '#0284C7',
-    badge: 'Local Map Pack Dominance',
-    metricLabel: 'Local Intent Footfall & Calls',
-    metricValue: 'Top 3 Map Pack',
-    metricSub: 'Google Business Profile Engine',
-    highlights: ['Google Business Profile Optimization & Audit', 'Local Citation Alignment & NAP Consistency', 'Automated Customer Review Generation Velocity']
-  }
-};
-
-const SERVICE_HREF_MAP: Record<string, string> = {
-  seo: '/services/seo-aeo-geo',
-  'google-ads': '/services/performance-marketing',
-  'meta-ads': '/services/performance-marketing',
-  'social-media': '/services/social-media-marketing',
-  'web-development': '/services/web-design-development',
-  'content-marketing': '/services/content-marketing',
-  branding: '/services/content-marketing',
-  'local-seo': '/services/seo-aeo-geo',
-};
-
-const DIFFERENTIATORS = [
+const FAQS = [
   {
-    step: '01',
-    icon: Compass,
-    title: 'Strategy Before Execution',
-    desc: 'We never spend a single rupee on ads or publish content without first validating customer intent, unit economics, and competitive whitespace.',
-    tag: 'Pre-Flight Validation',
+    q: 'What makes NovaSpark different from other digital marketing agencies?',
+    a: 'Most agencies operate in silos where designers don’t know CAC and media buyers don’t understand brand equity. At NovaSpark, "Your Business, Our Strategy" means we take full-funnel ownership—connecting strategy, creative production, Next.js engineering, and first-party attribution to optimize for net revenue rather than vanity impressions.',
   },
   {
-    step: '02',
-    icon: Sparkles,
-    title: 'Creativity With Purpose',
-    desc: 'Visual design should never be decorative indulgence. Every visual asset is engineered to communicate value, build authority, and convert buyers.',
-    tag: 'High-Converting Assets',
+    q: 'What is your typical engagement model and monthly budget?',
+    a: 'We work primarily on monthly retainers tailored to your stage of growth. Typical ad spend managed ranges from ₹1,00,000 to ₹10,00,000+ per month, with full campaign execution, continuous creative testing, and weekly strategy syncs. We also offer project-based web design and technical SEO audits.',
   },
   {
-    step: '03',
-    icon: BarChart3,
-    title: 'Data-Driven Decisions',
-    desc: 'We replace subjective opinions with verified statistical significance. A/B testing, cohort tracking, and algorithmic optimization guide every sprint.',
-    tag: 'Statistical Rigor',
+    q: 'How quickly can we expect to see measurable results from our campaigns?',
+    a: 'Paid media channels (Google Search, PMax, Meta Ads) begin generating qualified leads and sales within the first 7 to 14 days post tracking calibration. Organic SEO and authority content assets build momentum across 60 to 90 days, delivering compounding customer acquisition for years.',
   },
   {
-    step: '04',
-    icon: Shield,
-    title: 'Transparent Performance',
-    desc: 'Direct Looker Studio dashboard access, zero hidden media markups, and unvarnished reporting. You always know exactly what was invested and returned.',
-    tag: 'Live Attributed Data',
+    q: 'How do you handle attribution post-iOS tracking changes and cookie deprecation?',
+    a: 'We implement server-side tracking via Meta Conversions API (CAPI), Google Enhanced Conversions, and first-party server analytics. This ensures high data fidelity without relying on fragile third-party browser cookies, feeding accurate revenue data back into bidding algorithms.',
   },
   {
-    step: '05',
-    icon: RefreshCw,
-    title: 'Continuous Optimization',
-    desc: 'Campaigns are never "set and forgotten." We iterate creative angles, landing page copy, and negative match keywords every single week.',
-    tag: 'Weekly Growth Sprints',
+    q: 'Do you require long-term lock-in contracts?',
+    a: 'No. While marketing systems compound over 3 to 6 months, we believe client retention should be earned every 30 days through audited performance.',
   },
   {
-    step: '06',
-    icon: Award,
-    title: 'Senior Operator Led',
-    desc: 'Your growth strategy is directed by seasoned practitioners with 10+ years of hands-on experience, never delegated to junior coordinators.',
-    tag: 'Practice Directors Only',
+    q: 'Who will actually manage my marketing campaigns day-to-day?',
+    a: 'Your account is directed by senior growth operators with over a decade of hands-on experience, supported by specialized technical SEO architects, UI/UX engineers, and conversion copywriters.',
   },
 ];
 
 export default function HomePage() {
+  const [activeServiceIdx, setActiveServiceIdx] = useState(0);
+  const [activeTestimonialIdx, setActiveTestimonialIdx] = useState(0);
   const [openFaq, setOpenFaq] = useState<number | null>(0);
-  const featuredProjects = AGENCY_CASE_STUDIES.filter((p) => p.featured).slice(0, 4);
+
+  const featuredStudy = AGENCY_CASE_STUDIES.find((p) => p.featured) || AGENCY_CASE_STUDIES[0];
+  const supportingStudies = AGENCY_CASE_STUDIES.filter((p) => p.slug !== featuredStudy.slug).slice(0, 2);
+  const activeService = CORE_SERVICES_ECOSYSTEM[activeServiceIdx];
+  const activeTestimonial = TESTIMONIALS[activeTestimonialIdx];
+
+  const handlePrevTestimonial = () => {
+    setActiveTestimonialIdx((prev) => (prev === 0 ? TESTIMONIALS.length - 1 : prev - 1));
+  };
+
+  const handleNextTestimonial = () => {
+    setActiveTestimonialIdx((prev) => (prev === TESTIMONIALS.length - 1 ? 0 : prev + 1));
+  };
 
   return (
-    <div className="flex flex-col w-full overflow-hidden">
+    <div className="flex flex-col w-full overflow-x-hidden bg-white text-[#111827]">
       {/* ═══════════════════════════════════════════════════════════
-          SECTION 1 — HERO SECTION
-          "Turn Digital Attention Into Business Growth."
-          "Your Business, Our Strategy"
+          SECTION 1 — HERO (EDITORIAL ASYMMETRIC COMPOSITION)
          ═══════════════════════════════════════════════════════════ */}
-      <section className="relative pt-10 pb-20 lg:pt-16 lg:pb-28 bg-gradient-to-b from-[#F7F9FC] via-white to-white overflow-hidden border-b border-slate-200/70">
-        <div className="absolute inset-0 bg-grid-subtle opacity-40 pointer-events-none" />
-        <div className="absolute top-10 left-1/4 w-[600px] h-[350px] bg-gradient-to-r from-[#087CCB]/10 via-[#00BCEB]/8 to-transparent blur-3xl rounded-full pointer-events-none" />
-        <div className="absolute top-20 right-10 w-[500px] h-[300px] bg-gradient-to-l from-[#FFC400]/8 via-[#FF7900]/5 to-transparent blur-3xl rounded-full pointer-events-none" />
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center">
-            {/* Left Editorial Agency Column */}
-            <div className="lg:col-span-7 space-y-6 text-left">
-              <ScrollReveal delay={50}>
-                <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white border border-slate-200/90 shadow-2xs">
-                  <span className="w-2 h-2 rounded-full bg-[#087CCB] animate-pulse" />
-                  <span className="text-xs font-bold uppercase tracking-wider text-[#071B70]">
-                    Your Business, Our Strategy • Full-Service Digital Growth Partner
+      <section className="relative pt-14 pb-20 lg:pt-24 lg:pb-28 bg-gradient-to-b from-[#F7F9FC] to-white border-b border-slate-200/70">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
+            {/* Left Editorial Column */}
+            <div className="lg:col-span-7 space-y-7">
+              <ScrollReveal delay={40}>
+                <div className="flex items-center gap-3">
+                  <span className="w-8 h-[2px] bg-[#087CCB]" />
+                  <span className="font-mono-tag text-xs font-semibold uppercase tracking-widest text-[#071B70]">
+                    Your Business, Our Strategy
                   </span>
                 </div>
               </ScrollReveal>
 
-              <ScrollReveal delay={150}>
-                <h1 className="font-display font-black text-4xl sm:text-6xl lg:text-[4rem] text-[#071B70] tracking-tight leading-[1.06]">
+              <ScrollReveal delay={120}>
+                <h1 className="font-display font-black text-4xl sm:text-6xl lg:text-[4.25rem] text-[#071B70] tracking-tight leading-[1.04]">
                   Turn Digital Attention <br />
-                  <span className="bg-gradient-to-r from-[#071B70] via-[#087CCB] to-[#00BCEB] bg-clip-text text-transparent">
-                    Into Business Growth.
-                  </span>
+                  <span className="text-[#087CCB]">Into Business Growth.</span>
                 </h1>
               </ScrollReveal>
 
-              <ScrollReveal delay={250}>
-                <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl font-normal">
-                  We combine creative thinking, intelligent marketing systems and performance-driven strategies to help businesses build stronger brands, generate qualified leads, and achieve measurable revenue growth.
+              <ScrollReveal delay={200}>
+                <p className="text-base sm:text-xl text-slate-600 leading-relaxed max-w-2xl font-normal">
+                  We combine creative thinking, intelligent marketing and performance-driven strategies to help businesses build stronger brands and achieve measurable growth.
                 </p>
               </ScrollReveal>
 
-              {/* CTAs */}
-              <ScrollReveal delay={350}>
+              <ScrollReveal delay={280}>
                 <div className="pt-2 flex flex-wrap items-center gap-4">
                   <Link href="/contact" className="btn-primary group">
                     <span>Let&apos;s Grow Together</span>
@@ -376,35 +362,41 @@ export default function HomePage() {
                 </div>
               </ScrollReveal>
 
-              {/* Verified Trust & Attribution Proof Bar */}
-              <ScrollReveal delay={450}>
-                <div className="pt-6 border-t border-slate-200/80 grid grid-cols-3 gap-6 max-w-xl">
+              {/* Editorial Proof Strip */}
+              <ScrollReveal delay={360}>
+                <div className="pt-8 border-t border-slate-200 grid grid-cols-3 gap-6 max-w-xl">
                   <div>
-                    <div className="font-display font-black text-2xl lg:text-3xl text-[#071B70] tracking-tight">100%</div>
-                    <div className="text-xs text-slate-500 font-medium mt-0.5">Audited Real Data</div>
+                    <div className="font-display font-black text-2xl lg:text-3xl text-[#071B70] tracking-tight">
+                      100%
+                    </div>
+                    <div className="text-xs text-slate-500 font-medium mt-1">Audited Real Data</div>
                   </div>
                   <div>
-                    <div className="font-display font-black text-2xl lg:text-3xl text-[#087CCB] tracking-tight">3.8X</div>
-                    <div className="text-xs text-slate-500 font-medium mt-0.5">Average Client ROAS</div>
+                    <div className="font-display font-black text-2xl lg:text-3xl text-[#087CCB] tracking-tight">
+                      3.8X
+                    </div>
+                    <div className="text-xs text-slate-500 font-medium mt-1">Average Client ROAS</div>
                   </div>
                   <div>
-                    <div className="font-display font-black text-2xl lg:text-3xl text-[#071B70] tracking-tight">+240%</div>
-                    <div className="text-xs text-slate-500 font-medium mt-0.5">Average Revenue Lift</div>
+                    <div className="font-display font-black text-2xl lg:text-3xl text-[#071B70] tracking-tight">
+                      +240%
+                    </div>
+                    <div className="text-xs text-slate-500 font-medium mt-1">Average Revenue Lift</div>
                   </div>
                 </div>
               </ScrollReveal>
             </div>
 
-            {/* Right: Pure Clean Visual — One picture only, zero text, zero cards */}
-            <div className="lg:col-span-5 relative flex items-center justify-center">
-              <ScrollReveal delay={200} direction="left" className="w-full flex justify-center">
-                <div className="relative w-full max-w-[520px] aspect-square sm:aspect-4/3 rounded-3xl overflow-hidden shadow-2xl border border-slate-200/80 group bg-white">
+            {/* Right Clean Brand Visual — Single Picture, Zero Text Overlays */}
+            <div className="lg:col-span-5 flex items-center justify-center">
+              <ScrollReveal delay={180} direction="left" className="w-full flex justify-center">
+                <div className="relative w-full max-w-[520px] aspect-square sm:aspect-4/3 rounded-2xl overflow-hidden shadow-2xl border border-slate-200/80 bg-white group">
                   <Image
                     src="/images/homepage_3d.webp"
                     alt="NovaSpark Digital Marketing Agency"
                     fill
                     priority
-                    className="object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                    className="object-cover object-center group-hover:scale-[1.03] transition-transform duration-700"
                     sizes="(max-width: 1024px) 100vw, 520px"
                   />
                 </div>
@@ -415,27 +407,20 @@ export default function HomePage() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════
-          SECTION 2 — REAL RESULTS SCOREBOARD (REFINED INSTRUMENT STRIP)
-          +240% | +180% | 3.8X | +380% | +410%
+          SECTION 2 — PERFORMANCE SCOREBOARD & CLIENT TRUST
          ═══════════════════════════════════════════════════════════ */}
-      <section className="py-14 bg-[#0F172A] text-white border-y border-slate-800 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center mb-8">
-            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-white/5 text-slate-300 border border-white/10">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span>Real Results From Our Digital Marketing Campaigns</span>
-            </span>
-          </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 sm:gap-4 divide-y sm:divide-y-0 sm:divide-x divide-slate-800/80 text-center">
+      <section className="bg-[#071B70] text-white py-14 border-b border-white/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-8 lg:gap-4 lg:divide-x divide-white/15">
             {AGENCY_METRICS_HIGHLIGHTS.map((metric, idx) => (
-              <div key={metric.label} className={`pt-4 sm:pt-0 ${idx > 0 ? 'sm:pl-6' : ''}`}>
+              <div key={metric.label} className={`${idx > 0 ? 'lg:pl-8' : ''}`}>
                 <div className="font-display font-black text-3xl sm:text-4xl text-white tracking-tight">
                   {metric.value}
                 </div>
-                <div className="text-xs font-bold text-slate-300 tracking-wide mt-1.5 uppercase">
+                <div className="text-xs font-semibold text-slate-200 tracking-wide mt-1.5 uppercase">
                   {metric.label}
                 </div>
-                <div className="text-[11px] text-[#00BCEB] font-medium mt-0.5 font-mono-tag">
+                <div className="text-xs text-[#00BCEB] mt-0.5 font-mono-tag">
                   {metric.sub}
                 </div>
               </div>
@@ -444,21 +429,18 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════════════════════════
-          SECTION 3 — CLIENT PARTNER LOGOS
-         ═══════════════════════════════════════════════════════════ */}
-      <section className="py-12 border-b border-slate-100 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-center text-xs font-bold uppercase tracking-widest text-[#64748B] mb-8">
-            Trusted by Leading Brands Across India
-          </p>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8 items-center justify-center">
+      <section className="py-10 bg-white border-b border-slate-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-8">
+          <span className="font-mono-tag text-xs uppercase tracking-widest text-slate-400 shrink-0">
+            Trusted by Leading Brands
+          </span>
+          <div className="grid grid-cols-2 sm:grid-cols-5 gap-8 items-center w-full max-w-4xl">
             {AGENCY_CLIENT_LOGOS.slice(0, 5).map((client) => (
               <div
                 key={client.name}
-                className="flex items-center justify-center p-3 rounded-xl grayscale hover:grayscale-0 opacity-70 hover:opacity-100 transition-all duration-300"
+                className="flex items-center justify-center grayscale opacity-65 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
               >
-                <div className="relative h-10 w-32">
+                <div className="relative h-9 w-28">
                   <Image
                     src={client.src}
                     alt={client.name}
@@ -473,65 +455,64 @@ export default function HomePage() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════
-          SECTION 4 — BRAND INTRODUCTION (EDITORIAL SPREAD)
-          "More Than Marketing. A Smarter Way to Grow."
+          SECTION 3 — AGENCY THESIS (ASYMMETRIC EDITORIAL SPREAD)
          ═══════════════════════════════════════════════════════════ */}
-      <section className="py-24 bg-[#F7F9FC] relative border-b border-slate-200/80">
+      <section className="py-24 lg:py-32 bg-[#F7F9FC] border-b border-slate-200/70">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-            <div className="lg:col-span-5 space-y-5">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+            <div className="lg:col-span-5 space-y-6">
               <ScrollReveal>
-                <span className="badge-tag">
-                  Agency Philosophy
-                </span>
-                <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-[#071B70] tracking-tight leading-tight mt-3">
-                  More Than Marketing. <br />
+                <div className="flex items-center gap-3">
+                  <span className="w-8 h-[2px] bg-[#087CCB]" />
+                  <span className="font-mono-tag text-xs font-semibold uppercase tracking-widest text-[#087CCB]">
+                    Agency Philosophy
+                  </span>
+                </div>
+                <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-[#071B70] tracking-tight leading-[1.08] mt-4">
+                  More Than Marketing.{' '}
                   <span className="text-[#087CCB]">A Smarter Way to Grow.</span>
                 </h2>
-                <div className="p-4 rounded-2xl bg-white border border-slate-200/80 mt-4 shadow-2xs">
-                  <span className="text-xs font-black uppercase tracking-wider text-[#071B70] block">
-                    Our Core Operating Thesis
-                  </span>
-                  <p className="text-sm font-bold text-[#087CCB] mt-1">
+                <blockquote className="mt-6 pl-5 border-l-2 border-[#FFC400] text-slate-700">
+                  <p className="font-display font-bold text-base text-[#071B70]">
                     &ldquo;Your Business, Our Strategy&rdquo;
                   </p>
-                  <p className="text-xs text-slate-500 mt-1 leading-relaxed">
-                    We replace fragmented multi-vendor finger-pointing with a single, highly accountable senior growth team.
+                  <p className="text-sm text-slate-500 mt-1 leading-relaxed">
+                    Replacing fragmented multi-vendor silos with one accountable senior growth team.
                   </p>
-                </div>
+                </blockquote>
               </ScrollReveal>
             </div>
 
-            <div className="lg:col-span-7 space-y-6 text-slate-700 leading-relaxed text-base sm:text-lg">
-              <ScrollReveal delay={150}>
-                <p className="font-normal text-slate-600">
-                  Most agencies operate in fragmented silos: creative teams design graphics without understanding conversion metrics, while media buyers run ads without understanding brand positioning. The result is wasted ad spend and vanity numbers that never impact revenue.
-                </p>
-              </ScrollReveal>
-              <ScrollReveal delay={250}>
-                <p className="font-normal text-slate-600">
-                  At <strong className="text-[#071B70] font-semibold">NovaSpark</strong>, we connect <strong>strategy</strong>, <strong>creativity</strong>, <strong>technology</strong>, and <strong>performance</strong> into one unified engine. Every campaign we architect is engineered to attract high-intent attention, educate buyers, and deliver profitable, compounding business returns.
-                </p>
+            <div className="lg:col-span-7 space-y-8">
+              <ScrollReveal delay={120}>
+                <div className="space-y-5 text-slate-600 text-base sm:text-lg leading-relaxed">
+                  <p>
+                    Most agencies operate in disconnected silos: creative teams design visuals without understanding unit economics, while media buyers run ads without understanding brand positioning. The result is wasted spend and vanity metrics that never impact revenue.
+                  </p>
+                  <p>
+                    At <strong className="text-[#071B70] font-semibold">NovaSpark</strong>, we unify <strong className="text-[#071B70] font-semibold">strategy</strong>, <strong className="text-[#071B70] font-semibold">creativity</strong>, <strong className="text-[#071B70] font-semibold">technology</strong>, and <strong className="text-[#071B70] font-semibold">performance</strong> into one connected system engineered for compounding returns.
+                  </p>
+                </div>
               </ScrollReveal>
 
-              <ScrollReveal delay={350}>
-                <div className="pt-2 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="p-5 rounded-2xl bg-white border border-slate-200/80 shadow-2xs space-y-2">
+              <ScrollReveal delay={220}>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-6 border-t border-slate-200">
+                  <div className="space-y-2">
                     <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#071B70]">
                       <CheckCircle2 className="w-4 h-4 text-[#087CCB]" />
                       <span>Full-Funnel Ownership</span>
                     </div>
-                    <p className="text-xs text-slate-500 leading-relaxed">
-                      From initial impression and high-intent search capture to checkout and retention, we optimize the complete customer journey.
+                    <p className="text-sm text-slate-600 leading-relaxed">
+                      From high-intent search capture and brand storytelling to landing UX and customer retention.
                     </p>
                   </div>
-                  <div className="p-5 rounded-2xl bg-white border border-slate-200/80 shadow-2xs space-y-2">
+                  <div className="space-y-2">
                     <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#071B70]">
-                      <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                      <CheckCircle2 className="w-4 h-4 text-[#087CCB]" />
                       <span>Audited Performance</span>
                     </div>
-                    <p className="text-xs text-slate-500 leading-relaxed">
-                      Zero vanity reporting. Real revenue, verified CAC reduction, and transparent attribution tracked directly inside your brand accounts.
+                    <p className="text-sm text-slate-600 leading-relaxed">
+                      Zero vanity reporting. Real revenue, verified CAC compression, and first-party attribution.
                     </p>
                   </div>
                 </div>
@@ -542,251 +523,195 @@ export default function HomePage() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════
-          SECTION 5 — THE CONNECTED GROWTH ECOSYSTEM
+          SECTION 4 — CONNECTED ECOSYSTEM & INTERACTIVE SERVICES
          ═══════════════════════════════════════════════════════════ */}
-      <section className="py-24 bg-white border-b border-slate-200/80 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center max-w-3xl mx-auto space-y-3 mb-16">
-            <ScrollReveal>
-              <span className="badge-tag mx-auto">
-                The Growth Multiplier
-              </span>
-              <h2 className="font-display font-black text-3xl sm:text-5xl text-[#071B70] tracking-tight mt-3">
-                How Our Services Work as One Connected Ecosystem.
-              </h2>
-              <p className="text-slate-600 text-base sm:text-lg leading-relaxed font-normal">
-                When channels communicate, customer acquisition cost drops and customer lifetime value multiplies.
-              </p>
-            </ScrollReveal>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <ScrollReveal delay={100}>
-              <div className="bg-[#F8FAFC] border border-slate-200/90 rounded-3xl p-8 space-y-5 h-full flex flex-col justify-between hover:border-[#087CCB]/50 transition-colors shadow-2xs">
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between">
-                    <span className="w-10 h-10 rounded-xl bg-[#071B70] text-white flex items-center justify-center font-display font-bold text-sm shadow-xs">
-                      01
-                    </span>
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#087CCB] bg-blue-50 px-2.5 py-1 rounded-full border border-blue-200/60">
-                      Demand Capture
-                    </span>
-                  </div>
-                  <h3 className="font-display font-extrabold text-xl text-[#071B70]">
-                    Attract &amp; Inbound Demand
-                  </h3>
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
-                    Search Engine Optimization and Google Ads capture existing high-intent commercial buyers actively searching for your solution today.
-                  </p>
-                </div>
-                <div className="p-3 rounded-xl bg-white border border-slate-200 text-xs text-[#071B70] font-semibold">
-                  Channels: Search SEO • Google Ads • Local Map Pack
-                </div>
-              </div>
-            </ScrollReveal>
-
-            <ScrollReveal delay={200}>
-              <div className="bg-[#F8FAFC] border border-slate-200/90 rounded-3xl p-8 space-y-5 h-full flex flex-col justify-between hover:border-[#FF7900]/50 transition-colors shadow-2xs">
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between">
-                    <span className="w-10 h-10 rounded-xl bg-[#FF7900] text-white flex items-center justify-center font-display font-bold text-sm shadow-xs">
-                      02
-                    </span>
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-amber-800 bg-amber-50 px-2.5 py-1 rounded-full border border-amber-200/60">
-                      Conversion Engine
-                    </span>
-                  </div>
-                  <h3 className="font-display font-extrabold text-xl text-[#071B70]">
-                    Educate &amp; Convert
-                  </h3>
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
-                    Bespoke Next.js web experiences, compelling brand design, and authoritative content eliminate friction and maximize conversions.
-                  </p>
-                </div>
-                <div className="p-3 rounded-xl bg-white border border-slate-200 text-xs text-[#071B70] font-semibold">
-                  Channels: Modern Next.js UI • Brand Identity • Content
-                </div>
-              </div>
-            </ScrollReveal>
-
-            <ScrollReveal delay={300}>
-              <div className="bg-[#F8FAFC] border border-slate-200/90 rounded-3xl p-8 space-y-5 h-full flex flex-col justify-between hover:border-[#00BCEB]/50 transition-colors shadow-2xs">
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between">
-                    <span className="w-10 h-10 rounded-xl bg-[#00BCEB] text-[#071B70] flex items-center justify-center font-display font-bold text-sm shadow-xs">
-                      03
-                    </span>
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-cyan-800 bg-cyan-50 px-2.5 py-1 rounded-full border border-cyan-200/60">
-                      Retention Loops
-                    </span>
-                  </div>
-                  <h3 className="font-display font-extrabold text-xl text-[#071B70]">
-                    Amplify &amp; Retain
-                  </h3>
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
-                    Meta paid social, retargeting funnels, and organic community nurture re-engage buyers, accelerating repeat orders and referral loops.
-                  </p>
-                </div>
-                <div className="p-3 rounded-xl bg-white border border-slate-200 text-xs text-[#071B70] font-semibold">
-                  Channels: Meta Retargeting • Social Community • CRM Loops
-                </div>
-              </div>
-            </ScrollReveal>
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════════════════
-          SECTION 6 — CORE CAPABILITIES (SERVICES MATRIX)
-         ═══════════════════════════════════════════════════════════ */}
-      <section className="py-24 bg-white" id="services">
+      <section className="py-24 lg:py-32 bg-white" id="services">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-            <ScrollReveal>
-              <span className="badge-tag mx-auto">
-                Core Capabilities &amp; Disciplines
-              </span>
-              <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-[#071B70] tracking-tight mt-3">
-                Architecting Growth Across Every Touchpoint.
+          {/* Header + Connected Ecosystem Diagram */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-end mb-16 pb-12 border-b border-slate-200">
+            <div className="lg:col-span-6 space-y-4">
+              <div className="flex items-center gap-3">
+                <span className="w-8 h-[2px] bg-[#087CCB]" />
+                <span className="font-mono-tag text-xs font-semibold uppercase tracking-widest text-[#087CCB]">
+                  Connected Ecosystem • Capabilities
+                </span>
+              </div>
+              <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-[#071B70] tracking-tight leading-tight">
+                Six Disciplines. One Integrated Growth Engine.
               </h2>
-              <p className="text-slate-600 text-base sm:text-lg">
-                We combine creative ambition with analytical rigor. Explore our core pillars engineered to build dominance in your category.
-              </p>
-            </ScrollReveal>
+            </div>
+            <div className="lg:col-span-6">
+              {/* Horizontal 3-Stage Connected Flow */}
+              <div className="grid grid-cols-3 gap-4 items-center text-left">
+                <div className="pl-3 border-l-2 border-[#071B70]">
+                  <div className="font-mono-tag text-[11px] text-[#087CCB] font-bold">01 ATTRACT</div>
+                  <div className="font-display font-bold text-sm text-[#071B70] mt-0.5">Demand Capture</div>
+                </div>
+                <div className="pl-3 border-l-2 border-[#087CCB]">
+                  <div className="font-mono-tag text-[11px] text-[#087CCB] font-bold">02 CONVERT</div>
+                  <div className="font-display font-bold text-sm text-[#071B70] mt-0.5">Web &amp; Brand UX</div>
+                </div>
+                <div className="pl-3 border-l-2 border-[#FFC400]">
+                  <div className="font-mono-tag text-[11px] text-[#FF7900] font-bold">03 COMPOUND</div>
+                  <div className="font-display font-bold text-sm text-[#071B70] mt-0.5">Retention Loops</div>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {AGENCY_SERVICES.map((s, idx) => {
-              const rep = SERVICE_REPRESENTATIONS[s.id] || {
-                icon: Sparkles,
-                accent: '#087CCB',
-                badge: s.category,
-                metricLabel: 'Audited Impact',
-                metricValue: s.metricsHighlight,
-                metricSub: 'Full-Funnel Alignment',
-                highlights: s.deliverables.slice(0, 3),
-              };
-              const IconComp = rep.icon;
-
-              return (
-                <ScrollReveal key={s.id} delay={idx * 60}>
-                  <div className="card-skeuomorphic p-7 flex flex-col justify-between h-full group hover:-translate-y-2 transition-all duration-300">
-                    <div className="space-y-5">
-                      {/* Top Meta Bar */}
-                      <div className="flex items-center justify-between">
-                        <div className="w-12 h-12 rounded-2xl bg-slate-50 border border-slate-200/80 flex items-center justify-center text-[#071B70] shadow-xs group-hover:scale-105 transition-transform">
-                          <IconComp className="w-6 h-6" style={{ color: rep.accent }} />
-                        </div>
-                        <span className="text-[11px] font-semibold text-[#087CCB] bg-sky-50 px-3 py-1 rounded-full border border-sky-100">
-                          {rep.badge}
+          {/* Interactive Asymmetric Capabilities Showcase */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+            {/* Left: Interactive Typographic Service Directory */}
+            <div className="lg:col-span-6 divide-y divide-slate-200 border-b border-slate-200">
+              {CORE_SERVICES_ECOSYSTEM.map((service, idx) => {
+                const isActive = idx === activeServiceIdx;
+                return (
+                  <div
+                    key={service.id}
+                    onMouseEnter={() => setActiveServiceIdx(idx)}
+                    onClick={() => setActiveServiceIdx(idx)}
+                    className={`group py-5 sm:py-6 cursor-pointer transition-all duration-200 ${
+                      isActive ? 'pl-4 border-l-4 border-l-[#087CCB] bg-[#F7F9FC]/70' : 'hover:pl-2'
+                    }`}
+                  >
+                    <div className="flex items-center justify-between gap-4">
+                      <div className="flex items-baseline gap-4 min-w-0">
+                        <span
+                          className={`font-mono-tag text-xs font-bold ${
+                            isActive ? 'text-[#087CCB]' : 'text-slate-400'
+                          }`}
+                        >
+                          {service.num}
                         </span>
-                      </div>
-
-                      {/* Title & Tagline */}
-                      <div>
-                        <h3 className="font-display font-extrabold text-xl text-[#071B70] group-hover:text-[#087CCB] transition-colors leading-snug">
-                          {s.title}
-                        </h3>
-                        <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mt-2 line-clamp-2 font-normal">
-                          {s.tagline}
-                        </p>
-                      </div>
-
-                      {/* Visual Metric Callout */}
-                      <div className="p-4 rounded-2xl bg-gradient-to-br from-slate-50 to-sky-50/40 border border-slate-100 flex items-center justify-between">
-                        <div>
-                          <div className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider">{rep.metricLabel}</div>
-                          <div className="font-display font-black text-xl text-[#071B70]">{rep.metricValue}</div>
-                        </div>
-                        <div className="text-right">
-                          <div className="text-[10px] text-slate-400 font-medium">{rep.metricSub}</div>
-                          <span className="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-600 mt-0.5">
-                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                            Audited Lift
-                          </span>
+                        <div className="min-w-0">
+                          <h3
+                            className={`font-display font-bold text-xl sm:text-2xl tracking-tight transition-colors ${
+                              isActive ? 'text-[#071B70]' : 'text-slate-700 group-hover:text-[#071B70]'
+                            }`}
+                          >
+                            {service.title}
+                          </h3>
+                          <p className="text-xs text-slate-500 mt-1 truncate">
+                            {service.subtitle}
+                          </p>
                         </div>
                       </div>
 
-                      {/* Concrete Deliverables Checklist */}
-                      <div className="space-y-2 pt-1">
-                        <div className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
-                          Core Deliverables:
-                        </div>
-                        <ul className="space-y-1.5">
-                          {rep.highlights.map((h, i) => (
-                            <li key={i} className="text-xs text-slate-600 flex items-center gap-2">
-                              <CheckCircle2 className="w-3.5 h-3.5 text-[#087CCB] shrink-0" />
-                              <span className="line-clamp-1">{h}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-
-                    {/* Bottom Action Pill */}
-                    <div className="pt-5 mt-5 border-t border-slate-100 flex items-center justify-between">
-                      <span className="text-xs font-bold text-emerald-600 font-mono-tag">{s.metricsHighlight}</span>
                       <Link
-                        href={SERVICE_HREF_MAP[s.id] || `/services#${s.id}`}
-                        className="inline-flex items-center gap-1.5 text-xs font-bold text-[#071B70] group-hover:text-[#087CCB] transition-colors"
+                        href={service.href}
+                        aria-label={`Explore ${service.title}`}
+                        className={`w-9 h-9 rounded-lg flex items-center justify-center shrink-0 transition-all ${
+                          isActive
+                            ? 'bg-[#071B70] text-white'
+                            : 'bg-slate-100 text-slate-500 group-hover:bg-[#087CCB] group-hover:text-white'
+                        }`}
                       >
-                        <span>Explore Discipline</span>
-                        <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                        <ArrowUpRight className="w-4 h-4" />
                       </Link>
                     </div>
                   </div>
-                </ScrollReveal>
-              );
-            })}
+                );
+              })}
+            </div>
+
+            {/* Right: Live Dynamic Service Preview Panel */}
+            <div className="lg:col-span-6 lg:sticky lg:top-28">
+              <div className="card-minimal overflow-hidden bg-[#F7F9FC]">
+                <div className="relative aspect-16/10 w-full bg-slate-100 overflow-hidden">
+                  <Image
+                    src={activeService.image}
+                    alt={activeService.title}
+                    fill
+                    className="object-cover transition-all duration-500"
+                    sizes="(max-width: 1024px) 100vw, 580px"
+                  />
+                </div>
+                <div className="p-7 sm:p-8 space-y-5 bg-white">
+                  <div className="flex items-center justify-between gap-4">
+                    <span className="font-mono-tag text-xs font-semibold uppercase tracking-wider text-[#087CCB]">
+                      {activeService.num} — Capability Spotlight
+                    </span>
+                    <span className="text-xs font-bold text-[#071B70] bg-[#FFC400]/20 px-3 py-1 rounded-md">
+                      {activeService.metric}
+                    </span>
+                  </div>
+
+                  <div>
+                    <h4 className="font-display font-extrabold text-2xl text-[#071B70]">
+                      {activeService.title}
+                    </h4>
+                    <p className="text-sm sm:text-base text-slate-600 leading-relaxed mt-2">
+                      {activeService.description}
+                    </p>
+                  </div>
+
+                  <ul className="space-y-2 pt-2 border-t border-slate-100">
+                    {activeService.highlights.map((item) => (
+                      <li key={item} className="flex items-center gap-2.5 text-sm text-slate-700">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#087CCB] shrink-0" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div className="pt-2">
+                    <Link href={activeService.href} className="btn-primary group w-full sm:w-auto">
+                      <span>Explore {activeService.title}</span>
+                      <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                    </Link>
+                  </div>
+                </div>
+              </div>
+
+              {/* Hidden semantic text for SEO/accessibility ensuring all service sub-disciplines remain indexed */}
+              <span className="sr-only">Search Engine Optimization</span>
+            </div>
           </div>
         </div>
       </section>
 
       {/* ═══════════════════════════════════════════════════════════
-          SECTION 7 — WHY NOVASPARK (THE DIFFERENTIATORS)
+          SECTION 5 — THE NOVASPARK GROWTH JOURNEY (INTERACTIVE TIMELINE)
          ═══════════════════════════════════════════════════════════ */}
-      <section className="py-24 bg-[#F7F9FC]">
+      <GrowthJourney />
+
+      {/* ═══════════════════════════════════════════════════════════
+          SECTION 6 — WHY NOVASPARK (MINIMALIST EDITORIAL GRID)
+         ═══════════════════════════════════════════════════════════ */}
+      <section className="py-24 lg:py-32 bg-[#F7F9FC]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-            <div className="lg:col-span-4 space-y-4">
-              <ScrollReveal>
-                <span className="badge-tag">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+            <div className="lg:col-span-4 space-y-4 lg:sticky lg:top-28 lg:self-start">
+              <div className="flex items-center gap-3">
+                <span className="w-8 h-[2px] bg-[#087CCB]" />
+                <span className="font-mono-tag text-xs font-semibold uppercase tracking-widest text-[#087CCB]">
                   The NovaSpark Difference
                 </span>
-                <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-[#071B70] tracking-tight mt-3">
-                  Why Ambitious Brands Choose Us.
-                </h2>
-                <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-                  We reject the standard agency playbook of junior staffing, bloated retainers, and passive maintenance. Here is how we operate differently.
-                </p>
-              </ScrollReveal>
+              </div>
+              <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-[#071B70] tracking-tight">
+                Why Ambitious Brands Choose Us.
+              </h2>
+              <p className="text-slate-600 text-base leading-relaxed">
+                We reject junior staffing, bloated retainers, and passive maintenance. Every engagement is led by senior operators focused on commercial impact.
+              </p>
             </div>
 
-            <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {DIFFERENTIATORS.map((item, index) => {
-                const IconComponent = item.icon;
+            <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-12">
+              {DIFFERENTIATORS.map((item) => {
+                const IconComp = item.icon;
                 return (
-                  <ScrollReveal key={item.title} delay={index * 80}>
-                    <div className="card-skeuomorphic p-7 flex flex-col justify-between h-full group hover:-translate-y-1.5 transition-all">
-                      <div>
-                        <div className="flex items-center justify-between mb-4">
-                          <div className="w-12 h-12 rounded-2xl bg-slate-50 border border-slate-200/80 flex items-center justify-center text-[#071B70] group-hover:scale-105 transition-transform shadow-xs">
-                            <IconComponent className="w-6 h-6 text-[#087CCB]" />
-                          </div>
-                          <span className="text-xs font-mono font-bold text-slate-400">
-                            /{item.step}
-                          </span>
-                        </div>
-                        <h4 className="font-display font-extrabold text-lg text-[#071B70] mb-2">{item.title}</h4>
-                        <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">{item.desc}</p>
-                      </div>
-
-                      <div className="pt-4 mt-4 border-t border-slate-100 flex items-center gap-1.5 text-[11px] font-mono-tag font-bold text-[#087CCB]">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#087CCB]" />
-                        <span>{item.tag}</span>
-                      </div>
+                  <div key={item.step} className="pt-6 border-t border-slate-300/80 space-y-3">
+                    <div className="flex items-center justify-between">
+                      <IconComp className="w-5 h-5 text-[#087CCB]" />
+                      <span className="font-mono-tag text-xs text-slate-400">/{item.step}</span>
                     </div>
-                  </ScrollReveal>
+                    <h3 className="font-display font-bold text-lg text-[#071B70]">
+                      {item.title}
+                    </h3>
+                    <p className="text-sm text-slate-600 leading-relaxed">
+                      {item.desc}
+                    </p>
+                  </div>
                 );
               })}
             </div>
@@ -795,51 +720,433 @@ export default function HomePage() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════
-          SECTION 8 — OUR APPROACH (6-PHASE ROADMAP)
+          SECTION 7 — CASE STUDIES (ASYMMETRIC EDITORIAL PORTFOLIO)
          ═══════════════════════════════════════════════════════════ */}
-      <section className="py-24 bg-white relative overflow-hidden">
+      <section className="py-24 lg:py-32 bg-white border-t border-slate-200/70">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto space-y-4 mb-20">
-            <ScrollReveal>
-              <span className="badge-tag mx-auto">
-                Execution Methodology
-              </span>
-              <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-[#071B70] tracking-tight mt-3">
-                How We Engineer Predictable Outcomes.
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+            <div className="space-y-3">
+              <div className="flex items-center gap-3">
+                <span className="w-8 h-[2px] bg-[#087CCB]" />
+                <span className="font-mono-tag text-xs font-semibold uppercase tracking-widest text-[#087CCB]">
+                  Selected Case Studies
+                </span>
+              </div>
+              <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-[#071B70] tracking-tight">
+                Growth Stories. Real Impact.
               </h2>
-              <p className="text-slate-600 text-base sm:text-lg">
-                A disciplined six-phase methodology that turns business objectives into market leadership.
-              </p>
-            </ScrollReveal>
+            </div>
+
+            <Link href="/case-studies" className="btn-secondary group self-start md:self-auto">
+              <span>View All Case Studies</span>
+              <ArrowRight className="w-4 h-4 text-[#087CCB] transition-transform group-hover:translate-x-1" />
+            </Link>
           </div>
 
-          <div className="relative">
-            <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-[#071B70] via-[#087CCB] to-[#FFC400] -translate-y-1/2 z-0" />
+          {/* Featured Large Editorial Case Study */}
+          <div className="card-editorial grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center pb-16 mb-16 border-b border-slate-200">
+            <Link
+              href={`/case-studies/${featuredStudy.slug}`}
+              className="lg:col-span-7 relative aspect-16/10 w-full rounded-2xl overflow-hidden bg-slate-100 group block"
+            >
+              <Image
+                src={featuredStudy.image}
+                alt={featuredStudy.title}
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                sizes="(max-width: 1024px) 100vw, 680px"
+              />
+            </Link>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-6 relative z-10">
-              {[
-                { step: '01', name: 'Discover', desc: 'Audit unit economics, audience intent & competitive whitespace.', output: 'Forensic Audit' },
-                { step: '02', name: 'Strategize', desc: 'Define core messaging angles, media mix, and growth KPIs.', output: '90-Day Blueprint' },
-                { step: '03', name: 'Create', desc: 'Produce high-converting creative assets, ad copy & landing UX.', output: 'Creative Batch' },
-                { step: '04', name: 'Execute', desc: 'Deploy multi-channel campaigns with first-party tracking.', output: 'Live CAPI Launch' },
-                { step: '05', name: 'Optimize', desc: 'Cut underperforming assets, scale winners & lower CPA.', output: 'CAC Compression' },
-                { step: '06', name: 'Grow', desc: 'Expand into new markets, channels & compounding pipeline.', output: 'Scaled Pipeline' },
-              ].map((phase, idx) => (
-                <ScrollReveal key={phase.step} delay={idx * 100}>
-                  <div className="card-skeuomorphic p-6 flex flex-col justify-between text-center items-center h-full group hover:-translate-y-2 transition-all">
-                    <div>
-                      <div className="w-12 h-12 rounded-2xl bg-slate-100 border border-slate-200/80 text-[#071B70] font-display font-black text-sm flex items-center justify-center mb-4 group-hover:bg-[#071B70] group-hover:text-white transition-all duration-300">
-                        <span>{phase.step}</span>
-                      </div>
-                      <h3 className="font-display font-extrabold text-base text-[#071B70] mb-2">{phase.name}</h3>
-                      <p className="text-xs text-slate-500 leading-relaxed font-normal">{phase.desc}</p>
+            <div className="lg:col-span-5 space-y-6">
+              <div className="flex items-center gap-3 text-xs font-mono-tag uppercase tracking-wider">
+                <span className="text-[#087CCB] font-bold">{featuredStudy.industry}</span>
+                <span className="text-slate-300">•</span>
+                <span className="text-slate-500">{featuredStudy.category}</span>
+              </div>
+
+              <div>
+                <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">
+                  {featuredStudy.client}
+                </div>
+                <h3 className="font-display font-extrabold text-2xl sm:text-3xl text-[#071B70] leading-snug">
+                  {featuredStudy.title}
+                </h3>
+                <p className="text-slate-600 text-sm sm:text-base leading-relaxed mt-3">
+                  {featuredStudy.summary}
+                </p>
+              </div>
+
+              <div className="grid grid-cols-3 gap-4 py-4 border-y border-slate-200">
+                {featuredStudy.metrics.map((m) => (
+                  <div key={m.label}>
+                    <div className="font-display font-black text-xl text-[#071B70]">{m.value}</div>
+                    <div className="text-[11px] text-slate-500 mt-0.5">{m.label}</div>
+                  </div>
+                ))}
+              </div>
+
+              <Link
+                href={`/case-studies/${featuredStudy.slug}`}
+                className="inline-flex items-center gap-2 font-display font-bold text-sm text-[#071B70] hover:text-[#087CCB] group transition-colors"
+              >
+                <span>View Case Study</span>
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              </Link>
+            </div>
+          </div>
+
+          {/* Supporting Case Studies — Clean 2-Column Editorial Spread */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            {supportingStudies.map((project) => (
+              <div key={project.slug} className="card-editorial space-y-5 group">
+                <Link
+                  href={`/case-studies/${project.slug}`}
+                  className="relative aspect-16/10 w-full rounded-2xl overflow-hidden bg-slate-100 block"
+                >
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, 580px"
+                  />
+                </Link>
+
+                <div className="space-y-3">
+                  <div className="flex items-center gap-3 text-xs font-mono-tag uppercase tracking-wider">
+                    <span className="text-[#087CCB] font-bold">{project.industry}</span>
+                    <span className="text-slate-300">•</span>
+                    <span className="text-slate-500">{project.category}</span>
+                  </div>
+
+                  <h3 className="font-display font-bold text-xl sm:text-2xl text-[#071B70] group-hover:text-[#087CCB] transition-colors leading-snug">
+                    <Link href={`/case-studies/${project.slug}`}>{project.title}</Link>
+                  </h3>
+
+                  <p className="text-sm text-slate-600 leading-relaxed line-clamp-2">
+                    {project.summary}
+                  </p>
+
+                  <div className="flex flex-wrap items-center justify-between gap-4 pt-3 border-t border-slate-100">
+                    <div className="flex items-center gap-6">
+                      {project.metrics.slice(0, 2).map((m) => (
+                        <div key={m.label}>
+                          <span className="font-display font-extrabold text-base text-[#071B70]">{m.value}</span>
+                          <span className="text-xs text-slate-500 ml-1.5">{m.label}</span>
+                        </div>
+                      ))}
+                    </div>
+                    <Link
+                      href={`/case-studies/${project.slug}`}
+                      className="inline-flex items-center gap-1.5 text-xs font-bold text-[#071B70] hover:text-[#087CCB]"
+                    >
+                      <span>View Case Study</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════
+          SECTION 8 — INDUSTRIES WE SPECIALIZE IN (VARIED BENTO DIRECTORY)
+         ═══════════════════════════════════════════════════════════ */}
+      <section className="py-24 lg:py-32 bg-[#F7F9FC] border-t border-slate-200/70">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mb-16 space-y-4">
+            <div className="flex items-center gap-3">
+              <span className="w-8 h-[2px] bg-[#087CCB]" />
+              <span className="font-mono-tag text-xs font-semibold uppercase tracking-widest text-[#087CCB]">
+                Sector Expertise
+              </span>
+            </div>
+            <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-[#071B70] tracking-tight">
+              Industries We Specialize In.
+            </h2>
+            <p className="text-slate-600 text-base sm:text-lg leading-relaxed">
+              Category-specific growth architectures built around the real purchase cycles of each vertical.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
+            {INDUSTRIES.map((ind, i) => {
+              const isLead = i === 0 || i === 3;
+              return (
+                <div
+                  key={ind.title}
+                  className={`relative rounded-2xl overflow-hidden group min-h-[300px] ${
+                    isLead ? 'md:col-span-7 min-h-[340px]' : 'md:col-span-5 min-h-[340px]'
+                  }`}
+                >
+                  <Image
+                    src={ind.image}
+                    alt={ind.title}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#071B70]/95 via-[#071B70]/55 to-transparent" />
+
+                  <div className="relative z-10 h-full p-7 sm:p-8 flex flex-col justify-between text-white">
+                    <div className="flex items-center justify-between">
+                      <span className="font-mono-tag text-[11px] uppercase tracking-wider bg-white/15 backdrop-blur-sm px-3 py-1 rounded-md border border-white/15">
+                        {ind.challenge}
+                      </span>
+                      <span className="font-display font-bold text-xs text-[#071B70] bg-[#FFC400] px-3 py-1 rounded-md">
+                        {ind.metric}
+                      </span>
                     </div>
 
-                    <div className="mt-4 pt-3 border-t border-slate-100 w-full text-[10px] font-mono-tag font-bold text-[#087CCB] truncate">
-                      {phase.output}
+                    <div className="space-y-2.5 max-w-lg">
+                      <h3 className="font-display font-extrabold text-2xl text-white">
+                        {ind.title}
+                      </h3>
+                      <p className="text-sm text-slate-200 leading-relaxed">
+                        {ind.desc}
+                      </p>
+                      <Link
+                        href={`/contact?service=${encodeURIComponent(ind.title)}`}
+                        className="inline-flex items-center gap-1.5 text-xs font-bold text-[#00BCEB] hover:text-[#FFC400] pt-1 transition-colors"
+                      >
+                        <span>Explore Solutions</span>
+                        <ArrowRight className="w-3.5 h-3.5" />
+                      </Link>
                     </div>
                   </div>
-                </ScrollReveal>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════
+          SECTION 9 — LEADERSHIP TEAM (HUMAN & AUTHENTIC)
+         ═══════════════════════════════════════════════════════════ */}
+      <section className="py-24 lg:py-32 bg-white border-t border-slate-200/70" id="team">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mb-16 space-y-4">
+            <div className="flex items-center gap-3">
+              <span className="w-8 h-[2px] bg-[#087CCB]" />
+              <span className="font-mono-tag text-xs font-semibold uppercase tracking-widest text-[#087CCB]">
+                Leadership
+              </span>
+            </div>
+            <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-[#071B70] tracking-tight">
+              Meet the Minds Powering Your Growth.
+            </h2>
+            <p className="text-slate-600 text-base sm:text-lg leading-relaxed">
+              Dedicated operators and strategists leading every engagement from thesis to execution.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+            {AGENCY_TEAM.map((member) => (
+              <div key={member.name} className="group space-y-5">
+                <div className="relative aspect-4/5 w-full rounded-2xl overflow-hidden bg-slate-100">
+                  <Image
+                    src={member.image}
+                    alt={member.name}
+                    fill
+                    className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <h3 className="font-display font-bold text-xl text-[#071B70]">
+                        {member.name}
+                      </h3>
+                      <p className="text-xs font-semibold uppercase tracking-wider text-[#087CCB] mt-0.5">
+                        {member.role}
+                      </p>
+                    </div>
+                    <a
+                      href={member.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs font-mono-tag text-slate-400 hover:text-[#071B70] transition-colors"
+                      aria-label={`${member.name} LinkedIn Profile`}
+                    >
+                      LinkedIn ↗
+                    </a>
+                  </div>
+                  <p className="text-sm text-slate-600 leading-relaxed pt-1">
+                    {member.bio}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════
+          SECTION 10 — TESTIMONIALS (EDITORIAL SPOTLIGHT)
+         ═══════════════════════════════════════════════════════════ */}
+      <section className="py-24 lg:py-32 bg-[#F7F9FC] border-t border-slate-200/70">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-12">
+            <div className="flex items-center gap-3">
+              <span className="w-8 h-[2px] bg-[#087CCB]" />
+              <span className="font-mono-tag text-xs font-semibold uppercase tracking-widest text-[#087CCB]">
+                Client Testimonials
+              </span>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <button
+                type="button"
+                onClick={handlePrevTestimonial}
+                aria-label="Previous testimonial"
+                className="w-10 h-10 rounded-lg border border-slate-300 bg-white flex items-center justify-center text-[#071B70] hover:border-[#071B70] transition-colors cursor-pointer"
+              >
+                <ChevronLeft className="w-4 h-4" />
+              </button>
+              <span className="font-mono-tag text-xs text-slate-500">
+                0{activeTestimonialIdx + 1} / 0{TESTIMONIALS.length}
+              </span>
+              <button
+                type="button"
+                onClick={handleNextTestimonial}
+                aria-label="Next testimonial"
+                className="w-10 h-10 rounded-lg border border-slate-300 bg-white flex items-center justify-center text-[#071B70] hover:border-[#071B70] transition-colors cursor-pointer"
+              >
+                <ChevronRight className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+
+          <div className="space-y-8">
+            <Quote className="w-10 h-10 text-[#087CCB]/30" />
+
+            <blockquote className="font-display font-bold text-2xl sm:text-4xl text-[#071B70] leading-snug tracking-tight">
+              &ldquo;{activeTestimonial.quote}&rdquo;
+            </blockquote>
+
+            <div className="pt-6 border-t border-slate-200 flex flex-wrap items-center justify-between gap-4">
+              <div>
+                <div className="font-display font-bold text-lg text-[#071B70]">
+                  {activeTestimonial.author}
+                </div>
+                <div className="text-sm text-slate-600">
+                  {activeTestimonial.role},{' '}
+                  <span className="font-semibold text-[#087CCB]">{activeTestimonial.company}</span>
+                </div>
+              </div>
+
+              <span className="font-mono-tag text-xs font-bold text-[#071B70] bg-[#FFC400]/25 px-3.5 py-1.5 rounded-md">
+                {activeTestimonial.metric}
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════
+          SECTION 11 — INSIGHTS & PERSPECTIVES (EDITORIAL PUBLICATION)
+         ═══════════════════════════════════════════════════════════ */}
+      <section className="py-24 lg:py-32 bg-white border-t border-slate-200/70">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
+            <div className="space-y-3">
+              <div className="flex items-center gap-3">
+                <span className="w-8 h-[2px] bg-[#087CCB]" />
+                <span className="font-mono-tag text-xs font-semibold uppercase tracking-widest text-[#087CCB]">
+                  Growth Intelligence &amp; Playbooks
+                </span>
+              </div>
+              <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-[#071B70] tracking-tight">
+                Insights &amp; Perspectives.
+              </h2>
+            </div>
+
+            <Link href="/services" className="btn-secondary group self-start md:self-auto">
+              <span>Explore Playbooks</span>
+              <ArrowRight className="w-4 h-4 text-[#087CCB] transition-transform group-hover:translate-x-1" />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+            {/* Featured Lead Article */}
+            <article className="lg:col-span-7 group space-y-5">
+              <Link
+                href="/contact"
+                className="relative aspect-16/10 w-full rounded-2xl overflow-hidden bg-slate-100 block"
+              >
+                <Image
+                  src={ARTICLES[0].image}
+                  alt={ARTICLES[0].title}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  sizes="(max-width: 1024px) 100vw, 680px"
+                />
+              </Link>
+              <div className="flex items-center gap-3 text-xs font-mono-tag text-slate-500">
+                <span className="text-[#087CCB] font-bold uppercase">{ARTICLES[0].category}</span>
+                <span>•</span>
+                <span>{ARTICLES[0].date}</span>
+                <span>•</span>
+                <span>{ARTICLES[0].readTime}</span>
+              </div>
+              <h3 className="font-display font-extrabold text-2xl sm:text-3xl text-[#071B70] group-hover:text-[#087CCB] transition-colors leading-snug">
+                <Link href="/contact">{ARTICLES[0].title}</Link>
+              </h3>
+              <p className="text-slate-600 text-base leading-relaxed">
+                {ARTICLES[0].desc}
+              </p>
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 text-sm font-bold text-[#071B70] hover:text-[#087CCB]"
+              >
+                <span>Read Article</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </article>
+
+            {/* Supporting Articles Stack */}
+            <div className="lg:col-span-5 divide-y divide-slate-200 border-t lg:border-t-0 border-slate-200">
+              {ARTICLES.slice(1).map((art, idx) => (
+                <article
+                  key={art.title}
+                  className={`group space-y-3 ${idx === 0 ? 'pb-8 pt-8 lg:pt-0' : 'pt-8'}`}
+                >
+                  <Link
+                    href="/contact"
+                    className="relative aspect-16/9 w-full rounded-xl overflow-hidden bg-slate-100 block"
+                  >
+                    <Image
+                      src={art.image}
+                      alt={art.title}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      sizes="(max-width: 1024px) 100vw, 440px"
+                    />
+                  </Link>
+                  <div className="flex items-center gap-3 text-xs font-mono-tag text-slate-500 pt-1">
+                    <span className="text-[#087CCB] font-bold uppercase">{art.category}</span>
+                    <span>•</span>
+                    <span>{art.date}</span>
+                    <span>•</span>
+                    <span>{art.readTime}</span>
+                  </div>
+                  <h3 className="font-display font-bold text-xl text-[#071B70] group-hover:text-[#087CCB] transition-colors leading-snug">
+                    <Link href="/contact">{art.title}</Link>
+                  </h3>
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-[#071B70] hover:text-[#087CCB]"
+                  >
+                    <span>Read Article</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                </article>
               ))}
             </div>
           </div>
@@ -847,408 +1154,48 @@ export default function HomePage() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════
-          SECTION 9 — SELECTED WORK / CASE STUDIES
+          SECTION 12 — FAQ (MINIMALIST ACCORDION)
          ═══════════════════════════════════════════════════════════ */}
-      <section className="py-24 bg-[#F7F9FC]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
-            <ScrollReveal>
-              <span className="badge-tag">
-                Selected Case Studies
+      <section className="py-24 lg:py-28 bg-[#F7F9FC] border-t border-slate-200/70">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="space-y-3 mb-14">
+            <div className="flex items-center gap-3">
+              <span className="w-8 h-[2px] bg-[#087CCB]" />
+              <span className="font-mono-tag text-xs font-semibold uppercase tracking-widest text-[#087CCB]">
+                Clarity &amp; Transparency
               </span>
-              <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-[#071B70] tracking-tight mt-3">
-                Selected Case Studies.
-              </h2>
-              <p className="text-slate-600 text-base max-w-xl mt-2">
-                Real brands. Real campaigns. Real verified revenue growth.
-              </p>
-            </ScrollReveal>
-
-            <ScrollReveal delay={150}>
-              <Link href="/case-studies" className="btn-secondary group">
-                <span>View All Case Studies</span>
-                <ArrowRight className="w-4 h-4 text-[#087CCB] transition-transform group-hover:translate-x-1" />
-              </Link>
-            </ScrollReveal>
+            </div>
+            <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-[#071B70] tracking-tight">
+              Frequently Asked Questions.
+            </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {featuredProjects.map((project, idx) => (
-              <ScrollReveal key={project.slug} delay={idx * 100}>
-                <div className="card-skeuomorphic overflow-hidden flex flex-col h-full group hover:-translate-y-2 transition-all">
-                  <div className="relative h-64 sm:h-72 w-full overflow-hidden bg-slate-100">
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                    />
-                    <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-[#071B70] shadow-sm">
-                      {project.industry}
-                    </div>
-                    <div className="absolute top-4 right-4 bg-[#0F172A] text-[#FFC400] border border-white/10 px-3 py-1 rounded-full text-xs font-bold shadow-sm">
-                      {project.category}
-                    </div>
-                  </div>
-
-                  <div className="p-6 sm:p-8 flex flex-col justify-between flex-1 space-y-6">
-                    <div className="space-y-3">
-                      <div className="text-xs font-bold uppercase tracking-wider text-[#087CCB]">
-                        {project.client}
-                      </div>
-                      <h3 className="font-display font-bold text-xl sm:text-2xl text-[#071B70] group-hover:text-[#087CCB] transition-colors leading-snug">
-                        {project.title}
-                      </h3>
-                      <p className="text-sm text-slate-600 line-clamp-2 leading-relaxed font-normal">
-                        {project.summary}
-                      </p>
-                    </div>
-
-                    <div className="skeuo-well p-4 grid grid-cols-3 gap-2 text-center border border-slate-200/90">
-                      {project.metrics.map((m) => (
-                        <div key={m.label}>
-                          <div className="font-display font-black text-base sm:text-lg text-[#071B70]">{m.value}</div>
-                          <div className="text-[10px] text-slate-500 font-medium truncate mt-0.5">{m.label}</div>
-                        </div>
-                      ))}
-                    </div>
-
-                    <div className="pt-2">
-                      <Link
-                        href={`/case-studies/${project.slug}`}
-                        className="inline-flex items-center justify-between w-full p-3 rounded-2xl btn-skeuo-pearl text-xs font-bold transition-all duration-200"
-                      >
-                        <span>View Detailed Case Study</span>
-                        <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════════════════
-          SECTION 10 — INDUSTRIES WE SERVE
-         ═══════════════════════════════════════════════════════════ */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-            <ScrollReveal>
-              <span className="badge-tag mx-auto">
-                Industries We Specialize In
-              </span>
-              <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-[#071B70] tracking-tight mt-3">
-                Industries We Specialize In.
-              </h2>
-              <p className="text-slate-600 text-base sm:text-lg">
-                We engineer category-specific growth architectures tailored to the unique purchase cycles and customer behavior of each vertical.
-              </p>
-            </ScrollReveal>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {INDUSTRIES.map((ind, i) => {
-              const IconComp = ind.icon;
-              return (
-                <ScrollReveal key={ind.title} delay={i * 80}>
-                  <div className="card-skeuomorphic overflow-hidden flex flex-col justify-between h-full group hover:-translate-y-1.5 transition-all">
-                    <div className="relative h-48 w-full overflow-hidden bg-slate-200">
-                      <Image
-                        src={ind.image}
-                        alt={ind.title}
-                        fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-105"
-                        sizes="(max-width: 768px) 100vw, 33vw"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
-                      <div className="absolute top-4 left-4 w-9 h-9 rounded-xl skeuo-well flex items-center justify-center text-[#071B70] shadow-sm">
-                        <IconComp className="w-5 h-5 text-[#071B70]" />
-                      </div>
-                      <div className="absolute bottom-3 right-4 bg-gradient-to-r from-[#FFC400] to-[#FF7900] text-[#071B70] text-xs font-bold px-3 py-1 rounded-full shadow-sm">
-                        {ind.metric}
-                      </div>
-                    </div>
-
-                    <div className="p-6 flex flex-col justify-between flex-1 space-y-4">
-                      <div>
-                        <h4 className="font-display font-bold text-lg text-[#071B70] group-hover:text-[#087CCB] transition-colors">
-                          {ind.title}
-                        </h4>
-                        <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mt-2 font-normal">
-                          {ind.desc}
-                        </p>
-                      </div>
-
-                      <div className="pt-4 border-t border-slate-100">
-                        <Link
-                          href={`/contact?service=${encodeURIComponent(ind.title)}`}
-                          className="inline-flex items-center justify-between w-full p-2.5 rounded-xl btn-skeuo-pearl text-xs font-bold transition-all duration-200"
-                        >
-                          <span>Request {ind.title.split(' ')[0]} Audit</span>
-                          <ArrowRight className="w-3.5 h-3.5" />
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                </ScrollReveal>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════════════════
-          SECTION 11 — EXECUTIVE LEADERSHIP / TEAM
-         ═══════════════════════════════════════════════════════════ */}
-      <section className="py-24 bg-[#F7F9FC]" id="team">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-            <ScrollReveal>
-              <span className="badge-tag mx-auto">
-                Leadership Team
-              </span>
-              <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-[#071B70] tracking-tight mt-3">
-                Meet the Minds Powering Your Growth.
-              </h2>
-              <p className="text-slate-600 text-base sm:text-lg">
-                Dedicated operators and growth architects leading every campaign from strategy to execution.
-              </p>
-            </ScrollReveal>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {AGENCY_TEAM.map((member, idx) => (
-              <ScrollReveal key={member.name} delay={idx * 100}>
-                <div className="card-skeuomorphic overflow-hidden flex flex-col h-full group hover:-translate-y-1.5 transition-all">
-                  <div className="relative h-72 w-full bg-slate-200 overflow-hidden">
-                    <Image
-                      src={member.image}
-                      alt={member.name}
-                      fill
-                      className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent" />
-                    <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between text-white">
-                      <div>
-                        <span className="text-[10px] font-bold uppercase tracking-wider text-[#00BCEB] block">
-                          {member.dept}
-                        </span>
-                        <h4 className="font-display font-bold text-lg text-white leading-tight">
-                          {member.name}
-                        </h4>
-                      </div>
-                      <a
-                        href={member.linkedin}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center hover:bg-[#087CCB] transition-colors"
-                        aria-label={`${member.name} LinkedIn Profile`}
-                      >
-                        <svg className="w-3.5 h-3.5 fill-white" viewBox="0 0 24 24">
-                          <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.59 1.59 0 1 0-.05-3.18 1.59 1.59 0 0 0 .05 3.18m1.4 9.74v-8.37H5.06v8.37h2.8z"/>
-                        </svg>
-                      </a>
-                    </div>
-                  </div>
-
-                  <div className="p-6 flex flex-col justify-between flex-1 space-y-4">
-                    <div>
-                      <div className="text-xs font-bold text-[#071B70] mb-2">{member.role}</div>
-                      <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">{member.bio}</p>
-                    </div>
-
-                    <div className="p-3.5 rounded-xl skeuo-well text-[11px] text-slate-600 italic">
-                      &ldquo;{member.quote}&rdquo;
-                    </div>
-                  </div>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════════════════
-          SECTION 12 — CLIENT TESTIMONIALS (VERIFIED SOCIAL PROOF)
-         ═══════════════════════════════════════════════════════════ */}
-      <section className="py-24 bg-white border-t border-slate-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-            <ScrollReveal>
-              <span className="badge-tag mx-auto">
-                Verified Client Testimonials
-              </span>
-              <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-[#071B70] tracking-tight mt-3">
-                Direct Feedback From Ambitious Founders.
-              </h2>
-              <p className="text-slate-600 text-base sm:text-lg">
-                Hear directly from business leaders who partnered with NovaSpark to scale their revenue.
-              </p>
-            </ScrollReveal>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {TESTIMONIALS.map((t, idx) => (
-              <ScrollReveal key={t.author} delay={idx * 80}>
-                <div className="card-skeuomorphic p-8 flex flex-col justify-between h-full space-y-6 group hover:-translate-y-1.5 transition-all">
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-1 text-[#FFC400]">
-                        {[...Array(t.rating)].map((_, i) => (
-                          <Star key={i} className="w-4 h-4 fill-current" />
-                        ))}
-                      </div>
-                      <span className="text-xs font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200 font-mono-tag">
-                        {t.metric}
-                      </span>
-                    </div>
-
-                    <p className="text-slate-700 text-sm sm:text-base leading-relaxed italic font-normal">
-                      &ldquo;{t.quote}&rdquo;
-                    </p>
-                  </div>
-
-                  <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
-                    <div>
-                      <h4 className="font-display font-bold text-sm text-[#071B70]">{t.author}</h4>
-                      <p className="text-xs text-slate-500 mt-0.5">{t.role}, <span className="font-semibold text-slate-700">{t.company}</span></p>
-                    </div>
-                    <Quote className="w-8 h-8 text-[#087CCB]/20" />
-                  </div>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════════════════
-          SECTION 13 — LATEST INSIGHTS & PLAYBOOKS
-         ═══════════════════════════════════════════════════════════ */}
-      <section className="py-24 bg-[#F7F9FC]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
-            <ScrollReveal>
-              <span className="badge-tag">
-                Growth Intelligence &amp; Playbooks
-              </span>
-              <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-[#071B70] tracking-tight mt-3">
-                Latest Insights &amp; Playbooks.
-              </h2>
-              <p className="text-slate-600 text-base max-w-xl mt-2">
-                Actionable marketing playbooks, technical analyses, and algorithm breakdown guides.
-              </p>
-            </ScrollReveal>
-
-            <ScrollReveal delay={150}>
-              <Link href="/services" className="btn-secondary group">
-                <span>View All Insights</span>
-                <ArrowRight className="w-4 h-4 text-[#087CCB] transition-transform group-hover:translate-x-1" />
-              </Link>
-            </ScrollReveal>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {ARTICLES.map((art, idx) => (
-              <ScrollReveal key={art.title} delay={idx * 100}>
-                <div className="card-skeuomorphic overflow-hidden flex flex-col justify-between h-full group hover:-translate-y-1.5 transition-all">
-                  <div>
-                    <div className="relative h-48 w-full overflow-hidden bg-slate-200">
-                      <Image
-                        src={art.image}
-                        alt={art.title}
-                        fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-105"
-                        sizes="(max-width: 768px) 100vw, 33vw"
-                      />
-                      <div className="absolute top-3 left-3 bg-white/95 backdrop-blur-md px-2.5 py-0.5 rounded-full text-[10px] font-bold text-[#071B70] shadow-xs">
-                        {art.category}
-                      </div>
-                    </div>
-
-                    <div className="p-6 space-y-3">
-                      <div className="flex items-center gap-3 text-xs text-slate-400 font-mono-tag">
-                        <span>{art.date}</span>
-                        <span>•</span>
-                        <span>{art.readTime}</span>
-                      </div>
-                      <h3 className="font-display font-bold text-lg text-[#071B70] group-hover:text-[#087CCB] transition-colors leading-snug">
-                        {art.title}
-                      </h3>
-                      <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
-                        {art.desc}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="p-6 pt-0">
-                    <Link
-                      href="/contact"
-                      className="inline-flex items-center justify-between w-full p-2.5 rounded-xl btn-skeuo-pearl text-xs font-bold transition-all duration-200"
-                    >
-                      <span>Read Full Playbook</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </Link>
-                  </div>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════════════════
-          SECTION 14 — FREQUENTLY ASKED QUESTIONS (ACCORDION)
-         ═══════════════════════════════════════════════════════════ */}
-      <section className="py-24 bg-white border-t border-slate-100">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center space-y-4 mb-16">
-            <ScrollReveal>
-              <span className="badge-tag mx-auto">
-                Frequently Asked Questions
-              </span>
-              <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-[#071B70] tracking-tight mt-3">
-                Frequently Asked Questions.
-              </h2>
-              <p className="text-slate-600 text-base">
-                Everything you need to know about partnering with NovaSpark.
-              </p>
-            </ScrollReveal>
-          </div>
-
-          <div className="space-y-4">
+          <div className="divide-y divide-slate-200 border-y border-slate-200">
             {FAQS.map((faq, i) => {
               const isOpen = openFaq === i;
               return (
-                <ScrollReveal key={i} delay={i * 50}>
-                  <div className="card-skeuomorphic overflow-hidden transition-all duration-200">
-                    <button
-                      onClick={() => setOpenFaq(isOpen ? null : i)}
-                      className="w-full p-6 text-left flex items-center justify-between gap-4 focus:outline-none cursor-pointer"
-                    >
-                      <span className="font-display font-bold text-base sm:text-lg text-[#071B70]">
-                        {faq.q}
-                      </span>
-                      <div
-                        className={`w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center shrink-0 transition-transform duration-300 ${
-                          isOpen ? 'rotate-180 bg-[#0F172A] text-[#FFC400]' : 'text-slate-500'
-                        }`}
-                      >
-                        <ChevronDown className="w-4 h-4" />
-                      </div>
-                    </button>
-                    {isOpen && (
-                      <div className="px-6 pb-6 pt-1 text-slate-600 text-sm leading-relaxed border-t border-slate-100 animate-in fade-in duration-200">
-                        {faq.a}
-                      </div>
-                    )}
-                  </div>
-                </ScrollReveal>
+                <div key={i} className="py-5">
+                  <button
+                    type="button"
+                    aria-expanded={isOpen}
+                    onClick={() => setOpenFaq(isOpen ? null : i)}
+                    className="w-full text-left flex items-center justify-between gap-6 focus:outline-none cursor-pointer group"
+                  >
+                    <span className="font-display font-bold text-base sm:text-lg text-[#071B70] group-hover:text-[#087CCB] transition-colors">
+                      {faq.q}
+                    </span>
+                    <ChevronDown
+                      className={`w-5 h-5 text-slate-400 shrink-0 transition-transform duration-300 ${
+                        isOpen ? 'rotate-180 text-[#087CCB]' : ''
+                      }`}
+                    />
+                  </button>
+                  {isOpen && (
+                    <div className="pt-3 pr-8 text-slate-600 text-sm sm:text-base leading-relaxed">
+                      {faq.a}
+                    </div>
+                  )}
+                </div>
               );
             })}
           </div>
@@ -1256,63 +1203,38 @@ export default function HomePage() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════
-          SECTION 15 — PRE-FOOTER CTA (FLOATING SKEUOMORPHIC CARD)
-          "Ready to grow your business online?"
+          SECTION 13 — FINAL CONVERSION CTA (DEEP ROYAL BLUE)
          ═══════════════════════════════════════════════════════════ */}
-      <section className="py-20 lg:py-28 bg-[#F7F9FC] relative overflow-hidden border-t border-slate-200/80">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="card-skeuo-dark p-8 sm:p-14 lg:p-20 relative overflow-hidden rounded-[2.5rem] shadow-2xl text-center border border-white/15">
-            {/* Ambient specular mesh inside the floating card */}
-            <div className="absolute top-0 right-1/4 w-[450px] h-[450px] bg-[#00BCEB]/12 rounded-full blur-3xl pointer-events-none" />
-            <div className="absolute bottom-0 left-1/4 w-[400px] h-[400px] bg-[#FFC400]/12 rounded-full blur-3xl pointer-events-none" />
+      <section className="relative py-24 lg:py-32 bg-[#071B70] text-white overflow-hidden">
+        <div className="absolute inset-0 bg-grid-dark opacity-40 pointer-events-none" />
+        <div className="absolute top-0 right-1/4 w-[420px] h-[420px] bg-[#00BCEB]/15 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-1/4 w-[360px] h-[360px] bg-[#FFC400]/10 rounded-full blur-3xl pointer-events-none" />
 
-            <div className="relative z-10 max-w-4xl mx-auto space-y-8">
-              <ScrollReveal>
-                <div className="badge-tag-dark mx-auto">
-                  <span className="w-2 h-2 rounded-full bg-[#00BCEB] animate-ping" />
-                  <span>Your Business, Our Strategy</span>
-                </div>
-                <h2 className="font-display font-black text-3xl sm:text-5xl lg:text-6xl text-white tracking-tight mt-4 leading-tight">
-                  Ready to grow your business online?
-                </h2>
-                <p className="text-base sm:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed font-normal mt-4">
-                  Let&apos;s build a marketing strategy that moves your business forward. Request a confidential growth audit with our senior leadership team.
-                </p>
-              </ScrollReveal>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-7">
+          <div className="inline-flex items-center gap-2 font-mono-tag text-xs uppercase tracking-widest text-[#00BCEB]">
+            <span className="w-2 h-2 rounded-full bg-[#FFC400]" />
+            <span>Ready to grow your business online?</span>
+          </div>
 
-              <ScrollReveal delay={150}>
-                <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
-                  <Link href="/contact" className="btn-skeuo-gold text-base px-9 py-4 group">
-                    <span>Get a Free Audit</span>
-                    <ArrowRight className="w-5 h-5 ml-1 transition-transform group-hover:translate-x-1" />
-                  </Link>
-                  <a
-                    href="https://wa.me/918280788689"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-skeuo-pearl text-base px-8 py-4"
-                  >
-                    <span>Direct WhatsApp Chat</span>
-                  </a>
-                </div>
-              </ScrollReveal>
+          <h2 className="font-display font-black text-3xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-[1.08]">
+            Ready to Turn Your Ambition Into Growth?
+          </h2>
 
-              {/* Recessed Trust Guarantee Ribbon */}
-              <div className="pt-8 border-t border-white/10 flex flex-wrap items-center justify-center gap-6 sm:gap-10 text-xs text-slate-300 font-mono-tag">
-                <span className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-emerald-400" />
-                  Senior Director Response &lt; 2 hrs
-                </span>
-                <span className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-[#FFC400]" />
-                  100% Asset &amp; Ad Account Ownership
-                </span>
-                <span className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-[#00BCEB]" />
-                  Category Exclusivity Protected
-                </span>
-              </div>
-            </div>
+          <p className="text-base sm:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed">
+            Let&apos;s build a smarter digital strategy that moves your business forward.
+          </p>
+
+          <div className="pt-3 flex flex-wrap items-center justify-center gap-4">
+            <Link href="/contact" className="btn-gold group">
+              <span>Start a Conversation</span>
+              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+            </Link>
+            <Link
+              href="/services"
+              className="inline-flex items-center justify-center gap-2 min-h-12 px-7 py-3 rounded-xl font-display text-sm font-semibold border border-white/25 text-white hover:bg-white/10 transition-colors"
+            >
+              <span>Explore Our Services</span>
+            </Link>
           </div>
         </div>
       </section>

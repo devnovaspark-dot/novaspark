@@ -66,46 +66,47 @@
    crisp micro-interactions, and zero cheap cartoonish bevels.
    ═══════════════════════════════════════════════════════════ */
 
-/* Primary CTA Button (Sleek Deep Royal & Electric Blue with Subtle Gold Glow) */
+/* Primary CTA Button (Deep Royal Blue, Architectural Radius, Crisp Contrast) */
 .btn-primary {
   position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.625rem;
-  padding: 0.875rem 2rem;
+  min-height: 3rem;
+  padding: 0.75rem 1.75rem;
   font-family: var(--font-sora);
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: -0.01em;
-  border-radius: 9999px;
-  background: linear-gradient(135deg, #071B70 0%, #087CCB 100%);
+  border-radius: 0.75rem;
+  background-color: #071B70;
   color: #FFFFFF;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 
-    0 1px 2px rgba(7, 27, 112, 0.12),
-    0 6px 20px -4px rgba(8, 124, 203, 0.4);
-  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid #071B70;
+  box-shadow: 0 2px 6px rgba(7, 27, 112, 0.14);
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
   text-decoration: none;
   cursor: pointer;
-  overflow: hidden;
 }
 
 .btn-primary:hover {
-  transform: translateY(-2px);
-  background: linear-gradient(135deg, #0A2494 0%, #00BCEB 100%);
-  box-shadow: 
-    0 4px 12px rgba(7, 27, 112, 0.2),
-    0 12px 28px -6px rgba(0, 188, 235, 0.45);
+  transform: translateY(-1px);
+  background-color: #087CCB;
+  border-color: #087CCB;
+  box-shadow: 0 8px 20px -6px rgba(8, 124, 203, 0.38);
   color: #FFFFFF;
 }
 
-.btn-primary:active {
-  transform: translateY(1px);
-  box-shadow: 0 2px 6px rgba(7, 27, 112, 0.2);
+.btn-primary:focus-visible {
+  outline: 2px solid #00BCEB;
+  outline-offset: 2px;
 }
 
-/* Refined Gold / Amber Action Button */
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+/* Accent Gold Action Button (Sparingly for High-Impact Conversion) */
 .btn-skeuo-gold,
 .btn-gold {
   position: relative;
@@ -113,40 +114,43 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 0.8125rem 1.75rem;
+  min-height: 3rem;
+  padding: 0.75rem 1.75rem;
   font-family: var(--font-sora);
   font-size: 0.875rem;
   font-weight: 700;
   letter-spacing: -0.01em;
-  border-radius: 9999px;
-  background: linear-gradient(135deg, #FFC400 0%, #FF9E00 100%);
+  border-radius: 0.75rem;
+  background-color: #FFC400;
   color: #071B70;
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  box-shadow: 
-    0 1px 2px rgba(0, 0, 0, 0.06),
-    0 4px 16px -2px rgba(255, 158, 0, 0.35);
-  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid #FFC400;
+  box-shadow: 0 2px 8px rgba(255, 196, 0, 0.25);
+  transition: background-color 0.2s ease, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
   text-decoration: none;
   cursor: pointer;
 }
 
 .btn-skeuo-gold:hover,
 .btn-gold:hover {
-  transform: translateY(-2px);
-  background: linear-gradient(135deg, #FFCD1A 0%, #FFA81A 100%);
-  box-shadow: 
-    0 3px 8px rgba(0, 0, 0, 0.08),
-    0 10px 24px -4px rgba(255, 158, 0, 0.5);
-  filter: brightness(1.02);
+  transform: translateY(-1px);
+  background-color: #FF7900;
+  border-color: #FF7900;
+  color: #FFFFFF;
+  box-shadow: 0 8px 22px -6px rgba(255, 121, 0, 0.4);
+}
+
+.btn-skeuo-gold:focus-visible,
+.btn-gold:focus-visible {
+  outline: 2px solid #00BCEB;
+  outline-offset: 2px;
 }
 
 .btn-skeuo-gold:active,
 .btn-gold:active {
-  transform: translateY(1px);
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  transform: translateY(0);
 }
 
-/* Refined Porcelain Secondary Button */
+/* Minimal Architectural Secondary Button */
 .btn-secondary,
 .btn-skeuo-pearl {
   position: relative;
@@ -154,38 +158,38 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 0.8125rem 1.75rem;
+  min-height: 3rem;
+  padding: 0.75rem 1.625rem;
   font-family: var(--font-sora);
   font-size: 0.875rem;
   font-weight: 600;
   letter-spacing: -0.01em;
-  border-radius: 9999px;
-  background: #FFFFFF;
+  border-radius: 0.75rem;
+  background: transparent;
   color: #071B70;
-  border: 1px solid #E2E8F0;
-  box-shadow: 
-    0 1px 2px rgba(15, 23, 42, 0.05),
-    0 4px 12px -2px rgba(15, 23, 42, 0.05);
-  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid #CBD5E1;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   text-decoration: none;
   cursor: pointer;
 }
 
 .btn-secondary:hover,
 .btn-skeuo-pearl:hover {
-  background: #F8FAFC;
-  border-color: #CBD5E1;
-  color: #087CCB;
-  transform: translateY(-2px);
-  box-shadow: 
-    0 3px 6px rgba(15, 23, 42, 0.06),
-    0 10px 20px -4px rgba(15, 23, 42, 0.08);
+  background: #F1F5F9;
+  border-color: #071B70;
+  color: #071B70;
+  transform: translateY(-1px);
+}
+
+.btn-secondary:focus-visible,
+.btn-skeuo-pearl:focus-visible {
+  outline: 2px solid #087CCB;
+  outline-offset: 2px;
 }
 
 .btn-secondary:active,
 .btn-skeuo-pearl:active {
-  transform: translateY(1px);
-  background: #F1F5F9;
+  transform: translateY(0);
 }
 
 /* Dark Titanium Button */
@@ -384,6 +388,50 @@
 
 .animate-pulse-glow {
   animation: pulseGlow 3s ease-in-out infinite;
+}
+
+/* A. Editorial Card (Case Studies, Insights — No heavy box, clean image & typography focus) */
+.card-editorial {
+  background: transparent;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* B. Minimal Information Card (Clean 1px border, subtle surface, zero shadow bloat) */
+.card-minimal {
+  background: #FFFFFF;
+  border-radius: 1rem;
+  border: 1px solid #E2E8F0;
+  transition: border-color 0.25s ease, background-color 0.25s ease;
+}
+
+.card-minimal:hover {
+  border-color: #CBD5E1;
+}
+
+/* C. Interactive Feature Card (Selected Capabilities & Highlights) */
+.card-interactive {
+  background: #FFFFFF;
+  border-radius: 1rem;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.03);
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+.card-interactive:hover {
+  transform: translateY(-3px);
+  border-color: #087CCB;
+  box-shadow: 0 14px 30px -10px rgba(7, 27, 112, 0.12);
+}
+
+/* Respect user reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 /* Custom scrollbars */
