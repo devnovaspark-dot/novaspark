@@ -262,6 +262,17 @@ const SERVICE_REPRESENTATIONS: Record<string, {
   }
 };
 
+const SERVICE_HREF_MAP: Record<string, string> = {
+  seo: '/services/seo-aeo-geo',
+  'google-ads': '/services/performance-marketing',
+  'meta-ads': '/services/performance-marketing',
+  'social-media': '/services/social-media-marketing',
+  'web-development': '/services/digital-growth-partner',
+  'content-marketing': '/services/content-marketing',
+  branding: '/services/content-marketing',
+  'local-seo': '/services/seo-aeo-geo',
+};
+
 const DIFFERENTIATORS = [
   {
     step: '01',
@@ -318,23 +329,26 @@ export default function HomePage() {
           "Turn Digital Attention Into Business Growth."
           "Your Business, Our Strategy"
          ═══════════════════════════════════════════════════════════ */}
-      <section className="relative pt-8 pb-20 lg:pt-16 lg:pb-32 bg-gradient-to-b from-slate-50/60 via-white to-white overflow-hidden">
-        <div className="absolute inset-0 bg-grid-subtle opacity-60 pointer-events-none" />
-        <div className="absolute top-12 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-gradient-to-r from-[#087CCB]/15 via-[#00BCEB]/10 to-[#FFC400]/10 blur-3xl rounded-full pointer-events-none" />
+      <section className="relative pt-10 pb-20 lg:pt-16 lg:pb-28 bg-gradient-to-b from-[#F7F9FC] via-white to-white overflow-hidden border-b border-slate-200/70">
+        <div className="absolute inset-0 bg-grid-subtle opacity-40 pointer-events-none" />
+        <div className="absolute top-10 left-1/4 w-[600px] h-[350px] bg-gradient-to-r from-[#087CCB]/10 via-[#00BCEB]/8 to-transparent blur-3xl rounded-full pointer-events-none" />
+        <div className="absolute top-20 right-10 w-[500px] h-[300px] bg-gradient-to-l from-[#FFC400]/8 via-[#FF7900]/5 to-transparent blur-3xl rounded-full pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-            {/* Left Content */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center">
+            {/* Left Editorial Agency Column */}
             <div className="lg:col-span-7 space-y-6 text-left">
               <ScrollReveal delay={50}>
-                <div className="badge-tag">
-                  <span className="w-2 h-2 rounded-full bg-[#087CCB] animate-ping" />
-                  <span>Your Business, Our Strategy • Full-Service Digital Growth Partner</span>
+                <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white border border-slate-200/90 shadow-2xs">
+                  <span className="w-2 h-2 rounded-full bg-[#087CCB] animate-pulse" />
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#071B70]">
+                    Your Business, Our Strategy • Full-Service Digital Growth Partner
+                  </span>
                 </div>
               </ScrollReveal>
 
               <ScrollReveal delay={150}>
-                <h1 className="font-display font-extrabold text-4xl sm:text-6xl lg:text-6xl text-[#071B70] tracking-tight leading-[1.08]">
+                <h1 className="font-display font-black text-4xl sm:text-6xl lg:text-[4rem] text-[#071B70] tracking-tight leading-[1.06]">
                   Turn Digital Attention <br />
                   <span className="bg-gradient-to-r from-[#071B70] via-[#087CCB] to-[#00BCEB] bg-clip-text text-transparent">
                     Into Business Growth.
@@ -343,8 +357,8 @@ export default function HomePage() {
               </ScrollReveal>
 
               <ScrollReveal delay={250}>
-                <p className="text-lg sm:text-xl text-[#334155] leading-relaxed max-w-2xl font-normal">
-                  We combine creative thinking, intelligent marketing systems and performance-driven strategies to help 100+ businesses build stronger brands, generate qualified leads, and achieve measurable revenue growth.
+                <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl font-normal">
+                  We combine creative thinking, intelligent marketing systems and performance-driven strategies to help businesses build stronger brands, generate qualified leads, and achieve measurable revenue growth.
                 </p>
               </ScrollReveal>
 
@@ -353,90 +367,127 @@ export default function HomePage() {
                 <div className="pt-2 flex flex-wrap items-center gap-4">
                   <Link href="/contact" className="btn-primary group">
                     <span>Let&apos;s Grow Together</span>
-                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                    <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
                   </Link>
                   <Link href="/case-studies" className="btn-secondary group">
                     <span>Explore Our Work</span>
-                    <ArrowRight className="w-4 h-4 text-[#087CCB] transition-transform group-hover:translate-x-1" />
+                    <ArrowRight className="w-4 h-4 text-[#087CCB] transition-transform duration-200 group-hover:translate-x-1" />
                   </Link>
                 </div>
               </ScrollReveal>
 
-              {/* Trust badges */}
+              {/* Verified Trust & Attribution Proof Bar */}
               <ScrollReveal delay={450}>
                 <div className="pt-6 border-t border-slate-200/80 grid grid-cols-3 gap-6 max-w-xl">
                   <div>
-                    <div className="font-display font-extrabold text-2xl lg:text-3xl text-[#071B70]">100%</div>
-                    <div className="text-xs text-[#64748B] font-medium mt-0.5">Audited Real Data</div>
+                    <div className="font-display font-black text-2xl lg:text-3xl text-[#071B70] tracking-tight">100%</div>
+                    <div className="text-xs text-slate-500 font-medium mt-0.5">Audited Real Data</div>
                   </div>
                   <div>
-                    <div className="font-display font-extrabold text-2xl lg:text-3xl text-[#087CCB]">3.8X</div>
-                    <div className="text-xs text-[#64748B] font-medium mt-0.5">Average Client ROAS</div>
+                    <div className="font-display font-black text-2xl lg:text-3xl text-[#087CCB] tracking-tight">3.8X</div>
+                    <div className="text-xs text-slate-500 font-medium mt-0.5">Average Client ROAS</div>
                   </div>
                   <div>
-                    <div className="font-display font-extrabold text-2xl lg:text-3xl text-[#071B70]">+240%</div>
-                    <div className="text-xs text-[#64748B] font-medium mt-0.5">Average Revenue Lift</div>
+                    <div className="font-display font-black text-2xl lg:text-3xl text-[#071B70] tracking-tight">+240%</div>
+                    <div className="text-xs text-slate-500 font-medium mt-0.5">Average Revenue Lift</div>
                   </div>
                 </div>
               </ScrollReveal>
             </div>
 
-            {/* Right: Bespoke Marketing Visual & Reference 3D Illustration */}
+            {/* Right: Bespoke High-Tech Growth Telemetry Cockpit */}
             <div className="lg:col-span-5 relative">
               <ScrollReveal delay={200} direction="left">
                 <div className="relative mx-auto max-w-md lg:max-w-none">
-                  <div className="card-skeuomorphic p-7 overflow-hidden relative">
-                    {/* Header bar */}
-                    <div className="flex items-center justify-between pb-4 mb-4 border-b border-slate-200/80">
+                  {/* Outer Luxury Cockpit Card */}
+                  <div className="card-skeuo-dark p-6 sm:p-7 text-white rounded-3xl shadow-2xl relative overflow-hidden border border-white/10">
+                    <div className="absolute top-0 right-0 w-44 h-44 bg-[#00BCEB]/10 rounded-full blur-2xl pointer-events-none" />
+
+                    {/* Cockpit Window Status Bar */}
+                    <div className="flex items-center justify-between pb-4 mb-5 border-b border-white/10 relative z-10">
                       <div className="flex items-center gap-2">
-                        <span className="w-3 h-3 rounded-full bg-rose-400 shadow-xs" />
-                        <span className="w-3 h-3 rounded-full bg-amber-400 shadow-xs" />
-                        <span className="w-3 h-3 rounded-full bg-emerald-400 shadow-xs" />
-                        <span className="text-xs font-mono-tag font-semibold text-slate-500 ml-2">novaspark.telemetry/live</span>
+                        <span className="w-2.5 h-2.5 rounded-full bg-rose-400/80" />
+                        <span className="w-2.5 h-2.5 rounded-full bg-amber-400/80" />
+                        <span className="w-2.5 h-2.5 rounded-full bg-emerald-400/80" />
+                        <span className="text-[11px] font-mono-tag text-slate-400 font-semibold ml-2">novaspark.telemetry/live</span>
                       </div>
-                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold bg-emerald-500/10 text-emerald-700 border border-emerald-300/60 shadow-2xs">
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                      <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/15 text-emerald-400 border border-emerald-400/30">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
                         Active ROAS Engine
                       </span>
                     </div>
 
-                    {/* Clean 3D Growth Graphic inside debossed well — completely unobstructed, zero text overlay */}
-                    <div className="skeuo-well p-3 mb-5">
-                      <div className="relative h-56 sm:h-64 w-full rounded-xl overflow-hidden border border-slate-200/80 shadow-inner bg-slate-950">
+                    {/* Verified Live Attributed Event Stream */}
+                    <div className="space-y-2.5 mb-5 relative z-10">
+                      <div className="p-3 rounded-xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-between hover:border-[#00BCEB]/40 transition-colors">
+                        <div className="flex items-center gap-3">
+                          <div className="w-8 h-8 rounded-lg bg-[#087CCB]/20 text-[#00BCEB] flex items-center justify-center font-bold text-xs">
+                            CAPI
+                          </div>
+                          <div>
+                            <div className="text-xs font-bold text-white leading-tight">Meta Conversion API Verified</div>
+                            <div className="text-[10px] text-slate-400">Jewelry Order #4182 · First-Party Attribution</div>
+                          </div>
+                        </div>
+                        <span className="font-display font-black text-xs text-emerald-400">₹24,800 · 4.8X</span>
+                      </div>
+
+                      <div className="p-3 rounded-xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-between hover:border-[#FFC400]/40 transition-colors">
+                        <div className="flex items-center gap-3">
+                          <div className="w-8 h-8 rounded-lg bg-[#FFC400]/20 text-[#FFC400] flex items-center justify-center font-bold text-xs">
+                            PMax
+                          </div>
+                          <div>
+                            <div className="text-xs font-bold text-white leading-tight">Google High-Intent Search</div>
+                            <div className="text-[10px] text-slate-400">Commercial Query Captured · Low CAC</div>
+                          </div>
+                        </div>
+                        <span className="font-display font-black text-xs text-[#FFC400]">3.8X ROAS</span>
+                      </div>
+                    </div>
+
+                    {/* Integrated 3D Growth Graphic Visual Well - Unobstructed, high quality */}
+                    <div className="skeuo-well-dark p-2 mb-4 relative z-10 overflow-hidden">
+                      <div className="relative h-44 sm:h-48 w-full rounded-xl overflow-hidden border border-white/10 bg-[#030712]">
                         <Image
                           src="/images/homepage_3d.webp"
                           alt="NovaSpark Digital Growth Engine"
                           fill
                           priority
-                          className="object-cover object-center"
-                          sizes="(max-width: 768px) 100vw, 500px"
+                          className="object-cover object-center opacity-95 hover:scale-105 transition-transform duration-500"
+                          sizes="(max-width: 768px) 100vw, 450px"
                         />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#060910] via-transparent to-transparent opacity-60" />
+                        <div className="absolute bottom-2.5 left-3 right-3 flex items-center justify-between text-[11px] text-white">
+                          <span className="font-semibold text-slate-300">Synchronized Growth Engine</span>
+                          <span className="text-[#00BCEB] font-mono-tag font-bold">+240% Lift</span>
+                        </div>
                       </div>
                     </div>
 
-                    {/* Skeuomorphic Performance Metrics Row */}
-                    <div className="grid grid-cols-2 gap-3 pt-1">
-                      <div className="skeuo-well p-3.5">
-                        <div className="text-[11px] font-mono-tag font-semibold text-slate-500 uppercase">Google Ads &amp; PMax</div>
-                        <div className="font-display font-black text-base sm:text-lg text-[#071B70] mt-0.5">3.8X – 4.8X ROAS</div>
-                        <div className="text-[10px] text-emerald-600 font-bold mt-0.5">High Intent Search</div>
+                    {/* Telemetry Metrics Row */}
+                    <div className="grid grid-cols-2 gap-2.5 relative z-10">
+                      <div className="p-3 rounded-xl bg-white/[0.04] border border-white/[0.08]">
+                        <div className="text-[10px] font-mono-tag font-semibold text-slate-400 uppercase">Google Ads &amp; PMax</div>
+                        <div className="font-display font-black text-base text-white mt-0.5">3.8X – 4.8X ROAS</div>
+                        <div className="text-[10px] text-emerald-400 font-bold mt-0.5">High Intent Search</div>
                       </div>
-                      <div className="skeuo-well p-3.5">
-                        <div className="text-[11px] font-mono-tag font-semibold text-slate-500 uppercase">Organic Inbound SEO</div>
-                        <div className="font-display font-black text-base sm:text-lg text-[#087CCB] mt-0.5">+380% Lift</div>
-                        <div className="text-[10px] text-emerald-600 font-bold mt-0.5">Compound Traffic</div>
+                      <div className="p-3 rounded-xl bg-white/[0.04] border border-white/[0.08]">
+                        <div className="text-[10px] font-mono-tag font-semibold text-slate-400 uppercase">Organic Inbound SEO</div>
+                        <div className="font-display font-black text-base text-[#00BCEB] mt-0.5">+380% Lift</div>
+                        <div className="text-[10px] text-emerald-400 font-bold mt-0.5">Compound Traffic</div>
                       </div>
                     </div>
                   </div>
 
-                  {/* Micro Badge 1 (Tactile Pill) */}
-                  <div className="absolute -bottom-6 -left-6 card-skeuomorphic p-4 flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-gradient-to-b from-[#FFC400] to-[#FF7900] flex items-center justify-center text-[#071B70] shadow-sm">
-                      <Sparkles className="w-5 h-5" />
+                  {/* Micro Badge Floating Accent */}
+                  <div className="absolute -bottom-4 -left-4 bg-white/95 backdrop-blur-md p-3.5 rounded-2xl border border-slate-200/90 shadow-xl flex items-center gap-3">
+                    <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#FFC400] to-[#FF7900] flex items-center justify-center text-[#071B70] shadow-2xs shrink-0">
+                      <Sparkles className="w-4 h-4" />
                     </div>
                     <div>
-                      <div className="text-[10px] font-mono-tag font-bold text-slate-400 uppercase tracking-wider">Creative Velocity</div>
-                      <div className="font-display font-extrabold text-sm text-[#071B70]">Top 1% Ad Engagement</div>
+                      <div className="text-[9px] font-mono-tag font-bold text-slate-400 uppercase tracking-wider">Creative Velocity</div>
+                      <div className="font-display font-extrabold text-xs text-[#071B70]">Top 1% Ad Engagement</div>
                     </div>
                   </div>
                 </div>
@@ -741,8 +792,8 @@ export default function HomePage() {
                     <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
                       <span className="text-[11px] font-bold text-emerald-600 font-mono-tag">{s.metricsHighlight}</span>
                       <Link
-                        href={`/services#${s.id}`}
-                        className="inline-flex items-center gap-1.5 text-xs font-bold text-[#071B70] group-hover:text-[#FF7900] transition-colors"
+                        href={SERVICE_HREF_MAP[s.id] || `/services#${s.id}`}
+                        className="inline-flex items-center gap-1.5 text-xs font-bold text-[#071B70] group-hover:text-[#087CCB] transition-colors"
                       >
                         <span>Explore Discipline</span>
                         <ArrowRight className="w-3.5 h-3.5" />

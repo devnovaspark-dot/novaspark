@@ -172,13 +172,13 @@ export default function Header() {
             </Link>
 
             {/* Desktop Navigation Bar */}
-            <nav className="hidden md:flex items-center gap-1 bg-slate-50/90 p-1.5 rounded-full border border-slate-200/70 shadow-xs">
+            <nav className="hidden md:flex items-center gap-1 bg-slate-100/80 backdrop-blur-md p-1.5 rounded-full border border-slate-200/80 shadow-2xs">
               <Link
                 href="/"
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
                   pathname === '/'
-                    ? 'bg-[#0F172A] text-[#FFC400] shadow-xs'
-                    : 'text-slate-600 hover:text-[#071B70] hover:bg-slate-200/60'
+                    ? 'bg-white text-[#071B70] font-bold shadow-xs border border-slate-200/60'
+                    : 'text-slate-600 hover:text-[#071B70] hover:bg-white/60'
                 }`}
               >
                 Home
@@ -188,8 +188,8 @@ export default function Header() {
                 href="/about"
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
                   pathname.startsWith('/about')
-                    ? 'bg-[#0F172A] text-[#FFC400] shadow-xs'
-                    : 'text-slate-600 hover:text-[#071B70] hover:bg-slate-200/60'
+                    ? 'bg-white text-[#071B70] font-bold shadow-xs border border-slate-200/60'
+                    : 'text-slate-600 hover:text-[#071B70] hover:bg-white/60'
                 }`}
               >
                 About Us
@@ -205,14 +205,14 @@ export default function Header() {
                   href="/services"
                   className={`px-4 py-2 rounded-full text-sm font-medium inline-flex items-center gap-1.5 transition-all duration-200 ${
                     pathname.startsWith('/services')
-                      ? 'bg-[#0F172A] text-[#FFC400] shadow-xs'
-                      : 'text-slate-600 hover:text-[#071B70] hover:bg-slate-200/60'
+                      ? 'bg-white text-[#071B70] font-bold shadow-xs border border-slate-200/60'
+                      : 'text-slate-600 hover:text-[#071B70] hover:bg-white/60'
                   }`}
                 >
                   <span>Services</span>
                   <ChevronDown
                     className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                      servicesDropdownOpen ? 'rotate-180 text-[#FFC400]' : 'text-slate-400'
+                      servicesDropdownOpen ? 'rotate-180 text-[#087CCB]' : 'text-slate-400'
                     }`}
                   />
                 </Link>
@@ -220,53 +220,56 @@ export default function Header() {
                 {/* Animated Services Mega-Menu Dropdown */}
                 {servicesDropdownOpen && (
                   <div
-                    className="absolute top-full left-1/2 -translate-x-1/2 pt-3 w-[720px] z-50 animate-in fade-in zoom-in-95 duration-200"
+                    className="absolute top-full left-1/2 -translate-x-1/2 pt-3 w-[880px] lg:w-[940px] z-50 animate-in fade-in zoom-in-95 duration-200"
                     onMouseEnter={handleMouseEnter}
                     onMouseLeave={handleMouseLeave}
                   >
-                    <div className="bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl border border-slate-200/90 p-6 overflow-hidden">
-                      <div className="flex items-center justify-between pb-4 mb-4 border-b border-slate-100">
-                        <div>
-                          <span className="text-xs font-bold uppercase tracking-wider text-[#087CCB]">
-                            Our Growth Capabilities
-                          </span>
-                          <h4 className="font-display font-bold text-base text-[#071B70]">
-                            Synchronized Performance & Creative Ecosystem
-                          </h4>
+                    <div className="bg-white/98 backdrop-blur-2xl rounded-3xl shadow-2xl border border-slate-200/90 p-7 overflow-hidden">
+                      <div className="flex items-center justify-between pb-4 mb-5 border-b border-slate-100">
+                        <div className="flex items-center gap-3">
+                          <span className="w-2 h-2 rounded-full bg-[#087CCB] animate-pulse" />
+                          <div>
+                            <span className="text-[11px] font-bold uppercase tracking-wider text-[#087CCB] block">
+                              Our Growth Capabilities
+                            </span>
+                            <h4 className="font-display font-extrabold text-base text-[#071B70]">
+                              Synchronized Performance &amp; Creative Ecosystem
+                            </h4>
+                          </div>
                         </div>
                         <Link
                           href="/services"
-                          className="inline-flex items-center gap-1 text-xs font-bold text-[#087CCB] hover:text-[#071B70] transition-colors"
+                          className="inline-flex items-center gap-1.5 text-xs font-bold text-[#087CCB] hover:text-[#071B70] transition-colors bg-blue-50/70 hover:bg-blue-100/70 px-3 py-1.5 rounded-full"
                         >
-                          <span>Explore All Services</span>
+                          <span>Explore All 6 Disciplines</span>
                           <ArrowRight className="w-3.5 h-3.5" />
                         </Link>
                       </div>
 
-                      <div className="grid grid-cols-12 gap-6">
-                        {/* 6 Core Services Grid */}
-                        <div className="col-span-8 grid grid-cols-2 gap-2.5">
+                      <div className="grid grid-cols-12 gap-6 items-stretch">
+                        {/* 6 Core Services Grid - Generous, un-truncated, editorial */}
+                        <div className="col-span-8 grid grid-cols-2 gap-3">
                           {SIX_CORE_SERVICES.map((service) => {
                             const IconComp = service.icon;
                             return (
                               <Link
                                 key={service.id}
                                 href={service.href}
-                                className="group flex items-start gap-3 p-2.5 rounded-2xl hover:bg-slate-50 transition-all duration-200 border border-transparent hover:border-slate-200/80"
+                                className="group flex items-start gap-3.5 p-3 rounded-2xl bg-white hover:bg-slate-50 transition-all duration-200 border border-slate-100 hover:border-slate-300/80 shadow-2xs hover:shadow-xs"
                               >
-                                <div className="w-9 h-9 rounded-xl bg-slate-100 text-[#071B70] flex items-center justify-center shrink-0 group-hover:bg-[#0F172A] group-hover:text-[#FFC400] transition-colors skeuo-well">
-                                  <IconComp className="w-4 h-4" />
+                                <div className="w-10 h-10 rounded-xl bg-slate-100/80 text-[#071B70] flex items-center justify-center shrink-0 group-hover:bg-[#071B70] group-hover:text-[#FFC400] transition-colors">
+                                  <IconComp className="w-5 h-5" />
                                 </div>
                                 <div className="min-w-0 flex-1">
-                                  <div className="flex items-center justify-between gap-1">
-                                    <span className="font-display font-bold text-xs text-[#071B70] group-hover:text-[#087CCB] transition-colors truncate">
+                                  <div className="flex items-baseline justify-between gap-1">
+                                    <span className="font-display font-bold text-sm text-[#071B70] group-hover:text-[#087CCB] transition-colors leading-tight">
                                       {service.name}
                                     </span>
-                                    <span className="text-[10px] text-emerald-600 font-bold shrink-0">
+                                    <span className="text-[10px] text-emerald-700 bg-emerald-50 border border-emerald-200/60 px-2 py-0.5 rounded-full font-bold shrink-0">
                                       {service.metric}
                                     </span>
                                   </div>
-                                  <p className="text-[11px] text-slate-500 font-medium truncate mt-0.5">
+                                  <p className="text-[11px] text-slate-500 font-normal mt-1 leading-snug">
                                     {service.subItems.join(' • ')}
                                   </p>
                                 </div>
@@ -275,25 +278,39 @@ export default function Header() {
                           })}
                         </div>
 
-                        {/* Right Spotlight Promo Card */}
-                        <div className="col-span-4 rounded-2xl card-skeuo-dark text-white p-5 flex flex-col justify-between shadow-lg relative overflow-hidden">
-                          <div className="absolute top-0 right-0 w-32 h-32 bg-[#00BCEB]/20 rounded-full blur-2xl pointer-events-none" />
-                          <div className="space-y-2 relative z-10">
-                            <span className="inline-block px-2 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider bg-[#FFC400]/20 text-[#FFC400] border border-[#FFC400]/30">
-                              Free Assessment
+                        {/* Right Spotlight Promo Card - Editorial & Refined */}
+                        <div className="col-span-4 rounded-2xl bg-gradient-to-br from-[#071B70] via-[#091C63] to-[#040D36] text-white p-6 flex flex-col justify-between shadow-xl relative overflow-hidden border border-white/10">
+                          <div className="absolute top-0 right-0 w-36 h-36 bg-[#00BCEB]/15 rounded-full blur-2xl pointer-events-none" />
+                          <div className="space-y-3 relative z-10">
+                            <span className="inline-block px-2.5 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider bg-[#FFC400]/20 text-[#FFC400] border border-[#FFC400]/40">
+                              Free Strategic Audit
                             </span>
-                            <h5 className="font-display font-bold text-sm text-white leading-tight">
-                              Confidential Growth & SEO Audit
+                            <h5 className="font-display font-bold text-base text-white leading-tight">
+                              Confidential Growth &amp; CAC Audit
                             </h5>
-                            <p className="text-[11px] text-slate-300 leading-relaxed">
-                              Get an audited breakdown of your digital whitespace and CAC reduction opportunities.
+                            <p className="text-xs text-slate-300 leading-relaxed font-normal">
+                              Get an audited breakdown of your digital whitespace, CAPI attribution health, and CAC reduction opportunities.
                             </p>
+                            <ul className="space-y-1.5 text-[11px] text-slate-200 pt-1 font-medium">
+                              <li className="flex items-center gap-2">
+                                <span className="w-1.5 h-1.5 rounded-full bg-[#00BCEB]" />
+                                <span>48-Hour Forensic Turnaround</span>
+                              </li>
+                              <li className="flex items-center gap-2">
+                                <span className="w-1.5 h-1.5 rounded-full bg-[#00BCEB]" />
+                                <span>Competitor Airspace Intelligence</span>
+                              </li>
+                              <li className="flex items-center gap-2">
+                                <span className="w-1.5 h-1.5 rounded-full bg-[#00BCEB]" />
+                                <span>Direct Senior Strategist Sync</span>
+                              </li>
+                            </ul>
                           </div>
                           <Link
                             href="/contact"
-                            className="mt-4 inline-flex items-center justify-center gap-1.5 w-full py-2 px-3 rounded-full text-xs font-bold btn-skeuo-gold relative z-10"
+                            className="mt-5 inline-flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-xl text-xs font-bold uppercase tracking-wider bg-gradient-to-r from-[#FFC400] to-[#FF9E00] hover:from-[#FFCD1A] hover:to-[#FFA81A] text-[#071B70] shadow-sm transition-all hover:scale-[1.02] active:scale-[0.98] relative z-10"
                           >
-                            <span>Claim Your Audit</span>
+                            <span>Claim Your Free Audit</span>
                             <ArrowRight className="w-3.5 h-3.5" />
                           </Link>
                         </div>
@@ -307,8 +324,8 @@ export default function Header() {
                 href="/case-studies"
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
                   pathname.startsWith('/case-studies')
-                    ? 'bg-[#0F172A] text-[#FFC400] shadow-xs'
-                    : 'text-slate-600 hover:text-[#071B70] hover:bg-slate-200/60'
+                    ? 'bg-white text-[#071B70] font-bold shadow-xs border border-slate-200/60'
+                    : 'text-slate-600 hover:text-[#071B70] hover:bg-white/60'
                 }`}
               >
                 Case Studies
@@ -318,8 +335,8 @@ export default function Header() {
                 href="/contact"
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
                   pathname.startsWith('/contact')
-                    ? 'bg-[#0F172A] text-[#FFC400] shadow-xs'
-                    : 'text-slate-600 hover:text-[#071B70] hover:bg-slate-200/60'
+                    ? 'bg-white text-[#071B70] font-bold shadow-xs border border-slate-200/60'
+                    : 'text-slate-600 hover:text-[#071B70] hover:bg-white/60'
                 }`}
               >
                 Contact
@@ -337,10 +354,10 @@ export default function Header() {
               </a>
               <Link
                 href="/contact"
-                className="btn-primary group text-sm font-semibold px-5 py-2.5 rounded-full"
+                className="btn-primary group text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-full"
               >
                 <span>Let&apos;s Talk</span>
-                <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
+                <ArrowRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1" />
               </Link>
             </div>
 
