@@ -14,9 +14,8 @@ import {
   RefreshCw,
   Award,
   Quote,
-  ChevronDown,
-  ChevronLeft,
-  ChevronRight,
+  Plus,
+  Minus,
 } from 'lucide-react';
 import ScrollReveal from '@/components/ScrollReveal';
 import GrowthJourney from '@/components/GrowthJourney';
@@ -218,6 +217,8 @@ const TESTIMONIALS = [
     role: 'Co-Founder & CEO',
     company: 'Medallion House',
     metric: '+240% Revenue Growth',
+    image: '/images/Medallion house.jpg',
+    logo: '/images/clients/medallion-house.png',
   },
   {
     quote:
@@ -226,6 +227,8 @@ const TESTIMONIALS = [
     role: 'Founder',
     company: 'Ekatraa Organics',
     metric: '180+ #1 Rankings',
+    image: '/images/Ekatraa.jpg',
+    logo: '/images/clients/ekatraa.png',
   },
   {
     quote:
@@ -234,6 +237,8 @@ const TESTIMONIALS = [
     role: 'Managing Director',
     company: 'Sri Pandurangan Divine Fresh',
     metric: '+310% Local Impressions',
+    image: '/images/Sri Pandurangan Divine Fresh.png',
+    logo: '/images/clients/sri-pandurangan-divine-fresh.png',
   },
   {
     quote:
@@ -242,6 +247,8 @@ const TESTIMONIALS = [
     role: 'Growth Director',
     company: 'Weekend Bhraman',
     metric: '-48% Cost Per Booking',
+    image: '/images/Weekend Bhraman Tour Planner.jpg',
+    logo: '/images/clients/weekend-bhraman.png',
   },
 ];
 
@@ -302,20 +309,12 @@ const FAQS = [
 export default function HomePage() {
   const [activeServiceIdx, setActiveServiceIdx] = useState(0);
   const [activeTestimonialIdx, setActiveTestimonialIdx] = useState(0);
-  const [openFaq, setOpenFaq] = useState<number | null>(0);
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   const featuredStudy = AGENCY_CASE_STUDIES.find((p) => p.featured) || AGENCY_CASE_STUDIES[0];
   const supportingStudies = AGENCY_CASE_STUDIES.filter((p) => p.slug !== featuredStudy.slug).slice(0, 2);
   const activeService = CORE_SERVICES_ECOSYSTEM[activeServiceIdx];
   const activeTestimonial = TESTIMONIALS[activeTestimonialIdx];
-
-  const handlePrevTestimonial = () => {
-    setActiveTestimonialIdx((prev) => (prev === 0 ? TESTIMONIALS.length - 1 : prev - 1));
-  };
-
-  const handleNextTestimonial = () => {
-    setActiveTestimonialIdx((prev) => (prev === TESTIMONIALS.length - 1 ? 0 : prev + 1));
-  };
 
   return (
     <div className="flex flex-col w-full overflow-x-hidden bg-white text-[#111827]">
@@ -328,8 +327,18 @@ export default function HomePage() {
             {/* Left Editorial Column */}
             <div className="lg:col-span-7 space-y-7">
               <ScrollReveal delay={40}>
-                <div className="flex items-center gap-3">
-                  <span className="w-8 h-[2px] bg-[#087CCB]" />
+                <div className="inline-flex items-center gap-3">
+                  <div className="relative w-7 h-7 rounded-lg bg-white border border-slate-200 shadow-xs flex items-center justify-center animate-logo-float">
+                    <div className="absolute -inset-1 rounded-lg bg-[#00BCEB]/15 blur-xs animate-pulse-glow pointer-events-none" />
+                    <Image
+                      src="/images/logo.png"
+                      alt="NovaSpark Mark"
+                      width={18}
+                      height={18}
+                      className="object-contain relative z-10"
+                    />
+                  </div>
+                  <span className="w-6 h-[2px] bg-[#087CCB]" />
                   <span className="font-mono-tag text-xs font-semibold uppercase tracking-widest text-[#071B70]">
                     Your Business, Our Strategy
                   </span>
@@ -387,10 +396,11 @@ export default function HomePage() {
               </ScrollReveal>
             </div>
 
-            {/* Right Clean Brand Visual — Single Picture, Zero Text Overlays */}
-            <div className="lg:col-span-5 flex items-center justify-center">
-              <ScrollReveal delay={180} direction="left" className="w-full flex justify-center">
-                <div className="relative w-full max-w-[520px] aspect-square sm:aspect-4/3 rounded-2xl overflow-hidden shadow-2xl border border-slate-200/80 bg-white group">
+            {/* Right Clean Brand Visual — Single Picture with Subtle Floating Depth */}
+            <div className="lg:col-span-5 flex items-center justify-center relative">
+              <div className="absolute -inset-6 bg-gradient-to-tr from-[#087CCB]/12 via-[#00BCEB]/8 to-[#FFC400]/10 rounded-full blur-2xl pointer-events-none" />
+              <ScrollReveal delay={180} direction="left" className="w-full flex justify-center relative z-10">
+                <div className="relative w-full max-w-[520px] aspect-square sm:aspect-4/3 card-tactile overflow-hidden group animate-float">
                   <Image
                     src="/images/homepage_3d.webp"
                     alt="NovaSpark Digital Marketing Agency"
@@ -429,18 +439,28 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="py-10 bg-white border-b border-slate-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-8">
-          <span className="font-mono-tag text-xs uppercase tracking-widest text-slate-400 shrink-0">
-            Trusted by Leading Brands
+      <section className="py-10 bg-white border-b border-slate-100 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6 flex items-center justify-between">
+          <span className="font-mono-tag text-xs uppercase tracking-widest text-slate-400">
+            Trusted by Leading Brands Across India
           </span>
-          <div className="grid grid-cols-2 sm:grid-cols-5 gap-8 items-center w-full max-w-4xl">
-            {AGENCY_CLIENT_LOGOS.slice(0, 5).map((client) => (
+          <span className="hidden sm:inline-block font-mono-tag text-[11px] text-slate-400">
+            Hover to pause
+          </span>
+        </div>
+
+        <div className="relative w-full overflow-hidden">
+          {/* Edge Fade Masks */}
+          <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-28 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-28 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
+
+          <div className="animate-marquee items-center">
+            {[...AGENCY_CLIENT_LOGOS, ...AGENCY_CLIENT_LOGOS].map((client, idx) => (
               <div
-                key={client.name}
-                className="flex items-center justify-center grayscale opacity-65 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+                key={`${client.name}-${idx}`}
+                className="flex items-center justify-center mx-8 sm:mx-12 grayscale opacity-65 hover:grayscale-0 hover:opacity-100 transition-all duration-300 shrink-0"
               >
-                <div className="relative h-9 w-28">
+                <div className="relative h-9 w-28 sm:w-32">
                   <Image
                     src={client.src}
                     alt={client.name}
@@ -616,7 +636,7 @@ export default function HomePage() {
 
             {/* Right: Live Dynamic Service Preview Panel */}
             <div className="lg:col-span-6 lg:sticky lg:top-28">
-              <div className="card-minimal overflow-hidden bg-[#F7F9FC]">
+              <div className="card-tactile overflow-hidden">
                 <div className="relative aspect-16/10 w-full bg-slate-100 overflow-hidden">
                   <Image
                     src={activeService.image}
@@ -744,7 +764,7 @@ export default function HomePage() {
           </div>
 
           {/* Featured Large Editorial Case Study */}
-          <div className="card-editorial grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center pb-16 mb-16 border-b border-slate-200">
+          <div className="card-tactile p-6 sm:p-8 lg:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center mb-12">
             <Link
               href={`/case-studies/${featuredStudy.slug}`}
               className="lg:col-span-7 relative aspect-16/10 w-full rounded-2xl overflow-hidden bg-slate-100 group block"
@@ -797,9 +817,9 @@ export default function HomePage() {
           </div>
 
           {/* Supporting Case Studies — Clean 2-Column Editorial Spread */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
             {supportingStudies.map((project) => (
-              <div key={project.slug} className="card-editorial space-y-5 group">
+              <div key={project.slug} className="card-tactile p-6 sm:p-7 space-y-5 group flex flex-col justify-between">
                 <Link
                   href={`/case-studies/${project.slug}`}
                   className="relative aspect-16/10 w-full rounded-2xl overflow-hidden bg-slate-100 block"
@@ -878,7 +898,7 @@ export default function HomePage() {
               return (
                 <div
                   key={ind.title}
-                  className={`relative rounded-2xl overflow-hidden group min-h-[300px] ${
+                  className={`relative rounded-2xl overflow-hidden group min-h-[300px] border border-slate-200/80 shadow-[0_12px_30px_-10px_rgba(7,27,112,0.18)] transition-all duration-300 hover:-translate-y-1 ${
                     isLead ? 'md:col-span-7 min-h-[340px]' : 'md:col-span-5 min-h-[340px]'
                   }`}
                 >
@@ -944,10 +964,10 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {AGENCY_TEAM.map((member) => (
-              <div key={member.name} className="group space-y-5">
-                <div className="relative aspect-4/5 w-full rounded-2xl overflow-hidden bg-slate-100">
+              <div key={member.name} className="card-tactile overflow-hidden group flex flex-col h-full">
+                <div className="relative aspect-4/3 w-full bg-slate-100 overflow-hidden">
                   <Image
                     src={member.image}
                     alt={member.name}
@@ -957,29 +977,35 @@ export default function HomePage() {
                   />
                 </div>
 
-                <div className="space-y-2">
-                  <div className="flex items-start justify-between gap-4">
-                    <div>
-                      <h3 className="font-display font-bold text-xl text-[#071B70]">
-                        {member.name}
-                      </h3>
-                      <p className="text-xs font-semibold uppercase tracking-wider text-[#087CCB] mt-0.5">
-                        {member.role}
-                      </p>
+                <div className="p-6 flex flex-col justify-between flex-1 space-y-4">
+                  <div className="space-y-2">
+                    <div className="flex items-start justify-between gap-3">
+                      <div>
+                        <h3 className="font-display font-bold text-xl text-[#071B70]">
+                          {member.name}
+                        </h3>
+                        <p className="text-xs font-semibold uppercase tracking-wider text-[#087CCB] mt-0.5">
+                          {member.role}
+                        </p>
+                      </div>
+                      <a
+                        href={member.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-xs font-mono-tag text-slate-500 hover:text-[#071B70] bg-slate-100 px-2.5 py-1 rounded-md transition-colors shrink-0"
+                        aria-label={`${member.name} LinkedIn Profile`}
+                      >
+                        in ↗
+                      </a>
                     </div>
-                    <a
-                      href={member.linkedin}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-xs font-mono-tag text-slate-400 hover:text-[#071B70] transition-colors"
-                      aria-label={`${member.name} LinkedIn Profile`}
-                    >
-                      LinkedIn ↗
-                    </a>
+                    <p className="text-sm text-slate-600 leading-relaxed pt-1">
+                      {member.bio}
+                    </p>
                   </div>
-                  <p className="text-sm text-slate-600 leading-relaxed pt-1">
-                    {member.bio}
-                  </p>
+
+                  <div className="pt-3 border-t border-slate-100 text-xs text-slate-500 font-medium">
+                    {member.dept}
+                  </div>
                 </div>
               </div>
             ))}
@@ -988,63 +1014,115 @@ export default function HomePage() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════
-          SECTION 10 — TESTIMONIALS (EDITORIAL SPOTLIGHT)
+          SECTION 10 — CLIENT TESTIMONIALS (COMPACT FEATURED + SUPPORTING)
          ═══════════════════════════════════════════════════════════ */}
-      <section className="py-24 lg:py-32 bg-[#F7F9FC] border-t border-slate-200/70">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-12">
-            <div className="flex items-center gap-3">
-              <span className="w-8 h-[2px] bg-[#087CCB]" />
-              <span className="font-mono-tag text-xs font-semibold uppercase tracking-widest text-[#087CCB]">
-                Client Testimonials
-              </span>
+      <section className="py-16 lg:py-20 bg-[#F7F9FC] border-t border-slate-200/70">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+            <div className="space-y-2">
+              <div className="flex items-center gap-3">
+                <span className="w-8 h-[2px] bg-[#087CCB]" />
+                <span className="font-mono-tag text-xs font-semibold uppercase tracking-widest text-[#087CCB]">
+                  Client Testimonials
+                </span>
+              </div>
+              <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-[#071B70] tracking-tight">
+                Verified Client Voices.
+              </h2>
+            </div>
+            <span className="font-mono-tag text-xs text-slate-500">
+              Select a client story below
+            </span>
+          </div>
+
+          {/* Featured Prominent Testimonial Card */}
+          <div className="card-tactile overflow-hidden grid grid-cols-1 lg:grid-cols-12 items-stretch">
+            <div className="lg:col-span-5 relative min-h-[240px] lg:min-h-[280px] bg-slate-100 overflow-hidden">
+              <Image
+                src={activeTestimonial.image}
+                alt={activeTestimonial.company}
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 480px"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#071B70]/70 via-transparent to-transparent" />
+              <div className="absolute bottom-4 left-4 bg-white/95 backdrop-blur-sm px-3 py-2 rounded-xl shadow-sm border border-slate-200/80">
+                <div className="relative h-6 w-24">
+                  <Image
+                    src={activeTestimonial.logo}
+                    alt={`${activeTestimonial.company} logo`}
+                    fill
+                    className="object-contain object-left"
+                  />
+                </div>
+              </div>
             </div>
 
-            <div className="flex items-center gap-3">
-              <button
-                type="button"
-                onClick={handlePrevTestimonial}
-                aria-label="Previous testimonial"
-                className="w-10 h-10 rounded-lg border border-slate-300 bg-white flex items-center justify-center text-[#071B70] hover:border-[#071B70] transition-colors cursor-pointer"
-              >
-                <ChevronLeft className="w-4 h-4" />
-              </button>
-              <span className="font-mono-tag text-xs text-slate-500">
-                0{activeTestimonialIdx + 1} / 0{TESTIMONIALS.length}
-              </span>
-              <button
-                type="button"
-                onClick={handleNextTestimonial}
-                aria-label="Next testimonial"
-                className="w-10 h-10 rounded-lg border border-slate-300 bg-white flex items-center justify-center text-[#071B70] hover:border-[#071B70] transition-colors cursor-pointer"
-              >
-                <ChevronRight className="w-4 h-4" />
-              </button>
+            <div className="lg:col-span-7 p-6 sm:p-8 lg:p-10 flex flex-col justify-between gap-6">
+              <div className="space-y-4">
+                <div className="flex items-center justify-between gap-4">
+                  <Quote className="w-6 h-6 text-[#087CCB]/50" />
+                  <span className="font-mono-tag text-xs font-bold text-[#071B70] bg-[#FFC400]/25 px-3 py-1 rounded-md">
+                    {activeTestimonial.metric}
+                  </span>
+                </div>
+
+                <blockquote className="font-display font-semibold text-lg sm:text-xl lg:text-2xl text-[#071B70] leading-relaxed">
+                  &ldquo;{activeTestimonial.quote}&rdquo;
+                </blockquote>
+              </div>
+
+              <div className="pt-4 border-t border-slate-100 flex items-center justify-between gap-4">
+                <div>
+                  <div className="font-display font-bold text-base text-[#071B70]">
+                    {activeTestimonial.author}
+                  </div>
+                  <div className="text-xs sm:text-sm text-slate-600">
+                    {activeTestimonial.role},{' '}
+                    <span className="font-semibold text-[#087CCB]">{activeTestimonial.company}</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div className="space-y-8">
-            <Quote className="w-10 h-10 text-[#087CCB]/30" />
-
-            <blockquote className="font-display font-bold text-2xl sm:text-4xl text-[#071B70] leading-snug tracking-tight">
-              &ldquo;{activeTestimonial.quote}&rdquo;
-            </blockquote>
-
-            <div className="pt-6 border-t border-slate-200 flex flex-wrap items-center justify-between gap-4">
-              <div>
-                <div className="font-display font-bold text-lg text-[#071B70]">
-                  {activeTestimonial.author}
-                </div>
-                <div className="text-sm text-slate-600">
-                  {activeTestimonial.role},{' '}
-                  <span className="font-semibold text-[#087CCB]">{activeTestimonial.company}</span>
-                </div>
-              </div>
-
-              <span className="font-mono-tag text-xs font-bold text-[#071B70] bg-[#FFC400]/25 px-3.5 py-1.5 rounded-md">
-                {activeTestimonial.metric}
-              </span>
-            </div>
+          {/* Supporting Testimonials Selector Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {TESTIMONIALS.map((t, idx) => {
+              const isSelected = idx === activeTestimonialIdx;
+              return (
+                <button
+                  key={t.company}
+                  type="button"
+                  onClick={() => setActiveTestimonialIdx(idx)}
+                  className={`text-left p-4 rounded-xl transition-all cursor-pointer border ${
+                    isSelected
+                      ? 'bg-white border-[#087CCB] shadow-md -translate-y-0.5'
+                      : 'bg-white/70 border-slate-200 hover:bg-white hover:border-slate-300'
+                  }`}
+                >
+                  <div className="flex items-center justify-between gap-2 mb-2.5">
+                    <div className="relative h-5 w-20">
+                      <Image
+                        src={t.logo}
+                        alt={t.company}
+                        fill
+                        className="object-contain object-left"
+                      />
+                    </div>
+                    <span className="font-mono-tag text-[10px] font-bold text-[#087CCB]">
+                      {t.metric}
+                    </span>
+                  </div>
+                  <p className="text-xs text-slate-600 line-clamp-2 leading-relaxed">
+                    &ldquo;{t.quote}&rdquo;
+                  </p>
+                  <div className="mt-2.5 text-[11px] font-bold text-[#071B70]">
+                    {t.author} <span className="font-normal text-slate-400">• {t.company}</span>
+                  </div>
+                </button>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -1073,12 +1151,12 @@ export default function HomePage() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
             {/* Featured Lead Article */}
-            <article className="lg:col-span-7 group space-y-5">
+            <article className="lg:col-span-7 card-tactile p-6 sm:p-7 group space-y-5">
               <Link
                 href="/contact"
-                className="relative aspect-16/10 w-full rounded-2xl overflow-hidden bg-slate-100 block"
+                className="relative aspect-16/10 w-full rounded-xl overflow-hidden bg-slate-100 block"
               >
                 <Image
                   src={ARTICLES[0].image}
@@ -1111,37 +1189,39 @@ export default function HomePage() {
             </article>
 
             {/* Supporting Articles Stack */}
-            <div className="lg:col-span-5 divide-y divide-slate-200 border-t lg:border-t-0 border-slate-200">
-              {ARTICLES.slice(1).map((art, idx) => (
+            <div className="lg:col-span-5 flex flex-col gap-6">
+              {ARTICLES.slice(1).map((art) => (
                 <article
                   key={art.title}
-                  className={`group space-y-3 ${idx === 0 ? 'pb-8 pt-8 lg:pt-0' : 'pt-8'}`}
+                  className="card-tactile p-5 group space-y-3 flex-1 flex flex-col justify-between"
                 >
-                  <Link
-                    href="/contact"
-                    className="relative aspect-16/9 w-full rounded-xl overflow-hidden bg-slate-100 block"
-                  >
-                    <Image
-                      src={art.image}
-                      alt={art.title}
-                      fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
-                      sizes="(max-width: 1024px) 100vw, 440px"
-                    />
-                  </Link>
-                  <div className="flex items-center gap-3 text-xs font-mono-tag text-slate-500 pt-1">
-                    <span className="text-[#087CCB] font-bold uppercase">{art.category}</span>
-                    <span>•</span>
-                    <span>{art.date}</span>
-                    <span>•</span>
-                    <span>{art.readTime}</span>
+                  <div className="space-y-3">
+                    <Link
+                      href="/contact"
+                      className="relative aspect-16/9 w-full rounded-xl overflow-hidden bg-slate-100 block"
+                    >
+                      <Image
+                        src={art.image}
+                        alt={art.title}
+                        fill
+                        className="object-cover transition-transform duration-700 group-hover:scale-105"
+                        sizes="(max-width: 1024px) 100vw, 440px"
+                      />
+                    </Link>
+                    <div className="flex items-center gap-3 text-xs font-mono-tag text-slate-500 pt-1">
+                      <span className="text-[#087CCB] font-bold uppercase">{art.category}</span>
+                      <span>•</span>
+                      <span>{art.date}</span>
+                      <span>•</span>
+                      <span>{art.readTime}</span>
+                    </div>
+                    <h3 className="font-display font-bold text-lg sm:text-xl text-[#071B70] group-hover:text-[#087CCB] transition-colors leading-snug">
+                      <Link href="/contact">{art.title}</Link>
+                    </h3>
                   </div>
-                  <h3 className="font-display font-bold text-xl text-[#071B70] group-hover:text-[#087CCB] transition-colors leading-snug">
-                    <Link href="/contact">{art.title}</Link>
-                  </h3>
                   <Link
                     href="/contact"
-                    className="inline-flex items-center gap-1.5 text-xs font-bold text-[#071B70] hover:text-[#087CCB]"
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-[#071B70] hover:text-[#087CCB] pt-1"
                   >
                     <span>Read Article</span>
                     <ArrowRight className="w-3.5 h-3.5" />
@@ -1179,22 +1259,34 @@ export default function HomePage() {
                     type="button"
                     aria-expanded={isOpen}
                     onClick={() => setOpenFaq(isOpen ? null : i)}
-                    className="w-full text-left flex items-center justify-between gap-6 focus:outline-none cursor-pointer group"
+                    className="w-full text-left flex items-center justify-between gap-6 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#087CCB] rounded-lg py-1 cursor-pointer group"
                   >
-                    <span className="font-display font-bold text-base sm:text-lg text-[#071B70] group-hover:text-[#087CCB] transition-colors">
+                    <span
+                      className={`font-display font-bold text-base sm:text-lg transition-colors ${
+                        isOpen ? 'text-[#087CCB]' : 'text-[#071B70] group-hover:text-[#087CCB]'
+                      }`}
+                    >
                       {faq.q}
                     </span>
-                    <ChevronDown
-                      className={`w-5 h-5 text-slate-400 shrink-0 transition-transform duration-300 ${
-                        isOpen ? 'rotate-180 text-[#087CCB]' : ''
+                    <span
+                      className={`w-7 h-7 rounded-md flex items-center justify-center shrink-0 transition-colors ${
+                        isOpen
+                          ? 'bg-[#071B70] text-white'
+                          : 'bg-slate-100 text-slate-500 group-hover:bg-slate-200'
                       }`}
-                    />
+                    >
+                      {isOpen ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
+                    </span>
                   </button>
-                  {isOpen && (
-                    <div className="pt-3 pr-8 text-slate-600 text-sm sm:text-base leading-relaxed">
+                  <div
+                    className={`grid transition-all duration-300 ease-out ${
+                      isOpen ? 'grid-rows-[1fr] opacity-100 pt-3' : 'grid-rows-[0fr] opacity-0'
+                    }`}
+                  >
+                    <div className="overflow-hidden pr-8 text-slate-600 text-sm sm:text-base leading-relaxed">
                       {faq.a}
                     </div>
-                  )}
+                  </div>
                 </div>
               );
             })}
@@ -1203,38 +1295,77 @@ export default function HomePage() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════
-          SECTION 13 — FINAL CONVERSION CTA (DEEP ROYAL BLUE)
+          SECTION 13 — PRE-FOOTER PREMIUM FEATURE CTA CARD
          ═══════════════════════════════════════════════════════════ */}
-      <section className="relative py-24 lg:py-32 bg-[#071B70] text-white overflow-hidden">
-        <div className="absolute inset-0 bg-grid-dark opacity-40 pointer-events-none" />
-        <div className="absolute top-0 right-1/4 w-[420px] h-[420px] bg-[#00BCEB]/15 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 left-1/4 w-[360px] h-[360px] bg-[#FFC400]/10 rounded-full blur-3xl pointer-events-none" />
+      <section className="py-16 lg:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="relative rounded-3xl bg-gradient-to-br from-[#0B2285] via-[#071B70] to-[#041046] text-white p-8 sm:p-12 lg:p-16 overflow-hidden border border-white/15 shadow-[inset_0_1px_0_rgba(255,255,255,0.22),0_28px_60px_-15px_rgba(7,27,112,0.42)]">
+            {/* Subtle Ambient Brand Lighting & Texture */}
+            <div className="absolute inset-0 bg-grid-dark opacity-40 pointer-events-none" />
+            <div className="absolute -top-24 right-1/4 w-[420px] h-[420px] bg-[#00BCEB]/20 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute -bottom-24 left-10 w-[340px] h-[340px] bg-[#087CCB]/25 rounded-full blur-3xl pointer-events-none" />
 
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-7">
-          <div className="inline-flex items-center gap-2 font-mono-tag text-xs uppercase tracking-widest text-[#00BCEB]">
-            <span className="w-2 h-2 rounded-full bg-[#FFC400]" />
-            <span>Ready to grow your business online?</span>
-          </div>
+            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+              {/* Left Narrative & CTAs */}
+              <div className="lg:col-span-8 space-y-6">
+                <div className="inline-flex items-center gap-2.5 font-mono-tag text-xs uppercase tracking-widest text-[#00BCEB] bg-white/5 border border-white/10 px-3.5 py-1.5 rounded-lg">
+                  <span className="w-2 h-2 rounded-full bg-[#FFC400]" />
+                  <span>Ready to grow your business online?</span>
+                </div>
 
-          <h2 className="font-display font-black text-3xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-[1.08]">
-            Ready to Turn Your Ambition Into Growth?
-          </h2>
+                <h2 className="font-display font-black text-3xl sm:text-5xl text-white tracking-tight leading-[1.08]">
+                  Ready to Turn Your Ambition Into Growth?
+                </h2>
 
-          <p className="text-base sm:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed">
-            Let&apos;s build a smarter digital strategy that moves your business forward.
-          </p>
+                <p className="text-base sm:text-lg text-slate-300 max-w-2xl leading-relaxed">
+                  Let&apos;s build a smarter digital strategy that moves your business forward.
+                </p>
 
-          <div className="pt-3 flex flex-wrap items-center justify-center gap-4">
-            <Link href="/contact" className="btn-gold group">
-              <span>Start a Conversation</span>
-              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-            </Link>
-            <Link
-              href="/services"
-              className="inline-flex items-center justify-center gap-2 min-h-12 px-7 py-3 rounded-xl font-display text-sm font-semibold border border-white/25 text-white hover:bg-white/10 transition-colors"
-            >
-              <span>Explore Our Services</span>
-            </Link>
+                <div className="pt-2 flex flex-wrap items-center gap-4">
+                  <Link href="/contact" className="btn-gold group">
+                    <span>Start a Conversation</span>
+                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                  </Link>
+                  <Link
+                    href="/services"
+                    className="inline-flex items-center justify-center gap-2 min-h-12 px-6 py-3 rounded-xl font-display text-sm font-semibold border border-white/25 bg-white/5 text-white hover:bg-white/15 hover:border-white/40 transition-all"
+                  >
+                    <span>Explore Our Services</span>
+                  </Link>
+                </div>
+              </div>
+
+              {/* Right Decorative Architectural Brand Graphic */}
+              <div className="hidden lg:flex lg:col-span-4 items-center justify-center">
+                <div className="relative w-64 h-64 rounded-2xl bg-white/5 border border-white/15 backdrop-blur-md p-6 flex flex-col justify-between shadow-inner">
+                  <div className="flex items-center justify-between">
+                    <div className="relative w-10 h-10 animate-logo-float">
+                      <Image
+                        src="/images/logo.png"
+                        alt="NovaSpark"
+                        fill
+                        className="object-contain"
+                      />
+                    </div>
+                    <span className="font-mono-tag text-[10px] uppercase tracking-widest text-[#00BCEB]">
+                      Growth Architecture
+                    </span>
+                  </div>
+
+                  <svg viewBox="0 0 200 90" className="w-full h-24" fill="none">
+                    <path d="M10 78 Q65 72, 105 42 T190 12" stroke="#FFC400" strokeWidth="3" strokeLinecap="round" />
+                    <path d="M10 78 Q65 72, 105 42 T190 12 L190 84 L10 84 Z" fill="rgba(0,188,235,0.18)" />
+                    <circle cx="190" cy="12" r="5" fill="#FFC400" />
+                    <circle cx="105" cy="42" r="4" fill="#00BCEB" />
+                  </svg>
+
+                  <div className="pt-3 border-t border-white/10 flex items-center justify-between text-xs">
+                    <span className="text-slate-300">Average ROAS</span>
+                    <span className="font-display font-bold text-[#FFC400]">3.8X – 4.8X</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>

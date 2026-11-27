@@ -151,13 +151,14 @@ export default function Header() {
           <div className="flex items-center justify-between">
             {/* Brand Logo */}
             <Link href="/" className="flex items-center gap-3 group focus:outline-none">
-              <div className="relative w-9 h-9 sm:w-10 sm:h-10 transition-transform duration-300 group-hover:scale-105">
+              <div className="relative w-9 h-9 sm:w-10 sm:h-10 animate-logo-float transition-transform duration-300 group-hover:scale-105">
+                <div className="absolute -inset-1 rounded-full bg-[#00BCEB]/15 blur-sm animate-pulse-glow pointer-events-none" />
                 <Image
                   src="/images/logo.png"
                   alt="NovaSpark Digital Marketing Agency"
                   fill
                   priority
-                  className="object-contain"
+                  className="object-contain relative z-10"
                   sizes="40px"
                 />
               </div>

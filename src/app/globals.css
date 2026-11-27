@@ -66,7 +66,7 @@
    crisp micro-interactions, and zero cheap cartoonish bevels.
    ═══════════════════════════════════════════════════════════ */
 
-/* Primary CTA Button (Deep Royal Blue, Architectural Radius, Crisp Contrast) */
+/* Primary CTA Button (Deep Royal Blue, Subtle Tactile Highlight & Depth) */
 .btn-primary {
   position: relative;
   display: inline-flex;
@@ -80,20 +80,26 @@
   font-weight: 600;
   letter-spacing: -0.01em;
   border-radius: 0.75rem;
-  background-color: #071B70;
+  background: linear-gradient(180deg, #0B258A 0%, #071B70 100%);
   color: #FFFFFF;
-  border: 1px solid #071B70;
-  box-shadow: 0 2px 6px rgba(7, 27, 112, 0.14);
-  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
+  border: 1px solid #061557;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    0 2px 4px rgba(7, 27, 112, 0.16),
+    0 8px 18px -6px rgba(7, 27, 112, 0.35);
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
   text-decoration: none;
   cursor: pointer;
 }
 
 .btn-primary:hover {
-  transform: translateY(-1px);
-  background-color: #087CCB;
-  border-color: #087CCB;
-  box-shadow: 0 8px 20px -6px rgba(8, 124, 203, 0.38);
+  transform: translateY(-2px);
+  background: linear-gradient(180deg, #0D8CE2 0%, #087CCB 100%);
+  border-color: #0769AD;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.32),
+    0 4px 10px rgba(8, 124, 203, 0.22),
+    0 12px 24px -6px rgba(8, 124, 203, 0.42);
   color: #FFFFFF;
 }
 
@@ -103,10 +109,11 @@
 }
 
 .btn-primary:active {
-  transform: translateY(0);
+  transform: translateY(1px);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.22);
 }
 
-/* Accent Gold Action Button (Sparingly for High-Impact Conversion) */
+/* Accent Gold Action Button (Tactile Specular Highlight & Depth) */
 .btn-skeuo-gold,
 .btn-gold {
   position: relative;
@@ -121,22 +128,27 @@
   font-weight: 700;
   letter-spacing: -0.01em;
   border-radius: 0.75rem;
-  background-color: #FFC400;
+  background: linear-gradient(180deg, #FFD029 0%, #FFC400 100%);
   color: #071B70;
-  border: 1px solid #FFC400;
-  box-shadow: 0 2px 8px rgba(255, 196, 0, 0.25);
-  transition: background-color 0.2s ease, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
+  border: 1px solid #E5B000;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.65),
+    0 2px 6px rgba(255, 196, 0, 0.22),
+    0 8px 18px -4px rgba(255, 168, 0, 0.32);
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
   text-decoration: none;
   cursor: pointer;
 }
 
 .btn-skeuo-gold:hover,
 .btn-gold:hover {
-  transform: translateY(-1px);
-  background-color: #FF7900;
-  border-color: #FF7900;
+  transform: translateY(-2px);
+  background: linear-gradient(180deg, #FF8E26 0%, #FF7900 100%);
+  border-color: #E06A00;
   color: #FFFFFF;
-  box-shadow: 0 8px 22px -6px rgba(255, 121, 0, 0.4);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    0 10px 24px -6px rgba(255, 121, 0, 0.45);
 }
 
 .btn-skeuo-gold:focus-visible,
@@ -147,10 +159,11 @@
 
 .btn-skeuo-gold:active,
 .btn-gold:active {
-  transform: translateY(0);
+  transform: translateY(1px);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.16);
 }
 
-/* Minimal Architectural Secondary Button */
+/* Minimal Architectural Secondary Button (Subtle Tactile Surface) */
 .btn-secondary,
 .btn-skeuo-pearl {
   position: relative;
@@ -165,20 +178,26 @@
   font-weight: 600;
   letter-spacing: -0.01em;
   border-radius: 0.75rem;
-  background: transparent;
+  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
   color: #071B70;
   border: 1px solid #CBD5E1;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 1px 3px rgba(15, 23, 42, 0.06);
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
   text-decoration: none;
   cursor: pointer;
 }
 
 .btn-secondary:hover,
 .btn-skeuo-pearl:hover {
-  background: #F1F5F9;
-  border-color: #071B70;
+  background: linear-gradient(180deg, #F8FAFC 0%, #F1F5F9 100%);
+  border-color: #087CCB;
   color: #071B70;
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 1),
+    0 6px 16px -4px rgba(7, 27, 112, 0.12);
 }
 
 .btn-secondary:focus-visible,
@@ -189,7 +208,8 @@
 
 .btn-secondary:active,
 .btn-skeuo-pearl:active {
-  transform: translateY(0);
+  transform: translateY(1px);
+  background: #F1F5F9;
 }
 
 /* Dark Titanium Button */
@@ -369,7 +389,17 @@
 /* Smooth keyframes */
 @keyframes float {
   0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-8px); }
+  50% { transform: translateY(-7px); }
+}
+
+@keyframes logoFloat {
+  0%, 100% { transform: translateY(0px) scale(1); }
+  50% { transform: translateY(-3px) scale(1.02); }
+}
+
+@keyframes marqueeScroll {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
 }
 
 @keyframes pulseGlow {
@@ -378,16 +408,51 @@
 }
 
 .animate-float {
-  animation: float 4s ease-in-out infinite;
+  animation: float 5s ease-in-out infinite;
+}
+
+.animate-logo-float {
+  animation: logoFloat 4s ease-in-out infinite;
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marqueeScroll 32s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
 }
 
 .animate-float-delayed {
-  animation: float 4s ease-in-out infinite;
-  animation-delay: 2s;
+  animation: float 5s ease-in-out infinite;
+  animation-delay: 2.5s;
 }
 
 .animate-pulse-glow {
   animation: pulseGlow 3s ease-in-out infinite;
+}
+
+/* Tactile Dimensional Card Surface (Refined Modern Skeuomorphism) */
+.card-tactile {
+  background: linear-gradient(180deg, #FFFFFF 0%, #FAFBFD 100%);
+  border-radius: 1.125rem;
+  border: 1px solid rgba(203, 213, 225, 0.85);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    0 2px 4px rgba(15, 23, 42, 0.03),
+    0 12px 28px -8px rgba(7, 27, 112, 0.08);
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s ease, border-color 0.28s ease;
+}
+
+.card-tactile:hover {
+  transform: translateY(-4px);
+  border-color: rgba(8, 124, 203, 0.45);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 1),
+    0 4px 10px rgba(15, 23, 42, 0.04),
+    0 20px 38px -10px rgba(8, 124, 203, 0.16);
 }
 
 /* A. Editorial Card (Case Studies, Insights — No heavy box, clean image & typography focus) */
