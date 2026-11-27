@@ -137,37 +137,43 @@ export default function Footer() {
           {/* Capabilities */}
           <div className="lg:col-span-3 space-y-4">
             <h4 className="text-xs font-bold uppercase tracking-wider text-[#00BCEB]">
-              Our Services
+              Our Core Services
             </h4>
             <ul className="space-y-2.5 text-sm">
               <li>
-                <Link href="/services#seo" className="text-slate-300 hover:text-white transition-colors">
-                  SEO & Search Rankings
+                <Link href="/services/performance-marketing" className="text-slate-300 hover:text-white transition-colors flex items-center justify-between group">
+                  <span>Performance Marketing</span>
+                  <span className="text-[10px] text-slate-500 group-hover:text-[#FFC400]">Google • Meta</span>
                 </Link>
               </li>
               <li>
-                <Link href="/services#google-ads" className="text-slate-300 hover:text-white transition-colors">
-                  Google Ads (PMax & Search)
+                <Link href="/services/seo-aeo-geo" className="text-slate-300 hover:text-white transition-colors flex items-center justify-between group">
+                  <span>SEO, AEO &amp; GEO</span>
+                  <span className="text-[10px] text-slate-500 group-hover:text-[#FFC400]">Search + AI</span>
                 </Link>
               </li>
               <li>
-                <Link href="/services#meta-ads" className="text-slate-300 hover:text-white transition-colors">
-                  Meta Ads (FB & Instagram)
+                <Link href="/services/social-media-marketing" className="text-slate-300 hover:text-white transition-colors flex items-center justify-between group">
+                  <span>Social Media Marketing</span>
+                  <span className="text-[10px] text-slate-500 group-hover:text-[#FFC400]">Vertical Video</span>
                 </Link>
               </li>
               <li>
-                <Link href="/services#web-development" className="text-slate-300 hover:text-white transition-colors">
-                  Web Development & UI/UX
+                <Link href="/services/content-marketing" className="text-slate-300 hover:text-white transition-colors flex items-center justify-between group">
+                  <span>Content Marketing</span>
+                  <span className="text-[10px] text-slate-500 group-hover:text-[#FFC400]">Thought Leadership</span>
                 </Link>
               </li>
               <li>
-                <Link href="/services#branding-creative" className="text-slate-300 hover:text-white transition-colors">
-                  Branding & Logo Design
+                <Link href="/services/digital-growth-partner" className="text-slate-300 hover:text-white transition-colors flex items-center justify-between group">
+                  <span>Digital Growth Partner</span>
+                  <span className="text-[10px] text-slate-500 group-hover:text-[#FFC400]">Fractional CMO</span>
                 </Link>
               </li>
               <li>
-                <Link href="/services#social-media" className="text-slate-300 hover:text-white transition-colors">
-                  Social Media Marketing
+                <Link href="/services/amazon-marketing-ppc" className="text-slate-300 hover:text-white transition-colors flex items-center justify-between group">
+                  <span>Amazon Marketing &amp; PPC</span>
+                  <span className="text-[10px] text-slate-500 group-hover:text-[#FFC400]">Sponsored Ads</span>
                 </Link>
               </li>
             </ul>

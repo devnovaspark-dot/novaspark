@@ -135,6 +135,77 @@ export default function ServicesPage() {
                 })}
               </div>
             </ScrollReveal>
+
+            {/* Direct Links to Dedicated Service Landing Pages */}
+            <ScrollReveal delay={350}>
+              <div className="pt-6 border-t border-slate-200/80">
+                <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 block mb-3">
+                  Dedicated Growth Service Landing Pages
+                </span>
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2">
+                  <Link
+                    href="/services/performance-marketing"
+                    className="p-2.5 rounded-xl bg-white border border-slate-200/80 hover:border-[#087CCB] hover:shadow-xs transition-all text-left group"
+                  >
+                    <span className="text-[10px] font-bold text-[#087CCB] block">01</span>
+                    <span className="text-xs font-bold text-slate-800 group-hover:text-[#087CCB] block leading-tight">
+                      Performance Marketing
+                    </span>
+                    <span className="text-[9px] text-slate-500 block truncate mt-0.5">Google • Meta</span>
+                  </Link>
+                  <Link
+                    href="/services/seo-aeo-geo"
+                    className="p-2.5 rounded-xl bg-white border border-slate-200/80 hover:border-[#087CCB] hover:shadow-xs transition-all text-left group"
+                  >
+                    <span className="text-[10px] font-bold text-[#087CCB] block">02</span>
+                    <span className="text-xs font-bold text-slate-800 group-hover:text-[#087CCB] block leading-tight">
+                      SEO, AEO &amp; GEO
+                    </span>
+                    <span className="text-[9px] text-slate-500 block truncate mt-0.5">Google + Perplexity</span>
+                  </Link>
+                  <Link
+                    href="/services/social-media-marketing"
+                    className="p-2.5 rounded-xl bg-white border border-slate-200/80 hover:border-[#087CCB] hover:shadow-xs transition-all text-left group"
+                  >
+                    <span className="text-[10px] font-bold text-[#087CCB] block">03</span>
+                    <span className="text-xs font-bold text-slate-800 group-hover:text-[#087CCB] block leading-tight">
+                      Social Media
+                    </span>
+                    <span className="text-[9px] text-slate-500 block truncate mt-0.5">Vertical Video</span>
+                  </Link>
+                  <Link
+                    href="/services/content-marketing"
+                    className="p-2.5 rounded-xl bg-white border border-slate-200/80 hover:border-[#087CCB] hover:shadow-xs transition-all text-left group"
+                  >
+                    <span className="text-[10px] font-bold text-[#087CCB] block">04</span>
+                    <span className="text-xs font-bold text-slate-800 group-hover:text-[#087CCB] block leading-tight">
+                      Content Marketing
+                    </span>
+                    <span className="text-[9px] text-slate-500 block truncate mt-0.5">BOFU Assets</span>
+                  </Link>
+                  <Link
+                    href="/services/digital-growth-partner"
+                    className="p-2.5 rounded-xl bg-white border border-slate-200/80 hover:border-[#087CCB] hover:shadow-xs transition-all text-left group"
+                  >
+                    <span className="text-[10px] font-bold text-[#087CCB] block">05</span>
+                    <span className="text-xs font-bold text-slate-800 group-hover:text-[#087CCB] block leading-tight">
+                      Growth Partner
+                    </span>
+                    <span className="text-[9px] text-slate-500 block truncate mt-0.5">Fractional CMO</span>
+                  </Link>
+                  <Link
+                    href="/services/amazon-marketing-ppc"
+                    className="p-2.5 rounded-xl bg-white border border-slate-200/80 hover:border-[#087CCB] hover:shadow-xs transition-all text-left group"
+                  >
+                    <span className="text-[10px] font-bold text-[#087CCB] block">06</span>
+                    <span className="text-xs font-bold text-slate-800 group-hover:text-[#087CCB] block leading-tight">
+                      Amazon PPC
+                    </span>
+                    <span className="text-[9px] text-slate-500 block truncate mt-0.5">Sponsored Ads</span>
+                  </Link>
+                </div>
+              </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>

@@ -21,78 +21,81 @@ import {
   TrendingUp,
 } from 'lucide-react';
 
-const SERVICES_MENU = [
+// ═══════════════════════════════════════════════════════════════
+// SIX FINALIZED CORE SERVICES FOR NOVASPARK
+// 1. Performance Marketing (Google Ads, Meta Ads, LinkedIn Ads)
+// 2. SEO, AEO & GEO (SEO, Answer Engine Optimization, Generative Engine)
+// 3. Social Media Marketing
+// 4. Content Marketing
+// 5. Digital Growth Partner
+// 6. Amazon Marketing & PPC
+// ═══════════════════════════════════════════════════════════════
+export const SIX_CORE_SERVICES = [
   {
-    id: 'seo',
-    name: 'Search Engine Optimization',
-    shortName: 'SEO & Intent Capture',
-    desc: 'Dominate organic search with authority engineering and technical precision.',
-    metric: '+180% Traffic',
-    icon: Search,
-    href: '/services#seo',
-  },
-  {
-    id: 'google-ads',
-    name: 'Google Ads & Performance Max',
-    shortName: 'Google Ads & PMax',
-    desc: 'Capture high-intent commercial buyers with conversion-calibrated bidding.',
-    metric: '3.8X ROAS',
+    id: 'performance-marketing',
+    name: 'Performance Marketing',
+    shortName: 'Performance Marketing',
+    subItems: ['Google Ads', 'Meta Ads', 'LinkedIn Ads'],
+    badge: 'Google • Meta • LinkedIn Ads',
+    desc: 'Algorithmic multi-channel advertising with first-party CAPI attribution.',
+    metric: '4.8X Max ROAS',
     icon: Zap,
-    href: '/services#google-ads',
+    href: '/services/performance-marketing',
   },
   {
-    id: 'meta-ads',
-    name: 'Meta Ads & Paid Social',
-    shortName: 'Meta Ads & Scaling',
-    desc: 'Scale high-converting creative fatigue-resistant ad funnels via CAPI.',
-    metric: '+240% Revenue',
-    icon: BarChart3,
-    href: '/services#meta-ads',
+    id: 'seo-aeo-geo',
+    name: 'SEO, AEO & GEO',
+    shortName: 'SEO, AEO & GEO',
+    subItems: ['Search Engine Optimization', 'Answer Engine Optimization', 'Generative Engine Optimization'],
+    badge: 'Search • Perplexity • ChatGPT',
+    desc: 'Dominate traditional Google SERPs, AI Overviews, and generative answer engines.',
+    metric: '+180% Organic',
+    icon: Search,
+    href: '/services/seo-aeo-geo',
   },
   {
-    id: 'web-dev',
-    name: 'Website Design & Development',
-    shortName: 'Modern Web Engineering',
-    desc: 'Sub-second Next.js web experiences built for maximum checkout velocity.',
-    metric: '0.4s Speeds',
-    icon: Globe,
-    href: '/services#web-dev',
-  },
-  {
-    id: 'social-media',
+    id: 'social-media-marketing',
     name: 'Social Media Marketing',
-    shortName: 'Social Growth & UGC',
-    desc: 'Build dedicated brand loyalty through cinematic content and storytelling.',
-    metric: '4.2M+ Reach',
+    shortName: 'Social Media Marketing',
+    subItems: ['Short-Form Video', 'Community Growth', 'Creator & UGC'],
+    badge: 'Reels • Shorts • Community',
+    desc: 'High-tempo vertical video production, editorial grids, and active buyer community nurture.',
+    metric: '+410% Reach',
     icon: Share2,
-    href: '/services#social-media',
+    href: '/services/social-media-marketing',
   },
   {
-    id: 'content',
-    name: 'Content Marketing & Strategy',
-    shortName: 'Authority Content',
-    desc: 'Educational assets and buyer enablement content that shortens sales cycles.',
-    metric: '+310% Leads',
+    id: 'content-marketing',
+    name: 'Content Marketing',
+    shortName: 'Content Marketing',
+    subItems: ['Thought Leadership', 'Buyer Enablement', 'Semantic Whitepapers'],
+    badge: 'High-Intent ICP Content',
+    desc: 'Authoritative bottom-of-funnel content and buyer enablement assets that shorten sales cycles.',
+    metric: '3.2X Pipeline',
     icon: FileText,
-    href: '/services#content',
+    href: '/services/content-marketing',
   },
   {
-    id: 'branding',
-    name: 'Branding & Creative Design',
-    shortName: 'Brand Strategy & Identity',
-    desc: 'Distinctive brand identities and visual assets that command premium positioning.',
-    metric: 'Top 1% Impact',
-    icon: Sparkles,
-    href: '/services#branding',
+    id: 'digital-growth-partner',
+    name: 'Digital Growth Partner',
+    shortName: 'Digital Growth Partner',
+    subItems: ['Fractional CMO', 'Full-Stack Architecture', 'Category Exclusivity'],
+    badge: 'Fractional CMO & Strategy',
+    desc: 'Embedded executive growth direction, Next.js engineering, unit economics, and market exclusivity.',
+    metric: '100% Embedded',
+    icon: TrendingUp,
+    href: '/services/digital-growth-partner',
   },
   {
-    id: 'local-seo',
-    name: 'Local SEO & Google Maps (GBP)',
-    shortName: 'Local Maps Domination',
-    desc: 'Dominate the Google Maps 3-pack to drive physical store walk-ins.',
-    metric: '+74% Footfall',
-    icon: MapPin,
-    href: '/services#local-seo',
+    id: 'amazon-marketing-ppc',
+    name: 'Amazon Marketing & PPC',
+    shortName: 'Amazon Marketing & PPC',
+    subItems: ['Sponsored Ads & DSP', 'Buy Box Defense', 'A+ Storefront CRO'],
+    badge: 'Sponsored Ads & DSP',
+    desc: 'Marketplace dominance, aggressive ACoS compression, ASIN conquesting, and Buy Box scaling.',
+    metric: '-32% ACoS',
+    icon: BarChart3,
+    href: '/services/amazon-marketing-ppc',
   },
 ];
 
@@ -241,9 +244,9 @@ export default function Header() {
                       </div>
 
                       <div className="grid grid-cols-12 gap-6">
-                        {/* 8 Services Grid */}
+                        {/* 6 Core Services Grid */}
                         <div className="col-span-8 grid grid-cols-2 gap-2.5">
-                          {SERVICES_MENU.map((service) => {
+                          {SIX_CORE_SERVICES.map((service) => {
                             const IconComp = service.icon;
                             return (
                               <Link
@@ -254,15 +257,18 @@ export default function Header() {
                                 <div className="w-9 h-9 rounded-xl bg-slate-100 text-[#071B70] flex items-center justify-center shrink-0 group-hover:bg-[#0F172A] group-hover:text-[#FFC400] transition-colors skeuo-well">
                                   <IconComp className="w-4 h-4" />
                                 </div>
-                                <div className="min-w-0">
-                                  <div className="flex items-center gap-1.5">
-                                    <span className="font-display font-semibold text-xs text-[#071B70] group-hover:text-[#087CCB] transition-colors truncate">
-                                      {service.shortName}
+                                <div className="min-w-0 flex-1">
+                                  <div className="flex items-center justify-between gap-1">
+                                    <span className="font-display font-bold text-xs text-[#071B70] group-hover:text-[#087CCB] transition-colors truncate">
+                                      {service.name}
+                                    </span>
+                                    <span className="text-[10px] text-emerald-600 font-bold shrink-0">
+                                      {service.metric}
                                     </span>
                                   </div>
-                                  <div className="text-[10px] text-emerald-600 font-bold">
-                                    {service.metric}
-                                  </div>
+                                  <p className="text-[11px] text-slate-500 font-medium truncate mt-0.5">
+                                    {service.subItems.join(' • ')}
+                                  </p>
                                 </div>
                               </Link>
                             );
@@ -407,15 +413,20 @@ export default function Header() {
                     />
                   </button>
                   {mobileServicesOpen && (
-                    <div className="pl-4 pr-2 py-2 space-y-1 bg-slate-50 rounded-2xl mt-1">
-                      {SERVICES_MENU.map((s) => (
+                    <div className="pl-3 pr-2 py-2 space-y-1 bg-slate-50 rounded-2xl mt-1">
+                      {SIX_CORE_SERVICES.map((s) => (
                         <Link
                           key={s.id}
                           href={s.href}
-                          className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium text-slate-600 hover:text-[#071B70]"
+                          className="flex flex-col py-2 px-2.5 rounded-lg hover:bg-slate-100 transition-colors"
                         >
-                          <span>{s.shortName}</span>
-                          <span className="text-[10px] font-bold text-emerald-600">{s.metric}</span>
+                          <div className="flex items-center justify-between">
+                            <span className="text-xs font-bold text-slate-800">{s.name}</span>
+                            <span className="text-[10px] font-bold text-emerald-600">{s.metric}</span>
+                          </div>
+                          <span className="text-[10px] text-slate-500 font-medium truncate mt-0.5">
+                            {s.subItems.join(' • ')}
+                          </span>
                         </Link>
                       ))}
                       <Link

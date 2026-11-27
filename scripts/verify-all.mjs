@@ -191,7 +191,76 @@ async function runTests() {
     assert(csv.includes("Lead ID") && csv.includes("Full Name") && csv.includes("Business Email"), "CSV headers missing");
   });
 
-  // 8. Sitemaps & Robots.txt
+  // 8. Dedicated Six Core Service Landing Pages
+  await test("Service 1: /services/performance-marketing loads with Google, Meta, LinkedIn Ads", async () => {
+    const res = await fetch(`${BASE_URL}/services/performance-marketing`);
+    assert.strictEqual(res.status, 200);
+    const html = await res.text();
+    assert(html.includes("Performance Marketing"), "Title missing");
+    assert(html.includes("Google Ads (Search, PMax") || html.includes("Google Ads"), "Google Ads sub-discipline missing");
+    assert(html.includes("Meta Ads (Facebook") || html.includes("Meta Ads"), "Meta Ads sub-discipline missing");
+    assert(html.includes("LinkedIn Ads (B2B") || html.includes("LinkedIn Ads"), "LinkedIn Ads sub-discipline missing");
+    assert(html.includes("4.8X"), "Peak ROAS metric missing");
+    assert(html.includes("consultation-form"), "Inquiry form anchor missing");
+  });
+
+  await test("Service 2: /services/seo-aeo-geo loads with SEO, Answer Engine, and Generative Engine", async () => {
+    const res = await fetch(`${BASE_URL}/services/seo-aeo-geo`);
+    assert.strictEqual(res.status, 200);
+    const html = await res.text();
+    assert(html.includes("SEO, AEO") || html.includes("SEO, AEO &amp; GEO"), "Title missing");
+    assert(html.includes("Search Engine Optimization"), "SEO sub-discipline missing");
+    assert(html.includes("Answer Engine Optimization"), "AEO sub-discipline missing");
+    assert(html.includes("Generative Engine Optimization"), "GEO sub-discipline missing");
+    assert(html.includes("ChatGPT") || html.includes("Perplexity"), "AI search engines missing");
+    assert(html.includes("+180%"), "Organic traffic lift metric missing");
+  });
+
+  await test("Service 3: /services/social-media-marketing loads with vertical video and DM funnels", async () => {
+    const res = await fetch(`${BASE_URL}/services/social-media-marketing`);
+    assert.strictEqual(res.status, 200);
+    const html = await res.text();
+    assert(html.includes("Social Media Marketing"), "Title missing");
+    assert(html.includes("Short-Form Video") || html.includes("Reels"), "Short form video missing");
+    assert(html.includes("Editorial Brand Curation"), "Brand curation missing");
+    assert(html.includes("Inbound DM Funnels"), "DM funnels missing");
+    assert(html.includes("+410%"), "Audience reach metric missing");
+  });
+
+  await test("Service 4: /services/content-marketing loads with BOFU guides and thought leadership", async () => {
+    const res = await fetch(`${BASE_URL}/services/content-marketing`);
+    assert.strictEqual(res.status, 200);
+    const html = await res.text();
+    assert(html.includes("Content Marketing"), "Title missing");
+    assert(html.includes("Bottom-of-Funnel") || html.includes("BOFU"), "BOFU comparison missing");
+    assert(html.includes("Thought Leadership"), "Thought leadership missing");
+    assert(html.includes("Semantic Whitepapers"), "Whitepapers missing");
+    assert(html.includes("3.2X"), "Pipeline velocity lift missing");
+  });
+
+  await test("Service 5: /services/digital-growth-partner loads with Fractional CMO and category exclusivity", async () => {
+    const res = await fetch(`${BASE_URL}/services/digital-growth-partner`);
+    assert.strictEqual(res.status, 200);
+    const html = await res.text();
+    assert(html.includes("Digital Growth Partner"), "Title missing");
+    assert(html.includes("Fractional CMO"), "Fractional CMO missing");
+    assert(html.includes("Full-Stack Modernization") || html.includes("Next.js"), "Next.js modernization missing");
+    assert(html.includes("Category Exclusivity"), "Category exclusivity missing");
+    assert(html.includes("3.8X"), "Portfolio annual lift missing");
+  });
+
+  await test("Service 6: /services/amazon-marketing-ppc loads with Amazon PPC, DSP, and Buy Box defense", async () => {
+    const res = await fetch(`${BASE_URL}/services/amazon-marketing-ppc`);
+    assert.strictEqual(res.status, 200);
+    const html = await res.text();
+    assert(html.includes("Amazon Marketing") || html.includes("Amazon Marketing &amp; PPC"), "Title missing");
+    assert(html.includes("Amazon PPC"), "Amazon PPC missing");
+    assert(html.includes("Amazon DSP"), "Amazon DSP missing");
+    assert(html.includes("Buy Box Defense"), "Buy Box defense missing");
+    assert(html.includes("-32%"), "ACoS reduction metric missing");
+  });
+
+  // 9. Sitemaps & Robots.txt
   await test("Robots.txt and Sitemap.xml are dynamically generated and valid", async () => {
     const robotsRes = await fetch(`${BASE_URL}/robots.txt`);
     assert.strictEqual(robotsRes.status, 200);
@@ -204,6 +273,9 @@ async function runTests() {
     const sitemapText = await sitemapRes.text();
     assert(sitemapText.includes("<urlset"), "Sitemap XML schema missing");
     assert(sitemapText.includes("/case-studies/medallion-house"), "Case studies missing from sitemap");
+    assert(sitemapText.includes("/services/performance-marketing"), "Performance marketing missing from sitemap");
+    assert(sitemapText.includes("/services/seo-aeo-geo"), "SEO AEO GEO missing from sitemap");
+    assert(sitemapText.includes("/services/amazon-marketing-ppc"), "Amazon PPC missing from sitemap");
   });
 
   console.log(`\n========================================`);
