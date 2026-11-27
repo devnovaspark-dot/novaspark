@@ -184,14 +184,14 @@ export default function ServicesPage() {
                     <span className="text-[9px] text-slate-500 block truncate mt-0.5">BOFU Assets</span>
                   </Link>
                   <Link
-                    href="/services/digital-growth-partner"
+                    href="/services/web-design-development"
                     className="p-2.5 rounded-xl bg-white border border-slate-200/80 hover:border-[#087CCB] hover:shadow-xs transition-all text-left group"
                   >
                     <span className="text-[10px] font-bold text-[#087CCB] block">05</span>
                     <span className="text-xs font-bold text-slate-800 group-hover:text-[#087CCB] block leading-tight">
-                      Growth Partner
+                      Web Design &amp; Dev
                     </span>
-                    <span className="text-[9px] text-slate-500 block truncate mt-0.5">Fractional CMO</span>
+                    <span className="text-[9px] text-slate-500 block truncate mt-0.5">Next.js &amp; UI/UX</span>
                   </Link>
                   <Link
                     href="/services/amazon-marketing-ppc"

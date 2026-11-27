@@ -267,7 +267,7 @@ const SERVICE_HREF_MAP: Record<string, string> = {
   'google-ads': '/services/performance-marketing',
   'meta-ads': '/services/performance-marketing',
   'social-media': '/services/social-media-marketing',
-  'web-development': '/services/digital-growth-partner',
+  'web-development': '/services/web-design-development',
   'content-marketing': '/services/content-marketing',
   branding: '/services/content-marketing',
   'local-seo': '/services/seo-aeo-geo',

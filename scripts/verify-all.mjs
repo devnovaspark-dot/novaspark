@@ -238,15 +238,15 @@ async function runTests() {
     assert(html.includes("3.2X"), "Pipeline velocity lift missing");
   });
 
-  await test("Service 5: /services/digital-growth-partner loads with Fractional CMO and category exclusivity", async () => {
-    const res = await fetch(`${BASE_URL}/services/digital-growth-partner`);
+  await test("Service 5: /services/web-design-development loads with Next.js, UI/UX, and CRO", async () => {
+    const res = await fetch(`${BASE_URL}/services/web-design-development`);
     assert.strictEqual(res.status, 200);
     const html = await res.text();
-    assert(html.includes("Digital Growth Partner"), "Title missing");
-    assert(html.includes("Fractional CMO"), "Fractional CMO missing");
-    assert(html.includes("Full-Stack Modernization") || html.includes("Next.js"), "Next.js modernization missing");
-    assert(html.includes("Category Exclusivity"), "Category exclusivity missing");
-    assert(html.includes("3.8X"), "Portfolio annual lift missing");
+    assert(html.includes("Web Design &amp; Development") || html.includes("Web Design & Development"), "Title missing");
+    assert(html.includes("Bespoke UI/UX"), "UI/UX section missing");
+    assert(html.includes("Next.js"), "Next.js engineering missing");
+    assert(html.includes("CRO Landing Pages"), "CRO landing pages missing");
+    assert(html.includes("99/100"), "Core Web Vitals score missing");
   });
 
   await test("Service 6: /services/amazon-marketing-ppc loads with Amazon PPC, DSP, and Buy Box defense", async () => {

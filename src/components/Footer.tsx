@@ -165,9 +165,9 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/services/digital-growth-partner" className="text-slate-300 hover:text-white transition-colors flex items-center justify-between group">
-                  <span>Digital Growth Partner</span>
-                  <span className="text-[10px] text-slate-500 group-hover:text-[#FFC400]">Fractional CMO</span>
+                <Link href="/services/web-design-development" className="text-slate-300 hover:text-white transition-colors flex items-center justify-between group">
+                  <span>Web Design &amp; Development</span>
+                  <span className="text-[10px] text-slate-500 group-hover:text-[#FFC400]">Next.js • UI/UX</span>
                 </Link>
               </li>
               <li>

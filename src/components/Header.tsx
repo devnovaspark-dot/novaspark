@@ -27,7 +27,7 @@ import {
 // 2. SEO, AEO & GEO (SEO, Answer Engine Optimization, Generative Engine)
 // 3. Social Media Marketing
 // 4. Content Marketing
-// 5. Digital Growth Partner
+// 5. Web Design & Development
 // 6. Amazon Marketing & PPC
 // ═══════════════════════════════════════════════════════════════
 export const SIX_CORE_SERVICES = [
@@ -76,15 +76,15 @@ export const SIX_CORE_SERVICES = [
     href: '/services/content-marketing',
   },
   {
-    id: 'digital-growth-partner',
-    name: 'Digital Growth Partner',
-    shortName: 'Digital Growth Partner',
-    subItems: ['Fractional CMO', 'Full-Stack Architecture', 'Category Exclusivity'],
-    badge: 'Fractional CMO & Strategy',
-    desc: 'Embedded executive growth direction, Next.js engineering, unit economics, and market exclusivity.',
-    metric: '100% Embedded',
-    icon: TrendingUp,
-    href: '/services/digital-growth-partner',
+    id: 'web-design-development',
+    name: 'Web Design & Development',
+    shortName: 'Web Design & Development',
+    subItems: ['Next.js & React Apps', 'UI/UX & Brand Systems', 'CRO Landing Pages'],
+    badge: 'Next.js • UI/UX • CRO',
+    desc: 'High-speed custom websites, bespoke UI/UX systems, and conversion-engineered landing pages.',
+    metric: '99+ Core Vitals',
+    icon: Globe,
+    href: '/services/web-design-development',
   },
   {
     id: 'amazon-marketing-ppc',
