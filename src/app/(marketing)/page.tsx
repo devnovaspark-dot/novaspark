@@ -395,101 +395,18 @@ export default function HomePage() {
               </ScrollReveal>
             </div>
 
-            {/* Right: Bespoke High-Tech Growth Telemetry Cockpit */}
-            <div className="lg:col-span-5 relative">
+            {/* Right: Pure Clean Visual — One picture only, zero text, zero cards */}
+            <div className="lg:col-span-5 relative flex items-center justify-center">
               <ScrollReveal delay={200} direction="left">
-                <div className="relative mx-auto max-w-md lg:max-w-none">
-                  {/* Outer Luxury Cockpit Card */}
-                  <div className="card-skeuo-dark p-6 sm:p-7 text-white rounded-3xl shadow-2xl relative overflow-hidden border border-white/10">
-                    <div className="absolute top-0 right-0 w-44 h-44 bg-[#00BCEB]/10 rounded-full blur-2xl pointer-events-none" />
-
-                    {/* Cockpit Window Status Bar */}
-                    <div className="flex items-center justify-between pb-4 mb-5 border-b border-white/10 relative z-10">
-                      <div className="flex items-center gap-2">
-                        <span className="w-2.5 h-2.5 rounded-full bg-rose-400/80" />
-                        <span className="w-2.5 h-2.5 rounded-full bg-amber-400/80" />
-                        <span className="w-2.5 h-2.5 rounded-full bg-emerald-400/80" />
-                        <span className="text-[11px] font-mono-tag text-slate-400 font-semibold ml-2">novaspark.telemetry/live</span>
-                      </div>
-                      <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/15 text-emerald-400 border border-emerald-400/30">
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                        Active ROAS Engine
-                      </span>
-                    </div>
-
-                    {/* Verified Live Attributed Event Stream */}
-                    <div className="space-y-2.5 mb-5 relative z-10">
-                      <div className="p-3 rounded-xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-between hover:border-[#00BCEB]/40 transition-colors">
-                        <div className="flex items-center gap-3">
-                          <div className="w-8 h-8 rounded-lg bg-[#087CCB]/20 text-[#00BCEB] flex items-center justify-center font-bold text-xs">
-                            CAPI
-                          </div>
-                          <div>
-                            <div className="text-xs font-bold text-white leading-tight">Meta Conversion API Verified</div>
-                            <div className="text-[10px] text-slate-400">Jewelry Order #4182 · First-Party Attribution</div>
-                          </div>
-                        </div>
-                        <span className="font-display font-black text-xs text-emerald-400">₹24,800 · 4.8X</span>
-                      </div>
-
-                      <div className="p-3 rounded-xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-between hover:border-[#FFC400]/40 transition-colors">
-                        <div className="flex items-center gap-3">
-                          <div className="w-8 h-8 rounded-lg bg-[#FFC400]/20 text-[#FFC400] flex items-center justify-center font-bold text-xs">
-                            PMax
-                          </div>
-                          <div>
-                            <div className="text-xs font-bold text-white leading-tight">Google High-Intent Search</div>
-                            <div className="text-[10px] text-slate-400">Commercial Query Captured · Low CAC</div>
-                          </div>
-                        </div>
-                        <span className="font-display font-black text-xs text-[#FFC400]">3.8X ROAS</span>
-                      </div>
-                    </div>
-
-                    {/* Integrated 3D Growth Graphic Visual Well - Unobstructed, high quality */}
-                    <div className="skeuo-well-dark p-2 mb-4 relative z-10 overflow-hidden">
-                      <div className="relative h-44 sm:h-48 w-full rounded-xl overflow-hidden border border-white/10 bg-[#030712]">
-                        <Image
-                          src="/images/homepage_3d.webp"
-                          alt="NovaSpark Digital Growth Engine"
-                          fill
-                          priority
-                          className="object-cover object-center opacity-95 hover:scale-105 transition-transform duration-500"
-                          sizes="(max-width: 768px) 100vw, 450px"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#060910] via-transparent to-transparent opacity-60" />
-                        <div className="absolute bottom-2.5 left-3 right-3 flex items-center justify-between text-[11px] text-white">
-                          <span className="font-semibold text-slate-300">Synchronized Growth Engine</span>
-                          <span className="text-[#00BCEB] font-mono-tag font-bold">+240% Lift</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Telemetry Metrics Row */}
-                    <div className="grid grid-cols-2 gap-2.5 relative z-10">
-                      <div className="p-3 rounded-xl bg-white/[0.04] border border-white/[0.08]">
-                        <div className="text-[10px] font-mono-tag font-semibold text-slate-400 uppercase">Google Ads &amp; PMax</div>
-                        <div className="font-display font-black text-base text-white mt-0.5">3.8X – 4.8X ROAS</div>
-                        <div className="text-[10px] text-emerald-400 font-bold mt-0.5">High Intent Search</div>
-                      </div>
-                      <div className="p-3 rounded-xl bg-white/[0.04] border border-white/[0.08]">
-                        <div className="text-[10px] font-mono-tag font-semibold text-slate-400 uppercase">Organic Inbound SEO</div>
-                        <div className="font-display font-black text-base text-[#00BCEB] mt-0.5">+380% Lift</div>
-                        <div className="text-[10px] text-emerald-400 font-bold mt-0.5">Compound Traffic</div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Micro Badge Floating Accent */}
-                  <div className="absolute -bottom-4 -left-4 bg-white/95 backdrop-blur-md p-3.5 rounded-2xl border border-slate-200/90 shadow-xl flex items-center gap-3">
-                    <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#FFC400] to-[#FF7900] flex items-center justify-center text-[#071B70] shadow-2xs shrink-0">
-                      <Sparkles className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <div className="text-[9px] font-mono-tag font-bold text-slate-400 uppercase tracking-wider">Creative Velocity</div>
-                      <div className="font-display font-extrabold text-xs text-[#071B70]">Top 1% Ad Engagement</div>
-                    </div>
-                  </div>
+                <div className="relative w-full max-w-lg aspect-4/3 sm:aspect-16/10 rounded-3xl overflow-hidden shadow-2xl border border-slate-200/90 group bg-slate-900">
+                  <Image
+                    src="/images/homepage_3d.webp"
+                    alt="NovaSpark Digital Marketing Agency"
+                    fill
+                    priority
+                    className="object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                    sizes="(max-width: 1024px) 100vw, 550px"
+                  />
                 </div>
               </ScrollReveal>
             </div>
@@ -498,28 +415,29 @@ export default function HomePage() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════
-          SECTION 2 — REAL RESULTS SCOREBOARD (TACTILE INSTRUMENT PANEL)
+          SECTION 2 — REAL RESULTS SCOREBOARD (REFINED INSTRUMENT STRIP)
           +240% | +180% | 3.8X | +380% | +410%
          ═══════════════════════════════════════════════════════════ */}
-      <section className="py-16 bg-gradient-to-b from-[#0F172A] via-[#0B0F19] to-[#060910] text-white border-y border-white/10 relative overflow-hidden shadow-2xl">
-        <div className="absolute inset-0 bg-grid-dark opacity-15 pointer-events-none" />
+      <section className="py-14 bg-[#0F172A] text-white border-y border-slate-800 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center mb-10">
-            <div className="badge-tag mx-auto bg-white/10 text-white border-white/20">
+          <div className="text-center mb-8">
+            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-white/5 text-slate-300 border border-white/10">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
               <span>Real Results From Our Digital Marketing Campaigns</span>
-            </div>
+            </span>
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-5 text-center">
-            {AGENCY_METRICS_HIGHLIGHTS.map((metric) => (
-              <div key={metric.label} className="card-skeuo-dark p-6 text-center group hover:scale-105 transition-all">
-                <div className="skeuo-well-dark py-3 px-2 mb-3">
-                  <div className="font-display font-black text-3xl sm:text-4xl text-[#FFC400] tracking-tight drop-shadow-md">
-                    {metric.value}
-                  </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 sm:gap-4 divide-y sm:divide-y-0 sm:divide-x divide-slate-800/80 text-center">
+            {AGENCY_METRICS_HIGHLIGHTS.map((metric, idx) => (
+              <div key={metric.label} className={`pt-4 sm:pt-0 ${idx > 0 ? 'sm:pl-6' : ''}`}>
+                <div className="font-display font-black text-3xl sm:text-4xl text-white tracking-tight">
+                  {metric.value}
                 </div>
-                <div className="text-xs font-bold text-slate-100 tracking-wide">{metric.label}</div>
-                <div className="text-[11px] text-[#00BCEB] font-semibold mt-1 font-mono-tag">{metric.sub}</div>
+                <div className="text-xs font-bold text-slate-300 tracking-wide mt-1.5 uppercase">
+                  {metric.label}
+                </div>
+                <div className="text-[11px] text-[#00BCEB] font-medium mt-0.5 font-mono-tag">
+                  {metric.sub}
+                </div>
               </div>
             ))}
           </div>
@@ -555,58 +473,66 @@ export default function HomePage() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════
-          SECTION 4 — BRAND INTRODUCTION
+          SECTION 4 — BRAND INTRODUCTION (EDITORIAL SPREAD)
           "More Than Marketing. A Smarter Way to Grow."
          ═══════════════════════════════════════════════════════════ */}
-      <section className="py-24 bg-[#F7F9FC] relative">
+      <section className="py-24 bg-[#F7F9FC] relative border-b border-slate-200/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div className="lg:col-span-5 space-y-4">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+            <div className="lg:col-span-5 space-y-5">
               <ScrollReveal>
-                <div className="badge-tag">
-                  <span>Chapter 01 // The Agency Thesis</span>
-                </div>
-                <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-[#071B70] tracking-tight leading-tight mt-4">
+                <span className="badge-tag">
+                  Agency Philosophy
+                </span>
+                <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-[#071B70] tracking-tight leading-tight mt-3">
                   More Than Marketing. <br />
                   <span className="text-[#087CCB]">A Smarter Way to Grow.</span>
                 </h2>
-                <p className="text-sm font-semibold text-[#071B70] uppercase tracking-wider pt-2">
-                  &ldquo;Your Business, Our Strategy&rdquo;
-                </p>
+                <div className="p-4 rounded-2xl bg-white border border-slate-200/80 mt-4 shadow-2xs">
+                  <span className="text-xs font-black uppercase tracking-wider text-[#071B70] block">
+                    Our Core Operating Thesis
+                  </span>
+                  <p className="text-sm font-bold text-[#087CCB] mt-1">
+                    &ldquo;Your Business, Our Strategy&rdquo;
+                  </p>
+                  <p className="text-xs text-slate-500 mt-1 leading-relaxed">
+                    We replace fragmented multi-vendor finger-pointing with a single, highly accountable senior growth team.
+                  </p>
+                </div>
               </ScrollReveal>
             </div>
 
             <div className="lg:col-span-7 space-y-6 text-slate-700 leading-relaxed text-base sm:text-lg">
               <ScrollReveal delay={150}>
-                <p>
+                <p className="font-normal text-slate-600">
                   Most agencies operate in fragmented silos: creative teams design graphics without understanding conversion metrics, while media buyers run ads without understanding brand positioning. The result is wasted ad spend and vanity numbers that never impact revenue.
                 </p>
               </ScrollReveal>
               <ScrollReveal delay={250}>
-                <p>
+                <p className="font-normal text-slate-600">
                   At <strong className="text-[#071B70] font-semibold">NovaSpark</strong>, we connect <strong>strategy</strong>, <strong>creativity</strong>, <strong>technology</strong>, and <strong>performance</strong> into one unified engine. Every campaign we architect is engineered to attract high-intent attention, educate buyers, and deliver profitable, compounding business returns.
                 </p>
               </ScrollReveal>
 
               <ScrollReveal delay={350}>
                 <div className="pt-2 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="card-skeuomorphic p-5 flex items-start gap-3.5">
-                    <div className="w-10 h-10 rounded-xl skeuo-well flex items-center justify-center text-[#087CCB] shrink-0 shadow-xs">
-                      <CheckCircle2 className="w-5 h-5 text-[#087CCB]" />
+                  <div className="p-5 rounded-2xl bg-white border border-slate-200/80 shadow-2xs space-y-2">
+                    <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#071B70]">
+                      <CheckCircle2 className="w-4 h-4 text-[#087CCB]" />
+                      <span>Full-Funnel Ownership</span>
                     </div>
-                    <div>
-                      <h4 className="font-display font-extrabold text-sm text-[#071B70]">Full-Funnel Ownership</h4>
-                      <p className="text-xs text-slate-500 mt-1 leading-relaxed">From initial impression to checkout, we optimize the complete customer journey.</p>
-                    </div>
+                    <p className="text-xs text-slate-500 leading-relaxed">
+                      From initial impression and high-intent search capture to checkout and retention, we optimize the complete customer journey.
+                    </p>
                   </div>
-                  <div className="card-skeuomorphic p-5 flex items-start gap-3.5">
-                    <div className="w-10 h-10 rounded-xl skeuo-well flex items-center justify-center text-[#FF7900] shrink-0 shadow-xs">
-                      <CheckCircle2 className="w-5 h-5 text-[#FF7900]" />
+                  <div className="p-5 rounded-2xl bg-white border border-slate-200/80 shadow-2xs space-y-2">
+                    <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#071B70]">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                      <span>Audited Performance</span>
                     </div>
-                    <div>
-                      <h4 className="font-display font-extrabold text-sm text-[#071B70]">Audited Performance</h4>
-                      <p className="text-xs text-slate-500 mt-1 leading-relaxed">Zero vanity reporting. Real revenue, verified CAC, and transparent attribution.</p>
-                    </div>
+                    <p className="text-xs text-slate-500 leading-relaxed">
+                      Zero vanity reporting. Real revenue, verified CAC reduction, and transparent attribution tracked directly inside your brand accounts.
+                    </p>
                   </div>
                 </div>
               </ScrollReveal>
@@ -618,79 +544,90 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════════════════════════
           SECTION 5 — THE CONNECTED GROWTH ECOSYSTEM
          ═══════════════════════════════════════════════════════════ */}
-      <section className="py-24 bg-gradient-to-b from-slate-50 via-white to-slate-50 border-y border-slate-200/80 relative overflow-hidden">
-        <div className="absolute inset-0 bg-grid-subtle opacity-40 pointer-events-none" />
+      <section className="py-24 bg-white border-b border-slate-200/80 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
+          <div className="text-center max-w-3xl mx-auto space-y-3 mb-16">
             <ScrollReveal>
-              <div className="badge-tag mx-auto">
-                <span>Chapter 02 // The Multiplier Ecosystem</span>
-              </div>
+              <span className="badge-tag mx-auto">
+                The Growth Multiplier
+              </span>
               <h2 className="font-display font-black text-3xl sm:text-5xl text-[#071B70] tracking-tight mt-3">
                 How Our Services Work as One Connected Ecosystem.
               </h2>
               <p className="text-slate-600 text-base sm:text-lg leading-relaxed font-normal">
-                When channels communicate, customer acquisition cost drops and lifetime value multiplies.
+                When channels communicate, customer acquisition cost drops and customer lifetime value multiplies.
               </p>
             </ScrollReveal>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <ScrollReveal delay={100}>
-              <div className="card-skeuomorphic p-8 space-y-5 h-full relative overflow-hidden group">
-                <div className="flex items-center justify-between">
-                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-b from-[#087CCB] to-[#071B70] text-white flex items-center justify-center font-display font-black text-sm shadow-md border border-white/30">
-                    01
+              <div className="bg-[#F8FAFC] border border-slate-200/90 rounded-3xl p-8 space-y-5 h-full flex flex-col justify-between hover:border-[#087CCB]/50 transition-colors shadow-2xs">
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <span className="w-10 h-10 rounded-xl bg-[#071B70] text-white flex items-center justify-center font-display font-bold text-sm shadow-xs">
+                      01
+                    </span>
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#087CCB] bg-blue-50 px-2.5 py-1 rounded-full border border-blue-200/60">
+                      Demand Capture
+                    </span>
                   </div>
-                  <span className="text-[10px] font-mono-tag font-bold uppercase tracking-wider text-[#087CCB] bg-blue-50 px-3 py-1 rounded-full border border-blue-200/60 shadow-2xs">
-                    Demand Capture
-                  </span>
+                  <h3 className="font-display font-extrabold text-xl text-[#071B70]">
+                    Attract &amp; Inbound Demand
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+                    Search Engine Optimization and Google Ads capture existing high-intent commercial buyers actively searching for your solution today.
+                  </p>
                 </div>
-                <h3 className="font-display font-extrabold text-2xl text-[#071B70]">Attract &amp; Inbound Demand</h3>
-                <p className="text-sm text-slate-600 leading-relaxed font-normal">
-                  SEO and Google Ads capture existing high-intent commercial buyers actively searching for your solution today.
-                </p>
-                <div className="skeuo-well p-3.5 text-xs text-[#071B70] font-semibold font-mono-tag">
+                <div className="p-3 rounded-xl bg-white border border-slate-200 text-xs text-[#071B70] font-semibold">
                   Channels: Search SEO • Google Ads • Local Map Pack
                 </div>
               </div>
             </ScrollReveal>
 
             <ScrollReveal delay={200}>
-              <div className="card-skeuomorphic p-8 space-y-5 h-full relative overflow-hidden group">
-                <div className="flex items-center justify-between">
-                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-b from-[#FFC400] to-[#FF7900] text-[#071B70] flex items-center justify-center font-display font-black text-sm shadow-md border border-white/50">
-                    02
+              <div className="bg-[#F8FAFC] border border-slate-200/90 rounded-3xl p-8 space-y-5 h-full flex flex-col justify-between hover:border-[#FF7900]/50 transition-colors shadow-2xs">
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <span className="w-10 h-10 rounded-xl bg-[#FF7900] text-white flex items-center justify-center font-display font-bold text-sm shadow-xs">
+                      02
+                    </span>
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-amber-800 bg-amber-50 px-2.5 py-1 rounded-full border border-amber-200/60">
+                      Conversion Engine
+                    </span>
                   </div>
-                  <span className="text-[10px] font-mono-tag font-bold uppercase tracking-wider text-amber-800 bg-amber-50 px-3 py-1 rounded-full border border-amber-200/60 shadow-2xs">
-                    Conversion Engine
-                  </span>
+                  <h3 className="font-display font-extrabold text-xl text-[#071B70]">
+                    Educate &amp; Convert
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+                    Bespoke Next.js web experiences, compelling brand design, and authoritative content eliminate friction and maximize conversions.
+                  </p>
                 </div>
-                <h3 className="font-display font-extrabold text-2xl text-[#071B70]">Educate &amp; Convert</h3>
-                <p className="text-sm text-slate-600 leading-relaxed font-normal">
-                  Bespoke Next.js web experiences, compelling brand design, and authoritative content eliminate friction and maximize conversions.
-                </p>
-                <div className="skeuo-well p-3.5 text-xs text-[#071B70] font-semibold font-mono-tag">
+                <div className="p-3 rounded-xl bg-white border border-slate-200 text-xs text-[#071B70] font-semibold">
                   Channels: Modern Next.js UI • Brand Identity • Content
                 </div>
               </div>
             </ScrollReveal>
 
             <ScrollReveal delay={300}>
-              <div className="card-skeuomorphic p-8 space-y-5 h-full relative overflow-hidden group">
-                <div className="flex items-center justify-between">
-                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-b from-[#00BCEB] to-[#087CCB] text-white flex items-center justify-center font-display font-black text-sm shadow-md border border-white/40">
-                    03
+              <div className="bg-[#F8FAFC] border border-slate-200/90 rounded-3xl p-8 space-y-5 h-full flex flex-col justify-between hover:border-[#00BCEB]/50 transition-colors shadow-2xs">
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <span className="w-10 h-10 rounded-xl bg-[#00BCEB] text-[#071B70] flex items-center justify-center font-display font-bold text-sm shadow-xs">
+                      03
+                    </span>
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-cyan-800 bg-cyan-50 px-2.5 py-1 rounded-full border border-cyan-200/60">
+                      Retention Loops
+                    </span>
                   </div>
-                  <span className="text-[10px] font-mono-tag font-bold uppercase tracking-wider text-cyan-800 bg-cyan-50 px-3 py-1 rounded-full border border-cyan-200/60 shadow-2xs">
-                    Retention Loops
-                  </span>
+                  <h3 className="font-display font-extrabold text-xl text-[#071B70]">
+                    Amplify &amp; Retain
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+                    Meta paid social, retargeting funnels, and organic community nurture re-engage buyers, accelerating repeat orders and referral loops.
+                  </p>
                 </div>
-                <h3 className="font-display font-extrabold text-2xl text-[#071B70]">Amplify &amp; Retain</h3>
-                <p className="text-sm text-slate-600 leading-relaxed font-normal">
-                  Meta paid social, retargeting funnels, and organic community nurture re-engage buyers, accelerating repeat orders and referral loops.
-                </p>
-                <div className="skeuo-well p-3.5 text-xs text-[#071B70] font-semibold font-mono-tag">
+                <div className="p-3 rounded-xl bg-white border border-slate-200 text-xs text-[#071B70] font-semibold">
                   Channels: Meta Retargeting • Social Community • CRM Loops
                 </div>
               </div>
@@ -706,9 +643,9 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
             <ScrollReveal>
-              <div className="badge-tag mx-auto">
-                <span>Chapter 03 // Eight Growth Disciplines</span>
-              </div>
+              <span className="badge-tag mx-auto">
+                Core Capabilities &amp; Disciplines
+              </span>
               <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-[#071B70] tracking-tight mt-3">
                 Architecting Growth Across Every Touchpoint.
               </h2>
@@ -737,20 +674,17 @@ export default function HomePage() {
                     <div className="space-y-5">
                       {/* Top Meta Bar */}
                       <div className="flex items-center justify-between">
-                        <div className="w-12 h-12 rounded-2xl skeuo-well flex items-center justify-center text-[#071B70] shadow-xs group-hover:scale-105 transition-transform">
+                        <div className="w-12 h-12 rounded-2xl bg-slate-50 border border-slate-200/80 flex items-center justify-center text-[#071B70] shadow-xs group-hover:scale-105 transition-transform">
                           <IconComp className="w-6 h-6" style={{ color: rep.accent }} />
                         </div>
-                        <span className="text-[10px] font-mono-tag font-bold uppercase tracking-wider text-slate-500 bg-slate-100 px-3 py-1 rounded-full border border-slate-200/80 shadow-2xs">
-                          Pillar 0{idx + 1}
+                        <span className="text-[11px] font-semibold text-[#087CCB] bg-sky-50 px-3 py-1 rounded-full border border-sky-100">
+                          {rep.badge}
                         </span>
                       </div>
 
                       {/* Title & Tagline */}
                       <div>
-                        <div className="text-[11px] font-bold uppercase tracking-wider text-[#087CCB]">
-                          {rep.badge}
-                        </div>
-                        <h3 className="font-display font-extrabold text-xl text-[#071B70] group-hover:text-[#087CCB] transition-colors leading-snug mt-1">
+                        <h3 className="font-display font-extrabold text-xl text-[#071B70] group-hover:text-[#087CCB] transition-colors leading-snug">
                           {s.title}
                         </h3>
                         <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mt-2 line-clamp-2 font-normal">
@@ -758,29 +692,30 @@ export default function HomePage() {
                         </p>
                       </div>
 
-                      {/* Visual Representation Telemetry Well */}
-                      <div className="skeuo-well p-4 space-y-1.5 border border-slate-200/90">
-                        <div className="flex items-center justify-between text-[10px] font-mono-tag font-bold uppercase tracking-wider text-slate-500">
-                          <span>{rep.metricLabel}</span>
-                          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                      {/* Visual Metric Callout */}
+                      <div className="p-4 rounded-2xl bg-gradient-to-br from-slate-50 to-sky-50/40 border border-slate-100 flex items-center justify-between">
+                        <div>
+                          <div className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider">{rep.metricLabel}</div>
+                          <div className="font-display font-black text-xl text-[#071B70]">{rep.metricValue}</div>
                         </div>
-                        <div className="font-display font-black text-lg sm:text-xl text-[#071B70]">
-                          {rep.metricValue}
-                        </div>
-                        <div className="text-[11px] font-medium text-slate-500 truncate">
-                          {rep.metricSub}
+                        <div className="text-right">
+                          <div className="text-[10px] text-slate-400 font-medium">{rep.metricSub}</div>
+                          <span className="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-600 mt-0.5">
+                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                            Audited Lift
+                          </span>
                         </div>
                       </div>
 
                       {/* Concrete Deliverables Checklist */}
                       <div className="space-y-2 pt-1">
-                        <div className="text-[10px] font-mono-tag font-bold uppercase tracking-wider text-slate-400">
+                        <div className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
                           Core Deliverables:
                         </div>
                         <ul className="space-y-1.5">
                           {rep.highlights.map((h, i) => (
-                            <li key={i} className="text-xs text-slate-600 flex items-start gap-2">
-                              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
+                            <li key={i} className="text-xs text-slate-600 flex items-center gap-2">
+                              <CheckCircle2 className="w-3.5 h-3.5 text-[#087CCB] shrink-0" />
                               <span className="line-clamp-1">{h}</span>
                             </li>
                           ))}
@@ -789,14 +724,14 @@ export default function HomePage() {
                     </div>
 
                     {/* Bottom Action Pill */}
-                    <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
-                      <span className="text-[11px] font-bold text-emerald-600 font-mono-tag">{s.metricsHighlight}</span>
+                    <div className="pt-5 mt-5 border-t border-slate-100 flex items-center justify-between">
+                      <span className="text-xs font-bold text-emerald-600 font-mono-tag">{s.metricsHighlight}</span>
                       <Link
                         href={SERVICE_HREF_MAP[s.id] || `/services#${s.id}`}
                         className="inline-flex items-center gap-1.5 text-xs font-bold text-[#071B70] group-hover:text-[#087CCB] transition-colors"
                       >
                         <span>Explore Discipline</span>
-                        <ArrowRight className="w-3.5 h-3.5" />
+                        <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
                       </Link>
                     </div>
                   </div>
@@ -815,9 +750,9 @@ export default function HomePage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
             <div className="lg:col-span-4 space-y-4">
               <ScrollReveal>
-                <div className="badge-tag">
-                  <span>Chapter 04 // The Strategic Edge</span>
-                </div>
+                <span className="badge-tag">
+                  The NovaSpark Difference
+                </span>
                 <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-[#071B70] tracking-tight mt-3">
                   Why Ambitious Brands Choose Us.
                 </h2>
@@ -835,11 +770,11 @@ export default function HomePage() {
                     <div className="card-skeuomorphic p-7 flex flex-col justify-between h-full group hover:-translate-y-1.5 transition-all">
                       <div>
                         <div className="flex items-center justify-between mb-4">
-                          <div className="w-12 h-12 rounded-2xl skeuo-well flex items-center justify-center text-[#071B70] group-hover:scale-105 transition-transform shadow-xs">
+                          <div className="w-12 h-12 rounded-2xl bg-slate-50 border border-slate-200/80 flex items-center justify-center text-[#071B70] group-hover:scale-105 transition-transform shadow-xs">
                             <IconComponent className="w-6 h-6 text-[#087CCB]" />
                           </div>
-                          <span className="text-[10px] font-mono-tag font-bold uppercase tracking-wider text-slate-400 bg-slate-100 px-2.5 py-1 rounded-full border border-slate-200 shadow-2xs">
-                            Principle {item.step}
+                          <span className="text-xs font-mono font-bold text-slate-400">
+                            /{item.step}
                           </span>
                         </div>
                         <h4 className="font-display font-extrabold text-lg text-[#071B70] mb-2">{item.title}</h4>
@@ -866,9 +801,9 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto space-y-4 mb-20">
             <ScrollReveal>
-              <div className="badge-tag mx-auto">
-                <span>Chapter 05 // The 6-Phase Execution Engine</span>
-              </div>
+              <span className="badge-tag mx-auto">
+                Execution Methodology
+              </span>
               <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-[#071B70] tracking-tight mt-3">
                 How We Engineer Predictable Outcomes.
               </h2>
@@ -893,8 +828,8 @@ export default function HomePage() {
                 <ScrollReveal key={phase.step} delay={idx * 100}>
                   <div className="card-skeuomorphic p-6 flex flex-col justify-between text-center items-center h-full group hover:-translate-y-2 transition-all">
                     <div>
-                      <div className="w-12 h-12 rounded-2xl skeuo-well text-[#071B70] font-display font-black text-sm flex items-center justify-center mb-4 shadow-xs group-hover:scale-110 transition-transform">
-                        <span className="bg-gradient-to-r from-[#071B70] to-[#087CCB] bg-clip-text text-transparent font-black">{phase.step}</span>
+                      <div className="w-12 h-12 rounded-2xl bg-slate-100 border border-slate-200/80 text-[#071B70] font-display font-black text-sm flex items-center justify-center mb-4 group-hover:bg-[#071B70] group-hover:text-white transition-all duration-300">
+                        <span>{phase.step}</span>
                       </div>
                       <h3 className="font-display font-extrabold text-base text-[#071B70] mb-2">{phase.name}</h3>
                       <p className="text-xs text-slate-500 leading-relaxed font-normal">{phase.desc}</p>
@@ -918,9 +853,9 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
             <ScrollReveal>
-              <div className="badge-tag">
-                <span>Chapter 06 // The Transformation Chronicles</span>
-              </div>
+              <span className="badge-tag">
+                Selected Case Studies
+              </span>
               <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-[#071B70] tracking-tight mt-3">
                 Selected Case Studies.
               </h2>
@@ -1003,9 +938,9 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
             <ScrollReveal>
-              <div className="badge-tag mx-auto">
-                <span>Chapter 07 // Category Specialization</span>
-              </div>
+              <span className="badge-tag mx-auto">
+                Industries We Specialize In
+              </span>
               <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-[#071B70] tracking-tight mt-3">
                 Industries We Specialize In.
               </h2>
@@ -1073,9 +1008,9 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
             <ScrollReveal>
-              <div className="badge-tag mx-auto">
-                <span>Chapter 08 // The Growth Architects</span>
-              </div>
+              <span className="badge-tag mx-auto">
+                Leadership Team
+              </span>
               <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-[#071B70] tracking-tight mt-3">
                 Meet the Minds Powering Your Growth.
               </h2>
@@ -1145,9 +1080,9 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
             <ScrollReveal>
-              <div className="badge-tag mx-auto">
-                <span>Chapter 09 // Verified Client Proof</span>
-              </div>
+              <span className="badge-tag mx-auto">
+                Verified Client Testimonials
+              </span>
               <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-[#071B70] tracking-tight mt-3">
                 Direct Feedback From Ambitious Founders.
               </h2>
@@ -1199,9 +1134,9 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
             <ScrollReveal>
-              <div className="badge-tag">
-                <span>Chapter 10 // Intelligence &amp; Playbooks</span>
-              </div>
+              <span className="badge-tag">
+                Growth Intelligence &amp; Playbooks
+              </span>
               <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-[#071B70] tracking-tight mt-3">
                 Latest Insights &amp; Playbooks.
               </h2>
@@ -1274,9 +1209,9 @@ export default function HomePage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-4 mb-16">
             <ScrollReveal>
-              <div className="badge-tag mx-auto">
-                <span>Chapter 11 // Transparent Answers &amp; Integrity</span>
-              </div>
+              <span className="badge-tag mx-auto">
+                Frequently Asked Questions
+              </span>
               <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-[#071B70] tracking-tight mt-3">
                 Frequently Asked Questions.
               </h2>
