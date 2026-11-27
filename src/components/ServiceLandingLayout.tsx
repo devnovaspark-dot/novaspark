@@ -4,21 +4,14 @@ import { useState } from 'react';
 import Link from 'next/link';
 import {
   ArrowRight,
-  ChevronDown,
   CheckCircle2,
   ShieldCheck,
-  TrendingUp,
   Zap,
   Phone,
   MessageSquare,
   Lock,
-  Layers,
-  Sparkles,
-  Compass,
-  FileCheck,
-  BarChart3,
-  HelpCircle,
-  Clock,
+  Plus,
+  Minus,
   Briefcase,
 } from 'lucide-react';
 import { ServiceDetail } from '@/lib/services-detail-data';
@@ -29,26 +22,23 @@ interface Props {
 }
 
 export default function ServiceLandingLayout({ service }: Props) {
-  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
+  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
   const [activeSubDiscipline, setActiveSubDiscipline] = useState<number>(0);
 
   const toggleFaq = (idx: number) => {
     setOpenFaqIndex(openFaqIndex === idx ? null : idx);
   };
 
-  return (
-    <div className="min-h-screen bg-[#F7F9FC] text-slate-800 pt-28 pb-20 overflow-x-hidden">
-      {/* ─────────────────────────────────────────────────────────────
-          SECTION 1: BREADCRUMBS & SERVICE HERO
-          ───────────────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden pt-4 pb-20 border-b border-slate-200/80">
-        {/* Subtle ambient lighting */}
-        <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#087CCB]/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute top-1/3 left-10 w-80 h-80 bg-[#FFC400]/10 rounded-full blur-3xl pointer-events-none" />
+  const activeSub = service.subDisciplines[activeSubDiscipline] || service.subDisciplines[0];
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          {/* Breadcrumb Navigation */}
-          <nav className="flex items-center gap-2 text-xs font-semibold text-slate-500 mb-8" aria-label="Breadcrumb">
+  return (
+    <div className="min-h-screen bg-white text-[#111827] pt-24 pb-16 overflow-x-hidden">
+      {/* ─────────────────────────────────────────────────────────────
+          SECTION 1: BREADCRUMBS & EDITORIAL SERVICE HERO
+          ───────────────────────────────────────────────────────────── */}
+      <section className="pt-6 pb-16 lg:pb-24 bg-gradient-to-b from-[#F7F9FC] to-white border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <nav className="flex items-center gap-2 text-xs font-mono-tag text-slate-500 mb-8" aria-label="Breadcrumb">
             <Link href="/" className="hover:text-[#071B70] transition-colors">
               Home
             </Link>
@@ -57,45 +47,36 @@ export default function ServiceLandingLayout({ service }: Props) {
               Services
             </Link>
             <span className="text-slate-300">/</span>
-            <span className="text-[#071B70] font-bold">{service.title}</span>
+            <span className="text-[#071B70] font-semibold">{service.title}</span>
           </nav>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
             {/* Left Hero Content */}
             <div className="lg:col-span-7 space-y-6">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-slate-200/90 shadow-2xs">
-                <span className="w-2 h-2 rounded-full bg-[#087CCB] animate-pulse" />
-                <span className="text-xs font-bold tracking-wider uppercase text-[#071B70]">
+              <div className="inline-flex items-center gap-2.5">
+                <span className="w-6 h-[2px] bg-[#087CCB]" />
+                <span className="font-mono-tag text-xs font-semibold tracking-widest uppercase text-[#087CCB]">
                   {service.eyebrow}
                 </span>
               </div>
 
-              <h1 className="font-display font-extrabold text-3xl sm:text-5xl lg:text-5xl tracking-tight text-[#071B70] leading-[1.12]">
+              <h1 className="font-display font-black text-3xl sm:text-5xl lg:text-[3.25rem] tracking-tight text-[#071B70] leading-[1.08]">
                 {service.heroHeadline}{' '}
-                <span className="bg-gradient-to-r from-[#087CCB] via-[#00BCEB] to-[#FF7900] bg-clip-text text-transparent">
-                  {service.heroHighlight}
-                </span>
+                <span className="text-[#087CCB]">{service.heroHighlight}</span>
               </h1>
 
-              <p className="text-slate-600 text-base sm:text-lg leading-relaxed max-w-2xl font-normal">
+              <p className="text-slate-600 text-base sm:text-lg leading-relaxed max-w-2xl">
                 {service.heroSubline}
               </p>
 
-              {/* Action Buttons */}
               <div className="pt-2 flex flex-wrap items-center gap-4">
-                <a
-                  href="#consultation-form"
-                  className="btn-skeuo-gold px-7 py-3.5 rounded-full text-xs font-bold uppercase tracking-wider inline-flex items-center gap-2 shadow-md hover:scale-105 active:scale-95 transition-all"
-                >
+                <a href="#consultation-form" className="btn-primary group">
                   <span>Request Strategy Consultation</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                 </a>
 
-                <a
-                  href="tel:+918280788689"
-                  className="btn-skeuo-pearl px-5 py-3.5 rounded-full text-xs font-bold text-[#071B70] inline-flex items-center gap-2 hover:bg-white transition-all shadow-2xs"
-                >
-                  <Phone className="w-3.5 h-3.5 text-[#087CCB]" />
+                <a href="tel:+918280788689" className="btn-secondary">
+                  <Phone className="w-4 h-4 text-[#087CCB]" />
                   <span>+91 8280788689</span>
                 </a>
 
@@ -103,15 +84,14 @@ export default function ServiceLandingLayout({ service }: Props) {
                   href="https://wa.me/918280788689"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-xs font-bold text-[#25D366] hover:text-[#20ba59] transition-colors px-3 py-2"
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-700 hover:text-emerald-800 px-2 py-2"
                 >
                   <MessageSquare className="w-4 h-4" />
-                  <span>WhatsApp Chat</span>
+                  <span>WhatsApp</span>
                 </a>
               </div>
 
-              {/* Trust Micro-Badges */}
-              <div className="pt-4 flex flex-wrap items-center gap-6 text-xs text-slate-500 border-t border-slate-200/80">
+              <div className="pt-5 flex flex-wrap items-center gap-6 text-xs text-slate-500 border-t border-slate-200">
                 <div className="flex items-center gap-1.5">
                   <ShieldCheck className="w-4 h-4 text-[#087CCB]" />
                   <span>Strict Category Exclusivity</span>
@@ -122,62 +102,47 @@ export default function ServiceLandingLayout({ service }: Props) {
                 </div>
                 <div className="flex items-center gap-1.5">
                   <Zap className="w-4 h-4 text-[#FF7900]" />
-                  <span>Senior Practitioner Oversight</span>
+                  <span>Senior Operator Oversight</span>
                 </div>
               </div>
             </div>
 
-            {/* Right Telemetry Dial Card */}
+            {/* Right: Deep Royal Blue Outcome & Benchmark Panel */}
             <div className="lg:col-span-5">
-              <div className="card-skeuo-dark rounded-3xl p-6 sm:p-8 text-white relative overflow-hidden shadow-2xl">
-                <div className="absolute top-0 right-0 w-48 h-48 bg-[#00BCEB]/10 rounded-full blur-2xl pointer-events-none" />
-
-                {/* Primary Metric Banner */}
-                <div className="p-5 rounded-2xl bg-white/5 border border-white/10 mb-6 relative z-10">
-                  <div className="flex items-baseline justify-between">
-                    <div>
-                      <span className="text-[10px] uppercase font-bold tracking-widest text-[#00BCEB]">
-                        {service.primaryMetric.label}
-                      </span>
-                      <div className="font-display font-black text-4xl sm:text-5xl text-[#FFC400] tracking-tight mt-1">
-                        {service.primaryMetric.value}
-                      </div>
-                    </div>
-                    <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-[#FFC400] skeuo-well">
-                      <TrendingUp className="w-5 h-5" />
-                    </div>
+              <div className="rounded-2xl bg-[#071B70] text-white p-7 sm:p-8 border border-white/15 shadow-[inset_0_1px_0_rgba(255,255,255,0.2),0_24px_48px_-12px_rgba(7,27,112,0.38)] space-y-6">
+                <div className="pb-5 border-b border-white/15">
+                  <span className="font-mono-tag text-[11px] uppercase tracking-widest text-[#00BCEB]">
+                    {service.primaryMetric.label}
+                  </span>
+                  <div className="font-display font-black text-4xl sm:text-5xl text-[#FFC400] tracking-tight mt-1">
+                    {service.primaryMetric.value}
                   </div>
-                  <p className="text-xs text-slate-300 mt-2">
+                  <p className="text-xs text-slate-300 mt-1.5">
                     {service.primaryMetric.subtext}
                   </p>
                 </div>
 
-                {/* Live Telemetry Quad Matrix */}
-                <div className="grid grid-cols-2 gap-3 relative z-10">
+                <div className="grid grid-cols-2 gap-4">
                   {service.telemetryMetrics.map((tel, idx) => (
                     <div
                       key={idx}
-                      className="p-3.5 rounded-xl bg-white/[0.04] border border-white/[0.08] hover:border-[#00BCEB]/40 transition-colors"
+                      className="p-3.5 rounded-xl bg-white/[0.06] border border-white/10"
                     >
-                      <span className="text-[10px] font-semibold text-slate-400 block truncate">
+                      <span className="text-[11px] text-slate-300 block truncate">
                         {tel.label}
                       </span>
-                      <div className="font-display font-black text-lg text-white mt-1">
+                      <div className="font-display font-extrabold text-lg text-white mt-1">
                         {tel.value}
                       </div>
-                      <span className="text-[10px] font-bold text-emerald-400 block mt-0.5 truncate">
+                      <span className="text-[10px] font-mono-tag text-[#00BCEB] block mt-0.5 truncate">
                         {tel.change}
                       </span>
                     </div>
                   ))}
                 </div>
 
-                {/* Telemetry Status Bar */}
-                <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-[11px] text-slate-400 relative z-10">
-                  <div className="flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-                    <span>Real-Time Campaign Engine Active</span>
-                  </div>
+                <div className="pt-3 border-t border-white/10 flex items-center justify-between text-xs text-slate-300 font-mono-tag">
+                  <span>Audited Delivery Model</span>
                   <span className="text-[#FFC400] font-bold">90-Day Sprint</span>
                 </div>
               </div>
@@ -187,50 +152,43 @@ export default function ServiceLandingLayout({ service }: Props) {
       </section>
 
       {/* ─────────────────────────────────────────────────────────────
-          SECTION 2: BUSINESS CHALLENGES & OUR SOLUTIONS
+          SECTION 2: CHALLENGES & SOLUTIONS (EDITORIAL GRID)
           ───────────────────────────────────────────────────────────── */}
-      <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
-          <span className="text-xs font-bold uppercase tracking-wider text-[#FF7900]">
-            The Reality of Modern Growth
-          </span>
+      <section className="py-16 lg:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-3xl mb-12 space-y-3">
           <h2 className="font-display font-extrabold text-2xl sm:text-4xl text-[#071B70] tracking-tight">
-            Friction Points Businesses Face — And How We Solve Them
+            Friction Points Businesses Face — And How We Solve Them.
           </h2>
           <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-            Most brands leak tens of thousands in capital through misconfigured tracking, poor creative pacing, or shallow strategies. Here is how we eliminate the friction.
+            Most brands lose capital through misconfigured tracking, poor creative pacing, or fragmented execution.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {service.challenges.map((chal, idx) => (
             <div
               key={idx}
-              className="card-skeuomorphic p-6 sm:p-8 rounded-3xl flex flex-col justify-between space-y-6"
+              className="pt-6 border-t-2 border-[#071B70] flex flex-col justify-between space-y-5"
             >
-              <div className="space-y-4">
-                <div className="flex items-center justify-between">
-                  <span className="text-xs font-black text-slate-400">0{idx + 1}</span>
-                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase bg-red-50 text-red-700 border border-red-200">
-                    The Problem
-                  </span>
+              <div className="space-y-3">
+                <div className="flex items-center justify-between font-mono-tag text-xs">
+                  <span className="text-[#087CCB] font-bold">0{idx + 1}</span>
+                  <span className="text-slate-400 uppercase">Challenge</span>
                 </div>
-
                 <h3 className="font-display font-bold text-lg text-[#071B70] leading-snug">
                   {chal.problem}
                 </h3>
-
-                <p className="text-xs text-slate-500 leading-relaxed">
-                  <strong className="text-slate-700">Financial Impact:</strong> {chal.impact}
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                  {chal.impact}
                 </p>
               </div>
 
-              <div className="pt-4 border-t border-slate-200/80 bg-slate-50/60 -mx-6 -mb-6 p-6 rounded-b-3xl">
-                <span className="text-[11px] font-bold uppercase tracking-wider text-[#087CCB] block mb-1.5 flex items-center gap-1.5">
+              <div className="p-4 rounded-xl bg-[#F7F9FC] border border-slate-200">
+                <span className="text-[11px] font-bold uppercase tracking-wider text-[#087CCB] flex items-center gap-1.5 mb-1">
                   <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
                   NovaSpark Solution
                 </span>
-                <p className="text-xs text-slate-700 leading-relaxed font-medium">
+                <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-medium">
                   {chal.ourSolution}
                 </p>
               </div>
@@ -240,260 +198,123 @@ export default function ServiceLandingLayout({ service }: Props) {
       </section>
 
       {/* ─────────────────────────────────────────────────────────────
-          SECTION 3: DETAILED SUB-DISCIPLINES & CAPABILITIES
+          SECTION 3: SUB-DISCIPLINES & CAPABILITIES
           ───────────────────────────────────────────────────────────── */}
-      <section className="py-20 bg-white border-y border-slate-200/80">
+      <section className="py-16 lg:py-24 bg-[#F7F9FC] border-y border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#087CCB]">
-              Integrated Capability Breakdown
-            </span>
-            <h2 className="font-display font-extrabold text-2xl sm:text-4xl text-[#071B70] tracking-tight">
-              Deep-Dive Architectural Specializations
-            </h2>
-            <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-              We do not treat disciplines as isolated checklists. Every sub-component is engineered into a unified growth engine.
-            </p>
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10">
+            <div className="space-y-2 max-w-2xl">
+              <span className="font-mono-tag text-xs uppercase tracking-widest text-[#087CCB] font-semibold">
+                Core Capabilities
+              </span>
+              <h2 className="font-display font-extrabold text-2xl sm:text-4xl text-[#071B70] tracking-tight">
+                Deep-Dive Architectural Specializations.
+              </h2>
+            </div>
+
+            <div className="flex flex-wrap gap-2.5">
+              {service.subDisciplines.map((sub, idx) => (
+                <button
+                  key={sub.id}
+                  type="button"
+                  onClick={() => setActiveSubDiscipline(idx)}
+                  className={`px-4 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer border ${
+                    activeSubDiscipline === idx
+                      ? 'bg-[#071B70] text-white border-[#071B70] shadow-sm'
+                      : 'bg-white text-slate-700 border-slate-200 hover:border-[#087CCB]'
+                  }`}
+                >
+                  {sub.name}
+                </button>
+              ))}
+            </div>
           </div>
 
-          {/* Sub-Discipline Selector Tabs */}
-          <div className="flex flex-wrap items-center justify-center gap-3 mb-12">
-            {service.subDisciplines.map((sub, idx) => (
-              <button
-                key={sub.id}
-                onClick={() => setActiveSubDiscipline(idx)}
-                className={`px-5 py-3 rounded-full text-xs font-bold transition-all duration-200 flex items-center gap-2 ${
-                  activeSubDiscipline === idx
-                    ? 'btn-skeuo-gold text-[#071B70] shadow-md scale-105'
-                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200/70 hover:text-[#071B70]'
-                }`}
-              >
-                <span>{sub.name}</span>
-                <span className="px-2 py-0.5 rounded-full text-[9px] font-black uppercase bg-black/10">
-                  {sub.metrics}
+          <div className="card-tactile p-7 sm:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div className="lg:col-span-7 space-y-5">
+              <span className="font-mono-tag text-xs font-semibold uppercase tracking-wider text-[#087CCB]">
+                {activeSub.badge}
+              </span>
+
+              <h3 className="font-display font-extrabold text-2xl sm:text-3xl text-[#071B70]">
+                {activeSub.name}
+              </h3>
+
+              <p className="text-sm font-semibold text-[#FF7900]">{activeSub.tagline}</p>
+
+              <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+                {activeSub.description}
+              </p>
+
+              <div className="space-y-2.5 pt-2 border-t border-slate-100">
+                <span className="text-xs font-bold uppercase tracking-wider text-[#071B70] block">
+                  Technical Deliverables
                 </span>
-              </button>
-            ))}
-          </div>
-
-          {/* Active Sub-Discipline Featured View */}
-          {(() => {
-            const activeSub = service.subDisciplines[activeSubDiscipline] || service.subDisciplines[0];
-            return (
-              <div className="card-skeuomorphic p-8 sm:p-12 rounded-3xl border border-slate-200/90 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-                <div className="lg:col-span-7 space-y-6">
-                  <div className="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#087CCB]/10 text-[#087CCB] border border-[#087CCB]/20">
-                    {activeSub.badge}
-                  </div>
-
-                  <h3 className="font-display font-extrabold text-2xl sm:text-3xl text-[#071B70]">
-                    {activeSub.name}
-                  </h3>
-
-                  <p className="text-sm font-semibold text-[#FF7900] leading-snug">
-                    {activeSub.tagline}
-                  </p>
-
-                  <p className="text-slate-600 text-sm leading-relaxed">
-                    {activeSub.description}
-                  </p>
-
-                  <div className="space-y-2.5 pt-2">
-                    <span className="text-xs font-bold uppercase tracking-wider text-slate-800 block">
-                      Core Technical Deliverables:
-                    </span>
-                    <ul className="space-y-2 text-xs text-slate-700">
-                      {activeSub.capabilities.map((cap, cIdx) => (
-                        <li key={cIdx} className="flex items-start gap-2.5">
-                          <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                          <span className="leading-relaxed font-medium">{cap}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-
-                <div className="lg:col-span-5 flex flex-col justify-between h-full space-y-6 card-skeuo-dark p-6 sm:p-8 rounded-2xl text-white">
-                  <div className="space-y-3">
-                    <span className="text-[10px] uppercase font-bold tracking-widest text-[#00BCEB]">
-                      Proven Performance Benchmark
-                    </span>
-                    <div className="font-display font-black text-4xl text-[#FFC400]">
-                      {activeSub.metrics}
-                    </div>
-                    <p className="text-xs text-slate-300 leading-relaxed">
-                      Continuous measurement and first-party attribution tied directly into your business revenue KPIs.
-                    </p>
-                  </div>
-
-                  <div className="p-4 rounded-xl bg-white/5 border border-white/10 space-y-2">
-                    <span className="text-[11px] font-bold text-white block">
-                      Why This Matters For Your Business:
-                    </span>
-                    <p className="text-[11px] text-slate-300 leading-relaxed">
-                      Instead of paying multiple fragmented agencies who point fingers, our synchronized architecture ensures your spend compounds efficiently across channels.
-                    </p>
-                  </div>
-
-                  <a
-                    href="#consultation-form"
-                    className="btn-skeuo-gold w-full py-3 rounded-full text-xs font-bold text-center uppercase tracking-wider flex items-center justify-center gap-1.5"
-                  >
-                    <span>Consult on {activeSub.name.split('(')[0].trim()}</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </a>
-                </div>
+                <ul className="space-y-2 text-sm text-slate-700">
+                  {activeSub.capabilities.map((cap, cIdx) => (
+                    <li key={cIdx} className="flex items-start gap-2.5">
+                      <CheckCircle2 className="w-4 h-4 text-[#087CCB] shrink-0 mt-0.5" />
+                      <span>{cap}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
-            );
-          })()}
-        </div>
-      </section>
+            </div>
 
-      {/* ─────────────────────────────────────────────────────────────
-          SECTION 4: 5-STAGE WORKING METHODOLOGY
-          ───────────────────────────────────────────────────────────── */}
-      <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
-          <span className="text-xs font-bold uppercase tracking-wider text-[#087CCB]">
-            Our Engineering Process
-          </span>
-          <h2 className="font-display font-extrabold text-2xl sm:text-4xl text-[#071B70] tracking-tight">
-            The 5-Stage High-Accountability Sprint
-          </h2>
-          <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-            We operate in disciplined 90-day performance sprints. Every stage produces tangible, audited deliverables with clear mathematical objectives.
-          </p>
-        </div>
-
-        <div className="relative">
-          {/* Connecting Line */}
-          <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-0.5 bg-slate-200 -translate-y-1/2 z-0" />
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 relative z-10">
-            {service.methodology.map((m, idx) => (
-              <div
-                key={idx}
-                className="card-skeuomorphic p-5 sm:p-6 rounded-2xl flex flex-col justify-between space-y-4 hover:border-[#087CCB]/40 transition-colors"
-              >
-                <div className="space-y-3">
-                  <div className="flex items-center justify-between">
-                    <span className="w-8 h-8 rounded-xl bg-[#0F172A] text-[#FFC400] font-black text-xs flex items-center justify-center skeuo-well">
-                      {m.step}
-                    </span>
-                    <span className="text-[10px] font-bold text-[#087CCB] uppercase">
-                      {m.timeframe}
-                    </span>
-                  </div>
-
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block">
-                    {m.phase}
-                  </span>
-
-                  <h4 className="font-display font-bold text-sm text-[#071B70] leading-snug">
-                    {m.title}
-                  </h4>
-
-                  <p className="text-[11px] text-slate-600 leading-relaxed">
-                    {m.description}
-                  </p>
-                </div>
-
-                <div className="pt-3 border-t border-slate-200 text-[10px] text-slate-500">
-                  <strong className="text-slate-700 block mb-0.5">Key Deliverable:</strong>
-                  <span className="font-semibold text-emerald-700">{m.deliverable}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ─────────────────────────────────────────────────────────────
-          SECTION 5: TANGIBLE DELIVERABLES CHECKLIST
-          ───────────────────────────────────────────────────────────── */}
-      <section className="py-20 bg-slate-100/70 border-y border-slate-200/80">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#FF7900]">
-              Complete Scope of Work
-            </span>
-            <h2 className="font-display font-extrabold text-2xl sm:text-4xl text-[#071B70] tracking-tight">
-              Tangible Assets & Systematic Deliverables
-            </h2>
-            <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-              No vague buzzwords or hidden scopes. Here is the verified suite of assets and systems engineered directly into your brand accounts.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {service.deliverables.map((group, idx) => (
-              <div
-                key={idx}
-                className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-sm flex flex-col justify-between space-y-6"
-              >
-                <div className="space-y-4">
-                  <div className="w-10 h-10 rounded-xl bg-slate-50 text-[#071B70] flex items-center justify-center font-bold skeuo-well">
-                    <FileCheck className="w-5 h-5 text-[#087CCB]" />
-                  </div>
-                  <h3 className="font-display font-bold text-lg text-[#071B70]">
-                    {group.category}
-                  </h3>
-                  <ul className="space-y-3 text-xs text-slate-600">
-                    {group.items.map((item, iIdx) => (
-                      <li key={iIdx} className="flex items-start gap-2.5">
-                        <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                        <span className="leading-relaxed font-medium">{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="pt-4 border-t border-slate-100 text-[11px] text-slate-400">
-                  <span>Included in 90-Day Sprint Scope</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ─────────────────────────────────────────────────────────────
-          SECTION 6: WHY AMBITIOUS BRANDS CHOOSE NOVASPARK
-          ───────────────────────────────────────────────────────────── */}
-      <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
-          <span className="text-xs font-bold uppercase tracking-wider text-[#087CCB]">
-            The NovaSpark Difference
-          </span>
-          <h2 className="font-display font-extrabold text-2xl sm:text-4xl text-[#071B70] tracking-tight">
-            Why Ambitious Brands Partner With Us
-          </h2>
-          <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-            We reject the typical agency status quo. We built NovaSpark around radical accountability, asset ownership, and category exclusivity.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {service.whyChoose.map((why, idx) => (
-            <div
-              key={idx}
-              className="card-skeuomorphic p-6 sm:p-8 rounded-3xl space-y-4 flex flex-col justify-between"
-            >
-              <div className="space-y-3">
-                <span className="inline-block px-2.5 py-1 rounded-full text-[10px] font-black uppercase bg-[#087CCB]/10 text-[#087CCB]">
-                  {why.stat}
+            <div className="lg:col-span-5 rounded-xl bg-[#071B70] text-white p-7 space-y-6 border border-white/10">
+              <div>
+                <span className="font-mono-tag text-[11px] uppercase tracking-widest text-[#00BCEB]">
+                  Performance Benchmark
                 </span>
-                <h3 className="font-display font-bold text-lg text-[#071B70]">
-                  {why.title}
-                </h3>
-                <p className="text-xs text-slate-600 leading-relaxed">
-                  {why.description}
+                <div className="font-display font-black text-3xl sm:text-4xl text-[#FFC400] mt-1">
+                  {activeSub.metrics}
+                </div>
+                <p className="text-xs text-slate-300 mt-2 leading-relaxed">
+                  Continuous measurement and first-party attribution tied directly into your business revenue KPIs.
                 </p>
               </div>
 
-              <div className="pt-4 border-t border-slate-200/80 flex items-center gap-2 text-xs font-bold text-[#071B70]">
-                <ShieldCheck className="w-4 h-4 text-emerald-600" />
-                <span>Legally Guaranteed In Contract</span>
+              <a href="#consultation-form" className="btn-gold w-full group">
+                <span>Consult on {activeSub.name.split('(')[0].trim()}</span>
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─────────────────────────────────────────────────────────────
+          SECTION 4: 5-STAGE METHODOLOGY (CLEAN TIMELINE)
+          ───────────────────────────────────────────────────────────── */}
+      <section className="py-16 lg:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-3xl mb-12 space-y-2">
+          <span className="font-mono-tag text-xs uppercase tracking-widest text-[#087CCB] font-semibold">
+            Execution Process
+          </span>
+          <h2 className="font-display font-extrabold text-2xl sm:text-4xl text-[#071B70] tracking-tight">
+            The 5-Stage High-Accountability Sprint.
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+          {service.methodology.map((m, idx) => (
+            <div
+              key={idx}
+              className="pt-5 border-t-2 border-slate-200 hover:border-[#087CCB] transition-colors flex flex-col justify-between space-y-4"
+            >
+              <div className="space-y-2.5">
+                <div className="flex items-center justify-between font-mono-tag text-xs">
+                  <span className="font-bold text-[#071B70]">{m.step}</span>
+                  <span className="text-[#087CCB]">{m.timeframe}</span>
+                </div>
+                <h4 className="font-display font-bold text-base text-[#071B70] leading-snug">
+                  {m.title}
+                </h4>
+                <p className="text-xs text-slate-600 leading-relaxed">{m.description}</p>
+              </div>
+
+              <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+                <span className="font-semibold text-emerald-700">{m.deliverable}</span>
               </div>
             </div>
           ))}
@@ -501,193 +322,201 @@ export default function ServiceLandingLayout({ service }: Props) {
       </section>
 
       {/* ─────────────────────────────────────────────────────────────
-          SECTION 7: RELEVANT CASE STUDIES & AUDITED RESULTS
+          SECTION 5: TANGIBLE DELIVERABLES & WHY NOVASPARK
           ───────────────────────────────────────────────────────────── */}
-      {service.caseStudies && service.caseStudies.length > 0 && (
-        <section className="py-20 bg-white border-y border-slate-200/80">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
-              <div className="space-y-2">
-                <span className="text-xs font-bold uppercase tracking-wider text-[#FF7900]">
-                  Audited Performance Proof
-                </span>
-                <h2 className="font-display font-extrabold text-2xl sm:text-4xl text-[#071B70] tracking-tight">
-                  Real Client Results in {service.title}
-                </h2>
-              </div>
-              <Link
-                href="/case-studies"
-                className="inline-flex items-center gap-1.5 text-xs font-bold text-[#087CCB] hover:text-[#071B70] transition-colors"
-              >
-                <span>View All Portfolio Case Studies</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
-            </div>
+      <section className="py-16 lg:py-20 bg-[#F7F9FC] border-y border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+          <div>
+            <h2 className="font-display font-extrabold text-2xl sm:text-3xl text-[#071B70] tracking-tight mb-8">
+              Tangible Scope &amp; Deliverables.
+            </h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {service.caseStudies.map((cs, idx) => (
-                <div
-                  key={idx}
-                  className="card-skeuomorphic p-6 sm:p-8 rounded-3xl border border-slate-200/90 flex flex-col justify-between space-y-6"
-                >
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">
-                        {cs.industry}
-                      </span>
-                      <div className="flex items-center gap-1.5">
-                        {cs.tags.map((t, tIdx) => (
-                          <span
-                            key={tIdx}
-                            className="px-2 py-0.5 rounded-full text-[9px] font-bold bg-slate-100 text-slate-700"
-                          >
-                            {t}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-
-                    <h3 className="font-display font-extrabold text-xl text-[#071B70]">
-                      {cs.client}
-                    </h3>
-
-                    <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 flex items-center justify-between">
-                      <div>
-                        <span className="text-[10px] uppercase font-bold text-slate-500 block">
-                          {cs.metricLabel}
-                        </span>
-                        <div className="font-display font-black text-3xl text-[#087CCB]">
-                          {cs.metric}
-                        </div>
-                      </div>
-                      <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-[#FFC400] skeuo-well shadow-2xs">
-                        <TrendingUp className="w-5 h-5 text-[#071B70]" />
-                      </div>
-                    </div>
-
-                    <p className="text-xs text-slate-600 leading-relaxed font-medium">
-                      {cs.summary}
-                    </p>
-                  </div>
-
-                  <div className="pt-4 border-t border-slate-200/80 flex items-center justify-between">
-                    <Link
-                      href={`/case-studies`}
-                      className="text-xs font-bold text-[#087CCB] hover:text-[#071B70] inline-flex items-center gap-1"
-                    >
-                      <span>Explore Case Study Details</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </Link>
-                    <span className="text-[10px] text-emerald-600 font-bold">Verified ROI</span>
-                  </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {service.deliverables.map((group, idx) => (
+                <div key={idx} className="card-tactile p-6 sm:p-7 space-y-4">
+                  <h3 className="font-display font-bold text-lg text-[#071B70]">
+                    {group.category}
+                  </h3>
+                  <ul className="space-y-2.5 text-xs sm:text-sm text-slate-600">
+                    {group.items.map((item, iIdx) => (
+                      <li key={iIdx} className="flex items-start gap-2.5">
+                        <CheckCircle2 className="w-4 h-4 text-[#087CCB] shrink-0 mt-0.5" />
+                        <span className="leading-relaxed">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               ))}
             </div>
+          </div>
+
+          <div className="pt-8 border-t border-slate-200">
+            <h2 className="font-display font-extrabold text-2xl sm:text-3xl text-[#071B70] tracking-tight mb-8">
+              Why Ambitious Brands Partner With Us.
+            </h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {service.whyChoose.map((why, idx) => (
+                <div key={idx} className="space-y-2.5">
+                  <span className="font-mono-tag text-xs font-bold text-[#087CCB]">
+                    {why.stat}
+                  </span>
+                  <h3 className="font-display font-bold text-lg text-[#071B70]">{why.title}</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">{why.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─────────────────────────────────────────────────────────────
+          SECTION 6: RELEVANT CASE STUDIES
+          ───────────────────────────────────────────────────────────── */}
+      {service.caseStudies && service.caseStudies.length > 0 && (
+        <section className="py-16 lg:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+            <div>
+              <span className="font-mono-tag text-xs uppercase tracking-widest text-[#087CCB] font-semibold">
+                Audited Results
+              </span>
+              <h2 className="font-display font-extrabold text-2xl sm:text-4xl text-[#071B70] tracking-tight mt-1">
+                Real Client Results in {service.title}.
+              </h2>
+            </div>
+            <Link href="/case-studies" className="btn-secondary self-start md:self-auto">
+              <span>View All Case Studies</span>
+              <ArrowRight className="w-4 h-4 text-[#087CCB]" />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {service.caseStudies.map((cs, idx) => (
+              <div key={idx} className="card-tactile p-7 flex flex-col justify-between space-y-5">
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between text-xs font-mono-tag text-slate-500">
+                    <span>{cs.industry}</span>
+                    <span className="text-[#087CCB] font-bold">{cs.tags[0]}</span>
+                  </div>
+                  <h3 className="font-display font-extrabold text-xl text-[#071B70]">
+                    {cs.client}
+                  </h3>
+                  <div className="p-4 rounded-xl bg-[#F7F9FC] border border-slate-200 flex items-baseline justify-between">
+                    <span className="font-display font-black text-2xl sm:text-3xl text-[#071B70]">
+                      {cs.metric}
+                    </span>
+                    <span className="text-xs text-slate-500">{cs.metricLabel}</span>
+                  </div>
+                  <p className="text-sm text-slate-600 leading-relaxed">{cs.summary}</p>
+                </div>
+
+                <Link
+                  href="/case-studies"
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-[#071B70] hover:text-[#087CCB] pt-2 border-t border-slate-100"
+                >
+                  <span>Explore Case Studies</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            ))}
           </div>
         </section>
       )}
 
       {/* ─────────────────────────────────────────────────────────────
-          SECTION 8: SERVICE FAQS
+          SECTION 7: SERVICE FAQS (COLLAPSED BY DEFAULT)
           ───────────────────────────────────────────────────────────── */}
-      <section className="py-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12 space-y-3">
-          <span className="text-xs font-bold uppercase tracking-wider text-[#087CCB]">
-            Client Intelligence & FAQs
-          </span>
-          <h2 className="font-display font-extrabold text-2xl sm:text-4xl text-[#071B70] tracking-tight">
-            Frequently Asked Questions
+      <section className="py-16 lg:py-20 bg-[#F7F9FC] border-y border-slate-200">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="font-display font-extrabold text-2xl sm:text-4xl text-[#071B70] tracking-tight mb-8">
+            Frequently Asked Questions.
           </h2>
-          <p className="text-slate-600 text-sm leading-relaxed">
-            Everything you need to know about partnering with NovaSpark on {service.title}.
-          </p>
-        </div>
 
-        <div className="space-y-4">
-          {service.faqs.map((faq, idx) => {
-            const isOpen = openFaqIndex === idx;
-            return (
-              <div
-                key={idx}
-                className="card-skeuomorphic rounded-2xl overflow-hidden border border-slate-200/80 transition-all"
-              >
-                <button
-                  onClick={() => toggleFaq(idx)}
-                  className="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 focus:outline-none"
-                  aria-expanded={isOpen}
-                >
-                  <span className="font-display font-bold text-sm sm:text-base text-[#071B70] leading-snug">
-                    {faq.question}
-                  </span>
-                  <ChevronDown
-                    className={`w-4 h-4 text-slate-500 shrink-0 transition-transform duration-200 ${
-                      isOpen ? 'rotate-180 text-[#087CCB]' : ''
+          <div className="divide-y divide-slate-200 border-y border-slate-200">
+            {service.faqs.map((faq, idx) => {
+              const isOpen = openFaqIndex === idx;
+              return (
+                <div key={idx} className="py-5">
+                  <button
+                    type="button"
+                    onClick={() => toggleFaq(idx)}
+                    className="w-full text-left flex items-center justify-between gap-4 focus:outline-none cursor-pointer group"
+                    aria-expanded={isOpen}
+                  >
+                    <span
+                      className={`font-display font-bold text-base sm:text-lg transition-colors ${
+                        isOpen ? 'text-[#087CCB]' : 'text-[#071B70] group-hover:text-[#087CCB]'
+                      }`}
+                    >
+                      {faq.question}
+                    </span>
+                    <span
+                      className={`w-7 h-7 rounded-md flex items-center justify-center shrink-0 transition-colors ${
+                        isOpen
+                          ? 'bg-[#071B70] text-white'
+                          : 'bg-white border border-slate-200 text-slate-500'
+                      }`}
+                    >
+                      {isOpen ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
+                    </span>
+                  </button>
+
+                  <div
+                    className={`grid transition-all duration-300 ease-out ${
+                      isOpen ? 'grid-rows-[1fr] opacity-100 pt-3' : 'grid-rows-[0fr] opacity-0'
                     }`}
-                  />
-                </button>
-
-                {isOpen && (
-                  <div className="px-5 sm:px-6 pb-6 pt-1 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100">
-                    {faq.answer}
+                  >
+                    <div className="overflow-hidden pr-8 text-sm text-slate-600 leading-relaxed">
+                      {faq.answer}
+                    </div>
                   </div>
-                )}
-              </div>
-            );
-          })}
+                </div>
+              );
+            })}
+          </div>
         </div>
       </section>
 
       {/* ─────────────────────────────────────────────────────────────
-          SECTION 9: LEAD CONSULTATION FORM & FINAL CTA
+          SECTION 8: CONSULTATION FORM & DIRECT CONTACT
           ───────────────────────────────────────────────────────────── */}
-      <section className="py-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-16 lg:py-24 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8" id="consultation-form">
         <div className="text-center max-w-2xl mx-auto mb-10 space-y-3">
-          <span className="text-xs font-bold uppercase tracking-wider text-[#FF7900]">
-            Let&apos;s Build Your Strategy
-          </span>
           <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-[#071B70] tracking-tight">
             Request Your {service.title} Consultation
           </h2>
-          <p className="text-slate-600 text-sm leading-relaxed">
-            Fill out the confidential form below to receive a preliminary whitespace audit and schedule a 1-on-1 strategy session with our senior growth directors.
+          <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+            Receive a preliminary whitespace audit and schedule a strategy session with our senior growth directors.
           </p>
         </div>
 
-        {/* Embedded Interactive Consultation Form */}
         <ServiceConsultationForm
           defaultService={service.formServiceOption}
           serviceTitle={service.title}
         />
 
-        {/* Direct Contact Alternative Callouts */}
-        <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
-          <a
-            href="tel:+918280788689"
-            className="p-4 rounded-2xl bg-white border border-slate-200/80 hover:border-[#087CCB] transition-colors shadow-2xs group"
-          >
-            <Phone className="w-5 h-5 text-[#087CCB] mx-auto mb-2 group-hover:scale-110 transition-transform" />
-            <span className="text-xs font-bold text-slate-800 block">Call Directly</span>
-            <span className="text-xs text-slate-500 font-semibold">+91 8280788689</span>
+        <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
+          <a href="tel:+918280788689" className="card-tactile p-4 group">
+            <Phone className="w-5 h-5 text-[#087CCB] mx-auto mb-1.5" />
+            <span className="text-xs font-bold text-[#071B70] block">Call Directly</span>
+            <span className="text-xs text-slate-500">+91 8280788689</span>
           </a>
 
-          <a
-            href="mailto:novasparkdmagency@gmail.com"
-            className="p-4 rounded-2xl bg-white border border-slate-200/80 hover:border-[#087CCB] transition-colors shadow-2xs group"
-          >
-            <Briefcase className="w-5 h-5 text-[#FF7900] mx-auto mb-2 group-hover:scale-110 transition-transform" />
-            <span className="text-xs font-bold text-slate-800 block">Email Our Leadership</span>
-            <span className="text-xs text-slate-500 font-semibold truncate block">novasparkdmagency@gmail.com</span>
+          <a href="mailto:novasparkdmagency@gmail.com" className="card-tactile p-4 group">
+            <Briefcase className="w-5 h-5 text-[#FF7900] mx-auto mb-1.5" />
+            <span className="text-xs font-bold text-[#071B70] block">Email Leadership</span>
+            <span className="text-xs text-slate-500 truncate block">novasparkdmagency@gmail.com</span>
           </a>
 
           <a
             href="https://wa.me/918280788689"
             target="_blank"
             rel="noopener noreferrer"
-            className="p-4 rounded-2xl bg-white border border-slate-200/80 hover:border-[#25D366] transition-colors shadow-2xs group"
+            className="card-tactile p-4 group"
           >
-            <MessageSquare className="w-5 h-5 text-[#25D366] mx-auto mb-2 group-hover:scale-110 transition-transform" />
-            <span className="text-xs font-bold text-slate-800 block">Instant WhatsApp</span>
-            <span className="text-xs text-slate-500 font-semibold">Start Chat in Seconds</span>
+            <MessageSquare className="w-5 h-5 text-emerald-600 mx-auto mb-1.5" />
+            <span className="text-xs font-bold text-[#071B70] block">Instant WhatsApp</span>
+            <span className="text-xs text-slate-500">Start Chat in Seconds</span>
           </a>
         </div>
       </section>

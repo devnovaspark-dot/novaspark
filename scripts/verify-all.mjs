@@ -27,7 +27,7 @@ async function runTests() {
     // Check key reference sections & content
     assert(html.includes("Turn Digital Attention"), "Hero headline line 1 missing");
     assert(html.includes("Into Business Growth"), "Hero headline line 2 missing");
-    assert(html.includes("team_office.jpg") || html.includes("homepage_3d.webp"), "Hero visual missing");
+    assert(html.includes("hero_studio.jpg") || html.includes("team_office.jpg"), "Hero visual missing");
     assert(html.includes("+240%"), "Results metric +240% missing");
     assert(html.includes("+180%"), "Results metric +180% missing");
     assert(html.includes("3.8X"), "Results metric 3.8X missing");

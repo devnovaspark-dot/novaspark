@@ -384,7 +384,7 @@ export default function HomePage() {
               <ScrollReveal delay={150} direction="left" className="w-full">
                 <div className="relative w-full aspect-4/3 rounded-xl overflow-hidden border border-slate-200 shadow-[0_24px_48px_-12px_rgba(7,27,112,0.16)] bg-slate-100">
                   <Image
-                    src="/images/team_office.jpg"
+                    src="/images/hero_studio.jpg"
                     alt="NovaSpark Digital Marketing Agency Studio"
                     fill
                     priority
