@@ -397,15 +397,15 @@ export default function HomePage() {
 
             {/* Right: Pure Clean Visual — One picture only, zero text, zero cards */}
             <div className="lg:col-span-5 relative flex items-center justify-center">
-              <ScrollReveal delay={200} direction="left">
-                <div className="relative w-full max-w-lg aspect-4/3 sm:aspect-16/10 rounded-3xl overflow-hidden shadow-2xl border border-slate-200/90 group bg-slate-900">
+              <ScrollReveal delay={200} direction="left" className="w-full flex justify-center">
+                <div className="relative w-full max-w-[520px] aspect-square sm:aspect-4/3 rounded-3xl overflow-hidden shadow-2xl border border-slate-200/80 group bg-white">
                   <Image
                     src="/images/homepage_3d.webp"
                     alt="NovaSpark Digital Marketing Agency"
                     fill
                     priority
                     className="object-cover object-center group-hover:scale-105 transition-transform duration-700"
-                    sizes="(max-width: 1024px) 100vw, 550px"
+                    sizes="(max-width: 1024px) 100vw, 520px"
                   />
                 </div>
               </ScrollReveal>
