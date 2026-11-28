@@ -301,7 +301,7 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════════════════════════
           SECTION 1 — HERO (STUDIO EDITORIAL + TACTILE FRAMING)
          ═══════════════════════════════════════════════════════════ */}
-      <section className="pt-14 pb-20 lg:pt-22 lg:pb-28 bg-gradient-to-b from-[#F7F9FC] to-white border-b border-slate-200/80">
+      <section className="pt-8 pb-16 lg:pt-12 lg:pb-24 bg-gradient-to-b from-[#F7F9FC] to-white border-b border-slate-200/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-6 space-y-6">

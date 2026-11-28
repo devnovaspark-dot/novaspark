@@ -84,7 +84,7 @@ export default function ServicesPage() {
       {/* ═══════════════════════════════════════════════════════════
           HERO SECTION (ASYMMETRIC EDITORIAL + STUDIO IMAGE)
          ═══════════════════════════════════════════════════════════ */}
-      <section className="relative pt-14 pb-20 lg:pt-22 lg:pb-24 bg-gradient-to-b from-[#F7F9FC] via-white to-white border-b border-slate-200/80 overflow-hidden">
+      <section className="relative pt-8 pb-16 lg:pt-12 lg:pb-20 bg-gradient-to-b from-[#F7F9FC] via-white to-white border-b border-slate-200/80 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             {/* Left Content */}
