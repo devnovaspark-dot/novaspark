@@ -1099,10 +1099,23 @@ export default function HomePage() {
          ═══════════════════════════════════════════════════════════ */}
       <section className="py-16 lg:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="relative rounded-2xl bg-gradient-to-br from-[#0B2285] via-[#071B70] to-[#041046] text-white p-8 sm:p-12 lg:p-14 overflow-hidden border border-white/15 shadow-[inset_0_1px_0_rgba(255,255,255,0.22),0_28px_60px_-15px_rgba(7,27,112,0.4)]">
-            <div className="absolute -top-24 right-1/4 w-[380px] h-[380px] bg-[#00BCEB]/18 rounded-full blur-3xl pointer-events-none" />
+          <div className="relative rounded-2xl bg-gradient-to-br from-[#0B2285] via-[#071B70] to-[#041046] text-white p-8 sm:p-12 lg:p-16 overflow-hidden border border-white/15 shadow-[inset_0_1px_0_rgba(255,255,255,0.25),0_28px_60px_-15px_rgba(7,27,112,0.42)]">
+            <div className="absolute inset-0 bg-grid-dark opacity-35 pointer-events-none" />
+            <div className="absolute -top-24 right-1/4 w-[420px] h-[420px] bg-[#00BCEB]/20 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute -bottom-24 left-10 w-[320px] h-[320px] bg-[#087CCB]/20 rounded-full blur-3xl pointer-events-none" />
 
-            <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+            {/* Subtle Decorative Brand Geometric Rings */}
+            <div className="hidden lg:flex items-center justify-center absolute -right-12 top-1/2 -translate-y-1/2 w-80 h-80 pointer-events-none opacity-35">
+              <div className="w-72 h-72 rounded-full border border-[#00BCEB]/40 flex items-center justify-center">
+                <div className="w-52 h-52 rounded-full border border-white/25 flex items-center justify-center">
+                  <div className="relative w-16 h-16 animate-logo-float">
+                    <Image src="/images/logo.png" alt="" fill className="object-contain" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-8 lg:pr-44">
               <div className="space-y-4 max-w-2xl">
                 <div className="inline-flex items-center gap-2 font-mono-tag text-xs uppercase tracking-widest text-[#00BCEB]">
                   <span className="w-2 h-2 rounded-full bg-[#FFC400]" />
