@@ -16,6 +16,12 @@ import {
   Quote,
   Plus,
   Minus,
+  Zap,
+  Search,
+  Share2,
+  FileText,
+  Globe,
+  TrendingUp,
 } from 'lucide-react';
 import ScrollReveal from '@/components/ScrollReveal';
 import GrowthJourney from '@/components/GrowthJourney';
@@ -35,11 +41,8 @@ const CORE_SERVICES_ECOSYSTEM = [
     description:
       'Algorithmic multi-channel acquisition engineered with first-party CAPI attribution to lower CPA and scale profitable revenue.',
     metric: '3.8X – 4.8X ROAS',
-    highlights: [
-      'High-Intent Search & Performance Max',
-      'Meta Conversions API & Creative Testing',
-      'B2B LinkedIn Account-Based Targeting',
-    ],
+    icon: Zap,
+    accent: '#087CCB',
     href: '/services/performance-marketing',
   },
   {
@@ -50,11 +53,8 @@ const CORE_SERVICES_ECOSYSTEM = [
     description:
       'Capture compounding organic demand across Google Search, AI Overviews, ChatGPT, and Perplexity with technical authority.',
     metric: '+180% Organic Lift',
-    highlights: [
-      'Search Engine Optimization & Technical Audits',
-      'Answer Engine Optimization for Featured Snippets',
-      'Generative Engine Optimization for AI Citations',
-    ],
+    icon: Search,
+    accent: '#071B70',
     href: '/services/seo-aeo-geo',
   },
   {
@@ -65,11 +65,8 @@ const CORE_SERVICES_ECOSYSTEM = [
     description:
       'Build cultural relevance and active buyer communities through high-tempo Reels, editorial grids, and direct DM conversion funnels.',
     metric: '+410% Organic Reach',
-    highlights: [
-      'Short-Form Vertical Video & Reels Production',
-      'Brand Voice & Editorial Content Calendars',
-      'Creator Partnerships & Community Nurture',
-    ],
+    icon: Share2,
+    accent: '#FF7900',
     href: '/services/social-media-marketing',
   },
   {
@@ -80,11 +77,8 @@ const CORE_SERVICES_ECOSYSTEM = [
     description:
       'Shorten enterprise and D2C sales cycles with authoritative bottom-of-funnel playbooks, comparison guides, and semantic whitepapers.',
     metric: '3.2X Pipeline Velocity',
-    highlights: [
-      'Bottom-of-Funnel Commercial Comparison Guides',
-      'Executive Thought Leadership & Ghostwriting',
-      'Semantic Whitepapers & Case Study Storytelling',
-    ],
+    icon: FileText,
+    accent: '#087CCB',
     href: '/services/content-marketing',
   },
   {
@@ -95,11 +89,8 @@ const CORE_SERVICES_ECOSYSTEM = [
     description:
       'Sub-800ms custom Next.js websites, bespoke Figma design systems, and conversion-engineered landing pages built to close deals.',
     metric: '99+ Core Web Vitals',
-    highlights: [
-      'Bespoke UI/UX & Brand Design Systems',
-      'Custom Next.js & Headless CMS Engineering',
-      'High-Converting Campaign Landing Pages',
-    ],
+    icon: Globe,
+    accent: '#00BCEB',
     href: '/services/web-design-development',
   },
   {
@@ -110,11 +101,8 @@ const CORE_SERVICES_ECOSYSTEM = [
     description:
       'Dominate marketplace categories with algorithmic bid harvesting, programmatic DSP retargeting, and A+ Brand Storefront CRO.',
     metric: '-32% ACoS Reduction',
-    highlights: [
-      'Sponsored Products, Brands & Video Management',
-      'Amazon DSP Off-Site Shopper Retargeting',
-      'A+ Premium Storefront & Buy Box Defense',
-    ],
+    icon: TrendingUp,
+    accent: '#FFC400',
     href: '/services/amazon-marketing-ppc',
   },
 ];
@@ -171,7 +159,7 @@ const INDUSTRIES = [
     challenge: 'Positioning high-ticket craft nationally',
     desc: 'Search-intent capture, editorial creative direction, and affluent buyer retargeting for artisanal brands.',
     metric: '+240% Revenue',
-    image: '/images/Medallion house.jpg',
+    image: '/images/work_fashion.jpg',
   },
   {
     title: 'Real Estate & Infrastructure',
@@ -181,11 +169,11 @@ const INDUSTRIES = [
     image: '/images/work_realestate.jpg',
   },
   {
-    title: 'Retail & Farm-to-Table',
-    challenge: 'Driving consistent store footfall',
+    title: 'Healthcare & Retail Clinics',
+    challenge: 'Driving consistent local bookings',
     desc: 'Hyper-local Google 3-Pack domination, review velocity systems, and nearby intent capture.',
     metric: '+74% Footfall',
-    image: '/images/Sri Pandurangan Divine Fresh.png',
+    image: '/images/work_healthcare.jpg',
   },
   {
     title: 'Fine Dining & Hospitality',
@@ -195,11 +183,11 @@ const INDUSTRIES = [
     image: '/images/work_restaurant.jpg',
   },
   {
-    title: 'Experiential Travel & Tourism',
-    challenge: 'High-season booking acquisition cost',
-    desc: 'Short-form UGC video funnels paired with instant WhatsApp inquiry automation.',
-    metric: '3,200+ Bookings',
-    image: '/images/Weekend Bhraman Tour Planner.jpg',
+    title: 'EdTech & Professional Services',
+    challenge: 'High-intent enrollment pipelines',
+    desc: 'Full-funnel search capture, webinar lead funnels, and automated WhatsApp nurture.',
+    metric: '3.4X Pipeline',
+    image: '/images/work_edtech.jpg',
   },
 ];
 
@@ -253,7 +241,7 @@ const ARTICLES = [
     readTime: '5 min read',
     date: 'July 2026',
     desc: 'How third-party cookie phase-outs impacted ad costs and why first-party server-side tracking pipelines restore 30%+ attribution accuracy.',
-    image: '/images/hero_performance_scale.jpg',
+    image: '/images/work_ecommerce.jpg',
   },
   {
     title: 'Next.js vs WordPress: How Sub-Second Load Speeds Multiply E-Commerce Conversion Rates',
@@ -269,7 +257,7 @@ const ARTICLES = [
     readTime: '4 min read',
     date: 'May 2026',
     desc: 'The exact framework used to generate 18,400+ monthly direction requests and calls for retail chains across Eastern India.',
-    image: '/images/Sri Pandurangan Divine Fresh.png',
+    image: '/images/work_edtech.jpg',
   },
 ];
 
@@ -301,27 +289,25 @@ const FAQS = [
 ];
 
 export default function HomePage() {
-  const [activeServiceIdx, setActiveServiceIdx] = useState(0);
   const [activeTestimonialIdx, setActiveTestimonialIdx] = useState(0);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   const featuredStudy = AGENCY_CASE_STUDIES.find((p) => p.featured) || AGENCY_CASE_STUDIES[0];
   const supportingStudies = AGENCY_CASE_STUDIES.filter((p) => p.slug !== featuredStudy.slug).slice(0, 2);
-  const activeService = CORE_SERVICES_ECOSYSTEM[activeServiceIdx];
   const activeTestimonial = TESTIMONIALS[activeTestimonialIdx];
 
   return (
     <div className="flex flex-col w-full overflow-x-hidden bg-white text-[#111827]">
       {/* ═══════════════════════════════════════════════════════════
-          SECTION 1 — HERO (AUTHENTIC STUDIO EDITORIAL)
+          SECTION 1 — HERO (STUDIO EDITORIAL + TACTILE FRAMING)
          ═══════════════════════════════════════════════════════════ */}
-      <section className="pt-12 pb-16 lg:pt-20 lg:pb-24 bg-white border-b border-slate-200">
+      <section className="pt-14 pb-20 lg:pt-22 lg:pb-28 bg-gradient-to-b from-[#F7F9FC] to-white border-b border-slate-200/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-6 space-y-6">
               <ScrollReveal delay={40}>
-                <div className="inline-flex items-center gap-3">
-                  <div className="relative w-6 h-6 animate-logo-float">
+                <div className="inline-flex items-center gap-3 px-3.5 py-1.5 rounded-xl bg-white border border-slate-200/90 shadow-xs">
+                  <div className="relative w-5 h-5 animate-logo-float">
                     <Image
                       src="/images/logo.png"
                       alt="NovaSpark Mark"
@@ -329,14 +315,14 @@ export default function HomePage() {
                       className="object-contain"
                     />
                   </div>
-                  <span className="font-mono-tag text-xs font-semibold uppercase tracking-widest text-[#071B70]">
+                  <span className="font-mono-tag text-[11px] font-semibold uppercase tracking-widest text-[#071B70]">
                     Your Business, Our Strategy
                   </span>
                 </div>
               </ScrollReveal>
 
               <ScrollReveal delay={100}>
-                <h1 className="font-display font-black text-4xl sm:text-5xl lg:text-[3.75rem] text-[#071B70] tracking-tight leading-[1.05]">
+                <h1 className="font-display font-black text-4xl sm:text-5xl lg:text-[3.85rem] text-[#071B70] tracking-tight leading-[1.04]">
                   Turn Digital Attention <br />
                   <span className="text-[#087CCB]">Into Business Growth.</span>
                 </h1>
@@ -379,18 +365,20 @@ export default function HomePage() {
               </ScrollReveal>
             </div>
 
-            {/* Right: Authentic Agency Studio Photography — Zero Text Overlays */}
-            <div className="lg:col-span-6">
-              <ScrollReveal delay={150} direction="left" className="w-full">
-                <div className="relative w-full aspect-4/3 rounded-xl overflow-hidden border border-slate-200 shadow-[0_24px_48px_-12px_rgba(7,27,112,0.16)] bg-slate-100">
-                  <Image
-                    src="/images/hero_studio.jpg"
-                    alt="NovaSpark Digital Marketing Agency Studio"
-                    fill
-                    priority
-                    className="object-cover object-center"
-                    sizes="(max-width: 1024px) 100vw, 640px"
-                  />
+            <div className="lg:col-span-6 relative">
+              <div className="absolute -inset-4 bg-gradient-to-tr from-[#087CCB]/10 via-[#00BCEB]/5 to-[#FFC400]/10 rounded-3xl blur-2xl pointer-events-none" />
+              <ScrollReveal delay={150} direction="left" className="w-full relative z-10">
+                <div className="relative w-full aspect-4/3 card-tactile overflow-hidden p-2 bg-white">
+                  <div className="relative w-full h-full rounded-xl overflow-hidden">
+                    <Image
+                      src="/images/hero_studio.jpg"
+                      alt="NovaSpark Digital Marketing Agency Studio"
+                      fill
+                      priority
+                      className="object-cover object-center"
+                      sizes="(max-width: 1024px) 100vw, 640px"
+                    />
+                  </div>
                 </div>
               </ScrollReveal>
             </div>
@@ -399,9 +387,9 @@ export default function HomePage() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════
-          SECTION 2 — PERFORMANCE BAR & CLIENT LOGO MARQUEE
+          SECTION 2 — PERFORMANCE BAR & SEAMLESS CLIENT MARQUEE
          ═══════════════════════════════════════════════════════════ */}
-      <section className="bg-[#071B70] text-white py-10">
+      <section className="bg-[#071B70] text-white py-11">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 lg:divide-x divide-white/15">
             {AGENCY_METRICS_HIGHLIGHTS.map((metric, idx) => (
@@ -410,7 +398,7 @@ export default function HomePage() {
                   {metric.value}
                 </div>
                 <div className="text-xs font-semibold text-slate-200 mt-1">{metric.label}</div>
-                <div className="text-[11px] text-[#00BCEB] mt-0.5">{metric.sub}</div>
+                <div className="text-[11px] text-[#00BCEB] mt-0.5 font-mono-tag">{metric.sub}</div>
               </div>
             ))}
           </div>
@@ -460,22 +448,22 @@ export default function HomePage() {
                 Most agencies operate in disconnected silos: creative teams design visuals without understanding unit economics, while media buyers run ads without understanding brand positioning. At <strong className="text-[#071B70] font-semibold">NovaSpark</strong>, we unify strategy, creativity, technology, and performance into one accountable system.
               </p>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-5 border-t border-slate-200">
-                <div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4">
+                <div className="card-tactile p-5 space-y-1.5">
                   <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#071B70]">
                     <CheckCircle2 className="w-4 h-4 text-[#087CCB]" />
                     <span>Full-Funnel Ownership</span>
                   </div>
-                  <p className="text-sm text-slate-600 mt-1.5 leading-relaxed">
+                  <p className="text-sm text-slate-600 leading-relaxed">
                     From high-intent search capture and brand storytelling to landing UX and customer retention.
                   </p>
                 </div>
-                <div>
+                <div className="card-tactile p-5 space-y-1.5">
                   <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#071B70]">
                     <CheckCircle2 className="w-4 h-4 text-[#087CCB]" />
                     <span>Audited Performance</span>
                   </div>
-                  <p className="text-sm text-slate-600 mt-1.5 leading-relaxed">
+                  <p className="text-sm text-slate-600 leading-relaxed">
                     Zero vanity reporting. Real revenue, verified CAC compression, and first-party attribution.
                   </p>
                 </div>
@@ -486,21 +474,21 @@ export default function HomePage() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════
-          SECTION 4 — CONNECTED ECOSYSTEM & CAPABILITIES INDEX
+          SECTION 4 — CONNECTED ECOSYSTEM (2x3 TACTILE BENTO GRID)
          ═══════════════════════════════════════════════════════════ */}
       <section className="py-20 lg:py-28 bg-[#F7F9FC] border-b border-slate-200" id="services">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-14 pb-8 border-b border-slate-200">
-            <div>
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-14">
+            <div className="space-y-2">
               <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-[#071B70] tracking-tight">
                 One Connected Ecosystem.
               </h2>
-              <p className="text-slate-600 text-base sm:text-lg mt-2 max-w-xl">
-                Six integrated disciplines built to capture demand, convert traffic, and compound revenue.
+              <p className="text-slate-600 text-base sm:text-lg max-w-xl">
+                Six integrated disciplines engineered to capture demand, convert traffic, and compound revenue.
               </p>
             </div>
 
-            <div className="flex items-center gap-6 text-xs font-mono-tag">
+            <div className="inline-flex items-center gap-4 px-4 py-2.5 rounded-xl bg-white border border-slate-200 shadow-xs text-xs font-mono-tag">
               <span className="text-[#071B70] font-bold">01 Attract</span>
               <span className="text-slate-300">→</span>
               <span className="text-[#087CCB] font-bold">02 Convert</span>
@@ -509,99 +497,51 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-            {/* Left: Clean Architectural Index */}
-            <div className="lg:col-span-6 divide-y divide-slate-200 border-b border-slate-200">
-              {CORE_SERVICES_ECOSYSTEM.map((service, idx) => {
-                const isActive = idx === activeServiceIdx;
-                return (
-                  <div
-                    key={service.id}
-                    onMouseEnter={() => setActiveServiceIdx(idx)}
-                    onClick={() => setActiveServiceIdx(idx)}
-                    className={`group py-5 cursor-pointer transition-all duration-200 ${
-                      isActive ? 'pl-4 border-l-4 border-l-[#071B70] bg-white' : 'hover:pl-2'
-                    }`}
-                  >
-                    <div className="flex items-center justify-between gap-4">
-                      <div className="flex items-baseline gap-4 min-w-0">
-                        <span
-                          className={`font-mono-tag text-xs font-bold ${
-                            isActive ? 'text-[#087CCB]' : 'text-slate-400'
-                          }`}
-                        >
-                          {service.num}
-                        </span>
-                        <div className="min-w-0">
-                          <h3
-                            className={`font-display font-bold text-xl sm:text-2xl tracking-tight transition-colors ${
-                              isActive ? 'text-[#071B70]' : 'text-slate-700 group-hover:text-[#071B70]'
-                            }`}
-                          >
-                            {service.title}
-                          </h3>
-                          <p className="text-xs text-slate-500 mt-1 truncate">{service.subtitle}</p>
-                        </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-7">
+            {CORE_SERVICES_ECOSYSTEM.map((service) => {
+              const IconComp = service.icon;
+              return (
+                <Link
+                  key={service.id}
+                  href={service.href}
+                  className="card-tactile p-7 flex flex-col justify-between gap-6 group"
+                >
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between">
+                      <div className="w-11 h-11 rounded-xl bg-[#F7F9FC] border border-slate-200/90 shadow-2xs flex items-center justify-center group-hover:bg-[#071B70] group-hover:border-[#071B70] transition-colors">
+                        <IconComp
+                          className="w-5 h-5 transition-colors group-hover:text-[#FFC400]"
+                          style={{ color: service.accent }}
+                        />
                       </div>
+                      <span className="font-mono-tag text-xs font-bold text-[#071B70] bg-[#FFC400]/20 px-2.5 py-1 rounded-md">
+                        {service.metric}
+                      </span>
+                    </div>
 
-                      <Link
-                        href={service.href}
-                        aria-label={`Explore ${service.title}`}
-                        className={`w-9 h-9 rounded-lg flex items-center justify-center shrink-0 transition-all ${
-                          isActive
-                            ? 'bg-[#071B70] text-white'
-                            : 'bg-white border border-slate-200 text-slate-500 group-hover:border-[#071B70] group-hover:text-[#071B70]'
-                        }`}
-                      >
-                        <ArrowUpRight className="w-4 h-4" />
-                      </Link>
+                    <div>
+                      <span className="font-mono-tag text-[11px] text-[#087CCB] font-semibold block">
+                        {service.num} — {service.subtitle.split('•')[0].trim()}
+                      </span>
+                      <h3 className="font-display font-extrabold text-xl text-[#071B70] group-hover:text-[#087CCB] transition-colors mt-1">
+                        {service.title}
+                      </h3>
+                      <p className="text-sm text-slate-600 leading-relaxed mt-2">
+                        {service.description}
+                      </p>
                     </div>
                   </div>
-                );
-              })}
-            </div>
 
-            {/* Right: Crisp Deep Royal Editorial Panel (Zero Clipart) */}
-            <div className="lg:col-span-6 lg:sticky lg:top-28">
-              <div className="rounded-xl bg-[#071B70] text-white p-8 sm:p-10 border border-white/10 shadow-[0_24px_48px_-12px_rgba(7,27,112,0.35)] space-y-7">
-                <div className="flex items-center justify-between border-b border-white/15 pb-4">
-                  <span className="font-mono-tag text-xs uppercase tracking-widest text-[#00BCEB]">
-                    {activeService.num} / Capability
-                  </span>
-                  <span className="font-display font-bold text-xs text-[#071B70] bg-[#FFC400] px-3 py-1 rounded-md">
-                    {activeService.metric}
-                  </span>
-                </div>
-
-                <div className="space-y-3">
-                  <h4 className="font-display font-extrabold text-2xl sm:text-3xl text-white">
-                    {activeService.title}
-                  </h4>
-                  <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
-                    {activeService.description}
-                  </p>
-                </div>
-
-                <ul className="space-y-3 pt-2 border-t border-white/10">
-                  {activeService.highlights.map((item) => (
-                    <li key={item} className="flex items-center gap-3 text-sm text-slate-200">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#00BCEB] shrink-0" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <div className="pt-2">
-                  <Link href={activeService.href} className="btn-gold group w-full sm:w-auto">
-                    <span>Explore {activeService.title}</span>
-                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                  </Link>
-                </div>
-              </div>
-
-              <span className="sr-only">Search Engine Optimization</span>
-            </div>
+                  <div className="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-[#071B70] group-hover:text-[#087CCB]">
+                    <span>Explore {service.title}</span>
+                    <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  </div>
+                </Link>
+              );
+            })}
           </div>
+
+          <span className="sr-only">Search Engine Optimization</span>
         </div>
       </section>
 
@@ -611,7 +551,7 @@ export default function HomePage() {
       <GrowthJourney />
 
       {/* ═══════════════════════════════════════════════════════════
-          SECTION 6 — WHY NOVASPARK
+          SECTION 6 — WHY NOVASPARK (TACTILE FEATURE CARDS)
          ═══════════════════════════════════════════════════════════ */}
       <section className="py-20 lg:py-24 bg-[#F7F9FC] border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -628,13 +568,15 @@ export default function HomePage() {
               </p>
             </div>
 
-            <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-10">
+            <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
               {DIFFERENTIATORS.map((item) => {
                 const IconComp = item.icon;
                 return (
-                  <div key={item.step} className="pt-5 border-t border-slate-300 space-y-2.5">
+                  <div key={item.step} className="card-tactile p-6 space-y-3">
                     <div className="flex items-center justify-between">
-                      <IconComp className="w-5 h-5 text-[#087CCB]" />
+                      <div className="w-10 h-10 rounded-xl bg-[#F7F9FC] border border-slate-200 flex items-center justify-center">
+                        <IconComp className="w-5 h-5 text-[#087CCB]" />
+                      </div>
                       <span className="font-mono-tag text-xs text-slate-400">/{item.step}</span>
                     </div>
                     <h3 className="font-display font-bold text-lg text-[#071B70]">{item.title}</h3>
@@ -648,13 +590,13 @@ export default function HomePage() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════
-          SECTION 7 — CASE STUDIES (BORDERLESS EDITORIAL PORTFOLIO)
+          SECTION 7 — CASE STUDIES (TACTILE EDITORIAL PORTFOLIO)
          ═══════════════════════════════════════════════════════════ */}
       <section className="py-20 lg:py-28 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 pb-6 border-b border-slate-200 gap-4">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
             <div>
-              <span className="font-mono-tag text-xs text-slate-400 uppercase tracking-widest block mb-1">
+              <span className="font-mono-tag text-xs text-[#087CCB] uppercase tracking-widest font-semibold block mb-1">
                 Selected Case Studies
               </span>
               <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-[#071B70] tracking-tight">
@@ -668,8 +610,8 @@ export default function HomePage() {
             </Link>
           </div>
 
-          {/* Featured Case Study — Clean Split Without Card Box */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center pb-14 mb-14 border-b border-slate-200">
+          {/* Featured Case Study */}
+          <div className="card-tactile p-6 sm:p-8 lg:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center mb-10">
             <Link
               href={`/case-studies/${featuredStudy.slug}`}
               className="lg:col-span-7 relative aspect-16/10 w-full rounded-xl overflow-hidden bg-slate-100 border border-slate-200 group block"
@@ -711,7 +653,7 @@ export default function HomePage() {
 
               <Link
                 href={`/case-studies/${featuredStudy.slug}`}
-                className="inline-flex items-center gap-2 font-display font-bold text-sm text-[#071B70] hover:text-[#087CCB] group"
+                className="btn-primary group"
               >
                 <span>View Case Study</span>
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -719,50 +661,53 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Supporting Case Studies — Clean 2-Column Editorial Spread */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-12">
+          {/* Supporting Case Studies */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {supportingStudies.map((project) => (
-              <div key={project.slug} className="space-y-4 group">
-                <Link
-                  href={`/case-studies/${project.slug}`}
-                  className="relative aspect-16/10 w-full rounded-xl overflow-hidden bg-slate-100 border border-slate-200 block"
-                >
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-                    sizes="(max-width: 768px) 100vw, 580px"
-                  />
-                </Link>
+              <div key={project.slug} className="card-tactile p-6 sm:p-7 space-y-5 group flex flex-col justify-between">
+                <div className="space-y-4">
+                  <Link
+                    href={`/case-studies/${project.slug}`}
+                    className="relative aspect-16/10 w-full rounded-xl overflow-hidden bg-slate-100 border border-slate-200 block"
+                  >
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                      sizes="(max-width: 768px) 100vw, 580px"
+                    />
+                  </Link>
 
-                <div className="space-y-2.5">
-                  <div className="text-xs font-mono-tag uppercase tracking-wider text-[#087CCB] font-semibold">
-                    {project.industry} • {project.category}
-                  </div>
-                  <h3 className="font-display font-bold text-xl sm:text-2xl text-[#071B70] group-hover:text-[#087CCB] transition-colors leading-snug">
-                    <Link href={`/case-studies/${project.slug}`}>{project.title}</Link>
-                  </h3>
-                  <p className="text-sm text-slate-600 leading-relaxed line-clamp-2">
-                    {project.summary}
-                  </p>
-                  <div className="flex flex-wrap items-center justify-between gap-4 pt-3 border-t border-slate-200">
-                    <div className="flex items-center gap-5">
-                      {project.metrics.slice(0, 2).map((m) => (
-                        <div key={m.label}>
-                          <span className="font-display font-extrabold text-base text-[#071B70]">{m.value}</span>
-                          <span className="text-xs text-slate-500 ml-1.5">{m.label}</span>
-                        </div>
-                      ))}
+                  <div className="space-y-2">
+                    <div className="text-xs font-mono-tag uppercase tracking-wider text-[#087CCB] font-semibold">
+                      {project.industry} • {project.category}
                     </div>
-                    <Link
-                      href={`/case-studies/${project.slug}`}
-                      className="inline-flex items-center gap-1.5 text-xs font-bold text-[#071B70] hover:text-[#087CCB]"
-                    >
-                      <span>View Case Study</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </Link>
+                    <h3 className="font-display font-bold text-xl sm:text-2xl text-[#071B70] group-hover:text-[#087CCB] transition-colors leading-snug">
+                      <Link href={`/case-studies/${project.slug}`}>{project.title}</Link>
+                    </h3>
+                    <p className="text-sm text-slate-600 leading-relaxed line-clamp-2">
+                      {project.summary}
+                    </p>
                   </div>
+                </div>
+
+                <div className="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-slate-100">
+                  <div className="flex items-center gap-5">
+                    {project.metrics.slice(0, 2).map((m) => (
+                      <div key={m.label}>
+                        <span className="font-display font-extrabold text-base text-[#071B70]">{m.value}</span>
+                        <span className="text-xs text-slate-500 ml-1.5">{m.label}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <Link
+                    href={`/case-studies/${project.slug}`}
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-[#071B70] hover:text-[#087CCB]"
+                  >
+                    <span>View Case Study</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
                 </div>
               </div>
             ))}
@@ -771,11 +716,11 @@ export default function HomePage() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════
-          SECTION 8 — INDUSTRIES (CLEAN EDITORIAL DIRECTORY)
+          SECTION 8 — INDUSTRIES (TACTILE SECTOR DIRECTORY)
          ═══════════════════════════════════════════════════════════ */}
       <section className="py-20 lg:py-24 bg-[#F7F9FC] border-t border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 pb-6 border-b border-slate-200 gap-4">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
             <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-[#071B70] tracking-tight">
               Industries We Specialize In.
             </h2>
@@ -784,31 +729,38 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
             {INDUSTRIES.map((ind) => (
-              <div key={ind.title} className="group space-y-4">
-                <div className="relative aspect-16/10 w-full rounded-xl overflow-hidden bg-slate-200 border border-slate-200">
-                  <Image
-                    src={ind.image}
-                    alt={ind.title}
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                  />
+              <div key={ind.title} className="card-tactile overflow-hidden group flex flex-col justify-between">
+                <div>
+                  <div className="relative aspect-16/10 w-full bg-slate-200 overflow-hidden">
+                    <Image
+                      src={ind.image}
+                      alt={ind.title}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                    />
+                  </div>
+
+                  <div className="p-6 space-y-2.5">
+                    <div className="flex items-center justify-between gap-2 text-xs font-mono-tag">
+                      <span className="text-slate-500">{ind.challenge}</span>
+                      <span className="font-bold text-[#071B70] bg-[#FFC400]/25 px-2.5 py-0.5 rounded-md">
+                        {ind.metric}
+                      </span>
+                    </div>
+                    <h3 className="font-display font-bold text-xl text-[#071B70]">
+                      {ind.title}
+                    </h3>
+                    <p className="text-sm text-slate-600 leading-relaxed">{ind.desc}</p>
+                  </div>
                 </div>
 
-                <div className="space-y-2">
-                  <div className="flex items-center justify-between gap-2 text-xs font-mono-tag">
-                    <span className="text-slate-500">{ind.challenge}</span>
-                    <span className="font-bold text-[#087CCB]">{ind.metric}</span>
-                  </div>
-                  <h3 className="font-display font-bold text-xl text-[#071B70]">
-                    {ind.title}
-                  </h3>
-                  <p className="text-sm text-slate-600 leading-relaxed">{ind.desc}</p>
+                <div className="px-6 pb-6 pt-3 border-t border-slate-100">
                   <Link
                     href={`/contact?service=${encodeURIComponent(ind.title)}`}
-                    className="inline-flex items-center gap-1.5 text-xs font-bold text-[#071B70] hover:text-[#087CCB] pt-1"
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-[#071B70] hover:text-[#087CCB]"
                   >
                     <span>Explore Solutions</span>
                     <ArrowRight className="w-3.5 h-3.5" />
@@ -821,13 +773,13 @@ export default function HomePage() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════
-          SECTION 9 — LEADERSHIP (BORDERLESS EDITORIAL PORTRAITS)
+          SECTION 9 — LEADERSHIP (COHESIVE TACTILE PORTRAIT CARDS)
          ═══════════════════════════════════════════════════════════ */}
       <section className="py-20 lg:py-24 bg-white border-t border-slate-200" id="team">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 pb-6 border-b border-slate-200 gap-4">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
             <div>
-              <span className="font-mono-tag text-xs text-slate-400 uppercase tracking-widest block mb-1">
+              <span className="font-mono-tag text-xs text-[#087CCB] uppercase tracking-widest font-semibold block mb-1">
                 Leadership
               </span>
               <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-[#071B70] tracking-tight">
@@ -839,10 +791,10 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {AGENCY_TEAM.map((member) => (
-              <div key={member.name} className="group space-y-4">
-                <div className="relative aspect-4/3 w-full rounded-xl overflow-hidden bg-slate-100 border border-slate-200">
+              <div key={member.name} className="card-tactile overflow-hidden group flex flex-col h-full">
+                <div className="relative aspect-4/3 w-full bg-slate-100 overflow-hidden">
                   <Image
                     src={member.image}
                     alt={member.name}
@@ -850,29 +802,36 @@ export default function HomePage() {
                     className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]"
                     sizes="(max-width: 768px) 100vw, 33vw"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#071B70]/25 via-transparent to-transparent pointer-events-none" />
                 </div>
 
-                <div className="space-y-2">
-                  <div className="flex items-start justify-between gap-3">
-                    <div>
-                      <h3 className="font-display font-bold text-xl text-[#071B70]">
-                        {member.name}
-                      </h3>
-                      <p className="text-xs font-semibold uppercase tracking-wider text-[#087CCB] mt-0.5">
-                        {member.role}
-                      </p>
+                <div className="p-6 flex flex-col justify-between flex-1 space-y-4">
+                  <div className="space-y-2">
+                    <div className="flex items-start justify-between gap-3">
+                      <div>
+                        <h3 className="font-display font-bold text-xl text-[#071B70]">
+                          {member.name}
+                        </h3>
+                        <p className="text-xs font-semibold uppercase tracking-wider text-[#087CCB] mt-0.5">
+                          {member.role}
+                        </p>
+                      </div>
+                      <a
+                        href={member.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-xs font-mono-tag text-slate-500 hover:text-[#071B70] bg-slate-100 px-2.5 py-1 rounded-md transition-colors shrink-0"
+                        aria-label={`${member.name} LinkedIn Profile`}
+                      >
+                        in ↗
+                      </a>
                     </div>
-                    <a
-                      href={member.linkedin}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-xs font-mono-tag text-slate-500 hover:text-[#071B70] transition-colors shrink-0"
-                      aria-label={`${member.name} LinkedIn Profile`}
-                    >
-                      LinkedIn ↗
-                    </a>
+                    <p className="text-sm text-slate-600 leading-relaxed pt-1">{member.bio}</p>
                   </div>
-                  <p className="text-sm text-slate-600 leading-relaxed">{member.bio}</p>
+
+                  <div className="pt-3 border-t border-slate-100 text-xs text-slate-500 font-medium">
+                    {member.dept}
+                  </div>
                 </div>
               </div>
             ))}
@@ -952,7 +911,7 @@ export default function HomePage() {
                   className={`text-left p-4 rounded-xl transition-all cursor-pointer border ${
                     isSelected
                       ? 'bg-white border-[#087CCB] shadow-sm'
-                      : 'bg-white/60 border-slate-200 hover:bg-white'
+                      : 'bg-white/70 border-slate-200 hover:bg-white'
                   }`}
                 >
                   <div className="flex items-center justify-between gap-2 mb-2">
@@ -982,13 +941,13 @@ export default function HomePage() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════
-          SECTION 11 — INSIGHTS & PERSPECTIVES (EDITORIAL PUBLICATION)
+          SECTION 11 — INSIGHTS & PERSPECTIVES (TACTILE PUBLICATION)
          ═══════════════════════════════════════════════════════════ */}
       <section className="py-20 lg:py-24 bg-white border-t border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 pb-6 border-b border-slate-200 gap-4">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
             <div>
-              <span className="font-mono-tag text-xs text-slate-400 uppercase tracking-widest block mb-1">
+              <span className="font-mono-tag text-xs text-[#087CCB] uppercase tracking-widest font-semibold block mb-1">
                 Growth Intelligence &amp; Playbooks
               </span>
               <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-[#071B70] tracking-tight">
@@ -1002,11 +961,11 @@ export default function HomePage() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
-            <article className="lg:col-span-7 group space-y-4">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            <article className="lg:col-span-7 card-tactile p-6 sm:p-7 group space-y-4">
               <Link
                 href="/contact"
-                className="relative aspect-16/10 w-full rounded-xl overflow-hidden bg-slate-100 border border-slate-200 block"
+                className="relative aspect-16/10 w-full rounded-xl overflow-hidden bg-slate-100 block"
               >
                 <Image
                   src={ARTICLES[0].image}
@@ -1036,37 +995,39 @@ export default function HomePage() {
               </Link>
             </article>
 
-            <div className="lg:col-span-5 divide-y divide-slate-200 border-t lg:border-t-0 border-slate-200">
-              {ARTICLES.slice(1).map((art, idx) => (
+            <div className="lg:col-span-5 flex flex-col gap-6">
+              {ARTICLES.slice(1).map((art) => (
                 <article
                   key={art.title}
-                  className={`group space-y-3 ${idx === 0 ? 'pb-8 pt-8 lg:pt-0' : 'pt-8'}`}
+                  className="card-tactile p-5 group space-y-3 flex-1 flex flex-col justify-between"
                 >
-                  <Link
-                    href="/contact"
-                    className="relative aspect-16/9 w-full rounded-xl overflow-hidden bg-slate-100 border border-slate-200 block"
-                  >
-                    <Image
-                      src={art.image}
-                      alt={art.title}
-                      fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-                      sizes="(max-width: 1024px) 100vw, 440px"
-                    />
-                  </Link>
-                  <div className="flex items-center gap-3 text-xs font-mono-tag text-slate-500">
-                    <span className="text-[#087CCB] font-bold uppercase">{art.category}</span>
-                    <span>•</span>
-                    <span>{art.date}</span>
-                    <span>•</span>
-                    <span>{art.readTime}</span>
+                  <div className="space-y-3">
+                    <Link
+                      href="/contact"
+                      className="relative aspect-16/9 w-full rounded-xl overflow-hidden bg-slate-100 block"
+                    >
+                      <Image
+                        src={art.image}
+                        alt={art.title}
+                        fill
+                        className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                        sizes="(max-width: 1024px) 100vw, 440px"
+                      />
+                    </Link>
+                    <div className="flex items-center gap-3 text-xs font-mono-tag text-slate-500">
+                      <span className="text-[#087CCB] font-bold uppercase">{art.category}</span>
+                      <span>•</span>
+                      <span>{art.date}</span>
+                      <span>•</span>
+                      <span>{art.readTime}</span>
+                    </div>
+                    <h3 className="font-display font-bold text-lg sm:text-xl text-[#071B70] group-hover:text-[#087CCB] transition-colors leading-snug">
+                      <Link href="/contact">{art.title}</Link>
+                    </h3>
                   </div>
-                  <h3 className="font-display font-bold text-xl text-[#071B70] group-hover:text-[#087CCB] transition-colors leading-snug">
-                    <Link href="/contact">{art.title}</Link>
-                  </h3>
                   <Link
                     href="/contact"
-                    className="inline-flex items-center gap-1.5 text-xs font-bold text-[#071B70] hover:text-[#087CCB]"
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-[#071B70] hover:text-[#087CCB] pt-1"
                   >
                     <span>Read Article</span>
                     <ArrowRight className="w-3.5 h-3.5" />
@@ -1079,7 +1040,7 @@ export default function HomePage() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════
-          SECTION 12 — FAQ (MINIMALIST ACCORDION — COLLAPSED BY DEFAULT)
+          SECTION 12 — FAQ (TACTILE ACCORDION — COLLAPSED BY DEFAULT)
          ═══════════════════════════════════════════════════════════ */}
       <section className="py-20 lg:py-24 bg-[#F7F9FC] border-t border-slate-200">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -1089,11 +1050,11 @@ export default function HomePage() {
             </h2>
           </div>
 
-          <div className="divide-y divide-slate-200 border-y border-slate-200">
+          <div className="space-y-3">
             {FAQS.map((faq, i) => {
               const isOpen = openFaq === i;
               return (
-                <div key={i} className="py-5">
+                <div key={i} className="card-tactile px-6 py-4">
                   <button
                     type="button"
                     aria-expanded={isOpen}
@@ -1111,7 +1072,7 @@ export default function HomePage() {
                       className={`w-7 h-7 rounded-md flex items-center justify-center shrink-0 transition-colors ${
                         isOpen
                           ? 'bg-[#071B70] text-white'
-                          : 'bg-white border border-slate-200 text-slate-500 group-hover:border-[#071B70]'
+                          : 'bg-[#F7F9FC] border border-slate-200 text-slate-500 group-hover:border-[#071B70]'
                       }`}
                     >
                       {isOpen ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
