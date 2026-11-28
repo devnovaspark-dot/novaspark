@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   ArrowRight,
   CheckCircle2,
@@ -17,6 +18,15 @@ import {
 import { ServiceDetail } from '@/lib/services-detail-data';
 import ServiceConsultationForm from '@/components/ServiceConsultationForm';
 
+const SERVICE_HERO_IMAGES: Record<string, string> = {
+  'performance-marketing': '/images/work_ecommerce.jpg',
+  'seo-aeo-geo': '/images/team_office.jpg',
+  'social-media-marketing': '/images/work_fashion.jpg',
+  'content-marketing': '/images/hero_studio.jpg',
+  'web-design-development': '/images/work_realestate.jpg',
+  'amazon-marketing-ppc': '/images/work_restaurant.jpg',
+};
+
 interface Props {
   service: ServiceDetail;
 }
@@ -30,13 +40,14 @@ export default function ServiceLandingLayout({ service }: Props) {
   };
 
   const activeSub = service.subDisciplines[activeSubDiscipline] || service.subDisciplines[0];
+  const heroImage = SERVICE_HERO_IMAGES[service.slug] || '/images/hero_studio.jpg';
 
   return (
     <div className="min-h-screen bg-white text-[#111827] pt-24 pb-16 overflow-x-hidden">
       {/* ─────────────────────────────────────────────────────────────
-          SECTION 1: BREADCRUMBS & EDITORIAL SERVICE HERO
+          SECTION 1: BREADCRUMBS & EDITORIAL SERVICE HERO WITH IMAGE
           ───────────────────────────────────────────────────────────── */}
-      <section className="pt-6 pb-16 lg:pb-24 bg-gradient-to-b from-[#F7F9FC] to-white border-b border-slate-200">
+      <section className="pt-6 pb-16 lg:pb-20 bg-gradient-to-b from-[#F7F9FC] to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <nav className="flex items-center gap-2 text-xs font-mono-tag text-slate-500 mb-8" aria-label="Breadcrumb">
             <Link href="/" className="hover:text-[#071B70] transition-colors">
@@ -50,26 +61,26 @@ export default function ServiceLandingLayout({ service }: Props) {
             <span className="text-[#071B70] font-semibold">{service.title}</span>
           </nav>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
             {/* Left Hero Content */}
-            <div className="lg:col-span-7 space-y-6">
-              <div className="inline-flex items-center gap-2.5">
-                <span className="w-6 h-[2px] bg-[#087CCB]" />
-                <span className="font-mono-tag text-xs font-semibold tracking-widest uppercase text-[#087CCB]">
+            <div className="lg:col-span-6 space-y-6">
+              <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-xl bg-white border border-slate-200 shadow-xs">
+                <span className="w-2 h-2 rounded-full bg-[#087CCB]" />
+                <span className="font-mono-tag text-[11px] font-semibold tracking-widest uppercase text-[#071B70]">
                   {service.eyebrow}
                 </span>
               </div>
 
-              <h1 className="font-display font-black text-3xl sm:text-5xl lg:text-[3.25rem] tracking-tight text-[#071B70] leading-[1.08]">
+              <h1 className="font-display font-black text-3xl sm:text-5xl lg:text-[3.25rem] tracking-tight text-[#071B70] leading-[1.06]">
                 {service.heroHeadline}{' '}
                 <span className="text-[#087CCB]">{service.heroHighlight}</span>
               </h1>
 
-              <p className="text-slate-600 text-base sm:text-lg leading-relaxed max-w-2xl">
+              <p className="text-slate-600 text-base sm:text-lg leading-relaxed max-w-xl">
                 {service.heroSubline}
               </p>
 
-              <div className="pt-2 flex flex-wrap items-center gap-4">
+              <div className="pt-1 flex flex-wrap items-center gap-4">
                 <a href="#consultation-form" className="btn-primary group">
                   <span>Request Strategy Consultation</span>
                   <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -79,74 +90,67 @@ export default function ServiceLandingLayout({ service }: Props) {
                   <Phone className="w-4 h-4 text-[#087CCB]" />
                   <span>+91 8280788689</span>
                 </a>
-
-                <a
-                  href="https://wa.me/918280788689"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-700 hover:text-emerald-800 px-2 py-2"
-                >
-                  <MessageSquare className="w-4 h-4" />
-                  <span>WhatsApp</span>
-                </a>
               </div>
 
-              <div className="pt-5 flex flex-wrap items-center gap-6 text-xs text-slate-500 border-t border-slate-200">
+              <div className="pt-5 flex flex-wrap items-center gap-5 text-xs text-slate-500 border-t border-slate-200">
                 <div className="flex items-center gap-1.5">
                   <ShieldCheck className="w-4 h-4 text-[#087CCB]" />
-                  <span>Strict Category Exclusivity</span>
+                  <span>Category Exclusivity</span>
                 </div>
                 <div className="flex items-center gap-1.5">
                   <Lock className="w-4 h-4 text-[#087CCB]" />
-                  <span>100% Client Asset Ownership</span>
+                  <span>100% Asset Ownership</span>
                 </div>
                 <div className="flex items-center gap-1.5">
                   <Zap className="w-4 h-4 text-[#FF7900]" />
-                  <span>Senior Operator Oversight</span>
+                  <span>Senior Operator Led</span>
                 </div>
               </div>
             </div>
 
-            {/* Right: Deep Royal Blue Outcome & Benchmark Panel */}
-            <div className="lg:col-span-5">
-              <div className="rounded-2xl bg-[#071B70] text-white p-7 sm:p-8 border border-white/15 shadow-[inset_0_1px_0_rgba(255,255,255,0.2),0_24px_48px_-12px_rgba(7,27,112,0.38)] space-y-6">
-                <div className="pb-5 border-b border-white/15">
-                  <span className="font-mono-tag text-[11px] uppercase tracking-widest text-[#00BCEB]">
-                    {service.primaryMetric.label}
-                  </span>
-                  <div className="font-display font-black text-4xl sm:text-5xl text-[#FFC400] tracking-tight mt-1">
-                    {service.primaryMetric.value}
-                  </div>
-                  <p className="text-xs text-slate-300 mt-1.5">
-                    {service.primaryMetric.subtext}
-                  </p>
-                </div>
-
-                <div className="grid grid-cols-2 gap-4">
-                  {service.telemetryMetrics.map((tel, idx) => (
-                    <div
-                      key={idx}
-                      className="p-3.5 rounded-xl bg-white/[0.06] border border-white/10"
-                    >
-                      <span className="text-[11px] text-slate-300 block truncate">
-                        {tel.label}
-                      </span>
-                      <div className="font-display font-extrabold text-lg text-white mt-1">
-                        {tel.value}
-                      </div>
-                      <span className="text-[10px] font-mono-tag text-[#00BCEB] block mt-0.5 truncate">
-                        {tel.change}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="pt-3 border-t border-white/10 flex items-center justify-between text-xs text-slate-300 font-mono-tag">
-                  <span>Audited Delivery Model</span>
-                  <span className="text-[#FFC400] font-bold">90-Day Sprint</span>
+            {/* Right: Service-Specific Hero Image */}
+            <div className="lg:col-span-6">
+              <div className="relative w-full aspect-4/3 card-tactile p-2 bg-white overflow-hidden">
+                <div className="relative w-full h-full rounded-xl overflow-hidden">
+                  <Image
+                    src={heroImage}
+                    alt={service.title}
+                    fill
+                    priority
+                    className="object-cover object-center"
+                    sizes="(max-width: 1024px) 100vw, 620px"
+                  />
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Deep Royal Blue Outcome & Benchmark Bar */}
+      <section className="bg-[#071B70] text-white py-10 border-y border-white/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 lg:grid-cols-5 gap-6 lg:divide-x divide-white/15 items-center">
+            <div>
+              <span className="font-mono-tag text-[10px] uppercase tracking-widest text-[#00BCEB] block">
+                {service.primaryMetric.label}
+              </span>
+              <div className="font-display font-black text-3xl sm:text-4xl text-[#FFC400] mt-1">
+                {service.primaryMetric.value}
+              </div>
+            </div>
+
+            {service.telemetryMetrics.map((tel, idx) => (
+              <div key={idx} className="lg:pl-6">
+                <span className="text-xs text-slate-300 block">{tel.label}</span>
+                <div className="font-display font-extrabold text-2xl text-white mt-0.5">
+                  {tel.value}
+                </div>
+                <span className="font-mono-tag text-[11px] text-[#00BCEB] block mt-0.5">
+                  {tel.change}
+                </span>
+              </div>
+            ))}
           </div>
         </div>
       </section>

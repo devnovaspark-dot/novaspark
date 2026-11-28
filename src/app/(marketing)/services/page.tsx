@@ -82,131 +82,137 @@ export default function ServicesPage() {
   return (
     <div className="flex flex-col w-full overflow-hidden">
       {/* ═══════════════════════════════════════════════════════════
-          HERO SECTION
+          HERO SECTION (ASYMMETRIC EDITORIAL + STUDIO IMAGE)
          ═══════════════════════════════════════════════════════════ */}
-      <section className="relative pt-12 pb-20 lg:pt-20 lg:pb-28 bg-gradient-to-b from-slate-50/70 via-white to-white overflow-hidden">
-        <div className="absolute inset-0 bg-grid-subtle opacity-50 pointer-events-none" />
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[350px] bg-gradient-to-r from-[#087CCB]/15 via-[#00BCEB]/10 to-[#FFC400]/10 blur-3xl rounded-full pointer-events-none" />
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center max-w-3xl mx-auto space-y-6">
-            <ScrollReveal>
-              <div className="badge-tag mx-auto">
-                <span className="w-2 h-2 rounded-full bg-[#087CCB] animate-ping" />
-                <span>Our Capabilities • Your Business, Our Strategy</span>
-              </div>
-            </ScrollReveal>
-
-            <ScrollReveal delay={100}>
-              <h1 className="font-display font-extrabold text-4xl sm:text-6xl text-[#071B70] tracking-tight leading-[1.1]">
-                Everything Your Brand <br />
-                <span className="text-[#087CCB]">Needs to Grow Digitally.</span>
-              </h1>
-            </ScrollReveal>
-
-            <ScrollReveal delay={200}>
-              <p className="text-lg sm:text-xl text-slate-600 leading-relaxed font-normal">
-                We combine eight specialized digital disciplines into one synchronized growth strategy. No fragmented agency silos — just compounding business results engineered by full-funnel senior practitioners.
-              </p>
-            </ScrollReveal>
-
-            {/* Quick Filter Jump Pills */}
-            <ScrollReveal delay={300}>
-              <div className="flex flex-wrap items-center justify-center gap-2 pt-2">
-                {AGENCY_SERVICES.map((s) => {
-                  const isCurrent = s.id === selectedServiceId;
-                  return (
-                    <button
-                      key={s.id}
-                      onClick={() => {
-                        setSelectedServiceId(s.id);
-                        const el = document.getElementById('capability-console');
-                        if (el) el.scrollIntoView({ behavior: 'smooth' });
-                      }}
-                      className={`text-xs font-semibold px-3.5 py-1.5 rounded-full transition-all duration-200 cursor-pointer ${
-                        isCurrent
-                          ? 'bg-[#0F172A] text-[#FFC400] shadow-xs border border-[#0F172A]'
-                          : 'bg-slate-100 hover:bg-slate-200 text-slate-700'
-                      }`}
-                    >
-                      {s.title.split(' ')[0]} {s.title.split(' ')[1] || ''}
-                    </button>
-                  );
-                })}
-              </div>
-            </ScrollReveal>
-
-            {/* Direct Links to Dedicated Service Landing Pages */}
-            <ScrollReveal delay={350}>
-              <div className="pt-6 border-t border-slate-200/80">
-                <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 block mb-3">
-                  Dedicated Growth Service Landing Pages
-                </span>
-                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2">
-                  <Link
-                    href="/services/performance-marketing"
-                    className="p-2.5 rounded-xl bg-white border border-slate-200/80 hover:border-[#087CCB] hover:shadow-xs transition-all text-left group"
-                  >
-                    <span className="text-[10px] font-bold text-[#087CCB] block">01</span>
-                    <span className="text-xs font-bold text-slate-800 group-hover:text-[#087CCB] block leading-tight">
-                      Performance Marketing
-                    </span>
-                    <span className="text-[9px] text-slate-500 block truncate mt-0.5">Google • Meta</span>
-                  </Link>
-                  <Link
-                    href="/services/seo-aeo-geo"
-                    className="p-2.5 rounded-xl bg-white border border-slate-200/80 hover:border-[#087CCB] hover:shadow-xs transition-all text-left group"
-                  >
-                    <span className="text-[10px] font-bold text-[#087CCB] block">02</span>
-                    <span className="text-xs font-bold text-slate-800 group-hover:text-[#087CCB] block leading-tight">
-                      SEO, AEO &amp; GEO
-                    </span>
-                    <span className="text-[9px] text-slate-500 block truncate mt-0.5">Google + Perplexity</span>
-                  </Link>
-                  <Link
-                    href="/services/social-media-marketing"
-                    className="p-2.5 rounded-xl bg-white border border-slate-200/80 hover:border-[#087CCB] hover:shadow-xs transition-all text-left group"
-                  >
-                    <span className="text-[10px] font-bold text-[#087CCB] block">03</span>
-                    <span className="text-xs font-bold text-slate-800 group-hover:text-[#087CCB] block leading-tight">
-                      Social Media
-                    </span>
-                    <span className="text-[9px] text-slate-500 block truncate mt-0.5">Vertical Video</span>
-                  </Link>
-                  <Link
-                    href="/services/content-marketing"
-                    className="p-2.5 rounded-xl bg-white border border-slate-200/80 hover:border-[#087CCB] hover:shadow-xs transition-all text-left group"
-                  >
-                    <span className="text-[10px] font-bold text-[#087CCB] block">04</span>
-                    <span className="text-xs font-bold text-slate-800 group-hover:text-[#087CCB] block leading-tight">
-                      Content Marketing
-                    </span>
-                    <span className="text-[9px] text-slate-500 block truncate mt-0.5">BOFU Assets</span>
-                  </Link>
-                  <Link
-                    href="/services/web-design-development"
-                    className="p-2.5 rounded-xl bg-white border border-slate-200/80 hover:border-[#087CCB] hover:shadow-xs transition-all text-left group"
-                  >
-                    <span className="text-[10px] font-bold text-[#087CCB] block">05</span>
-                    <span className="text-xs font-bold text-slate-800 group-hover:text-[#087CCB] block leading-tight">
-                      Web Design &amp; Dev
-                    </span>
-                    <span className="text-[9px] text-slate-500 block truncate mt-0.5">Next.js &amp; UI/UX</span>
-                  </Link>
-                  <Link
-                    href="/services/amazon-marketing-ppc"
-                    className="p-2.5 rounded-xl bg-white border border-slate-200/80 hover:border-[#087CCB] hover:shadow-xs transition-all text-left group"
-                  >
-                    <span className="text-[10px] font-bold text-[#087CCB] block">06</span>
-                    <span className="text-xs font-bold text-slate-800 group-hover:text-[#087CCB] block leading-tight">
-                      Amazon PPC
-                    </span>
-                    <span className="text-[9px] text-slate-500 block truncate mt-0.5">Sponsored Ads</span>
-                  </Link>
+      <section className="relative pt-14 pb-20 lg:pt-22 lg:pb-24 bg-gradient-to-b from-[#F7F9FC] via-white to-white border-b border-slate-200/80 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            {/* Left Content */}
+            <div className="lg:col-span-6 space-y-6">
+              <ScrollReveal>
+                <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-xl bg-white border border-slate-200 shadow-xs">
+                  <span className="w-2 h-2 rounded-full bg-[#087CCB]" />
+                  <span className="font-mono-tag text-[11px] font-semibold uppercase tracking-widest text-[#071B70]">
+                    Our Capabilities • Your Business, Our Strategy
+                  </span>
                 </div>
-              </div>
-            </ScrollReveal>
+              </ScrollReveal>
+
+              <ScrollReveal delay={100}>
+                <h1 className="font-display font-black text-4xl sm:text-5xl lg:text-[3.5rem] text-[#071B70] tracking-tight leading-[1.06]">
+                  Everything Your Brand <br />
+                  <span className="text-[#087CCB]">Needs to Grow Digitally.</span>
+                </h1>
+              </ScrollReveal>
+
+              <ScrollReveal delay={180}>
+                <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-xl">
+                  We combine specialized digital disciplines into one synchronized growth strategy. No fragmented agency silos — just compounding business results engineered by senior practitioners.
+                </p>
+              </ScrollReveal>
+
+              <ScrollReveal delay={240}>
+                <div className="flex flex-wrap items-center gap-4 pt-1">
+                  <Link href="/contact" className="btn-primary group">
+                    <span>Request Strategy Audit</span>
+                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                  </Link>
+                  <a href="#capability-console" className="btn-secondary">
+                    <span>Explore Capabilities</span>
+                  </a>
+                </div>
+              </ScrollReveal>
+            </div>
+
+            {/* Right Studio Hero Image */}
+            <div className="lg:col-span-6 relative">
+              <ScrollReveal delay={150} direction="left" className="w-full">
+                <div className="relative w-full aspect-4/3 card-tactile p-2 bg-white overflow-hidden">
+                  <div className="relative w-full h-full rounded-xl overflow-hidden">
+                    <Image
+                      src="/images/team_office.jpg"
+                      alt="NovaSpark Digital Marketing Capabilities Team"
+                      fill
+                      priority
+                      className="object-cover object-center"
+                      sizes="(max-width: 1024px) 100vw, 620px"
+                    />
+                  </div>
+                </div>
+              </ScrollReveal>
+            </div>
           </div>
+
+          {/* Direct Links to All 6 Dedicated Service Landing Pages */}
+          <ScrollReveal delay={300}>
+            <div className="mt-14 pt-8 border-t border-slate-200/80">
+              <span className="font-mono-tag text-[11px] font-bold uppercase tracking-widest text-slate-400 block mb-4">
+                Dedicated Growth Service Landing Pages
+              </span>
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+                <Link
+                  href="/services/performance-marketing"
+                  className="card-tactile p-3.5 text-left group"
+                >
+                  <span className="font-mono-tag text-[10px] font-bold text-[#087CCB] block">01</span>
+                  <span className="text-xs font-bold text-[#071B70] group-hover:text-[#087CCB] block leading-tight mt-0.5">
+                    Performance Marketing
+                  </span>
+                  <span className="text-[10px] text-slate-500 block truncate mt-1">Google • Meta</span>
+                </Link>
+                <Link
+                  href="/services/seo-aeo-geo"
+                  className="card-tactile p-3.5 text-left group"
+                >
+                  <span className="font-mono-tag text-[10px] font-bold text-[#087CCB] block">02</span>
+                  <span className="text-xs font-bold text-[#071B70] group-hover:text-[#087CCB] block leading-tight mt-0.5">
+                    SEO, AEO &amp; GEO
+                  </span>
+                  <span className="text-[10px] text-slate-500 block truncate mt-1">Google + Perplexity</span>
+                </Link>
+                <Link
+                  href="/services/social-media-marketing"
+                  className="card-tactile p-3.5 text-left group"
+                >
+                  <span className="font-mono-tag text-[10px] font-bold text-[#087CCB] block">03</span>
+                  <span className="text-xs font-bold text-[#071B70] group-hover:text-[#087CCB] block leading-tight mt-0.5">
+                    Social Media
+                  </span>
+                  <span className="text-[10px] text-slate-500 block truncate mt-1">Vertical Video</span>
+                </Link>
+                <Link
+                  href="/services/content-marketing"
+                  className="card-tactile p-3.5 text-left group"
+                >
+                  <span className="font-mono-tag text-[10px] font-bold text-[#087CCB] block">04</span>
+                  <span className="text-xs font-bold text-[#071B70] group-hover:text-[#087CCB] block leading-tight mt-0.5">
+                    Content Marketing
+                  </span>
+                  <span className="text-[10px] text-slate-500 block truncate mt-1">BOFU Assets</span>
+                </Link>
+                <Link
+                  href="/services/web-design-development"
+                  className="card-tactile p-3.5 text-left group"
+                >
+                  <span className="font-mono-tag text-[10px] font-bold text-[#087CCB] block">05</span>
+                  <span className="text-xs font-bold text-[#071B70] group-hover:text-[#087CCB] block leading-tight mt-0.5">
+                    Web Design &amp; Dev
+                  </span>
+                  <span className="text-[10px] text-slate-500 block truncate mt-1">Next.js &amp; UI/UX</span>
+                </Link>
+                <Link
+                  href="/services/amazon-marketing-ppc"
+                  className="card-tactile p-3.5 text-left group"
+                >
+                  <span className="font-mono-tag text-[10px] font-bold text-[#087CCB] block">06</span>
+                  <span className="text-xs font-bold text-[#071B70] group-hover:text-[#087CCB] block leading-tight mt-0.5">
+                    Amazon PPC
+                  </span>
+                  <span className="text-[10px] text-slate-500 block truncate mt-1">Sponsored Ads</span>
+                </Link>
+              </div>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
